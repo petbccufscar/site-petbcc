@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Home
+
+<img src="{% static 'site2016/petbcc.png' %}">
+<br>
+
+{% for nome in nomes %}
+Olá, {{ nome }}<br>
+{% endfor %}
+
+{% if nomes.0 == 'Marcelo' %}
+    Nome é Marcelo
+{% endif %}
+
+</body>
+</html>
