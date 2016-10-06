@@ -5,12 +5,48 @@
     <meta charset="UTF-8">
     <title>PET-BCC UFSCar</title>
     <script src="{% static 'site2016/semantic/semantic.min.js' %}"></script>
-
     <link rel="stylesheet" href="{% static 'site2016/semantic/semantic.min.css' %}">
 </head>
 <body>
 
-<div class="ui horizontal divider"></div>
+<style>
+    #masthead_index {
+        min-height: 500px;
+        padding: 1em 0em;
+        background: #0c4d78;
+        margin-top: 4em;
+    }
+
+    #fundo_azul {
+        background: #0c4d78;
+    }
+</style>
+
+<div class="ui borderless fixed main menu">
+    <div class="ui text container">
+        <div href="#" class="header item">
+            <img class="ui tiny image" src="{% static 'site2016/petbcc.png' %}">
+        </div>
+        <a href="#" class="item">Sobre</a>
+        <a href="#" class="item">Equipe</a>
+        <a href="#" class="item">Projetos</a>
+        <a href="#" class="item">Processo Seletivo</a>
+        <a href="#" class="item">Contato + FAQ</a>
+    </div>
+</div>
+
+<div class="ui inverted vertical masthead center aligned segment" id="masthead_index">
+    <div class="ui grid container">
+        <div class="middle aligned row">
+            <div class="column">
+                <h1 class="ui inverted header">
+                    PET-BCC UFSCar
+                </h1>
+                <h2>Programa de Educação Tutorial do Bacharelado em Ciência da Computação</h2>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="ui vertical stripe segment">
     <div class="ui middle aligned stackable grid container">
@@ -34,7 +70,6 @@
 
 
 <div class="ui vertical stripe segment">
-
     <div class="ui relaxed stackable grid container">
         <div class="row">
             <div class="column">
@@ -67,7 +102,6 @@
                 <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -101,9 +135,9 @@
     </div>
 </div>
 
-<div class="ui vertical stripe segment">
-    <h1 class="ui centered header">Processo Seletivo</h1>
-    <h3 class="ui centered header">Interessado em fazer parte da equipe? Saiba mais sobre o processo seletivo.</h3>
+<div class="ui vertical stripe segment" id="fundo_azul">
+    <h1 class="ui centered inverted header">Processo Seletivo</h1>
+    <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a href="#">processo seletivo</a>.</h3>
 </div>
 
 <div class="ui inverted vertical footer segment">
@@ -123,7 +157,6 @@
             <i class="github icon"></i>
         </a>
     </div>
-
 </div>
 </body>
 </html>
