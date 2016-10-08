@@ -11,38 +11,63 @@
 
 <style>
     #masthead_index {
-        min-height: 500px;
-        padding: 1em 0em;
-        background: #0c4d78;
-        margin-top: 4em;
+        min-height: 400px;
+        padding: 1em 0em 0em 0em;
+    {#        background: #0c4d78;#} margin-top: 4em;
+        background: url('{% static 'site2016/images/equipe.jpg' %}');
+        -webkit-background-size: auto;
+        background-size: 100%;
+        background-position: top;
     }
 
     #fundo_azul {
         background: #0c4d78;
+        padding: 0em;
     }
+
+    #processo_seletivo {
+        background: #0c4d78;
+    }
+
 </style>
 
-<div class="ui borderless fixed main menu">
-    <div class="ui text container">
-        <div href="#" class="header item">
-            <img class="ui tiny image" src="{% static 'site2016/petbcc.png' %}">
-        </div>
-        <a href="#" class="item">Sobre</a>
-        <a href="#" class="item">Equipe</a>
-        <a href="#" class="item">Projetos</a>
-        <a href="#" class="item">Processo Seletivo</a>
-        <a href="#" class="item">Contato + FAQ</a>
+<div class="ui fixed main menu">
+    <div class="left menu">
+        <a href="#" class="item">
+            <img class="ui tiny image" src="{% static 'site2016/images/petbcc.png' %}">
+        </a>
+    </div>
+    <div class="right menu">
+        <a href="#" class="item"><b>Sobre</b></a>
+        <a href="#" class="item"><b>Equipe</b></a>
+        <a href="#" class="item"><b>Projetos</b></a>
+        <a href="#" class="item"><b>Processo Seletivo</b></a>
+        <a href="#" class="item"><b>Contato + FAQ</b></a>
     </div>
 </div>
 
-<div class="ui inverted vertical masthead center aligned segment" id="masthead_index">
-    <div class="ui grid container">
-        <div class="middle aligned row">
-            <div class="column">
+<div class="ui inverted masthead center aligned segment" id="masthead_index">
+    {#    <div class="ui grid">#}
+    {#        <div class="column">#}
+    {#            <div class="row">#}
+    {#                <br><br><br><br><br><br><br><br><br><br><br><br><br>#}
+    {#                <h1 class="ui inverted header">#}
+    {#                    PET-BCC UFSCar#}
+    {#                </h1>#}
+    {#                <h2>Programa de Educação Tutorial do Bacharelado em Ciência da Computação<br>da UFSCar</h2>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+</div>
+
+<div class="ui inverted masthead center aligned segment" id="fundo_azul">
+    <div class="ui grid">
+        <div class="column">
+            <div class="row">
                 <h1 class="ui inverted header">
                     PET-BCC UFSCar
                 </h1>
-                <h2>Programa de Educação Tutorial do Bacharelado em Ciência da Computação</h2>
+                <h2>Programa de Educação Tutorial do Bacharelado em Ciência da Computação da UFSCar</h2>
             </div>
         </div>
     </div>
@@ -62,7 +87,7 @@
                     praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
             </div>
             <div class="six wide column">
-                <img class="ui image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui image" src="{% static 'site2016/images/petbcc.png' %}">
             </div>
         </div>
     </div>
@@ -77,27 +102,26 @@
             </div>
         </div>
         <div class="four column row">
-
             <div class="column">
-                <img class="ui centered small image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui centered small image" src="{% static 'site2016/images/petbcc.png' %}">
                 <h3 class="ui centered header">Ensino</h3>
                 <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
             </div>
 
             <div class="column">
-                <img class="ui centered small image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui centered small image" src="{% static 'site2016/images/petbcc.png' %}">
                 <h3 class="ui centered header">Pesquisa</h3>
                 <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
             </div>
 
             <div class="column">
-                <img class="ui centered small image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui centered small image" src="{% static 'site2016/images/petbcc.png' %}">
                 <h3 class="ui centered header">Extensão</h3>
                 <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
             </div>
 
             <div class="column">
-                <img class="ui centered small image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui centered small image" src="{% static 'site2016/images/petbcc.png' %}">
                 <h3 class="ui centered header">Desenvolvimento de Software</h3>
                 <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
             </div>
@@ -114,41 +138,51 @@
         </div>
         <div class="row">
             <div class="column">
-                <img class="ui centered small image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui centered small image" src="{% static 'site2016/images/petbcc.png' %}">
                 <h3 class="ui header">Projeto USE</h3>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                     laoreet dolore magna aliquam erat volutpat.</p>
             </div>
             <div class="column">
-                <img class="ui centered small image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui centered small image" src="{% static 'site2016/images/petbcc.png' %}">
                 <h3 class="ui header">Saúde em Jogo</h3>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                     laoreet dolore magna aliquam erat volutpat.</p>
             </div>
             <div class="column">
-                <img class="ui centered small image" src="{% static 'site2016/petbcc.png' %}">
+                <img class="ui centered small image" src="{% static 'site2016/images/petbcc.png' %}">
                 <h3 class="ui header">ONG Nave Sal da Terra</h3>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                     laoreet dolore magna aliquam erat volutpat.</p>
             </div>
         </div>
+        <div class="row">
+            <div class="column">
+                <a href="#">
+                    <h3 class="ui centered header">
+                        Conheça os nossos outros projetos >
+                    </h3>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="ui vertical stripe segment" id="fundo_azul">
+<div class="ui vertical stripe segment" id="processo_seletivo">
     <h1 class="ui centered inverted header">Processo Seletivo</h1>
-    <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a href="#">processo seletivo</a>.</h3>
+    <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a href="#">processo
+        seletivo</a>.</h3>
 </div>
 
 <div class="ui inverted vertical footer segment">
     <div class="ui center aligned container">
-        <h4 class="ui inverted header">PET-BCC UFSCar</h4>
-        <p>Universidade Federal de São Carlos<br>
+        <p><b>PET-BCC UFSCar</b><br>
+            Universidade Federal de São Carlos<br>
+            Rodovia Washington Luís, km 235 - Jardim Guanabara - CEP 13565-905 - São Carlos/SP<br>
             Departamento de Computação, Sala 71<br>
-            Rodovia Washington Luís, km 235 - Jardim Guanabara - CEP 13565-905 - São Carlos/SP</p>
+        </p>
         <a class="ui facebook icon grey button" href="https://www.facebook.com/petbcc" target="_blank">
             <i class="facebook icon"></i>
-        </a>
         </a>
         <a class="ui grey icon button" href="mailto:petbcc@dc.ufscar.br" target="_blank">
             <i class="mail icon"></i>
