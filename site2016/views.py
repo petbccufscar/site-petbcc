@@ -4,7 +4,10 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, 'site2016/home.html', {})
-    # return render(request, 'site2016/thiagoTeste.html', {'nomes': ['Marcelo', 'Thiago', 'Fernando']})
+
+
+def equipe(request):
+    return render(request, 'site2016/equipe.html', {})
 
 def exemplo_foundation(request):
     return render(request, 'site2016/ExemplosFoundation/index.html', {})
