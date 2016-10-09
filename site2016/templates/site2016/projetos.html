@@ -1,0 +1,169 @@
+{% extends 'site2016/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Projetos - PET-BCC UFSCar
+{% endblock title %}
+
+{% block body %}
+
+<style>
+    #fundo_azul {
+        background: #0c4d78;
+        padding: 0em;
+        margin-top: 5.5em;
+    }
+
+    #fundo_azul2 {
+        background: #477ed7;
+        border: none;
+        height: 55px;
+
+    }
+    #imagem_modal {
+            min-width: 300px;
+            width: 300px;
+            height: auto;
+            max-height: 300px;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .ui.modal .content > .image {
+                padding: 0rem 0rem 0rem !important;
+            }
+
+            .ui.items > .item > .image, .ui.items > .item > .image > img {
+                max-height: 300px !important;
+            }
+
+            #imagem_modal {
+                min-width: 240px;
+            }
+        }
+</style>
+
+<div class="ui inverted masthead center aligned segment" id="fundo_azul">
+    <div class="ui grid">
+        <div class="column">
+            <div class="row">
+                <h1 class="ui inverted header ">
+                    Projetos PET-BCC 2016
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="ui vertical stripe segment">
+        <div class="ui horizontal grid container">
+            <div class="row">
+                <div class="sixteen wide computer sixteen wide tablet sixteen wide mobile column wow fadeInUp">
+                        <div class="ui top attached header" id="fundo_azul2">
+                           <h2 > <p style="color:white">USE </p>  </h2>
+                        </div>
+                        <div class="ui attached fluid segment">
+                            <div class="ui divided items">
+                                <div class="item">
+
+
+                                    <img class="ui medium rounded bordered image" src="{% static 'site2016/images/petbcc.png' %}" id="imagem_modal">
+
+                                    <div class="content">
+
+                                        <div class="description">
+                                            <p>A Unidade Saúde Escola, localizada na Área Norte da Universidade, é um espaço da UFSCar construído para o desenvolvimento do ensino, pesquisa e extensão na área da saúde. A educação e a pesquisa acontecem de forma articulada com assistência aos usuários do Sistema Único de Saúde e por meio de capacitação de recursos humanos que atuam na área da saúde. Os atendimentos são realizados por docentes, profissionais de saúde da Unidade e, principalmente, por estagiários dos cursos de saúde da UFSCar, como Fisioterapia, Medicina, Terapia Ocupacional, Psicologia, Enfermagem e Gerontologia.</p>
+
+                                                <br>
+                                                <button class="ui small primary button"
+                                                        id="botaoModal0">
+                                                    Equipe <i class="right chevron icon"></i>
+                                                </button>
+
+                                            <div class="extra">
+
+                                                 <div class="ui label" id="tags">
+                                                    <i class="clock icon"></i>Em desenvolvimento
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="ui inverted top attached  header">
+                           <h2> Site</h2>
+                        </div>
+                        <div class="ui attached fluid segment">
+                            <div class="ui divided items">
+                                <div class="item">
+
+
+                                    <img class="ui medium rounded bordered image" src="{% static 'site2016/images/petbcc.png' %}" id="imagem_modal">
+
+                                    <div class="content">
+
+                                        <div class="description">
+                                           <p>A Unidade Saúde Escola, localizada na Área Norte da Universidade, é um espaço da UFSCar construído para o desenvolvimento do ensino, pesquisa e extensão na área da saúde. A educação e a pesquisa acontecem de forma articulada com assistência aos usuários do Sistema Único de Saúde e por meio de capacitação de recursos humanos que atuam na área da saúde. Os atendimentos são realizados por docentes, profissionais de saúde da Unidade e, principalmente, por estagiários dos cursos de saúde da UFSCar, como Fisioterapia, Medicina, Terapia Ocupacional, Psicologia, Enfermagem e Gerontologia.</p>
+
+                                               <br>
+                                                <button class="ui small primary button"
+                                                        id="botaoModal0">
+                                                    Equipe <i class="right chevron icon"></i>
+                                                </button>
+
+                                            <div class="extra">
+
+                                                 <div class="ui label" id="tags">
+                                                    <i class="clock icon"></i>Finalizado.
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui top attached header">
+                           <h2 > S&J  </h2>
+                        </div>
+                        <div class="ui attached fluid segment">
+                            <div class="ui divided items">
+                                <div class="item">
+
+
+                                    <img class="ui medium rounded bordered image" src="{% static 'site2016/images/petbcc.png' %}" id="imagem_modal">
+
+                                    <div class="content">
+
+                                        <div class="description">
+                                            <p>A Unidade Saúde Escola, localizada na Área Norte da Universidade, é um espaço da UFSCar construído para o desenvolvimento do ensino, pesquisa e extensão na área da saúde. A educação e a pesquisa acontecem de forma articulada com assistência aos usuários do Sistema Único de Saúde e por meio de capacitação de recursos humanos que atuam na área da saúde. Os atendimentos são realizados por docentes, profissionais de saúde da Unidade e, principalmente, por estagiários dos cursos de saúde da UFSCar, como Fisioterapia, Medicina, Terapia Ocupacional, Psicologia, Enfermagem e Gerontologia.</p>
+
+                                                <br>
+                                                <button class="ui small primary button"
+                                                        id="botaoModal0">
+                                                    Equipe <i class="right chevron icon"></i>
+                                                </button>
+
+                                            <div class="extra">
+
+                                                 <div class="ui label" id="tags">
+                                                    <i class="clock icon"></i>Em desenvolvimento
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
