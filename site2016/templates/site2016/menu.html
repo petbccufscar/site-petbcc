@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load staticfiles %}
 
-</body>
-</html>
+<div class="ui fixed main menu">
+    <div class="left menu">
+        <a href="{% url 'home' %}" class="item">
+            <img class="ui tiny image" src="{% static 'site2016/images/petbcc.png' %}">
+        </a>
+    </div>
+    <div class="right menu">
+        <a href="#" class="item"><b>Sobre</b></a>
+        <a href="{% url 'equipe' %}" class="item"><b>Equipe</b></a>
+        <a href="#" class="item"><b>Projetos</b></a>
+        <a href="#" class="item"><b>Processo Seletivo</b></a>
+        <a href="#" class="item"><b>Contato + FAQ</b></a>
+    </div>
+</div>

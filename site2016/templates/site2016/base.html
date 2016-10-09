@@ -1,10 +1,24 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}{% endblock title %}</title>
+    <script src="{% static 'site2016/semantic/semantic.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'site2016/semantic/semantic.min.css' %}">
 </head>
 <body>
+
+{% block menu %}
+    {% include 'site2016/menu.html' %}
+{% endblock menu %}
+
+{% block body %}{% endblock body %}
+
+{% block footer %}
+    {% include 'site2016/rodape.html' %}
+{% endblock footer %}
 
 </body>
 </html>
