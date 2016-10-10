@@ -13,10 +13,10 @@
         </a>
     </div>
     <div class="right menu">
-         <a href="{% url 'home' %}" class="item"><b>Home</b></a>
-        <a href="#" class="item"><b>Sobre</b></a>
-        <a href="{% url 'equipe' %}" class="item"><b>Equipe</b></a>
-        <a href="{% url 'projetos' %}" class="item"><b>Projetos</b></a>
+         <a href="{% url 'home' %}" class="{% if pagina == 'home' %}active{% endif %} item"><b>Home</b></a>
+        <a href="#" class="{% if pagina == 'sobre' %}active{% endif %} item"><b>Sobre</b></a>
+        <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
+        <a href="{% url 'projetos' %}" class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
         <a href="#" class="item"><b>Processo Seletivo</b></a>
         <a href="#" class="item"><b>Contato + FAQ</b></a>
     </div>
