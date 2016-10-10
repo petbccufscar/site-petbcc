@@ -14,32 +14,11 @@
         margin-top: 5.5em;
     }
 
-    #fundo_azul2 {
-        background: #477ed7;
-        border: none;
-        height: 55px;
+   #fundo_cinza {
+       background: rgba(0, 0, 6, 0.02);
 
-    }
-    #imagem_modal {
-            min-width: 300px;
-            width: 300px;
-            height: auto;
-            max-height: 300px;
-        }
 
-        @media only screen and (max-width: 767px) {
-            .ui.modal .content > .image {
-                padding: 0rem 0rem 0rem !important;
-            }
-
-            .ui.items > .item > .image, .ui.items > .item > .image > img {
-                max-height: 300px !important;
-            }
-
-            #imagem_modal {
-                min-width: 240px;
-            }
-        }
+   }
 </style>
 
 <div class="ui inverted masthead center aligned segment" id="fundo_azul">
@@ -53,117 +32,82 @@
         </div>
     </div>
 </div>
-<br>
-    <div class="ui vertical stripe segment">
-        <div class="ui horizontal grid container">
+
+    <div class="ui raised segments" id="fundo_cinza">
+ <div class="ui vertical segment">
+        <div class="ui middle aligned stackable grid container">
             <div class="row">
-                <div class="sixteen wide computer sixteen wide tablet sixteen wide mobile column wow fadeInUp">
-                        <div class="ui top attached header" id="fundo_azul2">
-                           <h2 > <p style="color:white">USE </p>  </h2>
-                        </div>
-                        <div class="ui attached fluid segment">
-                            <div class="ui divided items">
-                                <div class="item">
-
-
-                                    <img class="ui medium rounded bordered image" src="{% static 'site2016/images/petbcc.png' %}" id="imagem_modal">
-
-                                    <div class="content">
-
-                                        <div class="description">
-                                            <p>A Unidade Saúde Escola, localizada na Área Norte da Universidade, é um espaço da UFSCar construído para o desenvolvimento do ensino, pesquisa e extensão na área da saúde. A educação e a pesquisa acontecem de forma articulada com assistência aos usuários do Sistema Único de Saúde e por meio de capacitação de recursos humanos que atuam na área da saúde. Os atendimentos são realizados por docentes, profissionais de saúde da Unidade e, principalmente, por estagiários dos cursos de saúde da UFSCar, como Fisioterapia, Medicina, Terapia Ocupacional, Psicologia, Enfermagem e Gerontologia.</p>
-
-                                                <br>
-                                                <button class="ui small primary button"
-                                                        id="botaoModal0">
-                                                    Equipe <i class="right chevron icon"></i>
-                                                </button>
-
-                                            <div class="extra">
-
-                                                 <div class="ui label" id="tags">
-                                                    <i class="clock icon"></i>Em desenvolvimento
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="ui inverted top attached  header">
-                           <h2> Site</h2>
-                        </div>
-                        <div class="ui attached fluid segment">
-                            <div class="ui divided items">
-                                <div class="item">
-
-
-                                    <img class="ui medium rounded bordered image" src="{% static 'site2016/images/petbcc.png' %}" id="imagem_modal">
-
-                                    <div class="content">
-
-                                        <div class="description">
-                                           <p>A Unidade Saúde Escola, localizada na Área Norte da Universidade, é um espaço da UFSCar construído para o desenvolvimento do ensino, pesquisa e extensão na área da saúde. A educação e a pesquisa acontecem de forma articulada com assistência aos usuários do Sistema Único de Saúde e por meio de capacitação de recursos humanos que atuam na área da saúde. Os atendimentos são realizados por docentes, profissionais de saúde da Unidade e, principalmente, por estagiários dos cursos de saúde da UFSCar, como Fisioterapia, Medicina, Terapia Ocupacional, Psicologia, Enfermagem e Gerontologia.</p>
-
-                                               <br>
-                                                <button class="ui small primary button"
-                                                        id="botaoModal0">
-                                                    Equipe <i class="right chevron icon"></i>
-                                                </button>
-
-                                            <div class="extra">
-
-                                                 <div class="ui green label" id="tags">
-                                                    <i class="check icon"></i>Finalizado
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ui top attached header">
-                           <h2 > Saúde em Jogo  </h2>
-                        </div>
-                        <div class="ui attached fluid segment">
-                            <div class="ui divided items">
-                                <div class="item">
-
-
-                                    <img class="ui medium rounded bordered image" src="{% static 'site2016/images/petbcc.png' %}" id="imagem_modal">
-
-                                    <div class="content">
-
-                                        <div class="description">
-                                            <p>A Unidade Saúde Escola, localizada na Área Norte da Universidade, é um espaço da UFSCar construído para o desenvolvimento do ensino, pesquisa e extensão na área da saúde. A educação e a pesquisa acontecem de forma articulada com assistência aos usuários do Sistema Único de Saúde e por meio de capacitação de recursos humanos que atuam na área da saúde. Os atendimentos são realizados por docentes, profissionais de saúde da Unidade e, principalmente, por estagiários dos cursos de saúde da UFSCar, como Fisioterapia, Medicina, Terapia Ocupacional, Psicologia, Enfermagem e Gerontologia.</p>
-
-                                                <br>
-                                                <button class="ui small primary button"
-                                                        id="botaoModal0">
-                                                    Equipe <i class="right chevron icon"></i>
-                                                </button>
-
-                                            <div class="extra">
-
-                                                 <div class="ui label" id="tags">
-                                                    <i class="clock icon"></i>Em desenvolvimento
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+                <div class="ten wide column">
+                    <h3 class="ui header">Projeto USE</h3>
+                        <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui o
+                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na portaria
+                        976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18 alunos
+                        (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
+                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                        promovendo a indissociabilidade entre esses três pilares. </p>
+                  <div class="ui label" id="tags">
+                    <i class="clock icon"></i>Em desenvolvimento
                 </div>
+                </div>
+
+                <div class="six wide column">
+                    <img class="ui image" src="{% static 'site2016/images/petbcc.png' %}">
+                </div>
+
             </div>
         </div>
-    </div>
+ </div>
+<br>
+ <div class="ui vertical segment" >
 
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+
+                <div class="six wide column">
+                    <img class="ui image" src="{% static 'site2016/images/petbcc.png' %}">
+                </div>
+                <div class="ten wide column">
+                    <h3 class="ui header">Site</h3>
+                        <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui o
+                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na portaria
+                        976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18 alunos
+                        (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
+                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                        promovendo a indissociabilidade entre esses três pilares. </p>
+                <div class="ui green label" id="tags">
+                    <i class="check icon"></i>Finalizado
+                </div>
+                </div>
+
+            </div>
+        </div>
+ </div>
+<br>
+
+ <div class="ui vertical segment">
+
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="ten wide column">
+                    <h3 class="ui header">ONG Nave Sal da Terra</h3>
+                        <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui o
+                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na portaria
+                        976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18 alunos
+                        (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
+                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                        promovendo a indissociabilidade entre esses três pilares. </p>
+                  <div class="ui green label" id="tags">
+                    <i class="check icon"></i>Finalizado
+                </div>
+                </div>
+
+                <div class="six wide column">
+                    <img class="ui image" src="{% static 'site2016/images/petbcc.png' %}">
+                </div>
+
+            </div>
+        </div>
+ </div>
+        </div>
+<br>
 {% endblock body %}
