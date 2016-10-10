@@ -1,12 +1,19 @@
 {% load staticfiles %}
 
-<div class="ui fixed main menu">
+<style>
+    #menu_principal {
+        background: rgba(255, 255, 255, 0.85);
+    }
+</style>
+
+<div class="ui fixed main menu" id="menu_principal">
     <div class="left menu">
         <a href="{% url 'home' %}" class="item">
             <img class="ui tiny image" src="{% static 'site2016/images/petbcc.png' %}">
         </a>
     </div>
     <div class="right menu">
+         <a href="{% url 'home' %}" class="item"><b>Home</b></a>
         <a href="#" class="item"><b>Sobre</b></a>
         <a href="{% url 'equipe' %}" class="item"><b>Equipe</b></a>
         <a href="{% url 'projetos' %}" class="item"><b>Projetos</b></a>

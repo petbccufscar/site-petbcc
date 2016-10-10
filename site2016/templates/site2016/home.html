@@ -8,9 +8,9 @@
 {% block body %}
     <style>
         #masthead_index {
-            min-height: 400px;
+            min-height: 450px;
             padding: 1em 0em 0em 0em;
-        {#        background: #0c4d78;#} margin-top: 4em;
+        {#        background: #0c4d78;#} margin-top: 0em;
             background: url('{% static 'site2016/images/equipe.jpg' %}');
             -webkit-background-size: auto;
             background-size: 100%;
@@ -146,11 +146,9 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <a href="#">
-                        <h3 class="ui centered header">
-                            <a href="{% url 'projetos' %}"> Conheça os nossos outros projetos > </a>
-                        </h3>
-                    </a>
+                    <h3 class="ui centered header">
+                        <a href="{% url 'projetos' %}"> Conheça os nossos outros projetos > </a>
+                    </h3>
                 </div>
             </div>
         </div>
