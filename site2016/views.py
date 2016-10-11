@@ -28,6 +28,3 @@ def projetos(request):
     context_dictionary = {'pagina': 'projetos'}
     return render(request, 'site2016/projetos.html', context_dictionary)
 
-
-def exemplo_foundation(request):
-    return render(request, 'site2016/ExemplosFoundation/index.html', {})

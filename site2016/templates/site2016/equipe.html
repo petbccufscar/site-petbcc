@@ -5,33 +5,15 @@
     Equipe - PET-BCC UFSCar
 {% endblock title %}
 
+{% block head_extensions %}
+    <link rel="stylesheet" href="{% static 'site2016/css/custom.css' %}">
+{% endblock head_extensions %}
+
 {% block body %}
-
-    <style>
-        #fundo_azul {
-            background: #0c4d78;
-            padding: 0em;
-            padding-top: 5.5em;
-        {#        margin-top: 5.5em;#} margin-top: 0em;
-            border-radius: 0px;
-        {# verificar o porque isso não está setado em 0 por padrão #}
-        }
-
-        #processo_seletivo {
-            background: #0c4d78;
-        }
-
-        #fundo_cinza {
-            background: rgba(0, 0, 6, 0.02);
-        }
-
-    </style>
-
     <div class="ui inverted masthead center aligned segment" id="fundo_azul">
         <div class="ui grid">
             <div class="column">
                 <div class="row">
-                    {#                <br><br>#}
                     <h1 class="ui inverted header">
                         Equipe PET-BCC 2016
                     </h1>
@@ -70,7 +52,7 @@
                         <div class="column">
                             <div class="content">
                                 <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/rosangela_aparecida _dellosso_penteado.jpg' %}">
+                                     src="{% static 'site2016/images/equipe/rosangela_aparecida_dellosso_penteado.jpg' %}">
                                 <h3 class="ui header">Dr.ª Rosângela Ap. Dellosso Penteado</h3>
                                 Professora colaboradora
                             </div>
@@ -104,9 +86,7 @@
                                     BCC {{ integrante.ano }}
                                 </div>
                             </div>
-
                         {% endfor %}
-
                     </div>
                 </div>
             </div>
@@ -133,7 +113,6 @@
                             </div>
                         </div>
 
-
                         <div class="column">
                             <div class="content">
                                 <img class="ui centered small circular image"
@@ -142,7 +121,6 @@
                                 BCC 015
                             </div>
                         </div>
-
 
                         <div class="column">
                             <div class="content">

@@ -5,23 +5,11 @@
     Projetos - PET-BCC UFSCar
 {% endblock title %}
 
+{% block head_extensions %}
+    <link rel="stylesheet" href="{% static 'site2016/css/custom.css' %}">
+{% endblock head_extensions %}
+
 {% block body %}
-
-    <style>
-        #fundo_azul {
-            background: #0c4d78;
-            padding: 0em;
-            padding-top: 5.5em;
-        {#        margin-top: 5.5em;#} margin-top: 0em;
-            border-radius: 0px;
-        {# verificar o porque isso não está setado em 0 por padrão #}
-        }
-
-        #fundo_cinza {
-            background: rgba(0, 0, 6, 0.02);
-        }
-    </style>
-
     <div class="ui inverted masthead center aligned segment" id="fundo_azul">
         <div class="ui grid">
             <div class="column">
