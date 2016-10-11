@@ -89,98 +89,24 @@
 
             <div class="row">
                 <div class="ui stackable center aligned grid">
-                    <div class="six column center aligned row">
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/alexandre_da_silva_lara_pinto.jpg' %}">
-                                <h3 class="ui header">Alexandre da Silva Lara Pinto</h3>
-                                BCC 014
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/felipe_sampaio_de_souza.jpg' %}">
-                                <h3 class="ui header">Felipe Sampaio de Souza</h3>
-                                BCC 015
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/gabriel_toret_palomino.jpg' %}">
-                                <h3 class="ui header">Gabriel Toret Palomino</h3>
-                                BCC 013
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/jose_vitor_de_carvalho_aquino.jpg' %}">
-                                <h3 class="ui header">José Vitor de Carvalho Aquino</h3>
-                                BCC 014
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/leonardo_desto_bronzato.jpg' %}">
-                                <h3 class="ui header">Leonardo Destro Bronzato</h3>
-                                BCC 013
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/leticia_yumi_katsurada.jpg' %}">
-                                <h3 class="ui header">Leticia Yumi Katsurada</h3>
-                                BCC 015
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="six column center aligned row">
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/marcelo_de_oliveira_da_silva.jpg' %}">
-                                <h3 class="ui header">Marcelo de Oliveira da Silva</h3>
-                                BCC 012
+                        {% for integrante in integrantes %}
+                            {% if forloop.counter0|divisibleby:6 %}
+                                </div>
+                            <div class="six column center aligned row">
+                            {% endif %}
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui centered small circular image"
+                                        src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                    <h3 class="ui header">{{ integrante.nome }}</h3>
+                                    BCC {{ integrante.ano }}
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/muriel_guilherme_alves_mauch.jpg' %}">
-                                <h3 class="ui header">Muriel Guilherme Alves Mauch</h3>
-                                BCC 014
-                            </div>
-                        </div>
+                        {% endfor %}
 
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/pedro_henrique_miglitatti.jpg' %}">
-                                <h3 class="ui header">Pedro Henrique Migliati</h3>
-                                BCC 015
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/thiago_yonamine.jpg' %}">
-                                <h3 class="ui header">Thiago Yonamine</h3>
-                                BCC 014
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
