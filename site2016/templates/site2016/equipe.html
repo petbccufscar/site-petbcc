@@ -7,329 +7,605 @@
 
 {% block body %}
 
-<style>
-    #fundo_azul {
-        background: #0c4d78;
-        padding: 0em;
-        padding-top: 5.5em;
-{#        margin-top: 5.5em;#}
-        margin-top: 0em;
-        border-radius: 0px; {# verificar o porque isso não está setado em 0 por padrão #}
-    }
+    <style>
+        #fundo_azul {
+            background: #0c4d78;
+            padding: 0em;
+            padding-top: 5.5em;
+        {#        margin-top: 5.5em;#} margin-top: 0em;
+            border-radius: 0px;
+        {# verificar o porque isso não está setado em 0 por padrão #}
+        }
 
-    #processo_seletivo {
-        background: #0c4d78;
-    }
+        #processo_seletivo {
+            background: #0c4d78;
+        }
 
-</style>
+        #fundo_cinza {
+            background: rgba(0, 0, 6, 0.02);
+        }
 
-<div class="ui inverted masthead center aligned segment" id="fundo_azul">
-    <div class="ui grid">
-        <div class="column">
-            <div class="row">
-{#                <br><br>#}
-                <h1 class="ui inverted header">
-                    Equipe PET-BCC 2016
-                </h1>
-            </div>
-        </div>
-    </div>
-</div>
+    </style>
 
-<div class="ui stripe medium-font vertical feature segment">
-    <div class="ui container grid">
-
-        <div class="centered row">
-            <h1 class="ui header">Professores</h1>
-        </div>
-
-        <div class="centered row">
-            <div class="ui equal width stackable grid">
-                <div class="center aligned row">
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/valter_vieira_de_camargo.jpg' %}">
-                            <h3 class="ui header">Dr. Valter Vieira de Camargo</h3>
-                            Tutor e Coordenador do Curso de BCC
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/antonio_carlos_dos_santos.png' %}">
-                            <h3 class="ui header">Dr. Antonio Carlos dos Santos</h3>
-                            Colaborador
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/rosangela_aparecida _dellosso_penteado.jpg' %}">
-                            <h3 class="ui header">Dr.ª Rosângela Aparecida Dellosso Penteado</h3>
-                            Colaboradora
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="ui stripe medium-font vertical feature segment">
-    <div class="ui container grid">
-
-        <div class="centered row">
-            <h1 class="ui header">Alunos</h1>
-        </div>
-
-        <div class="row">
-            <div class="ui equal width stackable grid">
-                <div class="center aligned row">
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/alexandre_da_silva_lara_pinto.jpg' %}">
-                            <h3 class="ui header">Alexandre da Silva Lara Pinto</h3>
-                            BCC 014
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/felipe_sampaio_de_souza.jpg' %}">
-                            <h3 class="ui header">Felipe Sampaio de Souza</h3>
-                            BCC 015
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/gabriel_toret_palomino.jpg' %}">
-                            <h3 class="ui header">Gabriel Toret Palomino</h3>
-                            BCC 013
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/jose_vitor_de_carvalho_aquino.jpg' %}">
-                            <h3 class="ui header">José Vitor de Carvalho Aquino</h3>
-                            BCC 014
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/leonardo_desto_bronzato.jpg' %}">
-                            <h3 class="ui header">Leonardo Destro Bronzato</h3>
-                            BCC 013
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/marcelo_de_oliveira_da_silva.jpg' %}">
-                            <h3 class="ui header">Marcelo de Oliveira da Silva</h3>
-                            BCC 012
-                        </div>
-                    </div>
-                </div>
-
-                <div class="center aligned row">
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/muriel_guilherme_alves_mauch.jpg' %}">
-                            <h3 class="ui header">Muriel Guilherme Alves Mauch</h3>
-                            BCC 014
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/pedro_henrique_miglitatti.jpg' %}">
-                            <h3 class="ui header">Pedro Henrique Migliati</h3>
-                            BCC 015
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/thiago_yonamine.jpg' %}">
-                            <h3 class="ui header">Thiago Yonamine</h3>
-                            BCC 014
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/julia_de_moura_caetano.jpg' %}">
-                            <h3 class="ui header">Julia de Moura Caetano</h3>
-                            BCC 015
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/leticia_yumi_katsurada.jpg' %}">
-                            <h3 class="ui header">Leticia Yumi Katsurada</h3>
-                            BCC 015
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="content">
-                            <img class="ui centered small circular image" src="{% static 'site2016/images/equipe/miguel_de_souza_tosta.jpg' %}">
-                            <h3 class="ui header">Miguel de Souza Tosta</h3>
-                            BCC 015
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{#<div class="ui inverted masthead center aligned segment" id="fundo_azul" style="margin-top: 2em;">#}
-{#    <div class="ui grid">#}
-{#        <div class="column">#}
-{#            <div class="row">#}
-{#                <h1 class="ui inverted header">#}
-{#                    Ex-membros#}
-{#                </h1>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-
-{#<div class="ui stripe medium-font vertical feature segment">#}
-{#    <div class="ui container grid">#}
-{##}
-        {#        <div class="centered row">#}
-        {#            <h1 class="ui header">Alunos</h1>#}
-        {#        </div>#}
-{##}
-{#        <div class="row">#}
-{#            <div class="ui equal width stackable grid">#}
-{#                <div class="center aligned row">#}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <div class="column">#}
-{#                        <div class="content">#}
-{#                            <img class="ui centered small circular image" src="{% static 'site2016/images/user.png' %}">#}
-{#                            <h3 class="ui header">Lorem Ipsum</h3>#}
-{#                            Dolor Sit#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-
-<div class="ui vertical stripe segment">
-    <div class="ui middle aligned stackable grid container">
-        <div class="row">
+    <div class="ui inverted masthead center aligned segment" id="fundo_azul">
+        <div class="ui grid">
             <div class="column">
-                <h1 class="ui centered header">Como posso fazer parte da equipe?</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="ten wide column">
-                <h3 class="ui header">Bolsistas</h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                    laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-                <h3 class="ui header">Não bolsistas</h3>
-                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-                    dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
-                    praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                <h3 class="ui header">Voluntários</h3>
-                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-                    dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
-                    praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-            </div>
-            <div class="six wide column">
-                <img class="ui image" src="{% static 'site2016/images/petbcc.png' %}">
+                <div class="row">
+                    {#                <br><br>#}
+                    <h1 class="ui inverted header">
+                        Equipe PET-BCC 2016
+                    </h1>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="ui vertical stripe segment" id="processo_seletivo">
-    <h1 class="ui centered inverted header">Processo Seletivo</h1>
-    <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a href="#">processo
-        seletivo</a>.</h3>
-</div>
+    <div class="ui stripe medium-font vertical feature segment">
+        <div class="ui container grid">
+            <div class="centered row">
+                <h1 class="ui header">Professores</h1>
+            </div>
+
+            <div class="centered row">
+                <div class="ui stackable grid">
+                    <div class="three column center aligned row">
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/valter_vieira_de_camargo.jpg' %}">
+                                <h3 class="ui header">Dr. Valter Vieira de Camargo</h3>
+                                Tutor do PET-BCC e Coordenador do Curso
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/antonio_carlos_dos_santos.png' %}">
+                                <h3 class="ui header">Dr. Antonio Carlos dos Santos</h3>
+                                Professor colaborador
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/rosangela_aparecida _dellosso_penteado.jpg' %}">
+                                <h3 class="ui header">Dr.ª Rosângela Ap. Dellosso Penteado</h3>
+                                Professora colaboradora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+        <div class="ui container grid">
+            <div class="centered row">
+                <h1 class="ui header">Alunos Bolsistas</h1>
+            </div>
+
+            <div class="row">
+                <div class="ui stackable center aligned grid">
+                    <div class="six column center aligned row">
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/alexandre_da_silva_lara_pinto.jpg' %}">
+                                <h3 class="ui header">Alexandre da Silva Lara Pinto</h3>
+                                BCC 014
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/felipe_sampaio_de_souza.jpg' %}">
+                                <h3 class="ui header">Felipe Sampaio de Souza</h3>
+                                BCC 015
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/gabriel_toret_palomino.jpg' %}">
+                                <h3 class="ui header">Gabriel Toret Palomino</h3>
+                                BCC 013
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/jose_vitor_de_carvalho_aquino.jpg' %}">
+                                <h3 class="ui header">José Vitor de Carvalho Aquino</h3>
+                                BCC 014
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/leonardo_desto_bronzato.jpg' %}">
+                                <h3 class="ui header">Leonardo Destro Bronzato</h3>
+                                BCC 013
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/marcelo_de_oliveira_da_silva.jpg' %}">
+                                <h3 class="ui header">Marcelo de Oliveira da Silva</h3>
+                                BCC 012
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="six column center aligned row">
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/muriel_guilherme_alves_mauch.jpg' %}">
+                                <h3 class="ui header">Muriel Guilherme Alves Mauch</h3>
+                                BCC 014
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/pedro_henrique_miglitatti.jpg' %}">
+                                <h3 class="ui header">Pedro Henrique Migliati</h3>
+                                BCC 015
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/thiago_yonamine.jpg' %}">
+                                <h3 class="ui header">Thiago Yonamine</h3>
+                                BCC 014
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/leticia_yumi_katsurada.jpg' %}">
+                                <h3 class="ui header">Leticia Yumi Katsurada</h3>
+                                BCC 015
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui stripe medium-font vertical feature segment">
+        <div class="ui container grid">
+
+            <div class="centered row">
+                <h1 class="ui header">Alunos Voluntários</h1>
+            </div>
+
+            <div class="centered row">
+                <div class="ui equal width stackable grid">
+                    <div class="center aligned row">
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/fernando_messias_da_silva.jpg' %}">
+                                <h3 class="ui header">Fernando Messias da Silva</h3>
+                                BCC 015
+                            </div>
+                        </div>
+
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/julia_de_moura_caetano.jpg' %}">
+                                <h3 class="ui header">Julia de Moura Caetano</h3>
+                                BCC 015
+                            </div>
+                        </div>
+
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/equipe/miguel_de_souza_tosta.jpg' %}">
+                                <h3 class="ui header">Miguel de Souza Tosta</h3>
+                                BCC 015
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui vertical stripe segment" id="fundo_cinza">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="column">
+                    <h1 class="ui centered header">Como posso fazer parte da equipe?</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="sixteen wide column">
+                    <h3 class="ui header">Bolsistas</h3>
+                    <p>O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$ 400,00 mensalmente. A
+                        dedicação é de 20 horas semanais e a participação no PET por período mínimo de um ano garante as
+                        60 horas de Atividades Complementares exigidas no curso de Ciência da Computação da UFSCar.</p>
+                    <h3 class="ui header">Não bolsistas</h3>
+                    <p>Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode ainda ter 6 alunos
+                        atuando como não bolsistas. As obrigações são as mesmas dos alunos bolsistas, assim como o
+                        certificado recebido, que também vale como Atividades Complementares para o curso. No caso de
+                        algum bolsista se desligar do PET, os alunos não bolsistas viram bolsistas automaticamente, sem
+                        necessidade de novo processo seletivo. A ordem de distribuição das bolsas será definida pela
+                        classificação do candidato no processo seletivo o qual participou.</p>
+                    <h3 class="ui header">Voluntários</h3>
+                    <p>Não conseguiu uma vaga como bolsista ou não bolsista desta vez? Ainda assim você pode participar
+                        do PET como um voluntário. Mesmo como voluntário, você terá participação efetiva nos projetos,
+                        garantindo muito conhecimento e um grande incremendo em sua graduação.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui stripe medium-font vertical feature segment">
+        <div class="ui container grid">
+            <div class="centered row">
+                <h1 class="ui header">Ex-membros</h1>
+            </div>
+
+            <div class="row">
+                <div class="ui equal width stackable grid">
+                    <div class="center aligned row">
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Alan Cesar Laine</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Ana Dulce Padovan Torres</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">André Vinicius Bertoni Nicoleti</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Bruno Dias Leite</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Bruno F. Rodrigues</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Bruno Guerra D. Pereira</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Bruno Luigi Borgo</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Bruno Santos</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Caroline Castor dos Santos</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center aligned row">
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Denis Cappelini</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Douglas Antonio Martins Barbino</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Eduardo Kazuo Nakao</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Felipe Castro Dezotti</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Gabriela Vanessa Pereira Alves Mattos</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Guilherme Cuppi Jeronimo</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Guilherme Rigo Reccio</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Hugo Leonardo M. A. de Barros</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Júlio Maçumoto</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center aligned row">
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Leonardo Lopes</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Lucas Antoniale Callegari</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Lucas Bueno</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Lucas Yamanaka</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Marcelo Araujo Pontes</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Mariana Yamamoto</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Matheus dos Santos Freitas</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Nicolas Masonori Shimizu</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Paula Lamin Honda</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center aligned row">
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Rafael Eduardo Wolf Goes</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Renan Peixoto da Silva</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Tiago Bassani</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Tiago Bonadio Badoco</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Thiago Arraiol Casaes</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Thiago Neves Romero</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Lorem Ipsum</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Lorem Ipsum</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <img class="ui centered small circular image"
+                                     src="{% static 'site2016/images/user.png' %}">
+                                <h4 class="ui header">Lorem Ipsum</h4>
+                                Dolor Sit
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui vertical stripe segment" id="processo_seletivo">
+        <h1 class="ui centered inverted header">Processo Seletivo</h1>
+        <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a href="#">processo
+            seletivo</a>.</h3>
+    </div>
 
 {% endblock body %}
