@@ -94,17 +94,16 @@
     </div>
 
     <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
-        <div class="ui container grid">
+        <div class="ui grid container">
             <div class="centered row">
                 <h1 class="ui header">Alunos Bolsistas</h1>
             </div>
-
-            <div class="ui center aligned grid">
-                <div class="centered row">
+            <div class="centered row">
+                <div class="ui sixteen column center aligned grid">
                     {% for integrante in integrantes %}
                         <div class="three wide computer five wide mobile center aligned column">
                             <div class="content" id="foto_membro_equipe">
-                                <img class="ui centered small circular image"
+                                <img class="ui small circular centered image"
                                      src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
                                 <h3 class="ui header">{{ integrante.nome }}</h3>
                                 BCC {{ integrante.ano }}
