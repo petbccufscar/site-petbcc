@@ -168,29 +168,29 @@
     </div>
 
     {% if exMembros %}
-
         <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
             <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Ex-Membros</h1>
                 </div>
                 <div class="centered row">
+                <div class="sixteen wide column">
                     <div class="ui twelve column center aligned grid">
                         {% for integrante in exMembros %}
-                            <div class="one wide computer one wide mobile center aligned column">
+                            <div class="column">
                                 <div class="content" id="foto_membro_equipe">
                                     <img class="ui small circular centered image"
                                          src="{% static 'site2016/images/'|add:integrante.foto %}">
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
+                                    <h5 class="ui header">{{ integrante.nome }}</h5>
                                     {{ integrante.descricao }}
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
+                </div>
             </div>
         </div>
-
     {% endif %}
 
     <div class="ui vertical stripe segment" id="processo_seletivo">
