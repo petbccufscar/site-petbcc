@@ -22,114 +22,155 @@
         </div>
     </div>
 
-    <div class="ui stripe medium-font vertical feature segment">
-        <div class="ui container grid">
-            <div class="centered row">
-                <h1 class="ui header">Professores</h1>
-            </div>
+    {% if professores %}
 
-            <div class="centered row">
-                <div class="ui stackable grid">
-                    <div class="three column center aligned row">
-                        <div class="column">
-                            <div class="content">
-                                <div class="ui circular image">
-                                    <div class="ui dimmer">
-                                        <div class="content">
-                                            <div class="center">
-                                                <h5 class="ui inverted small icon header"><i class="mail icon"></i>valter@dc.ufscar.br
-                                                </h5>
+        <div class="ui stripe medium-font vertical feature segment">
+            <div class="ui grid container">
+                <div class="centered row">
+                    <h1 class="ui header">Professores</h1>
+                </div>
+                <div class="centered row">
+                    {#                    <div class="ui stackable grid">#}
+                    <div class="ui sixteen column center aligned grid">
+                        {% for integrante in professores %}
+                            <div class="three wide computer five wide mobile center aligned column">
+                                <div class="content" id="foto_membro_equipe">
+                                    <div class="ui circular image">
+                                        <div class="ui dimmer">
+                                            <div class="content">
+                                                <div class="center">
+                                                    <h5 class="ui inverted small icon header"><i
+                                                            class="mail icon"></i>{{ integrante.contato|safe }}
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
+                                        <img class="ui centered small circular image"
+                                             src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
                                     </div>
-                                    <img class="ui centered small circular image"
-                                         src="{% static 'site2016/images/equipe/valter_vieira_de_camargo.jpg' %}">
+                                    <h3 class="ui header">{{ integrante.nome }}</h3>
+                                    {{ integrante.descricao }}
                                 </div>
-                                <h3 class="ui header">Dr. Valter Vieira de Camargo</h3>
-                                Tutor do PET-BCC e Coordenador do Curso
                             </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <div class="ui circular image">
-                                    <div class="ui dimmer">
-                                        <div class="content">
-                                            <div class="center">
-                                                <h5 class="ui inverted icon header"><i class="mail icon"></i>santos@dc.ufscar.br
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="ui centered small circular image"
-                                         src="{% static 'site2016/images/equipe/antonio_carlos_dos_santos.png' %}">
-                                </div>
-                                <h3 class="ui header">Dr. Antonio Carlos dos Santos</h3>
-                                Professor colaborador
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <div class="ui circular image">
-                                    <div class="ui dimmer">
-                                        <div class="content">
-                                            <div class="center">
-                                                <h5 class="ui inverted small icon header"><i class="tiny mail icon"></i>rosangela@<br>dc.ufscar.br
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="ui centered small circular image"
-                                         src="{% static 'site2016/images/equipe/rosangela_aparecida_dellosso_penteado.jpg' %}">
-                                </div>
-                                <h3 class="ui header">Dr.ª Rosângela Ap. Dellosso Penteado</h3>
-                                Professora colaboradora
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
-        <div class="ui grid container">
-            <div class="centered row">
-                <h1 class="ui header">Alunos Bolsistas</h1>
-            </div>
-            <div class="centered row">
-                <div class="ui sixteen column center aligned grid">
-                    {% for integrante in integrantes %}
-                        <div class="three wide computer five wide mobile center aligned column">
-                            <div class="content" id="foto_membro_equipe">
-                                <img class="ui small circular centered image"
-                                     src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
-                                <h3 class="ui header">{{ integrante.nome }}</h3>
-                                BCC {{ integrante.ano }}
+    {% endif %}
+
+    {#    <div class="ui stripe medium-font vertical feature segment">#}
+    {#        <div class="ui container grid">#}
+    {#            <div class="centered row">#}
+    {#                <h1 class="ui header">Professores</h1>#}
+    {#            </div>#}
+    {##}
+    {#            <div class="centered row">#}
+    {#                <div class="ui stackable grid">#}
+    {#                    <div class="three column center aligned row">#}
+    {#                        <div class="column">#}
+    {#                            <div class="content">#}
+    {#                                <div class="ui circular image">#}
+    {#                                    <div class="ui dimmer">#}
+    {#                                        <div class="content">#}
+    {#                                            <div class="center">#}
+    {#                                                <h5 class="ui inverted small icon header"><i class="mail icon"></i>valter@dc.ufscar.br#}
+    {#                                                </h5>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                    <img class="ui centered small circular image"#}
+    {#                                         src="{% static 'site2016/images/equipe/valter_vieira_de_camargo.jpg' %}">#}
+    {#                                </div>#}
+    {#                                <h3 class="ui header">Dr. Valter Vieira de Camargo</h3>#}
+    {#                                Tutor do PET-BCC e Coordenador do Curso#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {##}
+    {#                        <div class="column">#}
+    {#                            <div class="content">#}
+    {#                                <div class="ui circular image">#}
+    {#                                    <div class="ui dimmer">#}
+    {#                                        <div class="content">#}
+    {#                                            <div class="center">#}
+    {#                                                <h5 class="ui inverted icon header"><i class="mail icon"></i>santos@dc.ufscar.br#}
+    {#                                                </h5>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                    <img class="ui centered small circular image"#}
+    {#                                         src="{% static 'site2016/images/equipe/antonio_carlos_dos_santos.png' %}">#}
+    {#                                </div>#}
+    {#                                <h3 class="ui header">Dr. Antonio Carlos dos Santos</h3>#}
+    {#                                Professor colaborador#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {##}
+    {#                        <div class="column">#}
+    {#                            <div class="content">#}
+    {#                                <div class="ui circular image">#}
+    {#                                    <div class="ui dimmer">#}
+    {#                                        <div class="content">#}
+    {#                                            <div class="center">#}
+    {#                                                <h5 class="ui inverted small icon header"><i class="tiny mail icon"></i>rosangela@<br>dc.ufscar.br#}
+    {#                                                </h5>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                    <img class="ui centered small circular image"#}
+    {#                                         src="{% static 'site2016/images/equipe/rosangela_aparecida_dellosso_penteado.jpg' %}">#}
+    {#                                </div>#}
+    {#                                <h3 class="ui header">Dr.ª Rosângela Ap. Dellosso Penteado</h3>#}
+    {#                                Professora colaboradora#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+    {% if bolsistas %}
+
+        <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+            <div class="ui grid container">
+                <div class="centered row">
+                    <h1 class="ui header">Alunos Bolsistas</h1>
+                </div>
+                <div class="centered row">
+                    <div class="ui sixteen column center aligned grid">
+                        {% for integrante in bolsistas %}
+                            <div class="three wide computer five wide mobile center aligned column">
+                                <div class="content" id="foto_membro_equipe">
+                                    <img class="ui small circular centered image"
+                                         src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                    <h3 class="ui header">{{ integrante.nome }}</h3>
+                                    BCC {{ integrante.ano }}
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    {% endif %}
 
     {% if naoBolsistas %}
 
         <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
-            <div class="ui container grid">
+            <div class="ui grid container">
                 <div class="centered row">
-                    <h1 class="ui header">Alunos Não - Bolsistas</h1>
+                    <h1 class="ui header">Alunos Não-Bolsistas</h1>
                 </div>
-
-                <div class="ui center aligned grid">
-                    <div class="centered row">
+                <div class="centered row">
+                    <div class="ui sixteen column center aligned grid">
                         {% for integrante in naoBolsistas %}
                             <div class="three wide computer five wide mobile center aligned column">
                                 <div class="content" id="foto_membro_equipe">
-                                    <img class="ui centered small circular image"
-                                         src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                    <img class="ui small circular centered image"
+                                         src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
                                     <h3 class="ui header">{{ integrante.nome }}</h3>
                                     BCC {{ integrante.ano }}
                                 </div>
@@ -145,18 +186,17 @@
     {% if voluntarios %}
 
         <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
-            <div class="ui container grid">
+            <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Alunos Voluntários</h1>
                 </div>
-
-                <div class="ui center aligned grid">
-                    <div class="centered row">
+                <div class="centered row">
+                    <div class="ui sixteen column center aligned grid">
                         {% for integrante in voluntarios %}
                             <div class="three wide computer five wide mobile center aligned column">
                                 <div class="content" id="foto_membro_equipe">
-                                    <img class="ui centered small circular image"
-                                         src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                    <img class="ui small circular centered image"
+                                         src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
                                     <h3 class="ui header">{{ integrante.nome }}</h3>
                                     BCC {{ integrante.ano }}
                                 </div>
@@ -168,49 +208,6 @@
         </div>
 
     {% endif %}
-
-    <div class="ui stripe medium-font vertical feature segment">
-        <div class="ui container grid">
-
-            <div class="centered row">
-                <h1 class="ui header">Alunos Voluntários</h1>
-            </div>
-
-            <div class="centered row">
-                <div class="ui equal width stackable grid">
-                    <div class="center aligned row">
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/fernando_messias_da_silva.jpg' %}">
-                                <h3 class="ui header">Fernando Messias da Silva</h3>
-                                BCC 012
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/julia_de_moura_caetano.jpg' %}">
-                                <h3 class="ui header">Julia de Moura Caetano</h3>
-                                BCC 015
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/equipe/miguel_de_souza_tosta.jpg' %}">
-                                <h3 class="ui header">Miguel de Souza Tosta</h3>
-                                BCC 015
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="ui vertical stripe segment" id="fundo_cinza">
         <div class="ui middle aligned stackable grid container">
@@ -244,18 +241,17 @@
     {% if exMembros %}
 
         <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
-            <div class="ui container grid">
+            <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Ex-Membros</h1>
                 </div>
-
-                <div class="ui center aligned grid">
-                    <div class="centered row">
+                <div class="centered row">
+                    <div class="ui twelve column center aligned grid">
                         {% for integrante in exMembros %}
                             <div class="one wide computer one wide mobile center aligned column">
                                 <div class="content" id="foto_membro_equipe">
-                                    <img class="ui centered small circular image"
-                                         src="{% static 'site2016/images/' %}{{ integrante.foto }}">
+                                    <img class="ui small circular centered image"
+                                         src="{% static 'site2016/images/'|add:integrante.foto %}">
                                     <h3 class="ui header">{{ integrante.nome }}</h3>
                                     BCC {{ integrante.ano }}
                                 </div>

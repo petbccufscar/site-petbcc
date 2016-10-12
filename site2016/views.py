@@ -3,11 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 
 professores = [{'nome': 'Dr. Valter Vieira de Camargo', 'descricao': 'Tutor do PET-BCC e Coordenador do Curso',
-                'foto': 'valter_vieira_de_camargo.jpg', 'contato': ''},
+                'foto': 'valter_vieira_de_camargo.jpg', 'contato': 'valter@dc.ufscar.br'},
                {'nome': 'Dr. Antonio Carlos dos Santos', 'descricao': 'Professor colaborador',
-                'foto': 'antonio_carlos_dos_santos.png', 'contato': ''},
+                'foto': 'antonio_carlos_dos_santos.png', 'contato': 'santos@dc.ufscar.br'},
                {'nome': 'Dr.ª Rosângela Ap. Dellosso Penteado', 'descricao': 'Professora colaboradora',
-                'foto': 'gabriel_toret_palomino.jpg', 'contato': ''}]
+                'foto': 'rosangela_aparecida_dellosso_penteado.jpg', 'contato': 'rosangela@<br>dc.ufscar.br'}]
 
 bolsistas = [
     {'nome': 'Alexandre da Silva Lara Pinto', 'descricao': 'BCC 014', 'foto': 'alexandre_da_silva_lara_pinto.jpg'},
@@ -21,10 +21,7 @@ bolsistas = [
     {'nome': 'Pedro Henrique Migliati', 'descricao': 'BCC 015', 'foto': 'pedro_henrique_miglitatti.jpg'},
     {'nome': 'Thiago Yonamine', 'descricao': 'BCC 014', 'foto': 'thiago_yonamine.jpg'}]
 
-naoBolsistas = [
-    {'nome': 'Alexandre da Silva Lara Pinto', 'descricao': 'BCC 014', 'foto': 'alexandre_da_silva_lara_pinto.jpg'},
-    {'nome': 'Felipe Sampaio de Souza', 'descricao': 'BCC 015', 'foto': 'felipe_sampaio_de_souza.jpg'},
-    {'nome': 'Gabriel Toret Palomino', 'descricao': 'BCC 013', 'foto': 'gabriel_toret_palomino.jpg'}]
+naoBolsistas = []
 
 voluntarios = [{'nome': 'Fernando Messias da Silva', 'descricao': 'BCC 012', 'foto': 'fernando_messias_da_silva.jpg'},
                {'nome': 'Julia de Moura Caetano', 'descricao': 'BCC 015', 'foto': 'julia_de_moura_caetano.jpg'},
