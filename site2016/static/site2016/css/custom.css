@@ -47,3 +47,8 @@
 body {
     background: #1b1c1d;
 }
+
+
+.justificado {
+    text-align: justify;
+}
