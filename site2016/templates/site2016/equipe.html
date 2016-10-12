@@ -60,77 +60,6 @@
 
     {% endif %}
 
-    {#    <div class="ui stripe medium-font vertical feature segment">#}
-    {#        <div class="ui container grid">#}
-    {#            <div class="centered row">#}
-    {#                <h1 class="ui header">Professores</h1>#}
-    {#            </div>#}
-    {##}
-    {#            <div class="centered row">#}
-    {#                <div class="ui stackable grid">#}
-    {#                    <div class="three column center aligned row">#}
-    {#                        <div class="column">#}
-    {#                            <div class="content">#}
-    {#                                <div class="ui circular image">#}
-    {#                                    <div class="ui dimmer">#}
-    {#                                        <div class="content">#}
-    {#                                            <div class="center">#}
-    {#                                                <h5 class="ui inverted small icon header"><i class="mail icon"></i>valter@dc.ufscar.br#}
-    {#                                                </h5>#}
-    {#                                            </div>#}
-    {#                                        </div>#}
-    {#                                    </div>#}
-    {#                                    <img class="ui centered small circular image"#}
-    {#                                         src="{% static 'site2016/images/equipe/valter_vieira_de_camargo.jpg' %}">#}
-    {#                                </div>#}
-    {#                                <h3 class="ui header">Dr. Valter Vieira de Camargo</h3>#}
-    {#                                Tutor do PET-BCC e Coordenador do Curso#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {##}
-    {#                        <div class="column">#}
-    {#                            <div class="content">#}
-    {#                                <div class="ui circular image">#}
-    {#                                    <div class="ui dimmer">#}
-    {#                                        <div class="content">#}
-    {#                                            <div class="center">#}
-    {#                                                <h5 class="ui inverted icon header"><i class="mail icon"></i>santos@dc.ufscar.br#}
-    {#                                                </h5>#}
-    {#                                            </div>#}
-    {#                                        </div>#}
-    {#                                    </div>#}
-    {#                                    <img class="ui centered small circular image"#}
-    {#                                         src="{% static 'site2016/images/equipe/antonio_carlos_dos_santos.png' %}">#}
-    {#                                </div>#}
-    {#                                <h3 class="ui header">Dr. Antonio Carlos dos Santos</h3>#}
-    {#                                Professor colaborador#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {##}
-    {#                        <div class="column">#}
-    {#                            <div class="content">#}
-    {#                                <div class="ui circular image">#}
-    {#                                    <div class="ui dimmer">#}
-    {#                                        <div class="content">#}
-    {#                                            <div class="center">#}
-    {#                                                <h5 class="ui inverted small icon header"><i class="tiny mail icon"></i>rosangela@<br>dc.ufscar.br#}
-    {#                                                </h5>#}
-    {#                                            </div>#}
-    {#                                        </div>#}
-    {#                                    </div>#}
-    {#                                    <img class="ui centered small circular image"#}
-    {#                                         src="{% static 'site2016/images/equipe/rosangela_aparecida_dellosso_penteado.jpg' %}">#}
-    {#                                </div>#}
-    {#                                <h3 class="ui header">Dr.ª Rosângela Ap. Dellosso Penteado</h3>#}
-    {#                                Professora colaboradora#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-
     {% if bolsistas %}
 
         <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
@@ -146,7 +75,7 @@
                                     <img class="ui small circular centered image"
                                          src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
                                     <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    BCC {{ integrante.ano }}
+                                    {{ integrante.descricao }}
                                 </div>
                             </div>
                         {% endfor %}
@@ -172,7 +101,7 @@
                                     <img class="ui small circular centered image"
                                          src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
                                     <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    BCC {{ integrante.ano }}
+                                    {{ integrante.descricao }}
                                 </div>
                             </div>
                         {% endfor %}
@@ -198,7 +127,7 @@
                                     <img class="ui small circular centered image"
                                          src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
                                     <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    BCC {{ integrante.ano }}
+                                    {{ integrante.descricao }}
                                 </div>
                             </div>
                         {% endfor %}
@@ -253,7 +182,7 @@
                                     <img class="ui small circular centered image"
                                          src="{% static 'site2016/images/'|add:integrante.foto %}">
                                     <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    BCC {{ integrante.ano }}
+                                    {{ integrante.descricao }}
                                 </div>
                             </div>
                         {% endfor %}
