@@ -6,7 +6,14 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock title %}</title>
     <script src="{% static 'site2016/js/jquery.js' %}"></script>
+    <script src="{% static 'site2016/js/wow.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            new WOW({mobile: true}).init();
+        });
+    </script>
     <script src="{% static 'site2016/css/semantic/semantic.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'site2016/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'site2016/css/semantic/semantic.min.css' %}">
     {% block head_extensions %}{% endblock head_extensions %}
 </head>
