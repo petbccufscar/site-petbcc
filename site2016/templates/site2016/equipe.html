@@ -29,28 +29,30 @@
                     <h1 class="ui header">Professores</h1>
                 </div>
                 <div class="centered row">
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in professores %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <div class="ui circular image">
-                                        <div class="ui dimmer">
-                                            <div class="content">
-                                                <div class="center">
-                                                    <h5 class="ui inverted small icon header"><i
-                                                            class="mail icon"></i>{{ integrante.contato|safe }}
-                                                    </h5>
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in professores %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <div class="ui circular image">
+                                            <div class="ui dimmer">
+                                                <div class="content">
+                                                    <div class="center">
+                                                        <h5 class="ui inverted small icon header"><i
+                                                                class="mail icon"></i>{{ integrante.contato|safe }}
+                                                        </h5>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <img class="ui centered small circular image"
+                                                 src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
                                         </div>
-                                        <img class="ui centered small circular image"
-                                             src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
                                     </div>
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,17 +66,19 @@
                     <h1 class="ui header">Alunos Bolsistas</h1>
                 </div>
                 <div class="centered row">
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in bolsistas %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <img class="ui small circular centered image"
-                                         src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in bolsistas %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <img class="ui small circular centered image"
+                                             src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,23 +86,25 @@
     {% endif %}
 
     {% if naoBolsistas %}
-        <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+        <div class="ui stripe medium-font vertical feature segment">
             <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Alunos Não-Bolsistas</h1>
                 </div>
                 <div class="centered row">
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in naoBolsistas %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <img class="ui small circular centered image"
-                                         src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in naoBolsistas %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <img class="ui small circular centered image"
+                                             src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,17 +118,19 @@
                     <h1 class="ui header">Alunos Voluntários</h1>
                 </div>
                 <div class="centered row">
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in voluntarios %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <img class="ui small circular centered image"
-                                         src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in voluntarios %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <img class="ui small circular centered image"
+                                             src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
