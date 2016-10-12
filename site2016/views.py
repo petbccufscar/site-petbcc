@@ -28,3 +28,6 @@ def projetos(request):
     context_dictionary = {'pagina': 'projetos'}
     return render(request, 'site2016/projetos.html', context_dictionary)
 
+def sobre(request):
+    context_dictionary = {'pagina':'sobre'}
+    return render(request, 'site2016/sobre.html', context_dictionary)
