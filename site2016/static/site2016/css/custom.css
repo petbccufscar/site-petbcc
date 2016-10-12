@@ -1,6 +1,3 @@
-body {
-    background: #0c4d78;
-}
 
 .branco {
     background: #FFFFFF;
@@ -36,17 +33,17 @@ body {
 }
 
 #fundo_cinza {
-    /*background: rgba(0, 0, 6, 0.02);*/
     background: #FAFAFA;
-    /*background: #888888;*/
 }
 
 #processo_seletivo {
     background: #0c4d78;
 }
 
-/*.azul {*/
-    /*background: #0c4d78;*/
-/*}*/
+#foto_membro_equipe {
+    margin-bottom: 20px;
+}
 
-
+body {
+    background: #1b1c1d;
+}
