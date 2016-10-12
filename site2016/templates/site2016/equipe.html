@@ -23,122 +23,121 @@
     </div>
 
     {% if professores %}
-
         <div class="ui stripe medium-font vertical feature segment">
             <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Professores</h1>
                 </div>
                 <div class="centered row">
-                    {#                    <div class="ui stackable grid">#}
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in professores %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <div class="ui circular image">
-                                        <div class="ui dimmer">
-                                            <div class="content">
-                                                <div class="center">
-                                                    <h5 class="ui inverted small icon header"><i
-                                                            class="mail icon"></i>{{ integrante.contato|safe }}
-                                                    </h5>
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in professores %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <div class="ui circular image">
+                                            <div class="ui dimmer">
+                                                <div class="content">
+                                                    <div class="center">
+                                                        <h5 class="ui inverted small icon header"><i
+                                                                class="mail icon"></i>{{ integrante.contato|safe }}
+                                                        </h5>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <img class="ui centered small circular image"
+                                                 src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
                                         </div>
-                                        <img class="ui centered small circular image"
-                                             src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
                                     </div>
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     {% endif %}
 
     {% if bolsistas %}
-
         <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
             <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Alunos Bolsistas</h1>
                 </div>
                 <div class="centered row">
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in bolsistas %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <img class="ui small circular centered image"
-                                         src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in bolsistas %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <img class="ui small circular centered image"
+                                             src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     {% endif %}
 
     {% if naoBolsistas %}
-
-        <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+        <div class="ui stripe medium-font vertical feature segment">
             <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Alunos Não-Bolsistas</h1>
                 </div>
                 <div class="centered row">
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in naoBolsistas %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <img class="ui small circular centered image"
-                                         src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in naoBolsistas %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <img class="ui small circular centered image"
+                                             src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     {% endif %}
 
     {% if voluntarios %}
-
         <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
             <div class="ui grid container">
                 <div class="centered row">
                     <h1 class="ui header">Alunos Voluntários</h1>
                 </div>
                 <div class="centered row">
-                    <div class="ui sixteen column center aligned grid">
-                        {% for integrante in voluntarios %}
-                            <div class="three wide computer five wide mobile center aligned column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <img class="ui small circular centered image"
-                                         src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
-                                    <h3 class="ui header">{{ integrante.nome }}</h3>
-                                    {{ integrante.descricao }}
+                    <div class="sixteen wide column">
+                        <div class="ui six column center aligned doubling grid">
+                            {% for integrante in voluntarios %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <img class="ui small circular centered image"
+                                             src="{% static 'site2016/images/equipe/'|add:integrante.foto %}">
+                                        <h3 class="ui header">{{ integrante.nome }}</h3>
+                                        {{ integrante.descricao }}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     {% endif %}
 
-    <div class="ui vertical stripe segment" id="fundo_cinza">
+    <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
             <div class="row">
                 <div class="column">
@@ -148,18 +147,21 @@
             <div class="row">
                 <div class="sixteen wide column">
                     <h3 class="ui header">Bolsistas</h3>
-                    <p>O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$ 400,00 mensalmente. A
+                    <p class="justificado">O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$ 400,00
+                        mensalmente. A
                         dedicação é de 20 horas semanais e a participação no PET por pelo menos um ano garante as
                         60 horas de Atividades Complementares exigidas no curso de Ciência da Computação da UFSCar.</p>
-                    <h3 class="ui header">Não bolsistas</h3>
-                    <p>Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode ainda ter 6 alunos
-                        atuando como não bolsistas. As obrigações são as mesmas dos alunos bolsistas, assim como o
+                    <h3 class="ui header">Não-bolsistas</h3>
+                    <p class="justificado">Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode
+                        ainda ter 6 alunos
+                        atuando como não-bolsistas. As obrigações são as mesmas dos alunos bolsistas, assim como o
                         certificado recebido, que também vale como Atividades Complementares para o curso. No caso de
                         algum bolsista se desligar do PET, os alunos não bolsistas viram bolsistas automaticamente, sem
                         necessidade de novo processo seletivo. A ordem de distribuição das bolsas é definida pela
                         classificação do candidato no processo seletivo o qual participou.</p>
                     <h3 class="ui header">Voluntários</h3>
-                    <p>Se as 18 vagas para bolsistas e não bolsistas já estiverem preenchidas, aida é possível ser um
+                    <p class="justificado">Se as 18 vagas para bolsistas e não-bolsistas já estiverem preenchidas, aida
+                        é possível ser um
                         membro do PET como um voluntário. Mesmo como voluntário você terá participação efetiva nos
                         projetos, garantindo muito conhecimento e um grande incremento em sua graduação.</p>
                 </div>
@@ -174,20 +176,20 @@
                     <h1 class="ui header">Ex-Membros</h1>
                 </div>
                 <div class="centered row">
-                <div class="sixteen wide column">
-                    <div class="ui twelve column center aligned grid">
-                        {% for integrante in exMembros %}
-                            <div class="column">
-                                <div class="content" id="foto_membro_equipe">
-                                    <img class="ui small circular centered image"
-                                         src="{% static 'site2016/images/'|add:integrante.foto %}">
-                                    <h5 class="ui header">{{ integrante.nome }}</h5>
-                                    {{ integrante.descricao }}
+                    <div class="sixteen wide column">
+                        <div class="ui twelve column center aligned doubling grid">
+                            {% for integrante in exMembros %}
+                                <div class="column">
+                                    <div class="content" id="foto_membro_equipe">
+                                        <img class="ui small circular centered image"
+                                             src="{% static 'site2016/images/'|add:integrante.foto %}">
+                                        <h5 class="ui header">{{ integrante.nome }}</h5>
+                                        {{ integrante.descricao }}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
