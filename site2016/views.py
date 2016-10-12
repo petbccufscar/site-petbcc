@@ -10,22 +10,22 @@ professores = [{'nome': 'Dr. Valter Vieira de Camargo', 'descricao': 'Tutor do P
                 'foto': 'rosangela_aparecida_dellosso_penteado.jpg', 'contato': 'rosangela@<br>dc.ufscar.br'}]
 
 bolsistas = [
-    {'nome': 'Alexandre da Silva Lara Pinto', 'descricao': 'BCC 014', 'foto': 'alexandre_da_silva_lara_pinto.jpg'},
-    {'nome': 'Felipe Sampaio de Souza', 'descricao': 'BCC 015', 'foto': 'felipe_sampaio_de_souza.jpg'},
-    {'nome': 'Gabriel Toret Palomino', 'descricao': 'BCC 013', 'foto': 'gabriel_toret_palomino.jpg'},
-    {'nome': 'José Vitor de Carvalho Aquino', 'descricao': 'BCC 014', 'foto': 'jose_vitor_de_carvalho_aquino.jpg'},
-    {'nome': 'Leonardo Destro Bronzato', 'descricao': 'BCC 013', 'foto': 'leonardo_desto_bronzato.jpg'},
-    {'nome': 'Leticia Yumi Katsurada', 'descricao': 'BCC 015', 'foto': 'leticia_yumi_katsurada.jpg'},
-    {'nome': 'Marcelo de Oliveira da Silva', 'descricao': 'BCC 012', 'foto': 'marcelo_de_oliveira_da_silva.jpg'},
-    {'nome': 'Muriel Guilherme Alves Mauch', 'descricao': 'BCC 014', 'foto': 'muriel_guilherme_alves_mauch.jpg'},
-    {'nome': 'Pedro Henrique Migliati', 'descricao': 'BCC 015', 'foto': 'pedro_henrique_miglitatti.jpg'},
-    {'nome': 'Thiago Yonamine', 'descricao': 'BCC 014', 'foto': 'thiago_yonamine.jpg'}]
+    {'nome': 'Alexandre da Silva Lara Pinto', 'descricao': 'BCC 014', 'foto': 'alexandre_da_silva_lara_pinto.jpg', 'contato': 'Alexandre-Lara'},
+    {'nome': 'Felipe Sampaio de Souza', 'descricao': 'BCC 015', 'foto': 'felipe_sampaio_de_souza.jpg', 'contato': 'SampaioFelipe'},
+    {'nome': 'Gabriel Toret Palomino', 'descricao': 'BCC 013', 'foto': 'gabriel_toret_palomino.jpg', 'contato': 'palomito'},
+    {'nome': 'José Vitor de Carvalho Aquino', 'descricao': 'BCC 014', 'foto': 'jose_vitor_de_carvalho_aquino.jpg', 'contato': 'jvcaquino'},
+    {'nome': 'Leonardo Destro Bronzato', 'descricao': 'BCC 013', 'foto': 'leonardo_desto_bronzato.jpg', 'contato': 'leobronza'},
+    {'nome': 'Leticia Yumi Katsurada', 'descricao': 'BCC 015', 'foto': 'leticia_yumi_katsurada.jpg', 'contato': 'YumiKatsurada'},
+    {'nome': 'Marcelo de Oliveira da Silva', 'descricao': 'BCC 012', 'foto': 'marcelo_de_oliveira_da_silva.jpg', 'contato': 'marcelodeolive1ra'},
+    {'nome': 'Muriel Guilherme Alves Mauch', 'descricao': 'BCC 014', 'foto': 'muriel_guilherme_alves_mauch.jpg', 'contato': 'MurielMauch'},
+    {'nome': 'Pedro Henrique Migliati', 'descricao': 'BCC 015', 'foto': 'pedro_henrique_miglitatti.jpg', 'contato': 'p3m1'},
+    {'nome': 'Thiago Yonamine', 'descricao': 'BCC 014', 'foto': 'thiago_yonamine.jpg', 'contato': 'ThiagoYonamine'}]
 
 naoBolsistas = []
 
-voluntarios = [{'nome': 'Fernando Messias da Silva', 'descricao': 'BCC 012', 'foto': 'fernando_messias_da_silva.jpg'},
-               {'nome': 'Julia de Moura Caetano', 'descricao': 'BCC 015', 'foto': 'julia_de_moura_caetano.jpg'},
-               {'nome': 'Miguel de Souza Tosta', 'descricao': 'BCC 015', 'foto': 'miguel_de_souza_tosta.jpg'}]
+voluntarios = [{'nome': 'Fernando Messias da Silva', 'descricao': 'BCC 012', 'foto': 'fernando_messias_da_silva.jpg', 'contato': 'fernandoMessias'},
+               {'nome': 'Julia de Moura Caetano', 'descricao': 'BCC 015', 'foto': 'julia_de_moura_caetano.jpg', 'contato': 'juliamourac'},
+               {'nome': 'Miguel de Souza Tosta', 'descricao': 'BCC 015', 'foto': 'miguel_de_souza_tosta.jpg', 'contato': 'miguelsott'}]
 
 exMembros = [{'nome': 'Alan Cesar Laine', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Ana Dulce Padovan Torres', 'descricao': '', 'foto': 'user.png'},
