@@ -13,40 +13,58 @@
 
     <!-- Imagem principal da home -->
     <div class="ui inverted masthead center aligned segment" id="masthead_index">
-    </div>
+{#    <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>#}
 
-    <div class="ui inverted masthead center aligned segment" id="fundo_azul">
-        <div class="ui grid">
+    <div class="ui grid" id="principal_home">
             <div class="column">
                 <div class="row">
-                    <h1 class="ui inverted header wow fadeInDown" data-wow-delay="0.3s">
+                    <h1 class="ui inverted header wow fadeInDown" data-wow-delay="0.3s" id="titulo_home">
                         PET-BCC UFSCar
                     </h1>
-                    <h2 class="ui inverted header wow fadeInDown" data-wow-delay="0.6s">Programa de Educação Tutorial do
+                    <h2 class="ui inverted header wow fadeInDown" data-wow-delay="0.6s" id="subtitulo_home">Programa de
+                        Educação Tutorial do
                         Bacharelado em Ciência da Computação da UFSCar</h2>
                 </div>
             </div>
         </div>
     </div>
 
+{#    <div class="ui inverted masthead center aligned segment" id="fundo_azul">#}
+{#        <div class="ui grid">#}
+{#            <div class="column">#}
+{#                <div class="row">#}
+{#                    <h1 class="ui inverted header wow fadeInDown" data-wow-delay="0.3s" id="titulo_home">#}
+{#                        PET-BCC UFSCar#}
+{#                    </h1>#}
+{#                    <h2 class="ui inverted header wow fadeInDown" data-wow-delay="0.6s" id="subtitulo_home">Programa de#}
+{#                        Educação Tutorial do#}
+{#                        Bacharelado em Ciência da Computação da UFSCar</h2>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
             <div class="row">
                 <div class="eleven wide column">
-                    <h3 class="ui header wow fadeInRight" data-wow-delay="0.6s">O que é o PET?</h3>
+                    <h2 class="ui header wow fadeInRight" data-wow-delay="0.6s">O que é o PET?</h2>
                     <p class="justificado wow fadeInRight" data-wow-delay="0.7s">O Programa de Educação Tutorial (PET) é
                         um programa do Governo Federal Brasileiro que possui o
                         objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
                         Portaria 976/2010. A ideia é que cursos de graduação possuam um grupo PET de até 18
-                        alunos (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
+                        alunos (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão
+                        de um
                         professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
                         promovendo a indissociabilidade entre esses três pilares.</p>
-                    <h3 class="ui header wow fadeInRight" data-wow-delay="0.8s">O PET-BCC</h3>
+                    <h2 class="ui header wow fadeInRight" data-wow-delay="0.8s">O PET-BCC</h2>
                     <p class="justificado wow fadeInRight" data-wow-delay="0.9s">O grupo PET do curso de Bacharelado em
-                        Ciência da Computação (PET-BCC) da Universidade Federal de São Carlos (UFSCar), campus São Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05. Uma particularidade desse edital é que a chamada foi para
+                        Ciência da Computação (PET-BCC) da Universidade Federal de São Carlos (UFSCar), campus São
+                        Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05.
+                        Uma particularidade desse edital é que a chamada foi para
                         grupos temáticos, isto é, além de estarem vinculados a um curso de graduação, também deveriam
                         ter um tema para nortear suas atividades e projetos. O tema do PET-BCC é <b>desenvolvimento de
-                        software</b>.
+                            software</b>.
                     </p>
                 </div>
                 <div class="five wide column wow fadeInLeft" data-wow-delay="1s">
@@ -60,31 +78,31 @@
         <div class="ui relaxed stackable grid container">
             <div class="row">
                 <div class="column">
-                    <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.5s">O que fazemos?</h1>
+                    <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.5s" id="titulo_secao">O que fazemos?</h1>
                 </div>
             </div>
             <div class="four column row">
                 <div class="column wow fadeInRight" data-wow-delay="0.5s">
                     <img class="ui centered small image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                    <h3 class="ui centered header">Ensino</h3>
+                    <h2 class="ui centered header">Ensino</h2>
                     <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
                 </div>
 
                 <div class="column wow fadeInRight" data-wow-delay="0.7s">
                     <img class="ui centered small image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                    <h3 class="ui centered header">Pesquisa</h3>
+                    <h2 class="ui centered header">Pesquisa</h2>
                     <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
                 </div>
 
                 <div class="column wow fadeInLeft" data-wow-delay="0.7s">
                     <img class="ui centered small image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                    <h3 class="ui centered header">Extensão</h3>
+                    <h2 class="ui centered header">Extensão</h2>
                     <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
                 </div>
 
                 <div class="column wow fadeInLeft" data-wow-delay="0.5s">
                     <img class="ui centered small image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                    <h3 class="ui centered header">Desenvolvimento de Software</h3>
+                    <h2 class="ui centered header">Desenvolvimento de Software</h2>
                     <h5 class="ui centered header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</h5>
                 </div>
             </div>
@@ -95,7 +113,7 @@
         <div class="ui three column center aligned divided relaxed stackable grid container">
             <div class="row">
                 <div class="column">
-                    <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.5s">Principais Projetos</h1>
+                    <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.5s" id="titulo_secao">Principais Projetos</h1>
                 </div>
             </div>
             <div class="row">
