@@ -5,33 +5,13 @@
     PET-BCC UFSCar
 {% endblock title %}
 
+{% block head_extensions %}
+    <link rel="stylesheet" href="{% static 'site2016/css/custom.css' %}">
+{% endblock head_extensions %}
+
 {% block body %}
-    <style>
-        #masthead_index {
-            min-height: 450px;
-            padding: 1em 0em 0em 0em;
-        {#        background: #0c4d78;#} margin-top: 0em;
-            background: url('{% static 'site2016/images/equipe.jpg' %}');
-            -webkit-background-size: auto;
-            background-size: 100%;
-            background-position: top;
-        }
 
-        #fundo_azul {
-            background: #0c4d78;
-            padding: 0em;
-        }
-
-        #processo_seletivo {
-            background: #0c4d78;
-        }
-
-        #fundo_cinza {
-            background: rgba(0, 0, 6, 0.02);
-        }
-
-    </style>
-
+    <!-- Imagem principal da home -->
     <div class="ui inverted masthead center aligned segment" id="masthead_index">
     </div>
 
