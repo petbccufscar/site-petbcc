@@ -101,7 +101,7 @@
 
             <div class="ui center aligned grid">
                 <div class="centered row">
-                    {% for integrante in integrantes %}
+                    {% for integrante in bolsistas %}
                         <div class="three wide computer five wide mobile center aligned column">
                             <div class="content" id="foto_membro_equipe">
                                 <img class="ui centered small circular image"
@@ -115,6 +115,60 @@
             </div>
         </div>
     </div>
+
+    {% if naoBolsistas %}
+
+        <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+            <div class="ui container grid">
+                <div class="centered row">
+                    <h1 class="ui header">Alunos Não - Bolsistas</h1>
+                </div>
+
+                <div class="ui center aligned grid">
+                    <div class="centered row">
+                        {% for integrante in naoBolsistas %}
+                            <div class="three wide computer five wide mobile center aligned column">
+                                <div class="content" id="foto_membro_equipe">
+                                    <img class="ui centered small circular image"
+                                         src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                    <h3 class="ui header">{{ integrante.nome }}</h3>
+                                    BCC {{ integrante.ano }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    {% if voluntarios %}
+
+        <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+            <div class="ui container grid">
+                <div class="centered row">
+                    <h1 class="ui header">Alunos Voluntários</h1>
+                </div>
+
+                <div class="ui center aligned grid">
+                    <div class="centered row">
+                        {% for integrante in voluntarios %}
+                            <div class="three wide computer five wide mobile center aligned column">
+                                <div class="content" id="foto_membro_equipe">
+                                    <img class="ui centered small circular image"
+                                         src="{% static 'site2016/images/equipe/' %}{{ integrante.foto }}">
+                                    <h3 class="ui header">{{ integrante.nome }}</h3>
+                                    BCC {{ integrante.ano }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
 
     <div class="ui stripe medium-font vertical feature segment">
         <div class="ui container grid">
@@ -188,346 +242,32 @@
         </div>
     </div>
 
-    <div class="ui stripe medium-font vertical feature segment">
-        <div class="ui container grid">
-            <div class="centered row">
-                <h1 class="ui header">Ex-membros</h1>
-            </div>
+    {% if exMembros %}
 
-            <div class="row">
-                <div class="ui equal width stackable grid">
-                    <div class="center aligned row">
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Alan Cesar Laine</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
+        <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+            <div class="ui container grid">
+                <div class="centered row">
+                    <h1 class="ui header">Ex-Membros</h1>
+                </div>
 
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Ana Dulce Padovan Torres</h4>
-                                Dolor Sit
+                <div class="ui center aligned grid">
+                    <div class="centered row">
+                        {% for integrante in exMembros %}
+                            <div class="one wide computer one wide mobile center aligned column">
+                                <div class="content" id="foto_membro_equipe">
+                                    <img class="ui centered small circular image"
+                                         src="{% static 'site2016/images/' %}{{ integrante.foto }}">
+                                    <h3 class="ui header">{{ integrante.nome }}</h3>
+                                    BCC {{ integrante.ano }}
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">André Vinicius Bertoni Nicoleti</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Bruno Dias Leite</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Bruno F. Rodrigues</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Bruno Guerra D. Pereira</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Bruno Luigi Borgo</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Bruno Santos</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Caroline Castor dos Santos</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-                    </div>
-                    <div class="center aligned row">
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Denis Cappelini</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Douglas Antonio Martins Barbino</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Eduardo Kazuo Nakao</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Felipe Castro Dezotti</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Gabriela Vanessa Pereira Alves Mattos</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Guilherme Cuppi Jeronimo</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Guilherme Rigo Reccio</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Hugo Leonardo M. A. de Barros</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Júlio Maçumoto</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-                    </div>
-                    <div class="center aligned row">
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Leonardo Lopes</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Lucas Antoniale Callegari</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Lucas Bueno</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Lucas Yamanaka</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Marcelo Araujo Pontes</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Mariana Yamamoto</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Matheus dos Santos Freitas</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Nicolas Masonori Shimizu</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Paula Lamin Honda</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-                    </div>
-                    <div class="center aligned row">
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Rafael Eduardo Wolf Goes</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Renan Peixoto da Silva</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Tiago Bassani</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Tiago Bonadio Badoco</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Thiago Arraiol Casaes</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Thiago Neves Romero</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Lorem Ipsum</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Lorem Ipsum</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
-
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui centered small circular image"
-                                     src="{% static 'site2016/images/user.png' %}">
-                                <h4 class="ui header">Lorem Ipsum</h4>
-                                Dolor Sit
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    {% endif %}
 
     <div class="ui vertical stripe segment" id="processo_seletivo">
         <h1 class="ui centered inverted header">Processo Seletivo</h1>
