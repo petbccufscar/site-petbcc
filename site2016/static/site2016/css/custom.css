@@ -1,6 +1,4 @@
-body {
-    background: #0c4d78;
-}
+
 
 .branco {
     background: #FFFFFF;
@@ -48,5 +46,13 @@ body {
 /*.azul {*/
     /*background: #0c4d78;*/
 /*}*/
+
+/*.preto {*/
+    /*background: #1b1c1d;*/
+/*}*/
+
+body {
+    background: #1b1c1d;
+}
 
 
