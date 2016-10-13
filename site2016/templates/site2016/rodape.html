@@ -1,8 +1,82 @@
 {% load staticfiles %}
 
 <div class="ui inverted vertical footer segment" id="rodape">
+
     <div class="ui grid container">
-        <div class="two column row">
+        <div class="mobile only row">
+            <div class="ui center aligned grid">
+                <div class="centered row">
+                    <style>
+                        .ui.icon.button, .ui.icon.buttons .button {
+                            margin-bottom: 8px;
+                            padding: .35em;
+                        }
+
+                        .ui.mini.button, .ui.mini.buttons .button, .ui.mini.buttons .or {
+                            font-size: 1.15rem;
+                        }
+                    </style>
+                    <a href="https://www.facebook.com/petbcc"
+                       target="_blank">
+                        <button class="ui mini icon white button">
+                            <i class="facebook icon"></i>
+                        </button>
+                    </a>
+                    <a href="mailto:petbcc@dc.ufscar.br"
+                       target="_blank">
+                        <button class="ui mini icon white button">
+                            <i class="mail icon"></i>
+                        </button>
+                    </a>
+                    <a href="https://github.com/petbccufscar"
+                       target="_blank">
+                        <button class="ui mini icon white button">
+                            <i class="github icon"></i>
+                        </button>
+                    </a>
+
+                    <style>
+                        #paragrafo_rodape {
+                            margin-left: 3px;
+                        }
+                    </style>
+                    <p id="paragrafo_rodape"><b>PET-BCC UFSCar</b><br>
+                        Universidade Federal de São Carlos<br>
+                        Rodovia Washington Luís, km 235 - Jardim Guanabara<br>
+                        CEP 13565-905 - São Carlos/SP<br>
+                        Departamento de Computação, Sala 71<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <p></p>
+                <div class="ui grid">
+                    <div class="three column center aligned row">
+                        <div class="column">
+                            <a href="http://www.dc.ufscar.br" target="_blank">
+                                <img class="ui small image" src="{% static 'site2016/images/logos/dc_branco.png' %}">
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a href="http://www.ufscar.br" target="_blank">
+                                <img class="ui small image"
+                                     src="{% static 'site2016/images/logos/ufscar_branco.png' %}">
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a href="http://portal.mec.gov.br/index.php" target="_blank">
+                                <img class="ui small image"
+                                     src="{% static 'site2016/images/logos/ministerio_da_educacao_vertical.png' %}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Computador OK - Falta corrigir para tablet #}
+        <div class="two column computer tablet only row">
             <div class="left aligned column">
                 <div class="ui grid">
                     <div class="one wide middle aligned column">

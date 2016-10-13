@@ -7,7 +7,8 @@
     background: rgba(255, 255, 255, 0.85);
 }
 
-#masthead_index {
+@media only screen and (min-width: 768px) {
+    #masthead_index {
     min-height: 550px;
     padding: 0em 0em 0em 0em;
     margin-top: 0em;
@@ -16,6 +17,20 @@
     background-size: 100%;
     background-position: top;
     position: relative;
+}
+}
+
+@media only screen and (max-width: 767px) {
+    #masthead_index {
+        min-height: 250px;
+        padding: 0em 0em 0em 0em;
+        margin-top: 0em;
+        background: url('../images/equipe.jpg');
+        -webkit-background-size: auto;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
 }
 
 #principal_home {
@@ -113,7 +128,7 @@ p {
     padding-top: 0.5em;
 }
 
-#processo_seletivo > h3 > a {
+.processo_seletivo > h3 > a {
     color: #e0e1e2;
     font-weight: 900;
 }
