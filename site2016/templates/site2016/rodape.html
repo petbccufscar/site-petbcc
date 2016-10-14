@@ -2,10 +2,10 @@
 
 <footer>
     <div class="ui inverted vertical footer segment" id="rodape">
-        <div class="ui grid container">
-            <div class="mobile only row">
-                <div class="ui center aligned grid">
-                    <div class="centered row">
+        <div class="ui grid centered container">
+            <div class="mobile only center aligned row">
+                <div class="ui grid">
+                    <div class="column">
                         <a href="https://www.facebook.com/petbcc"
                            target="_blank">
                             <button class="ui mini icon white button">
@@ -61,7 +61,6 @@
                 </div>
             </div>
 
-            {# Computador OK - Falta corrigir para tablet #}
             <div class="two column computer tablet only row">
                 <div class="left aligned column">
                     <div class="ui grid">
@@ -85,12 +84,7 @@
                                 </button>
                             </a>
                         </div>
-                        <div class="fifteen wide column">
-                            <style>
-                                #paragrafo_rodape {
-                                    margin-left: 3px;
-                                }
-                            </style>
+                        <div class="fourteen wide column">
                             <p id="paragrafo_rodape"><b>PET-BCC UFSCar</b><br>
                                 Universidade Federal de São Carlos<br>
                                 Rodovia Washington Luís, km 235 - Jardim Guanabara<br>
@@ -101,25 +95,24 @@
                     </div>
                 </div>
 
-                <div class="right aligned column">
+                <div class="right middle aligned column">
                     <div class="ui grid">
-                        <div class="row">
-                            <div class="three wide column"></div>
-                            <div class="four wide middle aligned column">
+                        <div class="three column row">
+                            <div class="middle aligned column">
                                 <a href="http://www.dc.ufscar.br" target="_blank">
                                     <img class="ui small image"
                                          src="{% static 'site2016/images/logos/dc_branco.png' %}">
                                 </a>
                             </div>
 
-                            <div class="four wide middle aligned column">
+                            <div class="middle aligned column">
                                 <a href="http://www.ufscar.br" target="_blank">
                                     <img class="ui small image"
                                          src="{% static 'site2016/images/logos/ufscar_branco.png' %}">
                                 </a>
                             </div>
 
-                            <div class="five wide middle aligned column">
+                            <div class="middle aligned column">
                                 <a href="http://portal.mec.gov.br/index.php" target="_blank">
                                     <img class="ui small image"
                                          src="{% static 'site2016/images/logos/ministerio_da_educacao_vertical.png' %}">

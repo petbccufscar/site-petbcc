@@ -12,53 +12,54 @@
 {% block body %}
 
     <!-- Imagem principal da home -->
-    <div class="ui inverted masthead center aligned segment" id="masthead_index">
-        <div class="ui grid" id="principal_home">
-            <div class="column">
-                <div class="row">
-                    <h1 class="ui inverted header wow fadeInDown" data-wow-delay="0.3s" id="titulo_home">
-                        PET-BCC UFSCar
-                    </h1>
-                    <h2 class="ui inverted header wow fadeInDown" data-wow-delay="0.6s" id="subtitulo_home">Programa de
-                        Educação Tutorial do
-                        Bacharelado em Ciência da Computação da UFSCar</h2>
+    <section id="banner">
+        <div class="ui inverted masthead center aligned segment" id="masthead_index">
+            <div class="ui grid" id="principal_home">
+                <div class="column">
+                    <div class="row">
+                        <div class="ui container">
+                            <h1 class="ui inverted header wow fadeInDown" data-wow-delay="0.3s" id="titulo_home">
+                                PET-BCC UFSCar
+                            </h1>
+                            <h2 class="ui inverted header wow fadeInDown" data-wow-delay="0.6s" id="subtitulo_home">
+                                Programa de Educação Tutorial do Bacharelado em Ciência da Computação da UFSCar</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="eleven wide column">
-                    <h2 class="ui header wow fadeInRight" data-wow-delay="0.6s">O que é o PET?</h2>
-                    <p class="justificado wow fadeInRight" data-wow-delay="0.7s">O Programa de Educação Tutorial (PET) é
-                        um programa do Governo Federal Brasileiro que possui o
-                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
-                        Portaria 976/2010. A ideia é que cursos de graduação possuam um grupo PET de até 18
-                        alunos (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão
-                        de um
-                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
-                        promovendo a indissociabilidade entre esses três pilares.</p>
-                    <h2 class="ui header wow fadeInRight" data-wow-delay="0.8s">O PET-BCC</h2>
-                    <p class="justificado wow fadeInRight" data-wow-delay="0.9s">O grupo PET do curso de Bacharelado em
-                        Ciência da Computação (PET-BCC) da Universidade Federal de São Carlos (UFSCar), campus São
-                        Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05.
-                        Uma particularidade desse edital é que a chamada foi para
-                        grupos temáticos, isto é, além de estarem vinculados a um curso de graduação, também deveriam
-                        ter um tema para nortear suas atividades e projetos. O tema do PET-BCC é <b>desenvolvimento de
-                            software</b>.
-                    </p>
-                </div>
-                <div class="five wide column wow fadeInLeft" data-wow-delay="1s">
-                    <img class="ui centered image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                </div>
+            <div class="eleven wide column">
+                <h2 class="ui header wow fadeInRight" data-wow-delay="0.6s">O que é o PET?</h2>
+                <p class="justificado wow fadeInRight" data-wow-delay="0.7s">O Programa de Educação Tutorial (PET) é
+                    um programa do Governo Federal Brasileiro que possui o
+                    objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
+                    Portaria 976/2010. A ideia é que cursos de graduação possuam um grupo PET de até 18
+                    alunos (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão
+                    de um
+                    professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                    promovendo a indissociabilidade entre esses três pilares.</p>
+                <h2 class="ui header wow fadeInRight" data-wow-delay="0.8s">O PET-BCC</h2>
+                <p class="justificado wow fadeInRight" data-wow-delay="0.9s">O grupo PET do curso de Bacharelado em
+                    Ciência da Computação (PET-BCC) da Universidade Federal de São Carlos (UFSCar), campus São
+                    Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05.
+                    Uma particularidade desse edital é que a chamada foi para
+                    grupos temáticos, isto é, além de estarem vinculados a um curso de graduação, também deveriam
+                    ter um tema para nortear suas atividades e projetos. O tema do PET-BCC é <b>desenvolvimento de
+                        software</b>.
+                </p>
+            </div>
+            <div class="five wide column wow fadeInLeft" data-wow-delay="1s">
+                <img class="ui centered image" src="{% static 'site2016/images/logos/petbcc.png' %}">
             </div>
         </div>
     </div>
 
     <div class="ui vertical stripe segment" id="fundo_cinza">
-        <div class="ui relaxed stackable grid container">
+        <div class="ui stackable grid container">
             <div class="row">
                 <div class="column">
                     <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.5s" id="titulo_secao">Pilares do
@@ -118,14 +119,14 @@
     </div>
 
     <div class="ui vertical stripe segment">
-        <div class="ui three column center aligned divided relaxed stackable grid container">
+        <div class="ui stackable center aligned grid container">
             <div class="row">
                 <div class="column">
                     <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.5s" id="titulo_secao">Principais
                         Projetos</h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="three column divided row">
                 <div class="column wow fadeInDown" data-wow-delay="0.7s">
 
                     <h3 class="ui image header">
@@ -173,11 +174,11 @@
         </div>
     </div>
 
-    <div class="ui vertical stripe segment" id="processo_seletivo">
-        <div class="ui container" id="processo_seletivo">
+    <div class="ui vertical stripe segment processo_seletivo">
+        <div class="ui container processo_seletivo">
             <h1 class="ui centered inverted header">Processo Seletivo</h1>
             <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a
-                    href="#">processo
+                    href="{% url 'processo_seletivo' %}">processo
                 seletivo</a>.</h3>
         </div>
     </div>
