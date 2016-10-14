@@ -13,6 +13,7 @@
     <script src="{% static 'site2016/css/semantic/semantic.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'site2016/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'site2016/css/semantic/semantic.min.css' %}">
+
     <!--Favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="{% static 'site2016/favicon/apple-icon-57x57.png' %}">
     <link rel="apple-touch-icon" sizes="60x60" href="{% static 'site2016/favicon/apple-icon-60x60.png' %}">
@@ -31,13 +32,14 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{% static 'site2016/favicon/ms-icon-144x144.png' %}">
     <meta name="theme-color" content="#ffffff">
+    <!--Favicon-->
 
     {% block head_extensions %}{% endblock head_extensions %}
 </head>
 <body>
 
 <div class="preloader">
-    <img src="{% static 'site2016/images/loading.gif' %}" alt="Aguarde! Carregando...">
+    <img src="{% static 'site2016/images/loading.gif' %}" alt="Aguarde! Carregando..." height="50%">
 </div>
 
 {% block menu %}

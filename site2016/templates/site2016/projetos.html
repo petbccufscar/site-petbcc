@@ -10,7 +10,7 @@
 {% endblock head_extensions %}
 
 {% block body %}
-    <div class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
         <div class="ui grid">
             <div class="column">
                 <div class="row">
@@ -20,171 +20,185 @@
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="ui vertical segment" id="fundo_cinza">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="twelve wide column">
-                    <h3 class="ui header">Projeto USE</h3>
-                    <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui o
-                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
-                        portaria
-                        976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
-                        alunos
-                        (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
-                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
-                        promovendo a indissociabilidade entre esses três pilares. </p>
-                    <div class="ui label" id="tags">
-                        <i class="clock icon"></i>Em desenvolvimento
-                    </div>
-                </div>
+    <main role="main">
 
-                <div class="four wide column">
-                    <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="ui vertical segment">
-
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-
-                <div class="four wide column">
-                    <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                </div>
-                <div class="twelve wide column">
-                    <h3 class="ui header">Site</h3>
-                    <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui o
-                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
-                        portaria
-                        976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
-                        alunos
-                        (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
-                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
-                        promovendo a indissociabilidade entre esses três pilares. </p>
-                    <div class="ui green label" id="tags">
-                        <i class="check icon"></i>Finalizado
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="ui vertical segment" id="fundo_cinza">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="twelve wide column">
-                    <h3 class="ui header">ONG Nave Sal da Terra</h3>
-                    <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui o
-                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
-                        portaria
-                        976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
-                        alunos
-                        (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
-                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
-                        promovendo a indissociabilidade entre esses três pilares. </p>
-                    <div class="ui green label" id="tags">
-                        <i class="check icon"></i>Finalizado
-                    </div>
-                </div>
-
-                <div class="four wide column">
-                    <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="ui vertical segment">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-
-                <div class="four wide column">
-                    <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                </div>
-                <div class="twelve wide column">
-                    <h3 class="ui header">Saúde em Jogo</h3>
-                    <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui o
-                        objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
-                        portaria
-                        976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
-                        alunos
-                        (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um
-                        professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
-                        promovendo a indissociabilidade entre esses três pilares. </p>
-                    <div class="ui green label" id="tags">
-                        <i class="check icon"></i>Finalizado
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
-        <div class="ui grid container">
-            <div class="centered row">
-                <h1 class="ui header" id="titulo_secao">Tecnologias que utilizamos nos projetos do PET-BCC</h1>
-            </div>
-            <div class="centered row">
-                <div class="ui five column doubling centered grid">
-                    <div class="middle aligned row">
-                        <div class="middle aligned column">
-                            <div class="content">
-                                <img class="ui small centered image"
-                                     src="{% static 'site2016/images/tecnologias/python.png' %}">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui small centered image"
-                                     src="{% static 'site2016/images/tecnologias/django.png' %}">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui small centered image"
-                                     src="{% static 'site2016/images/tecnologias/java.png' %}">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui small centered image"
-                                     src="{% static 'site2016/images/tecnologias/grails.png' %}">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui small centered image"
-                                     src="{% static 'site2016/images/tecnologias/github.png' %}">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui tiny centered image"
-                                     src="{% static 'site2016/images/tecnologias/semantic-ui.png' %}">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui tiny centered image"
-                                     src="{% static 'site2016/images/tecnologias/bootstrap.png' %}">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="content">
-                                <img class="ui small centered image"
-                                     src="{% static 'site2016/images/tecnologias/wordpress.png' %}">
-                            </div>
+        <div class="ui vertical segment" id="fundo_cinza">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="twelve wide column">
+                        <h3 class="ui header">Projeto USE</h3>
+                        <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui
+                            o
+                            objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
+                            portaria
+                            976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
+                            alunos
+                            (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de
+                            um
+                            professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                            promovendo a indissociabilidade entre esses três pilares. </p>
+                        <div class="ui label" id="tags">
+                            <i class="clock icon"></i>Em desenvolvimento
                         </div>
                     </div>
+
+                    <div class="four wide column">
+                        <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
+        <div class="ui vertical segment">
+
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+
+                    <div class="four wide column">
+                        <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
+                    </div>
+                    <div class="twelve wide column">
+                        <h3 class="ui header">Site</h3>
+                        <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui
+                            o
+                            objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
+                            portaria
+                            976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
+                            alunos
+                            (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de
+                            um
+                            professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                            promovendo a indissociabilidade entre esses três pilares. </p>
+                        <div class="ui green label" id="tags">
+                            <i class="check icon"></i>Finalizado
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="ui vertical segment" id="fundo_cinza">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="twelve wide column">
+                        <h3 class="ui header">ONG Nave Sal da Terra</h3>
+                        <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui
+                            o
+                            objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
+                            portaria
+                            976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
+                            alunos
+                            (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de
+                            um
+                            professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                            promovendo a indissociabilidade entre esses três pilares. </p>
+                        <div class="ui green label" id="tags">
+                            <i class="check icon"></i>Finalizado
+                        </div>
+                    </div>
+
+                    <div class="four wide column">
+                        <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="ui vertical segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+
+                    <div class="four wide column">
+                        <img class="ui image" src="{% static 'site2016/images/logos/petbcc.png' %}">
+                    </div>
+                    <div class="twelve wide column">
+                        <h3 class="ui header">Saúde em Jogo</h3>
+                        <p> O Programa de Educação Tutorial (PET) é um programa do governo federal brasileiro que possui
+                            o
+                            objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na
+                            portaria
+                            976 (Portaria 976, 2010). A ideia é que cursos de graduação possuam um grupo PET de até 18
+                            alunos
+                            (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de
+                            um
+                            professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão,
+                            promovendo a indissociabilidade entre esses três pilares. </p>
+                        <div class="ui green label" id="tags">
+                            <i class="check icon"></i>Finalizado
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="ui stripe medium-font vertical feature segment" id="fundo_cinza">
+            <div class="ui grid container">
+                <div class="centered row">
+                    <h1 class="ui header" id="titulo_secao">Tecnologias que utilizamos nos projetos do PET-BCC</h1>
+                </div>
+                <div class="centered row">
+                    <div class="ui five column doubling centered grid">
+                        <div class="middle aligned row">
+                            <div class="middle aligned column">
+                                <div class="content">
+                                    <img class="ui small centered image"
+                                         src="{% static 'site2016/images/tecnologias/python.png' %}">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui small centered image"
+                                         src="{% static 'site2016/images/tecnologias/django.png' %}">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui small centered image"
+                                         src="{% static 'site2016/images/tecnologias/java.png' %}">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui small centered image"
+                                         src="{% static 'site2016/images/tecnologias/grails.png' %}">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui small centered image"
+                                         src="{% static 'site2016/images/tecnologias/github.png' %}">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui tiny centered image"
+                                         src="{% static 'site2016/images/tecnologias/semantic-ui.png' %}">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui tiny centered image"
+                                         src="{% static 'site2016/images/tecnologias/bootstrap.png' %}">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="content">
+                                    <img class="ui small centered image"
+                                         src="{% static 'site2016/images/tecnologias/wordpress.png' %}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
 
 {% endblock body %}

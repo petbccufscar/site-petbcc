@@ -1,9 +1,9 @@
 {% load staticfiles %}
 
-<div class="ui fixed main menu" id="menu_principal">
+<nav class="ui fixed main menu" id="menu_principal" role="navigation">
     <div class="left menu">
         <a href="{% url 'home' %}" class="item">
-            <img class="ui tiny image" src="{% static 'site2016/images/logos/petbcc.png' %}">
+            <img class="ui tiny image" src="{% static 'site2016/images/logos/petbcc.png' %}" alt="Logo do PET-BCC">
         </a>
     </div>
     <div class="right menu">
@@ -16,4 +16,4 @@
         <a href="{% url 'contato' %}" class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato +
             FAQ</b></a>
     </div>
-</div>
+</nav>
