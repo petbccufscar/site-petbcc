@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-    Projetos - PET-BCC UFSCar
+    Processo Seletivo - PET-BCC UFSCar
 {% endblock title %}
 
 {% block head_extensions %}
@@ -25,13 +25,118 @@
     <div class="ui vertical segment">
         <div class="ui middle aligned stackable grid container">
             <div class="row">
-                <div class="twelve wide column">
-                    <h3 class="ui header">Lorem Ipsum</h3>
-                    <p>Lorem Ipsum</p>
-                </div>
+                <div class="sixteen wide column">
+                    <h3 class="ui centered header">Confira nesta página as últimas chamadas para processos seletivos do
+                        PET-BCC.</h3>
 
+                    <h1 class="ui top attached block header">
+                        Processo Seletivo 2016/2
+                        <div class="ui big black label">Inscrições abertas</div>
+                    </h1>
+
+                    <div class="ui attached segment">
+                        <p class="justificado">
+                            Todos os alunos regularmente matriculados no curso de Bacharelado em Ciência da Computação
+                            da
+                            UFSCar estão convidados a participar do processo seletivo 2016/2 do PET-BCC.
+                        </p>
+
+                        <h2 class="ui header">Informações importantes</h2>
+
+                        <div class="ui grid">
+                            <div class="column">
+                                <div class="ui divided stackable grid">
+                                    <div class="five wide column">
+                                        <div class="ui two column grid">
+                                            <div class="center aligned column">
+                                                <h3 class="ui icon header">
+                                                    <i class="ui users icon"></i>
+                                                    <div class="content">Vagas</div>
+                                                    <div class="sub header">2 (duas) para <b>bolsistas</b><br>6 (seis)
+                                                        para <b>não-bolsistas</b><br></div>
+                                                </h3>
+                                            </div>
+                                            <div class="center aligned column">
+                                                <h3 class="ui icon header">
+                                                    <i class="ui calendar icon"></i>
+                                                    <div class="content">Inscrições</div>
+                                                    <div class="sub header">10/10 a 04/11</div>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="eleven wide column">
+                                        <div class="ui four column grid">
+                                            <div class="center aligned column">
+                                                <h3 class="ui disabled icon header">
+                                                    <i class="ui checkmark box icon"></i>
+                                                    <div class="content">[Etapa 1]<br>Análise de histórico</div>
+                                                    <div class="sub header">04/11 a 07/11<br>07/11 - Resultado</div>
+                                                </h3>
+                                                <p></p>
+                                            </div>
+                                            <div class="center aligned column">
+                                                <h3 class="ui disabled icon header">
+                                                    <i class="ui checkmark box icon"></i>
+                                                    <div class="content">[Etapa 2]<br>Avaliação escrita</div>
+                                                    <div class="sub header">09/11 - 18h45 às 22h<br>11/11 - Resultado
+                                                    </div>
+                                                </h3>
+                                            </div>
+                                            <div class="center aligned column">
+                                                <h3 class="ui disabled icon header">
+                                                    <i class="ui checkmark box icon"></i>
+                                                    <div class="content">[Etapa 3]<br>Dinâmica em grupo</div>
+                                                    <div class="sub header">16 a 18/11</div>
+                                                </h3>
+                                            </div>
+                                            <div class="center aligned column">
+                                                <h3 class="ui disabled icon header">
+                                                    <i class="ui checkmark box icon"></i>
+                                                    <div class="content">[Etapa 4]<br>Entrevista individual</div>
+                                                    <div class="sub header">21/11 a 25/11<br>Até 30/11 - Resultado</div>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 class="ui header">Requisitos</h2>
+                        <p>Para se inscrever no processo seletivo, o candidato deverá:
+                        <ol class="ui list">
+                            <li value="a)">Ser aluno regularmente matriculado no curso de Bacharelado em Ciência da
+                                Computação e estar cursando a partir do 2º (segundo) semestre de graduação;
+                            </li>
+                            <li value="b)">Apresentar média ponderada semestral geral maior ou igual a 6.0 (seis);</li>
+                            <li value="c)">Ter disponibilidade para se dedicar 20 (vinte) horas semanais nas atividades
+                                do programa;
+                            </li>
+                            <li value="d)">Respeitar as seguintes restrições quanto à vaga de bolsista:</li>
+                            <ul>
+                                <li value="i.">Não acumular bolsa de outro programa ou projeto, exceto as bolsas de
+                                    caráter socioeconômico;
+                                </li>
+                                <li value="ii.">Não possuir vínculo empregatício.</li>
+                            </ul>
+                        </ol>
+                        </p>
+
+                        <h2 class="ui header">Inscrições</h2>
+                        <p>As inscrições devem ser realizadas exclusivamente por e-mail: <a
+                                href="mailto:valter@dc.ufscar.br">valter@dc.ufscar.br</a>.<br>
+                            Detalhes sobre documentos necessários, critérios, cronograma e outras informações devem ser
+                            verificadas no edital.</p>
+
+                        <h2 class="ui header">Edital</h2>
+                        <p>Acesse o edital clicando no ícone a seguir:</p>
+                        <a href="{% static 'site2016/editais/EditalPET2-2016.pdf' %}"><i class="huge download icon"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
 {% endblock body %}
