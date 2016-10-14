@@ -9,11 +9,7 @@
     <title>{% block title %}{% endblock title %}</title>
     <script src="{% static 'site2016/js/jquery.js' %}"></script>
     <script src="{% static 'site2016/js/wow.min.js' %}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            new WOW({mobile: true}).init();
-        });
-    </script>
+    <script src="{% static 'site2016/js/custom.js' %}"></script>
     <script src="{% static 'site2016/css/semantic/semantic.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'site2016/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'site2016/css/semantic/semantic.min.css' %}">
@@ -32,6 +28,8 @@
 {% block footer %}
     {% include 'site2016/rodape.html' %}
 {% endblock footer %}
+
+<a href="#" class="go-top"><i class="arrow circle up icon"></i></a>
 
 </body>
 </html>

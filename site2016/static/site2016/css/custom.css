@@ -9,15 +9,15 @@
 
 @media only screen and (min-width: 768px) {
     #masthead_index {
-    min-height: 550px;
-    padding: 0em 0em 0em 0em;
-    margin-top: 0em;
-    background: url('../images/equipe.jpg');
-    -webkit-background-size: auto;
-    background-size: 100%;
-    background-position: top;
-    position: relative;
-}
+        min-height: 550px;
+        padding: 0em 0em 0em 0em;
+        margin-top: 0em;
+        background: url('../images/equipe.jpg');
+        -webkit-background-size: auto;
+        background-size: 100%;
+        background-position: top;
+        position: relative;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -36,7 +36,7 @@
 #principal_home {
     /*background: #0c4d78;*/
     /*background: #003e67;*/
-    background: rgba(0,0,0, 0.65);
+    background: rgba(0, 0, 0, 0.65);
     padding: 0em;
     /*margin-top: 0em;*/
     border-radius: 0px; /* verificar o porque isso não é padrão */
@@ -87,7 +87,6 @@ body {
     background: #03253c;
 }
 
-
 .justificado {
     text-align: justify;
 }
@@ -135,4 +134,27 @@ p {
 
 #rodape {
     background: #03253c;
+}
+
+.go-top {
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: 1em;
+    right: 1em;
+    color: #ffffff;
+    font-size: 24px;
+    display: none;
+    position: fixed;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    border-radius: 7px;
+
+}
+
+.go-top:hover {
+    background: #003e67;
+    color: #ffffff;
 }
