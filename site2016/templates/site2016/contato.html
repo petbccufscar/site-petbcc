@@ -10,7 +10,7 @@
 {% endblock head_extensions %}
 
 {% block body %}
-    <div class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
         <div class="ui grid">
             <div class="column">
                 <div class="row">
@@ -20,90 +20,103 @@
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="ui vertical stripe segment">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="column">
-                    <h1 class="ui centered header" id="titulo_secao">Perguntas Frequentes</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ui styled fluid accordion">
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        What is a dog?
-                    </div>
-                    <div class="content">
-                        <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and
-                            faithfulness, it can be found as a welcome guest in many households across the world.</p>
-                    </div>
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        What kinds of dogs are there?
-                    </div>
-                    <div class="content">
-                        <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and
-                            temperament. Owners often select a breed of dog that they find to be compatible with their
-                            own lifestyle and desires from a companion.</p>
-                    </div>
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        How do you acquire a dog?
-                    </div>
-                    <div class="content">
-                        <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from
-                            pet shops, private owners, or shelters.</p>
-                        <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a
-                            dog from a private owner allows you to assess the pedigree and upbringing of your dog before
-                            choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to
-                            a dog who may not find one so readily.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <main role="main">
 
-    <div class="ui vertical stripe segment" id="fundo_cinza">
-        <div class="ui grid container">
-            <div class="row">
-                <div class="column center aligned">
-                    <h1 class="ui centered header" id="titulo_secao">Contato</h1>
-                    <p>Entre em contato conosco pelo email <a href="mailto:petbcc@dc.ufscar.br">petbcc@dc.ufscar.br</a> ou preencha o formulário abaixo.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ui two column stackable centered grid">
+        <section class="ui vertical stripe segment" role="region">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
                     <div class="column">
-                        <form class="ui form">
-                            <div class="field">
-                                <label>Seu Nome</label>
-                                <input name="nome" placeholder="Seu Nome" type="text">
-                            </div>
-                            <div class="field">
-                                <label>Seu Email</label>
-                                <input name="email" placeholder="Seu Email" type="text">
-                            </div>
-                            <div class="field">
-                                <label>Assunto</label>
-                                <input name="assunto" placeholder="Assunto" type="text">
-                            </div>
-                            <div class="field">
-                                <label>Mensagem</label>
-                                <textarea name="mensagem" style="height: 30px;"></textarea>
-                            </div>
-                            <button class="ui button" type="submit">Enviar</button>
-                            <div class="ui error message"></div>
-                        </form>
+                        <h1 class="ui centered header" id="titulo_secao">Perguntas Frequentes</h1>
                     </div>
-
                 </div>
-
+                <div class="row">
+                    <div class="ui styled fluid accordion">
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            What is a dog?
+                        </div>
+                        <div class="content">
+                            <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty
+                                and
+                                faithfulness, it can be found as a welcome guest in many households across the
+                                world.</p>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            What kinds of dogs are there?
+                        </div>
+                        <div class="content">
+                            <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and
+                                temperament. Owners often select a breed of dog that they find to be compatible with
+                                their
+                                own lifestyle and desires from a companion.</p>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            How do you acquire a dog?
+                        </div>
+                        <div class="content">
+                            <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is
+                                from
+                                pet shops, private owners, or shelters.</p>
+                            <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying
+                                a
+                                dog from a private owner allows you to assess the pedigree and upbringing of your dog
+                                before
+                                choosing to take it home. Lastly, finding your dog from a shelter, helps give a good
+                                home to
+                                a dog who may not find one so readily.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+            <div class="ui grid container">
+                <div class="row">
+                    <div class="column center aligned">
+                        <h1 class="ui centered header" id="titulo_secao">Contato</h1>
+                        <p>Entre em contato conosco pelo email <a
+                                href="mailto:petbcc@dc.ufscar.br">petbcc@dc.ufscar.br</a> ou preencha o formulário
+                            abaixo.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ui two column stackable centered grid">
+                        <div class="column">
+                            <form class="ui form" role="form">
+                                <div class="field">
+                                    <label>Seu Nome</label>
+                                    <input name="nome" placeholder="Seu Nome" type="text">
+                                </div>
+                                <div class="field">
+                                    <label>Seu Email</label>
+                                    <input name="email" placeholder="Seu Email" type="text">
+                                </div>
+                                <div class="field">
+                                    <label>Assunto</label>
+                                    <input name="assunto" placeholder="Assunto" type="text">
+                                </div>
+                                <div class="field">
+                                    <label>Mensagem</label>
+                                    <textarea name="mensagem" style="height: 30px;"></textarea>
+                                </div>
+                                <button class="ui button" type="submit">Enviar</button>
+                                <div class="ui error message"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
 
     <script>
         $('.ui.accordion').accordion();
@@ -151,8 +164,7 @@
                             ]
                         }
                     }
-                })
-        ;
+                });
     </script>
 
 {% endblock body %}
