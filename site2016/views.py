@@ -87,3 +87,13 @@ def projetos(request):
 def sobre(request):
     context_dictionary = {'pagina': 'sobre'}
     return render(request, 'site2016/sobre.html', context_dictionary)
+
+
+def processo_seletivo(request):
+    context_dictionary = {'pagina': 'processo_seletivo'}
+    return render(request, 'site2016/processoseletivo.html', context_dictionary)
+
+
+def contato(request):
+    context_dictionary = {'pagina': 'contato'}
+    return render(request, 'site2016/contato.html', context_dictionary)
