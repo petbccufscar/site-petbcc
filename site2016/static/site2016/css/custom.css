@@ -151,7 +151,6 @@ p {
     text-align: center;
     transition: all 0.4s ease-in-out;
     border-radius: 7px;
-
 }
 
 .go-top:hover {
@@ -171,4 +170,17 @@ p {
     justify-content: center;
     align-items: center;
     background: none repeat scroll 0 0 #ffffff;
+}
+
+footer .ui.icon.button, .ui.icon.buttons .button {
+    margin-bottom: 8px;
+    padding: .35em;
+}
+
+footer .ui.mini.button, .ui.mini.buttons .button, .ui.mini.buttons .or {
+    font-size: 1.15rem;
+}
+
+footer #paragrafo_rodape {
+    margin-left: 3px;
 }
