@@ -52,9 +52,10 @@
 #fundo_azul_titulo {
     /*background: #0c4d78;*/
     background: #003e67;
-    padding: 0em;
+    /*padding: 0em;*/
     padding-top: 5.5em;
-    padding-bottom: 0.8em;
+    /*padding-bottom: 0.8em;*/
+    margin-bottom: 0em;
     margin-top: 0em;
     border-radius: 0px; /* verificar o porque isso não é padrão */
     overflow-x: hidden;
@@ -97,6 +98,7 @@ p {
 #titulo_pagina {
     font-weight: 900;
     text-transform: uppercase;
+    padding: 0em;
 }
 
 #titulo_secao {
