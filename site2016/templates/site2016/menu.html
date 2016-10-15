@@ -1,19 +1,49 @@
 {% load staticfiles %}
 
-<nav class="ui fixed main menu" id="menu_principal" role="navigation">
-    <div class="left menu">
-        <a href="{% url 'home' %}" class="item">
-            <img class="ui tiny image" src="{% static 'site2016/images/logos/petbcc.png' %}" alt="Logo do PET-BCC">
-        </a>
+<div class="ui grid">
+    <div class="computer tablet only row">
+        <nav class="ui fixed hidden main menu" id="menu_principal" role="navigation">
+            <div class="left menu">
+                <a href="{% url 'home' %}" class="item">
+                    <img class="ui tiny image" src="{% static 'site2016/images/logos/petbcc.png' %}"
+                         alt="Logo do PET-BCC">
+                </a>
+            </div>
+            <div class="right menu">
+                <a href="{% url 'home' %}" class="{% if pagina == 'home' %}active{% endif %} item"><b>Página Inicial</b></a>
+                <a href="{% url 'sobre' %}" class="{% if pagina == 'sobre' %}active{% endif %} item"><b>Sobre</b></a>
+                <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
+                <a href="{% url 'projetos' %}"
+                   class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
+                <a href="{% url 'processo_seletivo' %}"
+                   class="{% if pagina == 'processo_seletivo' %}active{% endif %} item"><b>Processo
+                    Seletivo</b></a>
+                <a href="{% url 'contato' %}" class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato +
+                    FAQ</b></a>
+            </div>
+        </nav>
     </div>
-    <div class="right menu">
-        <a href="{% url 'home' %}" class="{% if pagina == 'home' %}active{% endif %} item"><b>Página Inicial</b></a>
-        <a href="{% url 'sobre' %}" class="{% if pagina == 'sobre' %}active{% endif %} item"><b>Sobre</b></a>
-        <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
-        <a href="{% url 'projetos' %}" class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
-        <a href="{% url 'processo_seletivo' %}" class="{% if pagina == 'processo_seletivo' %}active{% endif %} item"><b>Processo
-            Seletivo</b></a>
-        <a href="{% url 'contato' %}" class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato +
-            FAQ</b></a>
+    <div class="mobile only row">
+        <nav class="ui fixed hidden main menu" id="menu_principal" role="navigation">
+            <div class="left menu">
+                <a href="{% url 'home' %}" class="item">
+                    <img class="ui tiny image" src="{% static 'site2016/images/logos/petbcc.png' %}"
+                         alt="Logo do PET-BCC">
+                </a>
+            </div>
+            <div class="right menu">
+                <a class="toc item">
+                    <i class="large sidebar icon"></i>
+                </a>
+            </div>
+        </nav>
     </div>
-</nav>
+</div>
+
+<script type="text/javascript">
+    $('.ui.sidebar')
+            .sidebar('setting', 'transition', 'overlay')
+            .sidebar('setting', 'mobileTransition', 'overlay')
+            .sidebar('attach events', '.toc.item')
+    ;
+</script>
