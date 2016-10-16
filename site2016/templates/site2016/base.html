@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html lang="pt">
+<html class="loading" lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -12,10 +12,10 @@
 
     <script src="{% static 'site2016/js/jquery.js' %}"></script>
 {#    <script src="{% static 'site2016/js/jquery-3.1.1.min.js' %}"></script>#}
-
     <script src="{% static 'site2016/js/wow.min.js' %}"></script>
     <script src="{% static 'site2016/js/custom.js' %}"></script>
     <script src="{% static 'site2016/css/semantic/semantic.min.js' %}"></script>
+
 
     <link rel="stylesheet" href="{% static 'site2016/css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'site2016/css/semantic/semantic.min.css' %}">
@@ -45,6 +45,9 @@
     {% block head_extensions %}{% endblock head_extensions %}
 </head>
 <body>
+<div class="preloader">
+    <img src="{% static 'site2016/images/loading.gif' %}" alt="Aguarde! Carregando..." height="50%">
+</div>
 
 <div class="ui right vertical menu sidebar">
     <div class="ui grid">
@@ -54,7 +57,7 @@
             </div>
             <div class="row">
                 <a href="{% url 'home' %}" class="{% if pagina == 'home' %}active{% endif %} item"><b>Página Inicial</b></a>
-                <a href="{% url 'sobre' %}" class="{% if pagina == 'sobre' %}active{% endif %} item"><b>Sobre</b></a>
+{#                <a href="{% url 'sobre' %}" class="{% if pagina == 'sobre' %}active{% endif %} item"><b>Sobre</b></a>#}
                 <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
                 <a href="{% url 'projetos' %}"
                    class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
@@ -69,9 +72,7 @@
 </div>
 
 <div class="pusher">
-    <div class="preloader">
-        <img src="{% static 'site2016/images/loading.gif' %}" alt="Aguarde! Carregando..." height="50%">
-    </div>
+
 
     {% block menu %}
         {% include 'site2016/menu.html' %}
