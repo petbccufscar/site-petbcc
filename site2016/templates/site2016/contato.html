@@ -95,7 +95,8 @@
                 <div class="row">
                     <div class="ui two column stackable centered grid">
                         <div class="column">
-                            <form class="ui form" role="form">
+                            <form class="ui form" role="form" method="post" action=".">
+                                {% csrf_token %}
                                 <div class="field">
                                     <label>Seu Nome</label>
                                     <input name="nome" placeholder="Seu Nome" type="text">

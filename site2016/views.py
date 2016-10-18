@@ -95,5 +95,19 @@ def processo_seletivo(request):
 
 
 def contato(request):
-    context_dictionary = {'pagina': 'contato'}
-    return render(request, 'site2016/contato.html', context_dictionary)
+    if request.method == 'POST':
+        try:
+            print(request.POST['nome'])
+            print(request.POST['email'])
+            print(request.POST['assunto'])
+            print(request.POST['mensagem'])
+
+        except:
+            pass
+
+        context_dictionary = {'pagina': 'contato'}
+        return render(request, 'site2016/contato.html', context_dictionary)
+
+    else:
+        context_dictionary = {'pagina': 'contato'}
+        return render(request, 'site2016/contato.html', context_dictionary)
