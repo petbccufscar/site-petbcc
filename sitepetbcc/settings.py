@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+with open(BASE_DIR + '/sitepetbcc/api_keys/sendgrid.txt') as f:
+    sendgrid = f.read().strip()
+SENDGRID_API_KEY = sendgrid
 
 # Application definition
 
