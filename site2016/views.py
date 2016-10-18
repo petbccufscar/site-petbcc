@@ -1,4 +1,7 @@
 from django.shortcuts import render
+import sendgrid
+from sendgrid.helpers.mail import *
+from django.conf import settings
 
 # Create your views here.
 
@@ -97,10 +100,29 @@ def processo_seletivo(request):
 def contato(request):
     if request.method == 'POST':
         try:
-            print(request.POST['nome'])
-            print(request.POST['email'])
-            print(request.POST['assunto'])
-            print(request.POST['mensagem'])
+            nome = request.POST['nome']
+            email = request.POST['email']
+            assunto = request.POST['assunto']
+            mensagem = request.POST['mensagem']
+
+            # print(request.POST['nome'])
+            # print(request.POST['email'])
+            # print(request.POST['assunto'])
+            # print(request.POST['mensagem'])
+
+            sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
+            from_email = Email(nome+" <"+email+">")
+            subject = "CONTATO VIA SITE: "+assunto
+            to_email = Email("PET-BCC <petbcc@googlegroups.com>")
+
+            conteudo_email = mensagem
+
+            content = Content("text/html", conteudo_email)
+            ready_mail = Mail(from_email,subject,to_email, content)
+
+            response = sg.client.mail.send.post(request_body=ready_mail.get())
+
+            print(response.status_code)
 
         except:
             pass
