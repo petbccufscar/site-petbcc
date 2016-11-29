@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +25,10 @@ SECRET_KEY = 'nk^s!%1575n3$n@sahp652wt2!8s7g&q@zr9h*_46_dr$$%xw#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'petbcc2.dc.ufscar.br']
+
+if socket.gethostname() == 'ssh.dc.ufscar.br':
+    DEBUG = False
 
 with open(BASE_DIR + '/sitepetbcc/api_keys/sendgrid.txt') as f:
     sendgrid = f.read().strip()

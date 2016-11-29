@@ -43,7 +43,7 @@ exMembros = [{'nome': 'Alan Cesar Laine', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Douglas Antonio Martins Barbino', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Eduardo Kazuo Nakao', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Felipe Castro Dezotti', 'descricao': '', 'foto': 'user.png'},
-             {'nome': 'Gabriela Vanessa Pereira Alves Mattos', 'descricao': '', 'foto': 'gabriela_vanessa_pereira_alves_mattos.jpg'},
+             {'nome': 'Gabriela Vanessa Pereira Alves Mattos', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Guilherme Cuppi Jeronimo', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Guilherme Rigo Reccio', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Hugo Leonardo M. A. de Barros', 'descricao': '', 'foto': 'user.png'},
@@ -67,12 +67,12 @@ exMembros = [{'nome': 'Alan Cesar Laine', 'descricao': '', 'foto': 'user.png'},
 
 
 def manutencao(request):
-    return render(request, 'site2016/manutencao.html', {})
+    return render(request, 'site2016/manutencao.html', {'DEBUG': settings.DEBUG})
 
 
 def home(request):
     if not settings.MANUTENCAO:
-        context_dictionary = {'pagina': 'home'}
+        context_dictionary = {'pagina': 'home', 'DEBUG': settings.DEBUG}
         return render(request, 'site2016/home.html', context_dictionary)
     else:
         return render(request, 'site2016/manutencao.html', {})
@@ -84,23 +84,24 @@ def equipe(request):
                           'bolsistas': bolsistas,
                           'naoBolsistas': naoBolsistas,
                           'voluntarios': voluntarios,
-                          'exMembros': exMembros}
+                          'exMembros': exMembros,
+                          'DEBUG': settings.DEBUG}
 
     return render(request, 'site2016/equipe.html', context_dictionary)
 
 
 def projetos(request):
-    context_dictionary = {'pagina': 'projetos'}
+    context_dictionary = {'pagina': 'projetos', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/projetos.html', context_dictionary)
 
 
 def sobre(request):
-    context_dictionary = {'pagina': 'sobre'}
+    context_dictionary = {'pagina': 'sobre', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/sobre.html', context_dictionary)
 
 
 def processo_seletivo(request):
-    context_dictionary = {'pagina': 'processo_seletivo'}
+    context_dictionary = {'pagina': 'processo_seletivo', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/processoseletivo.html', context_dictionary)
 
 
@@ -134,9 +135,8 @@ def contato(request):
         except:
             pass
 
-        context_dictionary = {'pagina': 'contato'}
+        context_dictionary = {'pagina': 'contato', 'DEBUG': settings.DEBUG}
         return render(request, 'site2016/contato.html', context_dictionary)
-
     else:
-        context_dictionary = {'pagina': 'contato'}
+        context_dictionary = {'pagina': 'contato', 'DEBUG': settings.DEBUG}
         return render(request, 'site2016/contato.html', context_dictionary)
