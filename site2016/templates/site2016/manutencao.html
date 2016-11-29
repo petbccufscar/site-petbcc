@@ -1,0 +1,36 @@
+{% extends 'site2016/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Em manutenção - PET-BCC UFSCar
+{% endblock title %}
+
+{% block head_extensions %}
+    <link rel="stylesheet" href="{% static 'site2016/css/custom.css' %}">
+{% endblock head_extensions %}
+
+{% block menu %}{% endblock menu %}
+
+{% block body %}
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+        <div class="ui grid">
+            <div class="column">
+                <div class="row">
+                    <h1 class="ui inverted header" id="titulo_pagina">
+                        Em manutenção
+                    </h1>
+                    <h2 class="ui inverted header">
+                        Estamos realizando melhorias em nosso site e voltamos em breve :-)
+                    </h2>
+                    <h3 class="ui inverted header">
+                        PET-BCC UFSCar
+                        <br>Universidade Federal de São Carlos
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock body %}
+
+{% block footer %}{% endblock footer %}
