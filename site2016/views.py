@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 import sendgrid
 from sendgrid.helpers.mail import *
 from django.conf import settings
@@ -66,9 +66,16 @@ exMembros = [{'nome': 'Alan Cesar Laine', 'descricao': '', 'foto': 'user.png'},
              {'nome': 'Thiago Neves Romero', 'descricao': '', 'foto': 'user.png'}]
 
 
+def manutencao(request):
+    return render(request, 'site2016/manutencao.html', {})
+
+
 def home(request):
-    context_dictionary = {'pagina': 'home'}
-    return render(request, 'site2016/home.html', context_dictionary)
+    if not settings.MANUTENCAO:
+        context_dictionary = {'pagina': 'home'}
+        return render(request, 'site2016/home.html', context_dictionary)
+    else:
+        return render(request, 'site2016/manutencao.html', {})
 
 
 def equipe(request):
