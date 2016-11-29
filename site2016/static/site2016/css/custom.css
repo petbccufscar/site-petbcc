@@ -148,8 +148,14 @@ p {
     background: none repeat scroll 0 0 #ffffff;
 }
 
+/*.icone_rodape  .ui.icon.button, .ui.icon.buttons .button{*/
+    /*margin-bottom: 0.5em;*/
+    /*padding: .35em;*/
+    /*font-size: 1.15em;*/
+/*}*/
+
 footer .ui.icon.button, .ui.icon.buttons .button {
-    margin-bottom: 8px;
+    margin-bottom: 0.5em;
     padding: .35em;
 }
 

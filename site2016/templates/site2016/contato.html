@@ -23,90 +23,28 @@
     </header>
 
     <main role="main">
-
-{#        <section class="ui vertical stripe segment" role="region">#}
-{#            <div class="ui middle aligned stackable grid container">#}
-{#                <div class="row">#}
-{#                    <div class="column">#}
-{#                        <h1 class="ui centered header" id="titulo_secao">Perguntas Frequentes</h1>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="row">#}
-{#                    <div class="column">#}
-{#                        <div class="ui styled fluid accordion">#}
-{#                            <div class="title">#}
-{#                                <i class="dropdown icon"></i>#}
-{#                                What is a dog?#}
-{#                            </div>#}
-{#                            <div class="content">#}
-{#                                <p class="transition hidden">A dog is a type of domesticated animal. Known for its#}
-{#                                    loyalty#}
-{#                                    and#}
-{#                                    faithfulness, it can be found as a welcome guest in many households across the#}
-{#                                    world.</p>#}
-{#                            </div>#}
-{#                            <div class="title">#}
-{#                                <i class="dropdown icon"></i>#}
-{#                                What kinds of dogs are there?#}
-{#                            </div>#}
-{#                            <div class="content">#}
-{#                                <p class="transition hidden">There are many breeds of dogs. Each breed varies in size#}
-{#                                    and#}
-{#                                    temperament. Owners often select a breed of dog that they find to be compatible with#}
-{#                                    their#}
-{#                                    own lifestyle and desires from a companion.</p>#}
-{#                            </div>#}
-{#                            <div class="title">#}
-{#                                <i class="dropdown icon"></i>#}
-{#                                How do you acquire a dog?#}
-{#                            </div>#}
-{#                            <div class="content">#}
-{#                                <p class="transition hidden">Three common ways for a prospective owner to acquire a dog#}
-{#                                    is#}
-{#                                    from#}
-{#                                    pet shops, private owners, or shelters.</p>#}
-{#                                <p class="transition hidden">A pet shop may be the most convenient way to buy a dog.#}
-{#                                    Buying#}
-{#                                    a#}
-{#                                    dog from a private owner allows you to assess the pedigree and upbringing of your#}
-{#                                    dog#}
-{#                                    before#}
-{#                                    choosing to take it home. Lastly, finding your dog from a shelter, helps give a good#}
-{#                                    home to#}
-{#                                    a dog who may not find one so readily.</p>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </section>#}
-
         <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
             <div class="ui stackable center aligned grid container">
-{#                <div class="row">#}
-{#                    <div class="column center aligned">#}
-{#                        <h1 class="ui centered header" id="titulo_secao">Contato</h1>#}
-{#                        <p>Entre em contato conosco pelo email <a#}
-{#                                href="mailto:petbcc@dc.ufscar.br">petbcc@dc.ufscar.br</a> ou preencha o formulário#}
-{#                            abaixo.#}
-{#                        </p>#}
-{#                    </div>#}
-{#                </div>#}
+                <div class="row">
+                    <div class="column center aligned">
+                        <p>Dúvidas, sugestões ou comentários? Entre em contato conosco pelo formulário a seguir:</p>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="ui two column stackable centered grid">
                         <div class="column">
                             <form class="ui form" role="form" method="post" action=".">
                                 {% csrf_token %}
                                 <div class="field">
-                                    <label>Seu Nome</label>
-                                    <input name="nome" placeholder="Seu Nome" type="text">
+                                    <label>Seu nome</label>
+                                    <input name="nome" placeholder="Seu nome" type="text">
                                 </div>
                                 <div class="field">
-                                    <label>Seu Email</label>
-                                    <input name="email" placeholder="Seu Email" type="text">
+                                    <label>Seu e-mail</label>
+                                    <input name="email" placeholder="Seu e-mail" type="text">
                                 </div>
                                 <div class="field">
-                                    <label>Assunto</label>
+                                    <label>Assunto da mensagem</label>
                                     <input name="assunto" placeholder="Assunto" type="text">
                                 </div>
                                 <div class="field">
@@ -127,12 +65,6 @@
 
     </main>
 
-
-
-    <script>
-        $('.ui.accordion').accordion();
-    </script>
-
     <script>
         $('.ui.form')
                 .form({
@@ -143,7 +75,7 @@
                             rules: [
                                 {
                                     type: 'empty',
-                                    prompt: 'Por favor, informe seu nome'
+                                    prompt: 'Por favor, informe seu nome.'
                                 }
                             ]
                         },
@@ -152,7 +84,7 @@
                             rules: [
                                 {
                                     type: 'email',
-                                    prompt: 'Por favor, digite um endereço de email válido'
+                                    prompt: 'Por favor, digite um endereço de e-mail válido.'
                                 }
                             ]
                         },
@@ -161,7 +93,7 @@
                             rules: [
                                 {
                                     type: 'empty',
-                                    prompt: 'Por favor, preencha o campo Assunto'
+                                    prompt: 'Por favor, preencha o campo Assunto.'
                                 }
                             ]
                         },
@@ -170,7 +102,7 @@
                             rules: [
                                 {
                                     type: 'empty',
-                                    prompt: 'Por favor, informe uma mensagem'
+                                    prompt: 'Por favor, digite a sua mensagem.'
                                 }
                             ]
                         }
