@@ -59,8 +59,32 @@
                 </div>
             </div>
         </section>
-        <section>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3699.8238490302215!2d-47.88273818439348!3d-21.979722710974197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8711e42fdad05%3A0x6a0cd2ccbce13d28!2sDepartamento+de+Computa%C3%A7%C3%A3o%2C+Universidade+Federal+de+S%C3%A3o+Carlos!5e0!3m2!1sen!2sus!4v1480425559308" width="1920" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+        <style>
+            .google-maps-responsive {
+                overflow:hidden;
+                padding-bottom: 30%;
+                position:relative;
+                height:0;
+            }
+
+            @media (max-width: 800px) {
+                .google-maps-responsive {
+                    padding-bottom: 50%;
+                }
+            }
+
+            .google-maps-responsive iframe {
+                left:0;
+                top:0;
+                height:100%;
+                width:100%;
+                position:absolute;
+            }
+        </style>
+
+        <section class="google-maps-responsive">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3699.8238490302215!2d-47.88273818439348!3d-21.979722710974197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8711e42fdad05%3A0x6a0cd2ccbce13d28!2sDepartamento+de+Computa%C3%A7%C3%A3o%2C+Universidade+Federal+de+S%C3%A3o+Carlos!5e0!3m2!1sen!2sus!4v1480425559308" width="1920" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
         </section>
 
     </main>
