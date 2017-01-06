@@ -27,15 +27,17 @@ bolsistas = [
     {'nome': 'Thiago Yonamine', 'descricao': 'BCC 014', 'foto': 'thiago_yonamine.jpg', 'contato': 'ThiagoYonamine'}]
 
 nao_bolsistas = [
-    {'nome': 'Felipe Quécole', 'descricao': 'BCC 014', 'foto': 'felipe_quecole.jpg', 'contato': 'felipequecole'},
-    {'nome': 'Gabriela Purini Chermont', 'descricao': 'BCC 016', 'foto': 'gabriela_purini_chermont.jpg'},
+    {'nome': 'Felipe Quécole', 'descricao': 'BCC 015', 'foto': 'felipe_quecole.jpg', 'contato': 'felipequecole'},
+    {'nome': 'Gabriela Purini Chermont', 'descricao': 'BCC 015', 'foto': 'gabriela_purini_chermont.jpg'},
     {'nome': 'João Gabriel Melo Barbirato', 'descricao': 'BCC 016', 'foto': 'joao_gabriel_melo_barbirato.jpg', 'contato': 'joaobarbirato'},
     {'nome': 'Julia de Moura Caetano', 'descricao': 'BCC 015', 'foto': 'julia_de_moura_caetano.jpg', 'contato': 'juliamourac'},
     {'nome': 'Miguel de Souza Tosta', 'descricao': 'BCC 015', 'foto': 'miguel_de_souza_tosta.jpg', 'contato': 'miguelsott'},
     {'nome': 'Renata Sarmet Smiderle Mendes', 'descricao': 'BCC 016', 'foto': 'renata_sarmet_smiderle_mendes.jpg', 'contato': 'renatasarmet'}
 ]
 
-voluntarios = [{'nome': 'Fernando Messias da Silva', 'descricao': 'BCC 012', 'foto': 'fernando_messias_da_silva.jpg', 'contato': 'fernandoMessias'},
+voluntarios = [
+    {'nome': 'Fernando Messias da Silva', 'descricao': 'BCC 012', 'foto': 'fernando_messias_da_silva.jpg', 'contato': 'fernandoMessias'},
+    {'nome': 'Leonardo de Oliveira Peralta', 'descricao': 'BCC 016', 'foto': 'leonardo_de_oliveira_peralta.jpg', 'contato': 'leonardo1101'}
 ]
 
 ex_membros = [{'nome': 'Alan Cesar Laine', 'descricao': '', 'foto': 'user.png'},
