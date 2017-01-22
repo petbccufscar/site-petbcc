@@ -40,16 +40,16 @@
                                                     <div class="content">
                                                         <div class="center">
                                                             <h5 class="ui inverted small icon header"><i
-                                                                    class="mail icon"></i>{{ integrante.contato|safe }}
+                                                                    class="mail icon"></i>{{ integrante.email|safe }}
                                                             </h5>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <img class="ui centered small circular image"
-                                                     src="{% static 'site2016/images/equipe/'|add:integrante.foto %}"
-                                                     alt="Foto de perfil: {{ integrante.nome }}">
+                                                     src="/media/{{ integrante.foto }}"
+                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                             </div>
-                                            <h3 class="ui header">{{ integrante.nome }}</h3>
+                                            <h3 class="ui header">{{ integrante.titulo }} {{ integrante.nome }} {{ integrante.sobrenome }}</h3>
                                             {{ integrante.descricao }}
                                         </div>
                                     </div>
@@ -75,15 +75,15 @@
                                     <div class="column wow fadeInDown" data-wow-delay="0.5s">
                                         <div class="content" id="foto_membro_equipe">
                                             <div class="ui circular image">
-                                                {% if integrante.contato %}
+                                                {% if integrante.github %}
                                                     <div class="ui dimmer">
                                                         <div class="content">
                                                             <div class="center">
                                                                 <h5 class="ui inverted small icon header"><a
-                                                                        href="https://github.com/{{ integrante.contato|safe }}"
+                                                                        href="https://github.com/{{ integrante.github|safe }}"
                                                                         target="_blank"><i
                                                                         class="github icon"></i>
-                                                                    {{ integrante.contato }}
+                                                                    {{ integrante.github }}
                                                                 </a>
                                                                 </h5>
                                                             </div>
@@ -91,11 +91,11 @@
                                                     </div>
                                                 {% endif %}
                                                 <img class="ui centered small circular image"
-                                                     src="{% static 'site2016/images/equipe/'|add:integrante.foto %} "
-                                                     alt="Foto de perfil: {{ integrante.nome }}">
+                                                     src="/media/{{ integrante.foto }}"
+                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                             </div>
-                                            <h3 class="ui header">{{ integrante.nome }}</h3>
-                                            {{ integrante.descricao }}
+                                            <h3 class="ui header">{{ integrante.nome }} {{ integrante.sobrenome }}</h3>
+                                            BCC {{ integrante.ano }}
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -106,7 +106,7 @@
             </section>
         {% endif %}
 
-        {% if naoBolsistas %}
+        {% if nao_bolsistas %}
             <section class="ui stripe medium-font vertical feature segment" role="region">
                 <div class="ui grid container">
                     <div class="centered row">
@@ -116,19 +116,19 @@
                     <div class="centered row">
                         <div class="sixteen wide column">
                             <div class="ui six column center aligned doubling grid">
-                                {% for integrante in naoBolsistas %}
+                                {% for integrante in nao_bolsistas %}
                                     <div class="column wow fadeInDown" data-wow-delay="0.5s">
                                         <div class="content" id="foto_membro_equipe">
                                             <div class="ui circular image">
-                                                {% if integrante.contato %}
+                                                {% if integrante.github %}
                                                     <div class="ui dimmer">
                                                         <div class="content">
                                                             <div class="center">
                                                                 <h5 class="ui inverted small icon header"><a
-                                                                        href="https://github.com/{{ integrante.contato|safe }}"
+                                                                        href="https://github.com/{{ integrante.github|safe }}"
                                                                         target="_blank"><i
                                                                         class="github icon"></i>
-                                                                    {{ integrante.contato }}
+                                                                    {{ integrante.github }}
                                                                 </a>
                                                                 </h5>
                                                             </div>
@@ -136,11 +136,11 @@
                                                     </div>
                                                 {% endif %}
                                                 <img class="ui centered small circular image"
-                                                     src="{% static 'site2016/images/equipe/'|add:integrante.foto %}"
-                                                     alt="Foto de perfil: {{ integrante.nome }}">
+                                                     src="/media/{{ integrante.foto }}"
+                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                             </div>
-                                            <h3 class="ui header">{{ integrante.nome }}</h3>
-                                            {{ integrante.descricao }}
+                                            <h3 class="ui header">{{ integrante.nome }} {{ integrante.sobrenome }}</h3>
+                                            BCC {{ integrante.ano }}
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -165,15 +165,15 @@
                                     <div class="column wow fadeInDown" data-wow-delay="0.5s">
                                         <div class="content" id="foto_membro_equipe">
                                             <div class="ui circular image">
-                                                {% if integrante.contato %}
+                                                {% if integrante.github %}
                                                     <div class="ui dimmer">
                                                         <div class="content">
                                                             <div class="center">
                                                                 <h5 class="ui inverted small icon header"><a
-                                                                        href="https://github.com/{{ integrante.contato|safe }}"
+                                                                        href="https://github.com/{{ integrante.github|safe }}"
                                                                         target="_blank"><i
                                                                         class="github icon"></i>
-                                                                    {{ integrante.contato }}
+                                                                    {{ integrante.github }}
                                                                 </a>
                                                                 </h5>
                                                             </div>
@@ -181,11 +181,11 @@
                                                     </div>
                                                 {% endif %}
                                                 <img class="ui centered small circular image"
-                                                     src="{% static 'site2016/images/equipe/'|add:integrante.foto %}"
-                                                     alt="Foto de perfil: {{ integrante.nome }}">
+                                                     src="/media/{{ integrante.foto }}"
+                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                             </div>
-                                            <h3 class="ui header">{{ integrante.nome }}</h3>
-                                            {{ integrante.descricao }}
+                                            <h3 class="ui header">{{ integrante.nome }} {{ integrante.sobrenome }}</h3>
+                                            BCC {{ integrante.ano }}
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -236,7 +236,7 @@
             </div>
         </section>
 
-        {% if exMembros %}
+        {% if ex_membros %}
             <section class="ui stripe medium-font vertical feature segment" id="fundo_cinza" role="region">
                 <div class="ui grid container">
                     <div class="centered row">
@@ -245,16 +245,13 @@
                     <div class="centered row">
                         <div class="sixteen wide column">
                             <div class="ui twelve column center aligned doubling grid">
-                                {% for integrante in exMembros %}
+                                {% for integrante in ex_membros %}
                                     <div class="column wow fadeInDown" data-wow-delay="0.5s">
                                         <div class="content" id="foto_membro_equipe">
-                                            {#                                        <img class="ui small circular centered image"#}
-                                            {#                                             src="{% static 'site2016/images/'|add:integrante.foto %}" alt="Foto de perfil: {{ integrante.nome }}">#}
                                             <h5 class="ui icon header">
                                                 <i class="circular user inverted grey icon"></i>
-                                                {{ integrante.nome }}
+                                                {{ integrante.nome }} {{ integrante.sobrenome }}
                                             </h5>
-                                            {{ integrante.descricao }}
                                         </div>
                                     </div>
                                 {% endfor %}

@@ -1,6 +1,5 @@
 from django.db import models
 import datetime
-from django.conf import settings
 
 class MembroEquipe(models.Model):
 
@@ -15,9 +14,9 @@ class MembroEquipe(models.Model):
 
     nome = models.CharField(max_length=50, verbose_name='nome')
     sobrenome = models.CharField(max_length=100, verbose_name='sobrenome')
-    ano = models.IntegerField(verbose_name='ano', blank=True, choices=ANO_CHOICES)
-    foto = models.ImageField(verbose_name='foto', blank=True, upload_to='images/equipe/')
-    github = models.CharField(max_length=100, blank=True, verbose_name='GitHub')
+    ano = models.IntegerField(verbose_name='ano', null=True, blank=True, choices=ANO_CHOICES)
+    foto = models.ImageField(verbose_name='foto', null=True, blank=True, upload_to='images/equipe/')
+    github = models.CharField(max_length=100, null=True, blank=True, verbose_name='GitHub')
 
 
 class Aluno(MembroEquipe):
@@ -26,7 +25,13 @@ class Aluno(MembroEquipe):
         verbose_name_plural = 'alunos'
 
     def __str__(self):
-        return '[Aluno] ' + self.nome + ' ' + self.sobrenome
+        situacao_aluno = {
+            'B': 'Bolsista',
+            'N': 'Não-bolsista',
+            'V': 'Voluntário',
+            'E': 'Ex-membro'
+        }
+        return '[' + situacao_aluno[self.situacao] + '] ' + self.nome + ' ' + self.sobrenome
 
     SITUACAO_CHOICES = (
         ('B', 'Bolsista'),
