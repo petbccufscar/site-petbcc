@@ -11,17 +11,21 @@
             </div>
             <div class="right menu">
                 <a href="{% url 'home' %}" class="{% if pagina == 'home' %}active{% endif %} item"><b>Página Inicial</b></a>
-{#                <a href="{% url 'sobre' %}" class="{% if pagina == 'sobre' %}active{% endif %} item"><b>Sobre</b></a>#}
                 <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
                 <a href="{% url 'projetos' %}"
                    class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
-                <a href="{% url 'processo_seletivo' %}"
-                   class="{% if pagina == 'processo_seletivo' %}active{% endif %} item"><b>Processo
-                    Seletivo</b></a>
+                <div class="ui dropdown {% if pagina == 'projetos' %}active{% endif %} item">
+                    <b>Processo Seletivo <i class="ui dropdown icon"></i></b>
+                    <div class="ui vertical menu">
+                        <a class="item" href="{% url 'processo_seletivo' %}">Processo Seletivo 2017/1</a>
+                        <a class="item" href="{% url 'processo_seletivo_2016_2' %}">Processo Seletivo 2016/2</a>
+                    </div>
+                </div>
                 <a href="{% url 'contato' %}" class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
             </div>
         </nav>
     </div>
+
     <div class="mobile only row">
         <nav class="ui fixed hidden main menu" id="menu_principal" role="navigation">
             <div class="left menu">
@@ -40,9 +44,13 @@
 </div>
 
 <script type="text/javascript">
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+
     $('.ui.sidebar')
-            .sidebar('setting', 'transition', 'overlay')
-            .sidebar('setting', 'mobileTransition', 'overlay')
-            .sidebar('attach events', '.toc.item')
+        .sidebar('setting', 'transition', 'overlay')
+        .sidebar('setting', 'mobileTransition', 'overlay')
+        .sidebar('attach events', '.toc.item')
     ;
 </script>
