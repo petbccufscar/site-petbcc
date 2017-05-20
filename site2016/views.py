@@ -39,7 +39,7 @@ def processo_seletivo(request):
 
 
 def processo_seletivo_2016_2(request):
-    context_dictionary = {'pagina': 'processo_seletivo', 'DEBUG': settings.DEBUG}
+    context_dictionary = {'pagina': 'processo_seletivo_2016_2', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/processos_seletivos_anteriores/processoseletivo_2016_2.html', context_dictionary)
 
 

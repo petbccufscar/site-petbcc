@@ -14,11 +14,13 @@
                 <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
                 <a href="{% url 'projetos' %}"
                    class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
-                <div class="ui dropdown {% if pagina == 'projetos' %}active{% endif %} item">
-                    <b>Processo Seletivo <i class="ui dropdown icon"></i></b>
+                <div class="ui dropdown item">
+                    <b>Processo Seletivo</b> <i class="ui dropdown icon"></i>
                     <div class="ui vertical menu">
-                        <a class="item" href="{% url 'processo_seletivo' %}">Processo Seletivo 2017/1</a>
-                        <a class="item" href="{% url 'processo_seletivo_2016_2' %}">Processo Seletivo 2016/2</a>
+                        <a class="item {% if pagina == 'processo_seletivo' %}active{% endif %}"
+                           href="{% url 'processo_seletivo' %}">Processo Seletivo 2017/1</a>
+                        <a class="item {% if pagina == 'processo_seletivo_2016_2' %}active{% endif %}"
+                           href="{% url 'processo_seletivo_2016_2' %}">Processo Seletivo 2016/2</a>
                     </div>
                 </div>
                 <a href="{% url 'contato' %}" class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
