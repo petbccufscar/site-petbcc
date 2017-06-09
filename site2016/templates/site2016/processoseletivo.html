@@ -84,14 +84,14 @@
                                                 </div>
                                                 <div class="center aligned column wow fadeInLeft" data-wow-delay="0.8s">
                                                     <h3 class="ui icon header">
-                                                        <i class="ui grey checkmark box icon"></i>
+                                                        <i class="ui blue checkmark box icon"></i>
                                                         <div class="content">[Etapa 2]<br>Avaliação escrita</div>
                                                         <div class="sub header">31/05 - 18h45 às 22h<br>08/06 -
                                                             Resultado
                                                         </div>
                                                     </h3>
                                                     <br>
-                                                    {#                                                    <button class="ui blue button" id="botao_modal2">Resultado</button>#}
+                                                    <button class="ui blue button" id="botao_modal2">Resultado</button>
                                                 </div>
                                                 <div class="center aligned column wow fadeInLeft" data-wow-delay="0.9s">
                                                     <h3 class="ui icon header">
@@ -182,19 +182,45 @@
             </div>
         </div>
 
+        <div class="ui large modal" id="modal2">
+            <i class="close icon"></i>
+            <div class="header">
+                Processo Seletivo 2017/1 - Resultado da Etapa 2
+            </div>
+            <div class="content">
+                <div class="description">
+                    <p>Os candidados com os seguintes <i>alias</i> (em ordem de classificação) foram aprovados na etapa 2 do processo seletivo:</p>
+                    <ul>
+                        <li>Branco</li>
+                        <li>Martelo</li>
+                        <li>Baleia</li>
+                        <li>Tigre</li>
+                    </ul>
+
+                    <p>Os candidatos aprovados receberão instruções por e-mail a respeito da realização da etapa 3.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui blue ok button">
+                    <i class="close icon"></i>
+                    Fechar
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript">
             $('#modal1')
                 .modal('attach events', '#botao_modal1', 'show')
             ;
-{#            $('#modal2')#}
-{#                .modal('attach events', '#botao_modal2', 'show')#}
-{#            ;#}
-{#            $('#modal3')#}
-{#                .modal('attach events', '#botao_modal3', 'show')#}
-{#            ;#}
-{#            $('#modal4')#}
-{#                .modal('attach events', '#botao_modal4', 'show')#}
-{#            ;#}
+            $('#modal2')
+                .modal('attach events', '#botao_modal2', 'show')
+            ;
+            {#            $('#modal3')#}
+            {#                .modal('attach events', '#botao_modal3', 'show')#}
+            {#            ;#}
+            {#            $('#modal4')#}
+            {#                .modal('attach events', '#botao_modal4', 'show')#}
+            {#            ;#}
         </script>
 
     </main>
