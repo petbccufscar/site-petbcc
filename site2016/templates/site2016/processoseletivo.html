@@ -95,12 +95,12 @@
                                                 </div>
                                                 <div class="center aligned column wow fadeInLeft" data-wow-delay="0.9s">
                                                     <h3 class="ui icon header">
-                                                        <i class="ui grey checkmark box icon"></i>
-                                                        <div class="content">[Etapa 3]<br>Entrevista individual</div>
+                                                        <i class="ui blue checkmark box icon"></i>
+                                                        <div class="content">[Etapa 3]<br>Entrevista</div>
                                                         <div class="sub header">12 a 14/06<br>15/06 - Resultado</div>
                                                     </h3>
                                                     <br>
-                                                    {#                                                    <button class="ui blue button" id="botao_modal3">Resultado</button>#}
+                                                    <button class="ui blue button" id="botao_modal3">Resultado</button>
                                                 </div>
                                                 <div class="center aligned column wow fadeInLeft" data-wow-delay="1s">
                                                     <h3 class="ui icon header">
@@ -189,7 +189,8 @@
             </div>
             <div class="content">
                 <div class="description">
-                    <p>Os candidados com os seguintes <i>alias</i> (em ordem de classificação) foram aprovados na etapa 2 do processo seletivo:</p>
+                    <p>Os candidados com os seguintes <i>alias</i> (em ordem de classificação) foram aprovados na etapa
+                        2 do processo seletivo:</p>
                     <ul>
                         <li>Branco</li>
                         <li>Martelo</li>
@@ -208,6 +209,32 @@
             </div>
         </div>
 
+        <div class="ui large modal" id="modal3">
+            <i class="close icon"></i>
+            <div class="header">
+                Processo Seletivo 2017/1 - Resultado da Etapa 3
+            </div>
+            <div class="content">
+                <div class="description">
+                    <p>Os seguintes participantes, em ordem alfabética, foram aprovados na etapa 3 do processo
+                        seletivo:</p>
+                    <ul>
+                        <li>Italo Jorge Vieira</li>
+                        <li>Jéssica Caroline</li>
+                        <li>Leonardo de Oliveira Peralta</li>
+                        <li>Rene Ferrante</li>
+                    </ul>
+                    <p>Informações sobre a próxima etapa (Dinâmica) serão enviadas aos candidatos selecionados.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui blue ok button">
+                    <i class="close icon"></i>
+                    Fechar
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript">
             $('#modal1')
                 .modal('attach events', '#botao_modal1', 'show')
@@ -215,9 +242,9 @@
             $('#modal2')
                 .modal('attach events', '#botao_modal2', 'show')
             ;
-            {#            $('#modal3')#}
-            {#                .modal('attach events', '#botao_modal3', 'show')#}
-            {#            ;#}
+            $('#modal3')
+                .modal('attach events', '#botao_modal3', 'show')
+            ;
             {#            $('#modal4')#}
             {#                .modal('attach events', '#botao_modal4', 'show')#}
             {#            ;#}
