@@ -1,4 +1,7 @@
 # Novo site do PET-BCC UFSCar
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/653edaf2858a4c079c921565915c53b4)](https://www.codacy.com/app/marcelodeoliveira/sitepetbcc?utm_source=github.com&utm_medium=referral&utm_content=marcelodeolive1ra/sitepetbcc&utm_campaign=badger)
+
 Projeto Django para o novo site do PET-BCC UFSCar.
 
 [http://petbcc.dc.ufscar.br](http://petbcc.dc.ufscar.br)
