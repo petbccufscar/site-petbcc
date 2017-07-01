@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block head_extensions %}
-    <link rel="stylesheet" href="{% static 'site2016/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'site2016/css/custom.css' %}" xmlns="http://www.w3.org/1999/html">
 {% endblock head_extensions %}
 
 {% block body %}
@@ -33,7 +33,7 @@
 
                         <h1 class="ui top attached block header">
                             Processo Seletivo 2017/1
-                            <div class="ui big blue disabled label">Inscrições Encerradas</div>
+                            <div class="ui big blue label">Resultados divulgados</div>
                         </h1>
 
                         <div class="ui attached segment">
@@ -104,13 +104,14 @@
                                                 </div>
                                                 <div class="center aligned column wow fadeInLeft" data-wow-delay="1s">
                                                     <h3 class="ui icon header">
-                                                        <i class="ui grey checkmark box icon"></i>
+                                                        <i class="ui blue checkmark box icon"></i>
                                                         <div class="content">[Etapa 4]<br>Dinâmica</div>
                                                         <div class="sub header">19/06<br>27/06 - Resultado
                                                         </div>
                                                     </h3>
                                                     <br>
-                                                    {#                                                    <button class="ui blue button" id="botao_modal4">Resultado Final</button>#}
+                                                    <button class="ui blue button" id="botao_modal4">Resultado Final
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -235,6 +236,34 @@
             </div>
         </div>
 
+        <div class="ui large modal" id="modal4">
+            <i class="close icon"></i>
+            <div class="header">
+                Processo Seletivo 2017/1 - Resultado Final
+            </div>
+            <div class="content">
+                <div class="description">
+                    <p>Os seguintes candidatos foram aprovados no processo seletivo 2017/1 do PET-BCC (ordem de
+                        classificação). Parabéns a todos!</p>
+                    <ul>
+                        <li>Leonardo de Oliveira Peralta</li>
+                        <li>Jéssica Caroline</li>
+                        <li>Italo Jorge Vieira</li>
+                        <li>Rene Ferrante</li>
+                    </ul>
+
+                    </p>Instruções para assinatura do termo de compromisso serão enviadas aos candidatos por e-mail.</p>
+
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui blue ok button">
+                    <i class="close icon"></i>
+                    Fechar
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript">
             $('#modal1')
                 .modal('attach events', '#botao_modal1', 'show')
@@ -245,9 +274,9 @@
             $('#modal3')
                 .modal('attach events', '#botao_modal3', 'show')
             ;
-            {#            $('#modal4')#}
-            {#                .modal('attach events', '#botao_modal4', 'show')#}
-            {#            ;#}
+            $('#modal4')
+                .modal('attach events', '#botao_modal4', 'show')
+            ;
         </script>
 
     </main>
