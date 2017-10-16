@@ -38,9 +38,9 @@ def processo_seletivo(request):
     return render(request, 'site2016/processoseletivo.html', context_dictionary)
 
 
-def processo_seletivo_2016_2(request):
+def processo_seletivo_2017_1(request):
     context_dictionary = {'pagina': 'processo_seletivo_2016_2', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/processos_seletivos_anteriores/processoseletivo_2016_2.html', context_dictionary)
+    return render(request, 'site2016/processos_seletivos_anteriores/processoseletivo_2017_1.html', context_dictionary)
 
 
 def contato(request):
@@ -62,7 +62,9 @@ def contato(request):
             ready_mail = Mail(from_email, subject, to_email, content)
 
             response = sg.client.mail.send.post(request_body=ready_mail.get())
-
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
             # TODO: implementar mensagem de feedback ao usuário
         except:
             pass
