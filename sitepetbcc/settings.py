@@ -27,7 +27,7 @@ SECRET_KEY = 'nk^s!%1575n3$n@sahp652wt2!8s7g&q@zr9h*_46_dr$$%xw#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'petbcc2.dc.ufscar.br']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'petbcc2.dc.ufscar.br', '192.168.1.172']
 
 if socket.gethostname() == 'ssh.dc.ufscar.br':
     DEBUG = False

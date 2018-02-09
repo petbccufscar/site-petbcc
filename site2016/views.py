@@ -33,7 +33,10 @@ def projetos(request):
     return render(request, 'site2016/projetos.html', context_dictionary)
 
 
-def processo_seletivo(request):
+def processo_seletivo(request, ano, semestre):
+    print(ano)
+    print(semestre)
+
     context_dictionary = {'pagina': 'processo_seletivo', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/processoseletivo.html', context_dictionary)
 

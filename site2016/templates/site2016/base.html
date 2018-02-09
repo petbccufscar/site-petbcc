@@ -12,8 +12,9 @@
 
     <script src="{% static 'site2016/js/jquery-3.1.1.min.js' %}"></script>
     <script src="{% static 'site2016/js/wow.min.js' %}"></script>
-    <script src="{% static 'site2016/js/custom.js' %}"></script>
     <script src="{% static 'site2016/css/semantic/semantic.min.js' %}"></script>
+    <script src="{% static 'site2016/js/custom.js' %}"></script>
+
     {% if not DEBUG %}
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -54,6 +55,7 @@
     {% block head_extensions %}{% endblock head_extensions %}
 </head>
 <body>
+
 <div class="preloader">
     <img src="{% static 'site2016/images/loading.gif' %}" alt="Aguarde! Carregando..." height="30%">
 </div>
@@ -69,9 +71,9 @@
                 <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
                 <a href="{% url 'projetos' %}"
                    class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
-                <a href="{% url 'processo_seletivo' %}"
-                   class="{% if pagina == 'processo_seletivo' %}active{% endif %} item"><b>Processo
-                    Seletivo</b></a>
+{#                <a href="{% url 'processo_seletivo' ano=2017 semestre=1 %}"#}
+{#                   class="{% if pagina == 'processo_seletivo' %}active{% endif %} item"><b>Processo#}
+{#                    Seletivo</b></a>#}
                 <a href="{% url 'contato' %}" class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
             </div>
         </div>

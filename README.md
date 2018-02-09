@@ -9,7 +9,7 @@ Projeto Django para o novo site do PET-BCC UFSCar.
 ## Requisitos
 + Python 3
 + SendGrid
-+ Django 1.10+
++ Django 2.0.2
 + Pillow 4
 
 

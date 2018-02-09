@@ -1,28 +1,29 @@
+:root {
+    --main-dark-color: #007194;
+    --main-light-color: #008db9;
+}
+
 .branco {
     background: #FFFFFF;
 }
 
-#menu_principal {
-    background: rgba(255, 255, 255, 0.85);
-}
-
 @media only screen and (min-width: 768px) {
-    #masthead_index {
+    #hero_section {
         min-height: 550px;
         padding: 0em 0em 0em 0em;
         margin-top: 0em;
         background: url('../images/equipe.jpg');
         -webkit-background-size: cover;
-        background-size: cover;
-        height: 550px;
         background-position: top;
-        position: relative;
         background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        height: 100vh;
     }
 }
 
 @media only screen and (max-width: 767px) {
-    #masthead_index {
+    #hero_section {
         min-height: 450px;
         padding: 0em 0em 0em 0em;
         margin-top: 0em;
@@ -35,26 +36,20 @@
 }
 
 #principal_home {
-    /*background: #0c4d78;*/
-    /*background: #003e67;*/
     background: rgba(0, 0, 0, 0.65);
     padding: 0em;
-    /*margin-top: 0em;*/
     border-radius: 0px; /* verificar o porque isso não é padrão */
     position: absolute;
     bottom: 1em;
     left: 0;
     right: 0;
     margin-right: 0px;
-    margin-left:0px;
+    margin-left: 0px;
 }
 
 #fundo_azul_titulo {
-    /*background: #0c4d78;*/
-    background: #003e67;
-    /*padding: 0em;*/
+    background: var(--main-light-color);
     padding-top: 5.5em;
-    /*padding-bottom: 0.8em;*/
     margin-bottom: 0em;
     margin-top: 0em;
     border-radius: 0px; /* verificar o porque isso não é padrão */
@@ -70,8 +65,7 @@
 }
 
 body {
-    /*background: #1b1c1d;*/
-    background: #03253c;
+    background: var(--main-dark-color);
 }
 
 .justificado {
@@ -113,7 +107,7 @@ p {
 }
 
 .go-top {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     bottom: 1em;
     right: 1em;
     color: #ffffff;
@@ -130,7 +124,7 @@ p {
 }
 
 .go-top:hover {
-    background: #003e67;
+    background: #000000;
     color: #ffffff;
 }
 
@@ -147,12 +141,6 @@ p {
     align-items: center;
     background: none repeat scroll 0 0 #ffffff;
 }
-
-/*.icone_rodape  .ui.icon.button, .ui.icon.buttons .button{*/
-    /*margin-bottom: 0.5em;*/
-    /*padding: .35em;*/
-    /*font-size: 1.15em;*/
-/*}*/
 
 footer .ui.icon.button, .ui.icon.buttons .button {
     margin-bottom: 0.5em;
@@ -176,15 +164,14 @@ footer #paragrafo_rodape > b {
 }
 
 #rodape {
-    background: #03253c;
+    background: var(--main-dark-color);
 }
 
 .ui.vertical.stripe.segment.processo_seletivo {
-    background: #0c4d78;
+    background: var(--main-light-color);
 }
 
 .ui.container.processo_seletivo > h3 {
-    background: #0c4d78;
     padding-top: 0em;
     margin-top: 0em;
     padding-bottom: 0.2em;

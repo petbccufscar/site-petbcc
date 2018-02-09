@@ -6,7 +6,6 @@ urlpatterns = [
     url(r'^manutencao/$', views.manutencao, name='manutencao'),
     url(r'^equipe/$', views.equipe, name='equipe'),
     url(r'^projetos/$', views.projetos, name='projetos'),
-    url(r'^processoseletivo/$', views.processo_seletivo, name='processo_seletivo'),
-    url(r'^processoseletivo/2017/1/$', views.processo_seletivo_2017_1, name='processo_seletivo_2017_1'),
+    url(r'^processoseletivo/(?P<ano>[0-9]{4})/(?P<semestre>[0-9]{1})/$', views.processo_seletivo, name='processo_seletivo'),
     url(r'^contato/$', views.contato, name='contato'),
 ]

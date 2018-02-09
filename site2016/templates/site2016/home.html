@@ -12,7 +12,7 @@
 {% block body %}
 
     <!-- Imagem principal da home -->
-    <header class="ui inverted masthead center aligned segment" id="masthead_index" role="banner">
+    <header class="ui inverted masthead center aligned segment" id="hero_section" role="banner">
         <div class="ui grid" id="principal_home">
             <div class="column">
                 <div class="row">
@@ -224,7 +224,7 @@
                 <h1 class="ui centered inverted header">Processo Seletivo</h1>
                 <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a
                         alt="Link para a página de Processo Seletivo"
-                        href="{% url 'processo_seletivo' %}">processo
+                        href="{% url 'processo_seletivo' ano=2017 semestre=1 %}">processo
                     seletivo</a>.</h3>
             </div>
         </section>
