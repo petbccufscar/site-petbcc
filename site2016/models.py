@@ -149,3 +149,60 @@ class ProcessoSeletivo(models.Model):
 
     email_inscricao = models.EmailField(verbose_name="email para inscrição")
     edital = models.FileField(verbose_name="edital")
+
+
+class Categoria_de_projeto(models.Model):
+    class Meta:
+        verbose_name = 'categoria de projeto'
+        verbose_name_plural = 'categorias de projeto'
+
+    def __str__(self):
+        return '[' + self.sigla + '] ' + self.nome
+
+    nome = models.CharField(verbose_name='nome', max_length=50)
+    sigla = models.CharField(verbose_name='sigla', max_length=5)
+
+
+class Tecnologia(models.Model):
+    class Meta:
+        verbose_name = 'tecnologia'
+        verbose_name_plural = 'tecnologias'
+
+    def __str__(self):
+        return self.nome
+
+    nome = models.CharField(verbose_name='nome', max_length=100)
+    imagem = models.ImageField(verbose_name='logo', blank=True, null=True)
+    link = models.CharField(verbose_name='link', max_length=100, blank=True, null=True)
+
+
+class Projeto(models.Model):
+    class Meta:
+        verbose_name = 'projeto'
+        verbose_name_plural = 'projetos'
+
+    def __str__(self):
+        return self.nome
+
+    nome = models.CharField(verbose_name='nome', max_length=100)
+
+    STATUS_CHOICES = (
+        ('D', 'Em desenvolvimento'),
+        ('A', 'Ativo'),
+        ('F', 'Finalizado'),
+        ('C', 'Cancelado')
+    )
+
+    data_inicio = models.DateField(verbose_name="data de início", default=datetime.datetime.now, blank=True,
+                                   null=True)
+    data_final = models.DateField(verbose_name="data de finalização", blank=True, null=True)
+
+    status = models.CharField(verbose_name='status do projeto', choices=STATUS_CHOICES, max_length=1, default='A')
+
+    descricao = models.TextField(verbose_name='descrição')
+
+    tecnologias = models.ManyToManyField(Tecnologia, verbose_name='tecnologias utilizadas', blank=True)
+
+    categorias = models.ManyToManyField(Categoria_de_projeto, verbose_name='categorias do projeto')
+
+    imagem = models.ImageField(verbose_name="imagem do projeto", blank=True, null=True)

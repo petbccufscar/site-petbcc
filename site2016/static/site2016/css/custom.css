@@ -36,7 +36,7 @@
 }
 
 #principal_home {
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.75);
     padding: 0em;
     border-radius: 0px; /* verificar o porque isso não é padrão */
     position: absolute;
@@ -73,16 +73,15 @@ body {
 }
 
 #titulo_home {
-    padding-top: 0.2em;
+    padding-top: 0.3em;
     padding-bottom: 0em;
-    margin-bottom: 0.2em;
-    font-weight: 900;
+    margin-bottom: 1em;
 }
 
 #subtitulo_home {
     padding-top: 0em;
     margin-top: 0em;
-    padding-bottom: 0.2em;
+    padding-bottom: 0.3em;
 }
 
 p {
