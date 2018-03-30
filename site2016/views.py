@@ -36,8 +36,36 @@ def projetos(request):
 def processo_seletivo(request, ano, semestre):
     print(ano)
     print(semestre)
+    # TODO: modificar semestre
+    ps = ProcessoSeletivo.objects.get(ano=ano, semestre=1)
 
-    context_dictionary = {'pagina': 'processo_seletivo', 'DEBUG': settings.DEBUG}
+    etapas_dict = []
+
+    for etapa in ps.etapas.order_by('ordem', 'data_inicio'):
+        etapas_dict.append({
+            'titulo': etapa.titulo,
+            'data_inicio': etapa.data_inicio.strftime("%d/%m"),
+            'data_fim': etapa.data_fim.strftime("%d/%m") if etapa.data_fim else None,
+            'mostrar_hora': etapa.mostrar_hora,
+            'horario': etapa.data_inicio.strftime("%H:%M"),
+            'data_resultado': etapa.data_resultado.strftime("%d/%m") if etapa.data_resultado else None,
+            'mostrar_resultado': etapa.mostrar_resultado,
+            'resultado': etapa.resultado
+        })
+
+    ps_dict = {'edicao': str(ps.ano) + "/" + str(ps.semestre),
+               'resultado_divulgado': not ps.ativo,
+               'vagas_bolsista': ps.vagas_bolsista,
+               'vagas_nao_bolsista': ps.vagas_nao_bolsista,
+               'data_inscricao_inicio': ps.data_inscricao_inicio.strftime("%d/%m"),
+               'data_inscricao_fim': ps.data_inscricao_fim.strftime("%d/%m"),
+               'etapas': etapas_dict,
+               'requisitos': ps.requisitos,
+               'email_inscricao': ps.email_inscricao,
+               'edital': ps.edital.url
+               }
+
+    context_dictionary = {'pagina': 'processo_seletivo', 'DEBUG': settings.DEBUG, 'ps': ps_dict}
     return render(request, 'site2016/processoseletivo.html', context_dictionary)
 
 

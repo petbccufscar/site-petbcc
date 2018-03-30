@@ -80,14 +80,14 @@ class EtapaPS(models.Model):
 
     titulo = models.CharField(verbose_name="titulo", max_length=50)
 
-    data_inicio = models.DateTimeField(verbose_name="data inicial", blank=True, null=True)
+    data_inicio = models.DateTimeField(verbose_name="data inicial", blank=False, null=False)
     data_fim = models.DateTimeField(verbose_name="data final", blank=True, null=True)
 
     mostrar_hora = models.BooleanField(verbose_name="mostrar hora", default=False)
 
     resultado = models.TextField(verbose_name="resultado", blank=True, null=True)
 
-    data_resultado = models.DateField(verbose_name="data do resultado", null=True)
+    data_resultado = models.DateField(verbose_name="data do resultado", blank=True, null=True)
 
     mostrar_resultado = models.BooleanField(verbose_name="mostrar resultado", default=False)
 
@@ -124,12 +124,12 @@ class ProcessoSeletivo(models.Model):
         ]
     )
 
-    vagas_bolsistas = models.PositiveIntegerField(
+    vagas_bolsista = models.PositiveIntegerField(
         verbose_name="vagas bolsistas",
         default=12
     )
 
-    vagas_nao_bolsistas = models.PositiveIntegerField(
+    vagas_nao_bolsista = models.PositiveIntegerField(
         verbose_name="vagas não bolsistas",
         default=6
     )
