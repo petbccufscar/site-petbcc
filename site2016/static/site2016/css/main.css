@@ -59,9 +59,10 @@
     overflow-x: hidden;
 }
 
-#fundo_cinza {
-    background: #FAFAFA;
+.fundo_cinza {
+    background: #FAFAFA !important;
 }
+
 
 #foto_membro_equipe {
     margin-bottom: 20px;

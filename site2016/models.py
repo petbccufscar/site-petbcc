@@ -2,7 +2,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 import datetime
 
-
 class MembroEquipe(models.Model):
     class Meta:
         verbose_name = 'membro de equipe'

@@ -18,10 +18,13 @@
                     <div class="ui dropdown item">
                         <b>Processo Seletivo</b> <i class="ui dropdown icon"></i>
                         <div class="ui vertical menu">
-                            <a class="item {% if pagina == 'processo_seletivo' %}active{% endif %}"
+                            <a class="item"
                                href="{% url 'processo_seletivo' '2017' '2' %}">Processo Seletivo 2017/2</a>
+                            <a class="item"
+                               href="{% url 'processo_seletivo' '2017' '1' %}">Processo Seletivo 2017/1</a>
+
                             <a class="item {% if pagina == 'processo_seletivo_2016_2' %}active{% endif %}"
-                               href="{% url 'processo_seletivo' '2017' '2' %}">Processo Seletivo 2017/1</a>
+                               href="#">Ver anteriores</a>
                         </div>
                     </div>
                     <a href="{% url 'contato' %}"

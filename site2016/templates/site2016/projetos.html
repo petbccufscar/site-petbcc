@@ -23,443 +23,149 @@
     </header>
 
     <main role="main">
-        <div class="ui vertical segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="centered row">
-                    <h1 class="ui header" id="titulo_secao">Projetos de Desenvolvimento de Software</h1>
-                </div>
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInRight">Prontuário Eletrônico USE/UFSCar</h2>
-                        <p class="justificado wow fadeInRight">O projeto do prontuário eletrônico para a Unidade Saúde
-                            Escola da UFSCar tem como objetivo
-                            construir um sistema de
-                            gestão integrado para todos os registros de informações relativas aos atendimentos dos
-                            usuários e os seus cadastros associados. O sistema está sendo desenvolvido de modo a
-                            incorporar cadastro dos usuários,
-                            informações sobre os acolhimentos, triagens, fichas de evolução do paciente, agendas
-                            dos profissionais e seus atendimentos/consultas e emissão de diversos relatórios</p>
-                        <p class="justificado wow fadeInRight"><b>Tecnologias utilizadas</b>: Java, Grails, UML, GitHub.
-                            Sistema de banco de dados em fase de definição.</p>
-                        <div class="ui label wow fadeInRight" id="tags">
-                            <i class="clock icon "></i>Em desenvolvimento
-                        </div>
-                    </div>
-                    <div class="four wide column  wow fadeInLeft">
-                        <img class="ui medium centered image" src="{% static 'site2016/images/logos/use.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="ui vertical segment" id="fundo_cinza">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInRight">Saúde em Jogo</h2>
-                        <p class="justificado wow fadeInRight">O projeto Saúde em Jogo surgiu de uma parceria do PET
-                            Produção da UFSCar
-                            com o PET-BCC. O projeto é criação de uma aplicação web que simula um jogo de estratégia
-                            utilizado no
-                            curso de Engenharia de Produção para ensinar técnicas de administração. O jogo é disputado
-                            entre equipes, as quais administram um hospital e aquela que o gerencia da melhor maneira
-                            possível obtém maior lucro e, consequentemente, vence a partida.</p>
-                        <p class="justificado wow fadeInRight"><b>Tecnologias utilizadas</b>: Python 3, Django,
-                            BootStrap 3, SQLite e GitHub.</p>
-                        <div class="ui label wow fadeInRight" id="tags">
-                            <i class="clock icon "></i>Em desenvolvimento
+        {% for projeto in projetos_desenvolvimento %}
+            <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
+                <div class="ui middle aligned stackable grid container">
+                    {% if forloop.first %}
+                        <div class="centered row">
+                            <h1 class="ui header" id="titulo_secao">Projetos de Desenvolvimento de Software</h1>
                         </div>
-                    </div>
-                    <div class="four wide column wow fadeInLeft">
-                        <img class="ui medium centered image"
-                             src="{% static 'site2016/images/logos/pet_producao.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
+                    {% endif %}
 
-        <div class="ui vertical segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInLeft">Novo site do curso de Ciência da Computação da UFSCar</h2>
-                        <p class="justificado wow fadeInLeft">O curso de Bacharelado em Ciência da Computação da
-                            UFSCar necessitava de um novo site, pois o anterior estava bastante desatualizado. O PET-BCC
-                            assumiu a responsabilidade de criar um novo site para o curso, não só atualizando as
-                            informações, mas criando um site totalmente novo, com mais informações, mais organizado e
-                            layout renovado.</p>
-                        <p class="justificado wow fadeInRight"><b>Tecnologias utilizadas</b>: WordPress.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Finalizado
+                    <div class="row">
+                        <div class="twelve wide column">
+                            <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
+                            <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
+                            <p class="justificado wow fadeInRight"><b>Tecnologias utilizadas</b>:
+                                {% for tec in projeto.tecnologias %}
+                                    {{ tec.nome }};
+                                {% endfor %}
+                            </p>
+                            {% if projeto.status == 'D' %}
+                                <div class="ui label wow fadeInRight" id="tags">
+                                    <i class="clock icon "></i>Em desenvolvimento
+                                </div>
+                            {% elif projeto.status == 'A' %}
+                                <div class="ui green label wow fadeInRight" id="tags">
+                                    <i class="check icon "></i>Ativo
+                                </div>
+                            {% elif projeto.status == 'F' %}
+                                <div class="ui blue label wow fadeInRight" id="tags">
+                                    <i class="check icon "></i>Finalizado
+                                </div>
+                            {% elif projeto.status == 'C' %}
+                                <div class="ui red label wow fadeInRight" id="tags">
+                                    Cancelado
+                                </div>
+                            {% endif %}
                         </div>
-                    </div>
-                    <div class="four wide column wow fadeInRight">
-                        <img class="ui medium centered image" src="{% static 'site2016/images/projetos/site.png' %}">
+                        <div class="four wide column  wow fadeInLeft">
+                            <img class="ui medium centered image" src="{{ projeto.imagem }}">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="ui vertical segment" id="fundo_cinza">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInLeft">Novo site do PET-BCC</h2>
-                        <p class="justificado wow fadeInLeft">Este site que você está utilizando neste momento: feito
-                            por nós! O site anterior utilizava um template em Joomla, mas que estava bem defasado.
-                            Decidimos modernizar o site e com isso, aprender novas ferramentas.</p>
-                        <p class="justificado wow fadeInRight"><b>Tecnologias utilizadas</b>: Python 3, Django,
-                            Semantic-UI, JavaScript, jQuery, SQLite e GitHub.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Finalizado
-                        </div>
-                    </div>
-                    <div class="four wide column wow fadeInRight">
-                        <img class="ui medium centered image" src="{% static 'site2016/images/logos/petbcc.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
 
         <div class="ui stripe medium-font vertical feature segment">
             <div class="ui grid container">
+
                 <div class="centered row">
                     <h1 class="ui header" id="titulo_secao">Tecnologias que utilizamos nos projetos de
                         desenvolvimento</h1>
                 </div>
+
                 <div class="centered row">
                     <div class="ui five column doubling centered grid">
                         <div class="middle aligned row">
-                            <div class="middle aligned column">
-                                <div class="content">
-                                    <a href="https://www.python.org/" target="_blank">
-                                        <img class="ui medium centered image"
-                                             src="{% static 'site2016/images/tecnologias/python.png' %}" alt="Python">
-                                    </a>
+                            {% for tecnologia in tecnologias %}
+                                <div class="middle aligned column">
+                                    <div class="content">
+                                        <a href="{{ tecnologia.link }}" target="_blank">
+                                            <img class="ui tiny centered image"
+                                                 src="{{ tecnologia.imagem }}" alt="{{ tecnologia.nome }}">
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://www.djangoproject.com/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/django.png' %}" alt="Django">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://www.java.com/pt_BR/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/java.png' %}" alt="Java">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://grails.org/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/grails.png' %}" alt="Grails">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://github.com/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/github.png' %}" alt="GitHub">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="http://semantic-ui.com/" target="_blank">
-                                        <img class="ui tiny centered image"
-                                             src="{% static 'site2016/images/tecnologias/semantic-ui.png' %}"
-                                             alt="Semantic-ui">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="http://getbootstrap.com/" target="_blank">
-                                        <img class="ui tiny centered image"
-                                             src="{% static 'site2016/images/tecnologias/bootstrap.png' %}"
-                                             alt="Bootstrap">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://www.javascript.com/" target="_blank">
-                                        <img class="ui tiny centered image"
-                                             src="{% static 'site2016/images/tecnologias/javascript.png' %}"
-                                             alt="Javascript">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://pt.wikipedia.org/wiki/HTML5" target="_blank">
-                                        <img class="ui tiny centered image"
-                                             src="{% static 'site2016/images/tecnologias/html5.png' %}" alt="HTML5">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://pt.wikipedia.org/wiki/CSS3" target="_blank">
-                                        <img class="ui tiny centered image"
-                                             src="{% static 'site2016/images/tecnologias/css3.png' %}" alt="CSS3">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://jquery.com/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/jquery.png' %}" alt="Jquery">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://br.wordpress.org/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/wordpress.png' %}"
-                                             alt="Wordpress">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="https://www.sqlite.org/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/sqlite.png' %}" alt="SQLite">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="content">
-                                    <a href="http://www.uml.org/" target="_blank">
-                                        <img class="ui small centered image"
-                                             src="{% static 'site2016/images/tecnologias/uml.png' %}" alt="Uml">
-                                    </a>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="ui vertical segment" id="fundo_cinza">
-            <div class="ui middle aligned stackable grid container">
-                <div class="centered row">
-                    <h1 class="ui header" id="titulo_secao">Projetos de Ensino, Pesquisa e Extensão</h1>
-                </div>
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInRight">Aulas de informática na ONG Nave Sal da Terra</h2>
-                        <div class="justificado wow fadeInRight">
-                            <p>Este projeto é realizado no seguinte formato: a cada
-                            sábado um trio composto
-                            por petianos fica responsável pela aplicação do conteúdo, um assumindo o papel de professor,
-                            explicando o conteúdo, e dois assumindo papel de tutores, que auxiliam os
-                            alunos com dificuldades durante a explicação. Essa escala é preparada por dois integrantes
-                            do grupo que estão responsáveis por elaborar o calendário e o conteúdo
-                            da aula, coordenando o funcionamento do projeto, além de também atuar como tutores e
-                            professores.</p>
-                            <p><b>O que ensinamos</b>: Microsoft Word e Microsoft Excel.</p>
+        {% for projeto in projetos_en_pesq_ex %}
+            <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
+                <div class="ui middle aligned stackable grid container">
+                    {% if forloop.first %}
+                        <div class="centered row">
+                            <h1 class="ui header" id="titulo_secao">Projetos de Ensino, Pesquisa e Extensão</h1>
                         </div>
+                    {% endif %}
 
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Ativo
+                    <div class="row">
+                        <div class="twelve wide column">
+                            <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
+                            <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
+                            {# TODO: lidar com o tipo de label dependendo do status #}
+                            {% if projeto.status == 'A' %}
+                                <div class="ui green label wow fadeInRight" id="tags">
+                                    <i class="check icon "></i>Ativo
+                                </div>
+                            {% elif projeto.status == 'F' %}
+                                <div class="ui blue label wow fadeInRight" id="tags">
+                                    <i class="check icon "></i>Finalizado
+                                </div>
+                            {% elif projeto.status == 'C' %}
+                                <div class="ui red label wow fadeInRight" id="tags">
+                                    Cancelado
+                                </div>
+                            {% endif %}
                         </div>
-                    </div>
-                    <div class="four wide column wow fadeInLeft">
-                        <img class="ui large centered image"
-                             src="{% static 'site2016/images/logos/nave_sal_da_terra.png' %}">
+                        <div class="four wide column  wow fadeInLeft">
+                            <img class="ui small centered image" src="{{ projeto.imagem }}">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
 
-        <div class="ui vertical segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInLeft">Programa de Acompanhamento aos Calouros</h2>
-                        <p class="justificado wow fadeInLeft">O Programa de Acompanhamento visa orientar e auxiliar os
-                            alunos ingressantes do curso de Bacharelado em Ciência da Computação em suas atividades
-                            acadêmicas iniciais. Toda semana uma dupla diferente de integrantes do PET ficará
-                            responsável
-                            pelos encontros da semana. As disciplinas acompanhadas variam a cada semestre, mas já foram
-                            contempladas as seguintes: Construção de Algoritmos de Programação, Programação de
-                            Computadores, Circuitos Digitais, Cálculo 1
-                            e Álgebra Linear.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Ativo
-                        </div>
-                    </div>
-                    <div class="four wide column wow fadeInRight">
-                        <img class="ui medium centered image"
-                             src="{% static 'site2016/images/projetos/acompanhamento.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui vertical segment" id="fundo_cinza">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInRight">Ciclo de Tutoriais</h2>
-                        <p class="justificado wow fadeInRight">Quando um determinado assunto desperta o interesse dos
-                            petianos, existe a
-                            possibilidade dele se tornar tema de um tutorial. Assim, a cada tema escolhido são
-                            designados dois petianos que têm a responsabilidade de apresentar o assunto ao grupo.
-                            Os tutoriais acontecem mensalmente e proporcionam conhecimento para todos os petianos, bem
-                            como
-                            contribuem para o aperfeiçoamento dos apresentadores.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Ativo
-                        </div>
-                    </div>
-                    <div class="four wide column wow fadeInLeft">
-                        <img class="ui small centered image"
-                             src="{% static 'site2016/images/projetos/tutoriais.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui vertical segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInLeft">Minicursos</h2>
-                        <p class="justificado wow fadeInLeft">Os minicursos oferecidos pelo PET-BCC são oriundos dos
-                            tutoriais previamente
-                            descritos, e atendem a um público composto por alunos do Departamento de
-                            Computação e/ou, também, pela comunidade externa. Ressalta-se que não são todos os
-                            tutoriais que se tornam um minicurso. Há um processo de seleção entre o grupo PET,
-                            sendo que os assuntos de maior interesse da comunidade são escolhidos.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Ativo
-                        </div>
-                    </div>
-                    <div class="four wide column wow fadeInRight">
-                        <img class="ui medium centered image"
-                             src="{% static 'site2016/images/projetos/minicurso.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui vertical segment" id="fundo_cinza">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInRight">Iniciação Científica</h2>
-                        <p class="justificado wow fadeInRight">O programa PET-IC BCC proporcionou aos petianos a
-                            possibilidade de realizarem iniciação científica no contexto das atividades do PET. Três
-                            petianos desenvolveram as seguintes ICs: ...</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Finalizado
-                        </div>
-                    </div>
-                    <div class="four wide column wow fadeInLeft">
-                        <img class="ui small centered image"
-                             src="{% static 'site2016/images/projetos/ic.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui vertical segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInLeft">Universidade Aberta</h2>
-                        <p class="justificado wow fadeInLeft">Anualmente a UFSCar organiza o evento Universidade Aberta
-                            (UA), em que diversas escolas trazem os alunos (principalmente do Ensino Médio) para visitar
-                            a UFSCar. O PET-BCC participa da UA organizando o estande destinado
-                            à apresentação do
-                            curso de Bacharelado em Ciência da Computação. Os petianos, além de apresentar as
-                            características e atividades do curso aos visitantes, preparam todo o material, como
-                            flyers e vídeos e organizam visitas ao Departamento de Computação.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Ativo
-                        </div>
-                    </div>
-                    <div class="four wide column wow fadeInRight">
-                        <img class="ui small centered image" src="{% static 'site2016/images/projetos/ua.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% for projeto in projetos_outros %}
+            <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
+                <div class="ui middle aligned stackable grid container">
 
-        <div class="ui vertical segment" id="fundo_cinza">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInLeft">Criação de vídeos, canal PET-BCC no YouTube</h2>
-                        <p class="justificado wow fadeInLeft">Elaborar e gerenciar o conteúdo do “Canal PET-BCC” do
-                            YouTube, além de auxiliar em qualquer outro material audiovisual solicitado pelo PET.
-                            Os integrantes devem realizar todo o processo de criação de vídeos, que inclui: pesquisa e
-                            elaboração de roteiro, agendamento de entrevistas, edição e produção dos vídeos, assim como
-                            o upload deste material no canal e sua posterior divulgação.
-                        </p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Ativo
+                    {% if forloop.first %}
+                        <div class="centered row">
+                            <h1 class="ui header" id="titulo_secao">Outras atividades</h1>
                         </div>
-                    </div>
-                    <div class="four wide column wow fadeInRight">
-                        <img class="ui small centered image" src="{% static 'site2016/images/projetos/video.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
+                    {% endif %}
 
-        <div class="ui vertical segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="centered row">
-                    <h1 class="ui header" id="titulo_secao">Outras atividades</h1>
-                </div>
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInRight">Visita a empresas</h2>
-                        <p class="justificado wow fadeInRight">Com o intuito de aproximar os petianos do mercado de
-                            trabalho, são realizadas visitas a
-                            empresas. Essa é uma oportunidade para que os alunos possam perceber como a teoria
-                            da sala de aula é usada na prática profissional.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Ativo
-                        </div>
-                    </div>
-                    <div class="four wide column  wow fadeInLeft">
-                        <img class="ui small centered image" src="{% static 'site2016/images/projetos/empresas.png' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <div class="row">
+                        <div class="twelve wide column">
+                            <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
+                            <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
 
-        <div class="ui vertical segment" id="fundo_cinza">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="twelve wide column">
-                        <h2 class="ui header wow fadeInLeft">Concurso do logo do BCC</h2>
-                        <p class="justificado wow fadeInLeft">O PET-BCC organizou um consurso para escolher a nova
-                            logomarca
-                            para o curso de Bacharelado em Ciência da Computação da Universidade Federal de São Carlos,
-                            campus
-                            São Carlos.</p>
-                        <div class="ui green label wow fadeInLeft" id="tags">
-                            <i class="check icon"></i>Finalizado
+                            {% if projeto.status == 'A' %}
+                                <div class="ui green label wow fadeInRight" id="tags">
+                                    <i class="check icon "></i>Ativo
+                                </div>
+                            {% elif projeto.status == 'F' %}
+                                <div class="ui blue label wow fadeInRight" id="tags">
+                                    <i class="check icon "></i>Finalizado
+                                </div>
+                            {% elif projeto.status == 'C' %}
+                                <div class="ui red label wow fadeInRight" id="tags">
+                                    Cancelado
+                                </div>
+                            {% endif %}
                         </div>
-                    </div>
-                    <div class="four wide column wow fadeInRight">
-                        <img class="ui medium centered image" src="{% static 'site2016/images/projetos/logobcc.png' %}">
+                        <div class="four wide column  wow fadeInLeft">
+                            <img class="ui small centered image" src="{{ projeto.imagem }}">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </main>
-
 {% endblock body %}

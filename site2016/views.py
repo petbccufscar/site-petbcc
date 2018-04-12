@@ -29,7 +29,44 @@ def equipe(request):
 
 
 def projetos(request):
-    context_dictionary = {'pagina': 'projetos', 'DEBUG': settings.DEBUG}
+
+    categorias = Categoria_de_projeto.objects.all()
+
+    ds = categorias.get(sigla='DS')
+    outros = categorias.get(sigla='O')
+    print(outros)
+
+    projetos_desenvolvimento = []
+    projetos_en_pesq_ex = []
+    projetos_outros = []
+
+    for projeto in Projeto.objects.order_by("nome"):
+
+        projeto_obj = {
+            'nome': projeto.nome,
+            'descricao': projeto.descricao,
+            'tecnologias': projeto.tecnologias.all(),
+            'status': projeto.status,
+            'imagem': projeto.imagem.url
+        }
+
+        if ds in projeto.categorias.all():
+            projetos_desenvolvimento.append(projeto_obj)
+        elif outros in projeto.categorias.all():
+            projetos_outros.append(projeto_obj)
+        else:
+            projetos_en_pesq_ex.append(projeto_obj)
+
+    tecnologias = []
+    for tecnologia in Tecnologia.objects.order_by('nome'):
+        tecnologias.append({'nome': tecnologia.nome, 'imagem': tecnologia.imagem.url,'link':tecnologia.link})
+
+    context_dictionary = {'pagina': 'projetos', 'DEBUG': settings.DEBUG,
+                          'projetos_desenvolvimento': projetos_desenvolvimento,
+                          'tecnologias': tecnologias,
+                          'projetos_en_pesq_ex': projetos_en_pesq_ex,
+                          'projetos_outros': projetos_outros}
+
     return render(request, 'site2016/projetos.html', context_dictionary)
 
 
@@ -37,7 +74,7 @@ def processo_seletivo(request, ano, semestre):
     print(ano)
     print(semestre)
     # TODO: modificar semestre
-    ps = ProcessoSeletivo.objects.get(ano=ano, semestre=1)
+    ps = ProcessoSeletivo.objects.get(ano=ano, semestre=semestre)
 
     etapas_dict = []
 
