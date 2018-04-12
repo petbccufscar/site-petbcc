@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load ps_menu_item %}
 
 <div class="ui grid">
     <div class="computer tablet only row">
@@ -19,11 +20,9 @@
                         <b>Processo Seletivo</b> <i class="ui dropdown icon"></i>
                         <div class="ui vertical menu">
                             <a class="item"
-                               href="{% url 'processo_seletivo' '2017' '2' %}">Processo Seletivo 2017/2</a>
-                            <a class="item"
-                               href="{% url 'processo_seletivo' '2017' '1' %}">Processo Seletivo 2017/1</a>
+                               href="/processoseletivo/{% ps_link %}">Processo Seletivo {% ps_link %}</a>
 
-                            <a class="item {% if pagina == 'processo_seletivo_2016_2' %}active{% endif %}"
+                            <a class="item"
                                href="#">Ver anteriores</a>
                         </div>
                     </div>
