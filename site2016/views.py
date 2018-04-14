@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 import sendgrid
 from sendgrid.helpers.mail import *
 from django.conf import settings
@@ -18,11 +18,11 @@ def home(request):
 
 def equipe(request):
     context_dictionary = {'pagina': 'equipe',
-                          'professores': Professor.objects.all(),
+                          'professores': Professor.objects.exclude(situacao='E').order_by('nome'),
                           'bolsistas': Aluno.objects.filter(situacao='B').order_by('nome', 'sobrenome'),
                           'nao_bolsistas': Aluno.objects.filter(situacao='N').order_by('nome', 'sobrenome'),
                           'voluntarios': Aluno.objects.filter(situacao='V').order_by('nome', 'sobrenome'),
-                          'ex_membros': Aluno.objects.filter(situacao='E').order_by('nome', 'sobrenome'),
+                          'ex_membros': MembroEquipe.objects.filter(situacao='E').order_by('nome', 'sobrenome'),
                           'DEBUG': settings.DEBUG}
 
     return render(request, 'site2016/equipe.html', context_dictionary)
@@ -34,7 +34,6 @@ def projetos(request):
 
     ds = categorias.get(sigla='DS')
     outros = categorias.get(sigla='O')
-    print(outros)
 
     projetos_desenvolvimento = []
     projetos_en_pesq_ex = []
@@ -71,9 +70,6 @@ def projetos(request):
 
 
 def processo_seletivo(request, ano, semestre):
-    print(ano)
-    print(semestre)
-    # TODO: modificar semestre
     ps = ProcessoSeletivo.objects.get(ano=ano, semestre=semestre)
 
     etapas_dict = []

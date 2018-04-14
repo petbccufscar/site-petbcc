@@ -19,11 +19,10 @@
                     <div class="ui dropdown item">
                         <b>Processo Seletivo</b> <i class="ui dropdown icon"></i>
                         <div class="ui vertical menu">
-                            <a class="item"
-                               href="/processoseletivo/{% ps_link %}">Processo Seletivo {% ps_link %}</a>
+                            {% ps_menu %}
 
-                            <a class="item"
-                               href="#">Ver anteriores</a>
+{#                            <a class="item"#}
+{#                               href="#">Ver anteriores</a>#}
                         </div>
                     </div>
                     <a href="{% url 'contato' %}"

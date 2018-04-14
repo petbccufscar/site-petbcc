@@ -3,9 +3,6 @@ from django.db import models
 
 import datetime
 
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
 
 class MembroEquipe(models.Model):
     class Meta:
@@ -13,30 +10,18 @@ class MembroEquipe(models.Model):
         verbose_name_plural = 'membros da equipe'
 
     def __str__(self):
-        return self.nome + ' ' + self.sobrenome
-
-    ANO_CHOICES = [(i, i) for i in range(2006, datetime.datetime.now().year)]
-
-    nome = models.CharField(max_length=50, verbose_name='nome')
-    sobrenome = models.CharField(max_length=100, verbose_name='sobrenome')
-    ano = models.IntegerField(verbose_name='ano', null=True, blank=True, choices=ANO_CHOICES)
-    foto = models.ImageField(verbose_name='foto', null=True, blank=True, upload_to='images/equipe/')
-    github = models.CharField(max_length=100, null=True, blank=True, verbose_name='GitHub')
-
-
-class Aluno(MembroEquipe):
-    class Meta:
-        verbose_name = 'aluno'
-        verbose_name_plural = 'alunos'
-
-    def __str__(self):
-        situacao_aluno = {
+        situacao = {
             'B': 'Bolsista',
             'N': 'Não-bolsista',
             'V': 'Voluntário',
             'E': 'Ex-membro'
         }
-        return '[' + situacao_aluno[self.situacao] + '] ' + self.nome + ' ' + self.sobrenome
+        return "["+situacao[self.situacao]+"] "+self.nome + ' ' + self.sobrenome
+
+    nome = models.CharField(max_length=50, verbose_name='nome')
+    sobrenome = models.CharField(max_length=100, verbose_name='sobrenome')
+    foto = models.ImageField(verbose_name='foto', null=True, blank=True, upload_to='images/equipe/')
+    github = models.CharField(max_length=100, null=True, blank=True, verbose_name='GitHub')
 
     SITUACAO_CHOICES = (
         ('B', 'Bolsista'),
@@ -46,6 +31,15 @@ class Aluno(MembroEquipe):
     )
 
     situacao = models.CharField(max_length=1, choices=SITUACAO_CHOICES, verbose_name='situação no PET')
+
+class Aluno(MembroEquipe):
+    class Meta:
+        verbose_name = 'aluno'
+        verbose_name_plural = 'alunos'
+
+    ANO_CHOICES = [(i, i) for i in range(2010, datetime.datetime.now().year + 1)]
+
+    ano = models.IntegerField(verbose_name='ano', null=True, blank=True, choices=ANO_CHOICES)
 
 
 class Professor(MembroEquipe):
