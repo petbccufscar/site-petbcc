@@ -3,7 +3,6 @@ from django.db import models
 
 import datetime
 
-
 class MembroEquipe(models.Model):
     class Meta:
         verbose_name = 'membro de equipe'
@@ -203,4 +202,4 @@ class Projeto(models.Model):
 
     categorias = models.ManyToManyField(Categoria_de_projeto, verbose_name='categorias do projeto')
 
-    imagem = models.ImageField(verbose_name="imagem do projeto", blank=True, null=True)
+    imagem = models.ImageField(verbose_name="imagem do projeto")
