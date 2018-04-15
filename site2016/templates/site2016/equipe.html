@@ -1,5 +1,6 @@
 {% extends 'site2016/base.html' %}
 {% load staticfiles %}
+{% load ps_menu_item %}
 
 {% block title %}
     Equipe - PET-BCC UFSCar
@@ -271,9 +272,7 @@
         <section class="ui vertical stripe segment processo_seletivo" role="region">
             <div class="ui container processo_seletivo">
                 <h1 class="ui centered inverted header">Processo Seletivo</h1>
-                <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o <a
-                        href="{% url 'processo_seletivo' '2017' '1' %}">processo
-                    seletivo</a>.</h3>
+                <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o {% ps_link_atual %}.</h3>
             </div>
         </section>
     </main>
