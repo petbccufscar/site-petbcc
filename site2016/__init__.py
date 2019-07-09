@@ -1,0 +1,1 @@
+default_app_config = 'site2016.apps.Site2016Config'
