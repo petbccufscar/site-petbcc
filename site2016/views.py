@@ -32,8 +32,8 @@ def projetos(request):
 
     categorias = Categoria_de_projeto.objects.all()
 
-    ds = categorias.get(sigla='DS')
-    outros = categorias.get(sigla='O')
+    ds = categorias.filter(sigla='DS')
+    outros = categorias.filter(sigla='O')
 
     projetos_desenvolvimento = []
     projetos_en_pesq_ex = []
