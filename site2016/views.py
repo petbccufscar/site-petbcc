@@ -4,6 +4,7 @@ from sendgrid.helpers.mail import *
 from django.conf import settings
 from .models import *
 
+
 def manutencao(request):
     return render(request, 'site2016/manutencao.html', {'DEBUG': settings.DEBUG})
 
@@ -18,11 +19,11 @@ def home(request):
 
 def equipe(request):
     context_dictionary = {'pagina': 'equipe',
-                          'professores': Professor.objects.exclude(situacao='E').order_by('nome'),
-                          'bolsistas': Aluno.objects.filter(situacao='B').order_by('nome', 'sobrenome'),
-                          'nao_bolsistas': Aluno.objects.filter(situacao='N').order_by('nome', 'sobrenome'),
-                          'voluntarios': Aluno.objects.filter(situacao='V').order_by('nome', 'sobrenome'),
-                          'ex_membros': MembroEquipe.objects.filter(situacao='E').order_by('nome', 'sobrenome'),
+                          'professores': Professor.objects.listar_membros_ativos().order_by('nome', 'sobrenome'),
+                          'bolsistas': Aluno.objects.listar_bolsistas().order_by('nome', 'sobrenome'),
+                          'nao_bolsistas': Aluno.objects.listar_nao_bolsistas().order_by('nome', 'sobrenome'),
+                          'voluntarios': Aluno.objects.listar_voluntarios().order_by('nome', 'sobrenome'),
+                          'ex_membros': MembroEquipe.objects.listar_ex_membros().order_by('nome', 'sobrenome'),
                           'DEBUG': settings.DEBUG}
 
     return render(request, 'site2016/equipe.html', context_dictionary)
@@ -32,8 +33,8 @@ def projetos(request):
 
     categorias = Categoria_de_projeto.objects.all()
 
-    ds = categorias.filter(sigla='DS')
-    outros = categorias.filter(sigla='O')
+    ds = Categoria_de_projeto.objects.listar_em_desenvolvimento()
+    outros = Categoria_de_projeto.objects.listar_outros()
 
     projetos_desenvolvimento = []
     projetos_en_pesq_ex = []
@@ -58,7 +59,8 @@ def projetos(request):
 
     tecnologias = []
     for tecnologia in Tecnologia.objects.order_by('nome'):
-        tecnologias.append({'nome': tecnologia.nome, 'imagem': tecnologia.imagem.url,'link':tecnologia.link})
+        tecnologias.append(
+            {'nome': tecnologia.nome, 'imagem': tecnologia.imagem.url, 'link': tecnologia.link})
 
     context_dictionary = {'pagina': 'projetos', 'DEBUG': settings.DEBUG,
                           'projetos_desenvolvimento': projetos_desenvolvimento,
@@ -98,12 +100,14 @@ def processo_seletivo(request, ano, semestre):
                'edital': ps.edital.url
                }
 
-    context_dictionary = {'pagina': 'processo_seletivo', 'DEBUG': settings.DEBUG, 'ps': ps_dict}
+    context_dictionary = {'pagina': 'processo_seletivo',
+                          'DEBUG': settings.DEBUG, 'ps': ps_dict}
     return render(request, 'site2016/processoseletivo.html', context_dictionary)
 
 
 def processo_seletivo_2017_1(request):
-    context_dictionary = {'pagina': 'processo_seletivo_2016_2', 'DEBUG': settings.DEBUG}
+    context_dictionary = {
+        'pagina': 'processo_seletivo_2016_2', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/processos_seletivos_anteriores/processoseletivo_2017_1.html', context_dictionary)
 
 
