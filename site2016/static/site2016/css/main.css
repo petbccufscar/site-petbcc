@@ -187,3 +187,7 @@ footer #paragrafo_rodape > b {
     font-weight: 900;
     text-transform: uppercase;
 }
+
+.ui.fixed.menu {
+    z-index: 1001;
+}
