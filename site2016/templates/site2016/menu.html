@@ -2,43 +2,58 @@
 {% load ps_menu_item %}
 
 <div class="ui grid">
-    <div class="computer tablet only row">
+
+    <div class="ui right vertical menu sidebar hidden">
+        <div class="ui grid">
+            <div class="column">
+                <div class="row">
+                    <img class="ui centered small image" src="{% static 'site2016/images/logos/petbcc.png' %}">
+                </div>
+                <div class="row">
+                    <a href="{% url 'home' %}" class="{% if pagina == 'home' %}active{% endif %} item"><b>Página
+                            Inicial</b></a>
+                    <a href="{% url 'equipe' %}"
+                        class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
+                    <a href="{% url 'projetos' %}"
+                        class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
+                    <a class="ui item" href="{% ps_link_atual_simples %}"><b>Processo Seletivo</b></a>
+                    <a href="{% url 'contato' %}"
+                        class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="computer only row">
         <nav class="ui fixed menu" role="navigation">
             <div class="ui container">
                 <a href="{% url 'home' %}" class="item">
                     <img class="ui tiny image" src="{% static 'site2016/images/logos/petbcc_menu_principal.png' %}"
-                         alt="Logo do PET-BCC">
+                        alt="Logo do PET-BCC">
                 </a>
 
                 <div class="right menu">
                     <a href="{% url 'home' %}" class="{% if pagina == 'home' %}active{% endif %} item"><b>Página
-                        Inicial</b></a>
-                    <a href="{% url 'equipe' %}" class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
+                            Inicial</b></a>
+                    <a href="{% url 'equipe' %}"
+                        class="{% if pagina == 'equipe' %}active{% endif %} item"><b>Equipe</b></a>
                     <a href="{% url 'projetos' %}"
-                       class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
-                    <div class="ui dropdown item">
-                        <b>Processo Seletivo</b> <i class="ui dropdown icon"></i>
-                        <div class="ui vertical menu">
-                            {% ps_menu %}
-
-{#                            <a class="item"#}
-{#                               href="#">Ver anteriores</a>#}
-                        </div>
-                    </div>
+                        class="{% if pagina == 'projetos' %}active{% endif %} item"><b>Projetos</b></a>
+                    <a class="ui item" href="{% ps_link_atual_simples %}"><b>Processo Seletivo</b></a>
                     <a href="{% url 'contato' %}"
-                       class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
+                        class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
                 </div>
             </div>
 
         </nav>
     </div>
 
-    <div class="mobile only row">
+    <div class="tablet mobile only row">
         <nav class="ui fixed hidden main menu" id="menu_principal" role="navigation">
             <div class="left menu">
                 <a href="{% url 'home' %}" class="item">
                     <img class="ui tiny image" src="{% static 'site2016/images/logos/petbcc_menu_principal.png' %}"
-                         alt="Logo do PET-BCC">
+                        alt="Logo do PET-BCC">
                 </a>
             </div>
             <div class="right menu">
@@ -59,5 +74,5 @@
         .sidebar('setting', 'transition', 'overlay')
         .sidebar('setting', 'mobileTransition', 'overlay')
         .sidebar('attach events', '.toc.item')
-    ;
+        ;
 </script>
