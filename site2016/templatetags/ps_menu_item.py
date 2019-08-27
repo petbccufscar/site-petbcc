@@ -29,7 +29,7 @@ def ps_link_atual():
 
 @register.simple_tag
 def ps_link_atual_simples():
-    ps = ProcessoSeletivo.objects.order_by('-data_inscricao_inicio')
+    ps = ProcessoSeletivo.objects.filter(ativo=True).order_by('-data_inscricao_inicio')
 
     if len(ps) > 0:
         ps = ps[0]
