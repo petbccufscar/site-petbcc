@@ -25,3 +25,16 @@ def ps_link_atual():
     except:
         s = '<a class="item" href="#">Não há processos seletivos</a>'
     return mark_safe(s)
+
+
+@register.simple_tag
+def ps_link_atual_simples():
+    ps = ProcessoSeletivo.objects.filter(ativo=True).order_by('-data_inscricao_inicio')
+
+    if len(ps) > 0:
+        ps = ps[0]
+        s = '/processoseletivo/{0}/{1}'.format(ps.ano, ps.semestre)
+    else:
+        s = '/'
+
+    return mark_safe(s)
