@@ -105,12 +105,6 @@ def processo_seletivo(request, ano, semestre):
     return render(request, 'site2016/processoseletivo.html', context_dictionary)
 
 
-def processo_seletivo_2017_1(request):
-    context_dictionary = {
-        'pagina': 'processo_seletivo_2016_2', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/processos_seletivos_anteriores/processoseletivo_2017_1.html', context_dictionary)
-
-
 def contato(request):
     if request.method == 'POST':
         try:
