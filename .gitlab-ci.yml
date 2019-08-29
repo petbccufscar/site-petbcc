@@ -1,0 +1,13 @@
+deploy_production:
+  stage: deploy
+  environment: Production
+  tags:
+    - prod
+  only:
+    - master
+  script:
+    - cd /tmp
+    - git clone https://github.com/petbccufscar/sitepetbcc
+    - rsync -r sitepetbcc/ ~/sitepetbcc
+    - cd ~/sitepetbcc
+    - NÃO TERMINEI
