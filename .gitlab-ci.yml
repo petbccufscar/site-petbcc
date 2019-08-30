@@ -14,7 +14,7 @@ deploy_production:
     - backup_db
     - bin/python3 manage.py makemigrations
     - bin/python3 manage.py migrate
-    - bin/python3 manage.py collectstatic
+    - bin/python3 manage.py collectstatic --noinput
     - rsync -r static/* /var/www/static/
     - sudo systemctl restart gunicorn
     
