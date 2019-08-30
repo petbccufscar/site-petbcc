@@ -12,9 +12,9 @@ deploy_production:
     - rsync -r sitepetbcc/ ~/sitepetbcc
     - cd ~/sitepetbcc
     - backup_db
-    - python3 manage.py makemigrations
-    - python3 manage.py migrate
-    - python3 manage.py collectstatic
+    - bin/python3 manage.py makemigrations
+    - bin/python3 manage.py migrate
+    - bin/python3 manage.py collectstatic
     - rsync -r static/* /var/www/static/
     - sudo systemctl restart gunicorn
     
