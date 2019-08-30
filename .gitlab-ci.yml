@@ -17,4 +17,4 @@ deploy_production:
     - bin/python3 manage.py collectstatic --noinput
     - rsync -r static/* /var/www/static/
     - sudo systemctl restart gunicorn
-    
+    - exit
