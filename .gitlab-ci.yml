@@ -10,4 +10,10 @@ deploy_production:
     - git clone https://github.com/petbccufscar/sitepetbcc
     - rsync -r sitepetbcc/ ~/sitepetbcc
     - cd ~/sitepetbcc
-    - NÃO TERMINEI
+    - backup_db
+    - python3 manage.py makemigrations
+    - python3 manage.py migrate
+    - python3 manage.py collectstatic
+    - rsync -r static/* /var/www/static/
+    - sudo systemctl restart gunicorn
+    
