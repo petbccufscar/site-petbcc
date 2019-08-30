@@ -7,6 +7,7 @@ deploy_production:
     - master
   script:
     - cd /tmp
+    - rm -rf sitepetbcc
     - git clone https://github.com/petbccufscar/sitepetbcc
     - rsync -r sitepetbcc/ ~/sitepetbcc
     - cd ~/sitepetbcc
