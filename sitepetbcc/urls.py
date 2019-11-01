@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('site2016.urls')),
     url(r'^blog/', include('zinnia.urls')),
+    url(r'^comments/', include('django_comments.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
