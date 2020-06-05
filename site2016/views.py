@@ -22,7 +22,7 @@ def equipe(request):
                           'professores': Professor.objects.listar_membros_ativos().order_by('nome', 'sobrenome'),
                           'bolsistas': Aluno.objects.listar_bolsistas().order_by('nome', 'sobrenome'),
                           'nao_bolsistas': Aluno.objects.listar_nao_bolsistas().order_by('nome', 'sobrenome'),
-                          'voluntarios': Aluno.objects.listar_voluntarios().order_by('nome', 'sobrenome'),
+                          'colaboradores': Aluno.objects.listar_colaboradores().order_by('nome', 'sobrenome'),
                           'ex_membros': MembroEquipe.objects.listar_ex_membros().order_by('nome', 'sobrenome'),
                           'DEBUG': settings.DEBUG}
 
