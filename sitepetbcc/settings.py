@@ -32,11 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'site2016',
-    'django.contrib.sites',
-    'django_comments',
     'mptt',
     'tagging',
-    'zinnia',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +61,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'zinnia.context_processors.version',
             ],
         },
     },

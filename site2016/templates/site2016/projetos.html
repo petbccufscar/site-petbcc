@@ -1,5 +1,6 @@
 {% extends 'site2016/base.html' %}
 {% load staticfiles %}
+{% load ps_menu_item %}
 
 {% block title %}
     Projetos - PET-BCC UFSCar
@@ -111,11 +112,11 @@
                             {# TODO: lidar com o tipo de label dependendo do status #}
                             {% if projeto.status == 'D' %}
                                 <div class="ui label wow fadeInRight" id="tags">
-                                    <i class="check icon "></i>Ativo
+                                    <i class="check icon "></i>Em desenvolvimento
                                 </div>
                             {% elif projeto.status == 'A' %}
                                 <div class="ui green label wow fadeInRight" id="tags">
-                                    <i class="clock icon "></i>Em desenvolvimento
+                                    <i class="clock icon "></i>Ativo
                                 </div>
                             {% elif projeto.status == 'F' %}
                                 <div class="ui blue label wow fadeInRight" id="tags">
@@ -152,11 +153,11 @@
 
                             {% if projeto.status == 'D' %}
                                 <div class="ui label wow fadeInRight" id="tags">
-                                    <i class="check icon "></i>Ativo
+                                    <i class="check icon "></i>Em desenvolvimento
                                 </div>
                             {% elif projeto.status == 'A' %}
                                 <div class="ui green label wow fadeInRight" id="tags">
-                                    <i class="check icon "></i>Finalizado
+                                    <i class="check icon "></i>Ativo
                                 </div>
                             {% elif projeto.status == 'F' %}
                                 <div class="ui blue label wow fadeInRight" id="tags">
