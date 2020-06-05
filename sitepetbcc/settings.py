@@ -8,6 +8,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# DESCOMENTAR O CODIGO QUANDO EM PRODUCAO
+
+#SECURE_CONTENT_TYPE_NOSNIFF = config('SECURE_CONTENT_TYPE_NOSNIFF', cast=bool)
+#SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', cast=bool)
+#SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', cast=bool)
+#SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', cast=bool)
+#CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool)
+#X_FRAME_OPTIONS = config('X_FRAME_OPTIONS')
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
