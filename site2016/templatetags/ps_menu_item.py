@@ -21,9 +21,9 @@ def ps_menu():
 def ps_link_atual():
     try:
         ps = ProcessoSeletivo.objects.order_by('-data_inscricao_inicio')[0]
-        s = '<a href="/processoseletivo/{0}/{1}">Processo Seletivo</a>\n'.format(ps.ano, ps.semestre)
+        s = 'Saiba mais sobre o <a href="/processoseletivo/{0}/{1}">processo seletivo</a>\n'.format(ps.ano, ps.semestre)
     except:
-        s = '<a class="item" href="#">Não há processos seletivos</a>'
+        s = 'Aguarde nosso próximo processo seletivo'
     return mark_safe(s)
 
 

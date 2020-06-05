@@ -22,7 +22,7 @@ def equipe(request):
                           'professores': Professor.objects.listar_membros_ativos().order_by('nome', 'sobrenome'),
                           'bolsistas': Aluno.objects.listar_bolsistas().order_by('nome', 'sobrenome'),
                           'nao_bolsistas': Aluno.objects.listar_nao_bolsistas().order_by('nome', 'sobrenome'),
-                          'voluntarios': Aluno.objects.listar_voluntarios().order_by('nome', 'sobrenome'),
+                          'colaboradores': Aluno.objects.listar_colaboradores().order_by('nome', 'sobrenome'),
                           'ex_membros': MembroEquipe.objects.listar_ex_membros().order_by('nome', 'sobrenome'),
                           'DEBUG': settings.DEBUG}
 
@@ -30,11 +30,6 @@ def equipe(request):
 
 
 def projetos(request):
-
-    categorias = Categoria_de_projeto.objects.all()
-
-    ds = Categoria_de_projeto.objects.listar_em_desenvolvimento()
-    outros = Categoria_de_projeto.objects.listar_outros()
 
     projetos_desenvolvimento = []
     projetos_en_pesq_ex = []
@@ -50,13 +45,17 @@ def projetos(request):
             'imagem': projeto.imagem.url
         }
 
-        if ds in projeto.categorias.all():
-            projetos_desenvolvimento.append(projeto_obj)
-        elif outros in projeto.categorias.all():
-            projetos_outros.append(projeto_obj)
-        else:
-            projetos_en_pesq_ex.append(projeto_obj)
-
+        for cat in projeto.categorias.all():
+            if cat.sigla == 'DS':
+                projetos_desenvolvimento.append(projeto_obj)
+                break
+            elif cat.sigla == 'O':
+                projetos_outros.append(projeto_obj)
+                break
+            else:
+                projetos_en_pesq_ex.append(projeto_obj)
+                break
+            
     tecnologias = []
     for tecnologia in Tecnologia.objects.order_by('nome'):
         tecnologias.append(

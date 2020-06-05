@@ -13,8 +13,8 @@ class MembroEquipeManager(models.Manager):
     def listar_nao_bolsistas(self):
         return super().get_queryset().filter(situacao='N')
 
-    def listar_voluntarios(self):
-        return super().get_queryset().filter(situacao='V')
+    def listar_colaboradores(self):
+        return super().get_queryset().filter(situacao='C')
 
     def listar_ex_membros(self):
         return super().get_queryset().filter(situacao='E')
@@ -29,7 +29,7 @@ class MembroEquipe(models.Model):
         situacao = {
             'B': 'Bolsista',
             'N': 'Não-bolsista',
-            'V': 'Voluntário',
+            'C': 'Colaborador',
             'E': 'Ex-membro'
         }
         return "["+situacao[self.situacao]+"] "+self.nome + ' ' + self.sobrenome
@@ -46,7 +46,7 @@ class MembroEquipe(models.Model):
     SITUACAO_CHOICES = (
         ('B', 'Bolsista'),
         ('N', 'Não-bolsista'),
-        ('V', 'Voluntário'),
+        ('C', 'Colaborador'),
         ('E', 'Ex-membro')
     )
 
@@ -182,14 +182,6 @@ class ProcessoSeletivo(models.Model):
     edital = models.FileField(verbose_name="edital")
 
 
-class Categoria_de_projetoManager(models.Manager):
-    def listar_em_desenvolvimento(self):
-        return super().get_queryset().filter(sigla='DS')
-
-    def listar_outros(self):
-        return super().get_queryset().filter(sigla='O')
-
-
 class Categoria_de_projeto(models.Model):
     class Meta:
         verbose_name = 'categoria de projeto'
@@ -197,8 +189,6 @@ class Categoria_de_projeto(models.Model):
 
     def __str__(self):
         return '[' + self.sigla + '] ' + self.nome
-
-    objects = Categoria_de_projetoManager()
 
     nome = models.CharField(verbose_name='nome', max_length=50)
     sigla = models.CharField(verbose_name='sigla', max_length=5)

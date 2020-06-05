@@ -37,18 +37,30 @@
                                     <div class="column wow fadeInDown" data-wow-delay="0.2s">
                                         <div class="content" id="foto_membro_equipe">
                                             <div class="ui circular image">
-                                                <div class="ui dimmer">
-                                                    <div class="content">
-                                                        <div class="center">
-                                                            <h5 class="ui inverted small icon header"><i
-                                                                    class="mail icon"></i>{{ integrante.email|safe }}
-                                                            </h5>
+                                                {% if integrante.email %}
+                                                    <div class="ui dimmer">
+                                                        <div class="content">
+                                                            <div class="center">
+                                                                <h5 class="ui inverted small icon header"><a
+                                                                        href="mailto:{{ integrante.email|safe }}"
+                                                                        target="_blank"><i
+                                                                        class="mail icon"></i>
+                                                                    {{ integrante.email }}
+                                                                </a>
+                                                                </h5>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                {% endif %}
+                                                {% if integrante.foto %}
                                                 <img class="ui centered small circular image"
                                                      src="/media/{{ integrante.foto }}"
                                                      alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% else %}
+                                                    <img class="ui centered small circular image"
+                                                    src="{% static 'site2016/images/user.png' %}"
+                                                    alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% endif %}
                                             </div>
                                             <h3 class="ui header">{{ integrante.titulo }} {{ integrante.nome }} {{ integrante.sobrenome }}</h3>
                                             {{ integrante.descricao }}
@@ -66,8 +78,7 @@
             <section class="ui stripe medium-font vertical feature segment fundo_cinza" role="region">
                 <div class="ui grid container">
                     <div class="centered row">
-                        <h1 class="ui header wow fadeInDown" data-wow-delay="0.3s" id="titulo_secao">Alunos
-                            Bolsistas</h1>
+                        <h1 class="ui header wow fadeInDown" data-wow-delay="0.3s" id="titulo_secao">Bolsistas</h1>
                     </div>
                     <div class="centered row">
                         <div class="sixteen wide column">
@@ -91,9 +102,15 @@
                                                         </div>
                                                     </div>
                                                 {% endif %}
+                                                {% if integrante.foto %}
                                                 <img class="ui centered small circular image"
                                                      src="/media/{{ integrante.foto }}"
                                                      alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% else %}
+                                                    <img class="ui centered small circular image"
+                                                    src="{% static 'site2016/images/user.png' %}"
+                                                    alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% endif %}
                                             </div>
                                             <h3 class="ui header">{{ integrante.nome }} {{ integrante.sobrenome }}</h3>
                                             BCC {{ integrante.ano }}
@@ -111,8 +128,7 @@
             <section class="ui stripe medium-font vertical feature segment" role="region">
                 <div class="ui grid container">
                     <div class="centered row">
-                        <h1 class="ui header wow fadeInDown" data-wow-delay="0.1" id="titulo_secao">Alunos
-                            Não-Bolsistas</h1>
+                        <h1 class="ui header wow fadeInDown" data-wow-delay="0.1" id="titulo_secao">Não-Bolsistas</h1>
                     </div>
                     <div class="centered row">
                         <div class="sixteen wide column">
@@ -136,9 +152,15 @@
                                                         </div>
                                                     </div>
                                                 {% endif %}
+                                                {% if integrante.foto %}
                                                 <img class="ui centered small circular image"
                                                      src="/media/{{ integrante.foto }}"
                                                      alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% else %}
+                                                    <img class="ui centered small circular image"
+                                                    src="{% static 'site2016/images/user.png' %}"
+                                                    alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% endif %}
                                             </div>
                                             <h3 class="ui header">{{ integrante.nome }} {{ integrante.sobrenome }}</h3>
                                             BCC {{ integrante.ano }}
@@ -152,17 +174,16 @@
             </section>
         {% endif %}
 
-        {% if voluntarios %}
+        {% if colaboradores %}
             <section class="ui stripe medium-font vertical feature segment fundo_cinza" role="region">
                 <div class="ui grid container">
                     <div class="centered row">
-                        <h1 class="ui header wow fadeInDown" data-wow-delay="0.1s" id="titulo_secao">Alunos
-                            Voluntários</h1>
+                        <h1 class="ui header wow fadeInDown" data-wow-delay="0.1s" id="titulo_secao">Colaboradores</h1>
                     </div>
                     <div class="centered row">
                         <div class="sixteen wide column">
                             <div class="ui six column center aligned doubling grid">
-                                {% for integrante in voluntarios %}
+                                {% for integrante in colaboradores %}
                                     <div class="column wow fadeInDown" data-wow-delay="0.2s">
                                         <div class="content" id="foto_membro_equipe">
                                             <div class="ui circular image">
@@ -181,9 +202,15 @@
                                                         </div>
                                                     </div>
                                                 {% endif %}
+                                                {% if integrante.foto %}
                                                 <img class="ui centered small circular image"
                                                      src="/media/{{ integrante.foto }}"
                                                      alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% else %}
+                                                    <img class="ui centered small circular image"
+                                                    src="{% static 'site2016/images/user.png' %}"
+                                                    alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                                {% endif %}
                                             </div>
                                             <h3 class="ui header">{{ integrante.nome }} {{ integrante.sobrenome }}</h3>
                                             BCC {{ integrante.ano }}
@@ -196,46 +223,6 @@
                 </div>
             </section>
         {% endif %}
-
-        <section class="ui vertical stripe segment" role="region">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="column">
-                        <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.1s" id="titulo_secao">Quais são
-                            as
-                            vagas para fazer parte da equipe?</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="sixteen wide column">
-                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.2s">Bolsistas</h2>
-                        <p class="justificado wow fadeInDown" data-wow-delay="0.2s">
-                            O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$ 400,00
-                            mensalmente. A
-                            dedicação é de 20 horas semanais e a participação no PET por pelo menos um ano garante as
-                            60 horas de Atividades Complementares exigidas no curso de Ciência da Computação da
-                            UFSCar.</p>
-                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.3s">Não-bolsistas</h2>
-                        <p class="justificado wow fadeInDown" data-wow-delay="0.3s">
-                            Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode
-                            ainda ter 6 alunos
-                            atuando como não-bolsistas. As obrigações são as mesmas dos alunos bolsistas, assim como o
-                            certificado recebido, que também vale como Atividades Complementares para o curso. No caso
-                            de
-                            algum bolsista se desligar do PET, os alunos não bolsistas viram bolsistas automaticamente,
-                            sem
-                            necessidade de novo processo seletivo. A ordem de distribuição das bolsas é definida pela
-                            classificação do candidato no processo seletivo o qual participou.</p>
-                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.4s">Voluntários</h2>
-                        <p class="justificado wow fadeInDown" data-wow-delay="0.4s">
-                            Se as 18 vagas para bolsistas e não-bolsistas já estiverem preenchidas, ainda
-                            é possível ser um
-                            membro do PET como um voluntário. Mesmo como voluntário você terá participação efetiva nos
-                            projetos, garantindo muito conhecimento e um grande incremento em sua graduação.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         {% if ex_membros %}
             <section class="ui stripe medium-font vertical feature segment" role="region">
@@ -272,7 +259,47 @@
         <section class="ui vertical stripe segment processo_seletivo" role="region">
             <div class="ui container processo_seletivo">
                 <h1 class="ui centered inverted header">Processo Seletivo</h1>
-                <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? Saiba mais sobre o {% ps_link_atual %}.</h3>
+                <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? {% ps_link_atual %}!</h3>
+            </div>
+        </section>
+
+        <section class="ui vertical stripe segment" role="region">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="column">
+                        <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.1s" id="titulo_secao">Quais são
+                            as
+                            vagas para fazer parte da equipe?</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sixteen wide column">
+                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.2s">Bolsistas</h2>
+                        <p class="justificado wow fadeInDown" data-wow-delay="0.2s">
+                            O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$ 400,00
+                            mensalmente. A
+                            dedicação é de 20 horas semanais e a participação no PET por pelo menos um ano garante as
+                            60 horas de Atividades Complementares exigidas no curso de Ciência da Computação da
+                            UFSCar.</p>
+                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.3s">Não-bolsistas</h2>
+                        <p class="justificado wow fadeInDown" data-wow-delay="0.3s">
+                            Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode
+                            ainda ter 6 alunos
+                            atuando como não-bolsistas. As obrigações são as mesmas dos alunos bolsistas, assim como o
+                            certificado recebido, que também vale como Atividades Complementares para o curso. No caso
+                            de
+                            algum bolsista se desligar do PET, os alunos não bolsistas viram bolsistas automaticamente,
+                            sem
+                            necessidade de novo processo seletivo. A ordem de distribuição das bolsas é definida pela
+                            classificação do candidato no processo seletivo o qual participou.</p>
+                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.4s">Colaboradores</h2>
+                        <p class="justificado wow fadeInDown" data-wow-delay="0.4s">
+                            Se as 18 vagas para bolsistas e não-bolsistas já estiverem preenchidas, ainda
+                            é possível ser um
+                            membro do PET como um colaborador. Mesmo como colaborador você terá participação efetiva nos
+                            projetos, garantindo muito conhecimento e um grande incremento em sua graduação.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
