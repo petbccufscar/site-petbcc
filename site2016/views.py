@@ -31,11 +31,6 @@ def equipe(request):
 
 def projetos(request):
 
-    categorias = Categoria_de_projeto.objects.all()
-
-    ds = Categoria_de_projeto.objects.listar_em_desenvolvimento()
-    outros = Categoria_de_projeto.objects.listar_outros()
-
     projetos_desenvolvimento = []
     projetos_en_pesq_ex = []
     projetos_outros = []
@@ -50,13 +45,17 @@ def projetos(request):
             'imagem': projeto.imagem.url
         }
 
-        if ds in projeto.categorias.all():
-            projetos_desenvolvimento.append(projeto_obj)
-        elif outros in projeto.categorias.all():
-            projetos_outros.append(projeto_obj)
-        else:
-            projetos_en_pesq_ex.append(projeto_obj)
-
+        for cat in projeto.categorias.all():
+            if cat.sigla == 'DS':
+                projetos_desenvolvimento.append(projeto_obj)
+                break
+            elif cat.sigla == 'O':
+                projetos_outros.append(projeto_obj)
+                break
+            else:
+                projetos_en_pesq_ex.append(projeto_obj)
+                break
+            
     tecnologias = []
     for tecnologia in Tecnologia.objects.order_by('nome'):
         tecnologias.append(

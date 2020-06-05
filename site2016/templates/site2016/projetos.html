@@ -24,6 +24,33 @@
 
     <main role="main">
 
+        <div class="ui stripe medium-font vertical feature segment">
+            <div class="ui grid container">
+
+                <div class="centered row">
+                    <h1 class="ui header" id="titulo_secao">Tecnologias que utilizamos nos projetos de
+                        desenvolvimento</h1>
+                </div>
+
+                <div class="centered row">
+                    <div class="ui five column doubling centered grid">
+                        <div class="middle aligned row">
+                            {% for tecnologia in tecnologias %}
+                                <div class="middle aligned column">
+                                    <div class="content">
+                                        <a href="{{ tecnologia.link }}" target="_blank">
+                                            <img class="ui tiny centered image"
+                                                 src="{{ tecnologia.imagem }}" alt="{{ tecnologia.nome }}">
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {% for projeto in projetos_desenvolvimento %}
             <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
                 <div class="ui middle aligned stackable grid container">
@@ -68,33 +95,6 @@
             </div>
         {% endfor %}
 
-        <div class="ui stripe medium-font vertical feature segment">
-            <div class="ui grid container">
-
-                <div class="centered row">
-                    <h1 class="ui header" id="titulo_secao">Tecnologias que utilizamos nos projetos de
-                        desenvolvimento</h1>
-                </div>
-
-                <div class="centered row">
-                    <div class="ui five column doubling centered grid">
-                        <div class="middle aligned row">
-                            {% for tecnologia in tecnologias %}
-                                <div class="middle aligned column">
-                                    <div class="content">
-                                        <a href="{{ tecnologia.link }}" target="_blank">
-                                            <img class="ui tiny centered image"
-                                                 src="{{ tecnologia.imagem }}" alt="{{ tecnologia.nome }}">
-                                        </a>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         {% for projeto in projetos_en_pesq_ex %}
             <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
                 <div class="ui middle aligned stackable grid container">
@@ -109,9 +109,13 @@
                             <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
                             <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
                             {# TODO: lidar com o tipo de label dependendo do status #}
-                            {% if projeto.status == 'A' %}
-                                <div class="ui green label wow fadeInRight" id="tags">
+                            {% if projeto.status == 'D' %}
+                                <div class="ui label wow fadeInRight" id="tags">
                                     <i class="check icon "></i>Ativo
+                                </div>
+                            {% elif projeto.status == 'A' %}
+                                <div class="ui green label wow fadeInRight" id="tags">
+                                    <i class="clock icon "></i>Em desenvolvimento
                                 </div>
                             {% elif projeto.status == 'F' %}
                                 <div class="ui blue label wow fadeInRight" id="tags">
@@ -146,9 +150,13 @@
                             <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
                             <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
 
-                            {% if projeto.status == 'A' %}
-                                <div class="ui green label wow fadeInRight" id="tags">
+                            {% if projeto.status == 'D' %}
+                                <div class="ui label wow fadeInRight" id="tags">
                                     <i class="check icon "></i>Ativo
+                                </div>
+                            {% elif projeto.status == 'A' %}
+                                <div class="ui green label wow fadeInRight" id="tags">
+                                    <i class="check icon "></i>Finalizado
                                 </div>
                             {% elif projeto.status == 'F' %}
                                 <div class="ui blue label wow fadeInRight" id="tags">
