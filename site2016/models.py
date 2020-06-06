@@ -14,7 +14,7 @@ class MembroEquipeManager(models.Manager):
         return super().get_queryset().filter(situacao='N')
 
     def listar_colaboradores(self):
-        return super().get_queryset().filter(situacao='C')
+        return super().get_queryset().filter(situacao='V')
 
     def listar_ex_membros(self):
         return super().get_queryset().filter(situacao='E')
@@ -29,7 +29,7 @@ class MembroEquipe(models.Model):
         situacao = {
             'B': 'Bolsista',
             'N': 'Não-bolsista',
-            'C': 'Colaborador',
+            'V': 'Colaborador',
             'E': 'Ex-membro'
         }
         return "["+situacao[self.situacao]+"] "+self.nome + ' ' + self.sobrenome
@@ -46,7 +46,7 @@ class MembroEquipe(models.Model):
     SITUACAO_CHOICES = (
         ('B', 'Bolsista'),
         ('N', 'Não-bolsista'),
-        ('C', 'Colaborador'),
+        ('V', 'Colaborador'),
         ('E', 'Ex-membro')
     )
 
