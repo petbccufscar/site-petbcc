@@ -62,7 +62,14 @@
                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                                 {% endif %}
                                             </div>
-                                            <h3 class="ui header">{{ integrante.titulo }} {{ integrante.nome }} {{ integrante.sobrenome }}</h3>
+                                            <h3 class="ui header">
+                                                {% if user.is_authenticated %}
+                                                    <a href="{% url 'membro' integrante.id %}">
+                                                        {{ integrante.titulo }} {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                    </a>
+                                                {% else %}
+                                                    {{ integrante.titulo }} {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                {% endif %}</h3>
                                             {{ integrante.descricao }}
                                         </div>
                                     </div>
@@ -112,6 +119,15 @@
                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                                 {% endif %}
                                             </div>
+                                            <h3 class="ui header">
+                                                {% if user.is_authenticated %}
+                                                    <a href="{% url 'membro' integrante.id %}">
+                                                        {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                    </a>
+                                                {% else %}
+                                                    {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                {% endif %}
+                                            </h3>
                                             {{ integrante.curso }} {{ integrante.ano }}
                                         </div>
                                     </div>
@@ -161,6 +177,15 @@
                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                                 {% endif %}
                                             </div>
+                                            <h3 class="ui header">
+                                                {% if user.is_authenticated %}
+                                                    <a href="{% url 'membro' integrante.id %}">
+                                                        {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                    </a>
+                                                {% else %}
+                                                    {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                {% endif %}
+                                            </h3>
                                             {{ integrante.curso }} {{ integrante.ano }}
                                         </div>
                                     </div>
@@ -210,6 +235,15 @@
                                                     alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
                                                 {% endif %}
                                             </div>
+                                            <h3 class="ui header">
+                                                {% if user.is_authenticated %}
+                                                    <a href="{% url 'membro' integrante.id %}">
+                                                        {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                    </a>
+                                                {% else %}
+                                                    {{ integrante.nome }} {{ integrante.sobrenome }}
+                                                {% endif %}
+                                            </h3>
                                             {{ integrante.curso }} {{ integrante.ano }}
                                         </div>
                                     </div>

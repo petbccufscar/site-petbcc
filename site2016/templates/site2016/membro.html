@@ -1,0 +1,102 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ membro.nome }} - PET-BCC UFSCar
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+
+<header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+    <div class="ui grid">
+        <div class="column">
+            <div class="row">
+                <h1 class="ui inverted header" id="titulo_pagina">
+                    {{ membro.nome }}
+                </h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main role="main">
+
+    <div class="ui stripe medium-font vertical feature segment">
+        <div class="ui grid container">
+
+            <div class="row">
+                <div class="column">
+                    <h3>{{membro}}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <h2>Projetos</h2>
+                </div>
+            </div>
+            <div class="row">
+
+                {% if not projetos %}
+                <div class="column">
+                    <p>Nenhum projeto</p>
+                </div>
+                {% endif %}
+
+                {% for projeto in projetos %}
+                <div class="eight wide column">
+                    <div class="ui middle aligned animated list">
+                        <div class="item">
+                            <img class="ui avatar image" src="/media/{{ projeto.imagem }}"
+                                alt="Imagem de: {{ projeto.nome }}">
+
+                            <div class="content">
+                                <div class="header">
+                                    <a href="{% url 'projeto' projeto.id %}">
+                                        {{projeto.nome}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            <div class="row">
+                <div class="column">
+                    <h2>Atividades recentes</h2>
+                </div>
+            </div>
+
+            {% if not atividades %}
+            <div class="row">
+                <div class="column">
+                    <p>Nenhuma atividade recente</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% for atividade in atividades %}
+            <div class="ui divider"></div>
+            <div class="row">
+                <div class="eight wide column">
+                    <h3><i class="terminal icon"></i> {{ atividade.titulo }}</h3>
+                    <h4>Projeto: {{ atividade.projeto.nome }}</h4>
+                    <h4>{{ atividade.dia|date:'d/m/Y' }}</h4>
+                </div>
+                <div class="eight wide column">
+                    <h3>Descrição</h3>
+                    <p>{{ atividade.descricao }}</p>
+                    <h4>Tempo gasto: {{ atividade.horas }}h{{ atividade.minutos }}min</h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock body %}
