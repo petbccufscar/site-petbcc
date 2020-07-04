@@ -63,6 +63,14 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+
+            {% if atividades %}
+            <div class="computer only row">
+                <div id="container" style="width: 100%; height:40vh;"></div>
+                <h4>Total: {{ tempo_total.horas }}h{{ tempo_total.minutos }}min</h4>
+            </div>
+            {% endif %}
 
             <div class="row">
                 <div class="column">
@@ -100,4 +108,31 @@
         </div>
     </div>
 
+</main>
+
+<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+<script>
+    anychart.onDocumentReady(function () {
+
+        // set the data
+        var data = {
+            header: ["Dia", "Minutos"],
+            rows: [
+                {% for relatorio in relatorio_atividades %}
+                ["{{relatorio.dia|date:'d/m/Y'}}", {{relatorio.tempo}}],
+                {% endfor %}
+            ]
+        };
+
+        // create the chart
+        var chart = anychart.line();
+
+        // add data
+        chart.data(data);
+
+        // draw
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 {% endblock body %}
