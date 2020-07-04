@@ -79,7 +79,7 @@ class MembroEquipeManager(models.Manager):
         return super().get_queryset().filter(situacao='N')
 
     def listar_colaboradores(self):
-        return super().get_queryset().filter(situacao='V')
+        return super().get_queryset().filter(situacao='C')
 
     def listar_ex_membros(self):
         return super().get_queryset().filter(situacao='E')
@@ -94,7 +94,7 @@ class MembroEquipe(models.Model):
         situacao = {
             'B': 'Bolsista',
             'N': 'Não-bolsista',
-            'V': 'Colaborador',
+            'C': 'Colaborador',
             'E': 'Ex-membro'
         }
         return "["+situacao[self.situacao]+"] "+self.nome + ' ' + self.sobrenome
@@ -113,7 +113,7 @@ class MembroEquipe(models.Model):
     SITUACAO_CHOICES = (
         ('B', 'Bolsista'),
         ('N', 'Não-bolsista'),
-        ('V', 'Colaborador'),
+        ('C', 'Colaborador'),
         ('E', 'Ex-membro')
     )
 
@@ -274,10 +274,19 @@ class Atividade(models.Model):
         verbose_name="dia")
     
     horas = models.IntegerField(
-        verbose_name="horas", default=0)
+        verbose_name="horas",
+        default=0,
+        validators=[
+            MinValueValidator(0)
+        ])
 
     minutos = models.IntegerField(
-        verbose_name="minutos", default=0)
+        verbose_name="minutos",
+        default=0,
+        validators=[
+            MaxValueValidator(59),
+            MinValueValidator(0)
+        ])
 
     membro = models.ManyToManyField(MembroEquipe, verbose_name='membros')
 
