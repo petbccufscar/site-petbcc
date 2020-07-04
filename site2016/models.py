@@ -59,6 +59,15 @@ class Aluno(MembroEquipe):
         verbose_name = 'aluno'
         verbose_name_plural = 'alunos'
 
+    CURSO_CHOICES = (
+        ('BCC', 'BCC'),
+        ('EnC', 'EnC'),
+        ('FIS', 'Física')
+        )
+
+    curso = models.CharField(
+        max_length=5, verbose_name='curso', blank=True, choices=CURSO_CHOICES)
+
     ANO_CHOICES = [(i, i)
                    for i in range(2010, datetime.datetime.now().year + 1)]
 
@@ -222,7 +231,7 @@ class Projeto(models.Model):
         ('D', 'Em desenvolvimento'),
         ('A', 'Ativo'),
         ('F', 'Finalizado'),
-        ('C', 'Cancelado')
+        ('S', 'Suspenso')
     )
 
     data_inicio = models.DateField(verbose_name="data de início", default=datetime.datetime.now, blank=True,
