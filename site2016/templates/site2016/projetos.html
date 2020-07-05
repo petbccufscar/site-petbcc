@@ -1,5 +1,5 @@
 {% extends 'site2016/base.html' %}
-{% load staticfiles %}
+{% load static %}
 {% load ps_menu_item %}
 
 {% block title %}
@@ -53,6 +53,7 @@
         </div>
 
         {% for projeto in projetos_desenvolvimento %}
+        {% if projeto.publico or user.is_authenticated %}
             <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
                 <div class="ui middle aligned stackable grid container">
                     {% if forloop.first %}
@@ -63,7 +64,15 @@
 
                     <div class="row">
                         <div class="twelve wide column">
-                            <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
+                            <h2 class="ui header wow fadeInRight">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'projeto' projeto.id %}">
+                                        {{ projeto.nome }}
+                                    </a>
+                                {% else %}
+                                    {{ projeto.nome }}
+                                {% endif %}
+                            </h2>
                             <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
                             <p class="justificado wow fadeInRight"><b>Tecnologias utilizadas</b>:
                                 {% for tec in projeto.tecnologias %}
@@ -82,9 +91,9 @@
                                 <div class="ui blue label wow fadeInRight" id="tags">
                                     <i class="check icon "></i>Finalizado
                                 </div>
-                            {% elif projeto.status == 'C' %}
+                            {% elif projeto.status == 'S' %}
                                 <div class="ui red label wow fadeInRight" id="tags">
-                                    Cancelado
+                                    Suspenso
                                 </div>
                             {% endif %}
                         </div>
@@ -94,9 +103,11 @@
                     </div>
                 </div>
             </div>
+        {% endif %}
         {% endfor %}
 
         {% for projeto in projetos_en_pesq_ex %}
+        {% if projeto.publico or user.is_authenticated %}
             <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
                 <div class="ui middle aligned stackable grid container">
                     {% if forloop.first %}
@@ -107,7 +118,15 @@
 
                     <div class="row">
                         <div class="twelve wide column">
-                            <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
+                            <h2 class="ui header wow fadeInRight">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'projeto' projeto.id %}">
+                                        {{ projeto.nome }}
+                                    </a>
+                                {% else %}
+                                    {{ projeto.nome }}
+                                {% endif %}
+                            </h2>
                             <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
                             {# TODO: lidar com o tipo de label dependendo do status #}
                             {% if projeto.status == 'D' %}
@@ -122,9 +141,9 @@
                                 <div class="ui blue label wow fadeInRight" id="tags">
                                     <i class="check icon "></i>Finalizado
                                 </div>
-                            {% elif projeto.status == 'C' %}
+                            {% elif projeto.status == 'S' %}
                                 <div class="ui red label wow fadeInRight" id="tags">
-                                    Cancelado
+                                    Suspenso
                                 </div>
                             {% endif %}
                         </div>
@@ -134,9 +153,11 @@
                     </div>
                 </div>
             </div>
+        {% endif %}
         {% endfor %}
 
         {% for projeto in projetos_outros %}
+        {% if projeto.publico or user.is_authenticated %}
             <div class="ui vertical segment {% if forloop.counter|divisibleby:2 %}fundo_cinza{% endif %}">
                 <div class="ui middle aligned stackable grid container">
 
@@ -148,7 +169,15 @@
 
                     <div class="row">
                         <div class="twelve wide column">
-                            <h2 class="ui header wow fadeInRight">{{ projeto.nome }}</h2>
+                            <h2 class="ui header wow fadeInRight">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'projeto' projeto.id %}">
+                                        {{ projeto.nome }}
+                                    </a>
+                                {% else %}
+                                    {{ projeto.nome }}
+                                {% endif %}
+                            </h2>
                             <p class="justificado wow fadeInRight">{{ projeto.descricao|safe }}</p>
 
                             {% if projeto.status == 'D' %}
@@ -163,9 +192,9 @@
                                 <div class="ui blue label wow fadeInRight" id="tags">
                                     <i class="check icon "></i>Finalizado
                                 </div>
-                            {% elif projeto.status == 'C' %}
+                            {% elif projeto.status == 'S' %}
                                 <div class="ui red label wow fadeInRight" id="tags">
-                                    Cancelado
+                                    Suspenso
                                 </div>
                             {% endif %}
                         </div>
@@ -175,6 +204,7 @@
                     </div>
                 </div>
             </div>
+        {% endif %}
         {% endfor %}
 
         <section class="ui vertical stripe segment processo_seletivo" role="region">

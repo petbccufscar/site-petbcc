@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 import sendgrid
 from sendgrid.helpers.mail import *
 from django.conf import settings
 from .models import *
+from django.db.models import Sum
 
 
 def manutencao(request):
@@ -29,6 +31,42 @@ def equipe(request):
     return render(request, 'site2016/equipe.html', context_dictionary)
 
 
+@login_required
+def membro(request, id):
+    membro = MembroEquipe.objects.get(id=id)
+    projetos = membro.projetos.all()
+    atividades = Atividade.objects.filter(membro__id=id).order_by('-dia')
+    tempo_total = {'horas': 0, 'minutos': 0}
+
+    relatorio_atividades = (atividades.values('dia')
+                            .annotate(horas=Sum('horas'))
+                            .annotate(minutos=Sum('minutos'))
+                            .order_by())
+    
+    for relatorio in relatorio_atividades:
+        if relatorio['minutos'] > 60:
+            relatorio['horas'] += (relatorio['minutos'] // 60)
+            relatorio['minutos'] = (relatorio['minutos'] % 60)
+        relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+        tempo_total['horas'] += relatorio['horas']
+        tempo_total['minutos'] += relatorio['minutos']
+    
+    if tempo_total['minutos'] > 60:
+        tempo_total['horas'] += (tempo_total['minutos'] // 60)
+        tempo_total['minutos'] = (tempo_total['minutos'] % 60)
+
+    context_dictionary = {
+        'membro': membro,
+        'projetos': projetos,
+        'atividades': atividades,
+        'relatorio_atividades': relatorio_atividades,
+        'tempo_total': tempo_total,
+        'DEBUG': settings.DEBUG
+    }
+
+    return render(request, 'site2016/membro.html', context_dictionary)
+
+
 def projetos(request):
 
     projetos_desenvolvimento = []
@@ -38,8 +76,10 @@ def projetos(request):
     for projeto in Projeto.objects.order_by("nome"):
 
         projeto_obj = {
+            'id': projeto.id,
             'nome': projeto.nome,
             'descricao': projeto.descricao,
+            'publico': projeto.publico,
             'tecnologias': projeto.tecnologias.all(),
             'status': projeto.status,
             'imagem': projeto.imagem.url
@@ -68,6 +108,42 @@ def projetos(request):
                           'projetos_outros': projetos_outros}
 
     return render(request, 'site2016/projetos.html', context_dictionary)
+
+
+@login_required
+def projeto(request, id):
+    projeto = Projeto.objects.get(id=id)
+    membros = projeto.membroequipe_set.all()
+    atividades = Atividade.objects.filter(projeto__id=id).order_by('-dia')
+    tempo_total = {'horas': 0, 'minutos': 0}
+
+    relatorio_atividades = (atividades.values('dia')
+                            .annotate(horas=Sum('horas'))
+                            .annotate(minutos=Sum('minutos'))
+                            .order_by())
+    
+    for relatorio in relatorio_atividades:
+        if relatorio['minutos'] > 60:
+            relatorio['horas'] += (relatorio['minutos'] // 60)
+            relatorio['minutos'] = (relatorio['minutos'] % 60)
+        relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+        tempo_total['horas'] += relatorio['horas']
+        tempo_total['minutos'] += relatorio['minutos']
+    
+    if tempo_total['minutos'] > 60:
+        tempo_total['horas'] += (tempo_total['minutos'] // 60)
+        tempo_total['minutos'] = (tempo_total['minutos'] % 60)
+
+    context_dictionary = {
+        'projeto': projeto,
+        'membros': membros,
+        'atividades': atividades,
+        'relatorio_atividades': relatorio_atividades,
+        'tempo_total': tempo_total,
+        'DEBUG': settings.DEBUG
+    }
+
+    return render(request, 'site2016/projeto.html', context_dictionary)
 
 
 def processo_seletivo(request, ano, semestre):

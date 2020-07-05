@@ -1,0 +1,138 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ projeto.nome }} - PET-BCC UFSCar
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+    <div class="ui grid">
+        <div class="column">
+            <div class="row">
+                <h1 class="ui inverted header" id="titulo_pagina">
+                    {{projeto.nome}}
+                </h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main role="main">
+
+    <div class="ui stripe medium-font vertical feature segment">
+        <div class="ui grid container">
+
+            <div class="row">
+                <div class="column">
+                    <h2>Membros</h2>
+                </div>
+            </div>
+            <div class="row">
+
+                {% if not membros %}
+                <div class="column">
+                    <p>Nenhum membro</p>
+                </div>
+                {% endif %}
+
+                {% for membro in membros %}
+                <div class="eight wide column">
+                    <div class="ui middle aligned animated list">
+                        <div class="item">
+                            {% if integrante.foto %}
+                            <img class="ui avatar image" src="/media/{{ integrante.foto }}"
+                                alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                            {% else %}
+                            <img class="ui avatar image" src="{% static 'site2016/images/user.png' %}"
+                                alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                            {% endif %}
+
+                            <div class="content">
+                                <div class="header">
+                                    <a href="{% url 'membro' membro.id %}">
+                                        {{membro.nome}} {{membro.sobrenome}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if atividades %}
+            <div class="computer only row">
+                <div id="container" style="width: 100%; height:40vh;"></div>
+                <h4>Total: {{ tempo_total.horas }}h{{ tempo_total.minutos }}min</h4>
+            </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="column">
+                    <h2>Atividades recentes</h2>
+                </div>
+            </div>
+
+            {% if not atividades %}
+            <div class="row">
+                <div class="column">
+                    <p>Nenhuma atividade recente</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% for atividade in atividades %}
+            <div class="ui divider"></div>
+            <div class="row">
+                <div class="eight wide column">
+                    <h3><i class="terminal icon"></i> {{ atividade.titulo }}</h3>
+                    <ul>
+                        {% for membro in atividade.membro.all %}
+                        <li>{{ membro.nome }} {{ membro.sobrenome }}</li>
+                        {% endfor %}
+                    </ul>
+                    <h4>{{ atividade.dia|date:'d/m/Y' }}</h4>
+                </div>
+                <div class="eight wide column">
+                    <h3>Descrição</h3>
+                    <p>{{ atividade.descricao }}</p>
+                    <h4>Tempo gasto: {{ atividade.horas }}h{{ atividade.minutos }}min</h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</main>
+
+<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+<script>
+    anychart.onDocumentReady(function () {
+
+        // set the data
+        var data = {
+            header: ["Dia", "Minutos"],
+            rows: [
+                {% for relatorio in relatorio_atividades %}
+                ["{{relatorio.dia|date:'d/m/Y'}}", {{relatorio.tempo}}],
+                {% endfor %}
+            ]
+        };
+
+        // create the chart
+        var chart = anychart.line();
+
+        // add data
+        chart.data(data);
+
+        // draw
+        chart.container("container");
+        chart.draw();
+    });
+</script>
+{% endblock body %}

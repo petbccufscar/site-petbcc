@@ -3,6 +3,71 @@ from django.db import models
 
 import datetime
 
+
+class Categoria_de_projeto(models.Model):
+    class Meta:
+        verbose_name = 'categoria de projeto'
+        verbose_name_plural = 'categorias de projeto'
+
+    def __str__(self):
+        return '[' + self.sigla + '] ' + self.nome
+
+    nome = models.CharField(verbose_name='nome', max_length=50)
+    sigla = models.CharField(verbose_name='sigla', max_length=5)
+
+
+class Tecnologia(models.Model):
+    class Meta:
+        verbose_name = 'tecnologia'
+        verbose_name_plural = 'tecnologias'
+
+    def __str__(self):
+        return self.nome
+
+    nome = models.CharField(verbose_name='nome', max_length=100)
+    imagem = models.ImageField(verbose_name='logo', blank=True, null=True)
+    link = models.CharField(verbose_name='link',
+                            max_length=100, blank=True, null=True)
+
+
+class Projeto(models.Model):
+    class Meta:
+        verbose_name = 'projeto'
+        verbose_name_plural = 'projetos'
+
+    def __str__(self):
+        return self.nome
+
+    nome = models.CharField(verbose_name='nome', max_length=100)
+
+    STATUS_CHOICES = (
+        ('D', 'Em desenvolvimento'),
+        ('A', 'Ativo'),
+        ('F', 'Finalizado'),
+        ('S', 'Suspenso')
+    )
+
+    publico = models.BooleanField(verbose_name='público', default=True)
+
+    data_inicio = models.DateField(verbose_name="data de início", default=datetime.datetime.now, blank=True,
+                                   null=True)
+    data_final = models.DateField(
+        verbose_name="data de finalização", blank=True, null=True)
+
+    status = models.CharField(verbose_name='status do projeto',
+                              choices=STATUS_CHOICES, max_length=1, default='A')
+
+    descricao = models.TextField(verbose_name='descrição')
+
+    tecnologias = models.ManyToManyField(
+        Tecnologia, verbose_name='tecnologias utilizadas', blank=True)
+
+    categorias = models.ManyToManyField(
+        Categoria_de_projeto, verbose_name='categorias do projeto')
+
+    imagem = models.ImageField(verbose_name="imagem do projeto")
+
+
 class MembroEquipeManager(models.Manager):
     def listar_membros_ativos(self):
         return super().get_queryset().exclude(situacao='E')
@@ -43,6 +108,8 @@ class MembroEquipe(models.Model):
     github = models.CharField(
         max_length=100, null=True, blank=True, verbose_name='GitHub')
 
+    projetos = models.ManyToManyField(Projeto, verbose_name='projetos', blank=True)
+
     SITUACAO_CHOICES = (
         ('B', 'Bolsista'),
         ('N', 'Não-bolsista'),
@@ -58,6 +125,15 @@ class Aluno(MembroEquipe):
     class Meta:
         verbose_name = 'aluno'
         verbose_name_plural = 'alunos'
+    
+    CURSO_CHOICES = (
+        ('BCC', 'BCC'),
+        ('EnC', 'EnC'),
+        ('FIS', 'Física')
+        )
+
+    curso = models.CharField(
+        max_length=5, verbose_name='curso', blank=True, choices=CURSO_CHOICES)
 
     ANO_CHOICES = [(i, i)
                    for i in range(2010, datetime.datetime.now().year + 1)]
@@ -182,63 +258,36 @@ class ProcessoSeletivo(models.Model):
     edital = models.FileField(verbose_name="edital")
 
 
-class Categoria_de_projeto(models.Model):
+class Atividade(models.Model):
     class Meta:
-        verbose_name = 'categoria de projeto'
-        verbose_name_plural = 'categorias de projeto'
+        verbose_name = 'atividade'
+        verbose_name_plural = 'atividades'
 
     def __str__(self):
-        return '[' + self.sigla + '] ' + self.nome
+        return self.titulo
 
-    nome = models.CharField(verbose_name='nome', max_length=50)
-    sigla = models.CharField(verbose_name='sigla', max_length=5)
+    titulo = models.CharField(verbose_name='titulo', max_length=100)
 
+    descricao = models.TextField(verbose_name='descrição', blank=True)
 
-class Tecnologia(models.Model):
-    class Meta:
-        verbose_name = 'tecnologia'
-        verbose_name_plural = 'tecnologias'
+    dia = models.DateField(
+        verbose_name="dia")
+    
+    horas = models.IntegerField(
+        verbose_name="horas",
+        default=0,
+        validators=[
+            MinValueValidator(0)
+        ])
 
-    def __str__(self):
-        return self.nome
+    minutos = models.IntegerField(
+        verbose_name="minutos",
+        default=0,
+        validators=[
+            MaxValueValidator(59),
+            MinValueValidator(0)
+        ])
 
-    nome = models.CharField(verbose_name='nome', max_length=100)
-    imagem = models.ImageField(verbose_name='logo', blank=True, null=True)
-    link = models.CharField(verbose_name='link',
-                            max_length=100, blank=True, null=True)
+    membro = models.ManyToManyField(MembroEquipe, verbose_name='membros')
 
-
-class Projeto(models.Model):
-    class Meta:
-        verbose_name = 'projeto'
-        verbose_name_plural = 'projetos'
-
-    def __str__(self):
-        return self.nome
-
-    nome = models.CharField(verbose_name='nome', max_length=100)
-
-    STATUS_CHOICES = (
-        ('D', 'Em desenvolvimento'),
-        ('A', 'Ativo'),
-        ('F', 'Finalizado'),
-        ('C', 'Cancelado')
-    )
-
-    data_inicio = models.DateField(verbose_name="data de início", default=datetime.datetime.now, blank=True,
-                                   null=True)
-    data_final = models.DateField(
-        verbose_name="data de finalização", blank=True, null=True)
-
-    status = models.CharField(verbose_name='status do projeto',
-                              choices=STATUS_CHOICES, max_length=1, default='A')
-
-    descricao = models.TextField(verbose_name='descrição')
-
-    tecnologias = models.ManyToManyField(
-        Tecnologia, verbose_name='tecnologias utilizadas', blank=True)
-
-    categorias = models.ManyToManyField(
-        Categoria_de_projeto, verbose_name='categorias do projeto')
-
-    imagem = models.ImageField(verbose_name="imagem do projeto")
+    projeto = models.ForeignKey(Projeto, verbose_name='projeto', on_delete=models.SET_NULL, blank=True, null=True)
