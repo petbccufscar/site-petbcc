@@ -44,12 +44,12 @@
                 <div class="eight wide column">
                     <div class="ui middle aligned animated list">
                         <div class="item">
-                            {% if integrante.foto %}
-                            <img class="ui avatar image" src="/media/{{ integrante.foto }}"
-                                alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                            {% if membro.foto %}
+                            <img class="ui avatar image" src="/media/{{ membro.foto }}"
+                                alt="Foto de perfil: {{ membro.nome }} {{ membro.sobrenome }}">
                             {% else %}
                             <img class="ui avatar image" src="{% static 'site2016/images/user.png' %}"
-                                alt="Foto de perfil: {{ integrante.nome }} {{ integrante.sobrenome }}">
+                                alt="Foto de perfil: {{ membro.nome }} {{ membro.sobrenome }}">
                             {% endif %}
 
                             <div class="content">
