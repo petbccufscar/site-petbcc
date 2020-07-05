@@ -98,7 +98,7 @@
                 </div>
                 <div class="eight wide column">
                     <h3>Descrição</h3>
-                    <p>{{ atividade.descricao }}</p>
+                    <p>{{ atividade.descricao|safe }}</p>
                     <h4>Tempo gasto: {{ atividade.horas }}h{{ atividade.minutos }}min</h4>
                 </div>
             </div>
