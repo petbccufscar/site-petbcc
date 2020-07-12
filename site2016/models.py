@@ -34,6 +34,7 @@ class Projeto(models.Model):
     class Meta:
         verbose_name = 'projeto'
         verbose_name_plural = 'projetos'
+        ordering = ['nome']
 
     def __str__(self):
         return self.nome
@@ -89,6 +90,7 @@ class MembroEquipe(models.Model):
     class Meta:
         verbose_name = 'membro de equipe'
         verbose_name_plural = 'membros da equipe'
+        ordering = ['nome']
 
     def __str__(self):
         situacao = {
