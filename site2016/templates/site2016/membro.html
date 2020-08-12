@@ -11,6 +11,12 @@
 
 {% block body %}
 
+<style>
+    .three h4 {
+        margin: 1rem 0;
+    }
+</style>
+
 <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
     <div class="ui grid">
         <div class="column">
@@ -68,9 +74,18 @@
             </div>
 
             {% if atividades %}
-            <div class="computer only row">
+            <div class="computer tablet only row">
                 <div id="container" style="width: 100%; height:40vh;"></div>
-                <h4>Total: {{ tempo_total.horas }}h{{ tempo_total.minutos }}min</h4>
+                <div class="three wide column">
+                    <h4>Média semanal:</h4>
+                    <h4>Média 3 meses:</h4>
+                    <h4>Tempo total:</h4>
+                </div>
+                <div class="three wide column">
+                    <h4>{{ tempo.mes.horas }}h{{ tempo.mes.minutos }}min</h4>
+                    <h4>{{ tempo.3meses.horas }}h{{ tempo.3meses.minutos }}min</h4>
+                    <h4>{{ tempo.total.horas }}h{{ tempo.total.minutos }}min</h4>
+                </div>
             </div>
             {% endif %}
 
@@ -123,7 +138,7 @@
         };
 
         // create the chart
-        var chart = anychart.line();
+        var chart = anychart.column();
 
         // add data
         chart.data(data);

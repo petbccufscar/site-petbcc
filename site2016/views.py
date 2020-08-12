@@ -5,6 +5,7 @@ from sendgrid.helpers.mail import *
 from django.conf import settings
 from .models import *
 from django.db.models import Sum
+from datetime import date
 
 
 def manutencao(request):
@@ -36,7 +37,15 @@ def membro(request, id):
     membro = MembroEquipe.objects.get(id=id)
     projetos = membro.projetos.all()
     atividades = Atividade.objects.filter(membro__id=id).order_by('-dia')
-    tempo_total = {'horas': 0, 'minutos': 0}
+    tempo = {
+        'total': {'horas': 0, 'minutos': 0},
+        'mes': {'horas': 0, 'minutos': 0},
+        '3meses': {'horas': 0, 'minutos': 0}
+        }
+
+    ultimoMes = datetime.date.today() - datetime.timedelta(28)
+    ultimos3 = datetime.date.today() - datetime.timedelta(84)
+
 
     relatorio_atividades = (atividades.values('dia')
                             .annotate(horas=Sum('horas'))
@@ -48,19 +57,40 @@ def membro(request, id):
             relatorio['horas'] += (relatorio['minutos'] // 60)
             relatorio['minutos'] = (relatorio['minutos'] % 60)
         relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
-        tempo_total['horas'] += relatorio['horas']
-        tempo_total['minutos'] += relatorio['minutos']
+        tempo['total']['horas'] += relatorio['horas']
+        tempo['total']['minutos'] += relatorio['minutos']
+
+        if relatorio['dia'] >= ultimoMes:
+            tempo['mes']['horas'] += relatorio['horas']
+            tempo['mes']['minutos'] += relatorio['minutos']
+        
+        if relatorio['dia'] >= ultimos3:
+            tempo['3meses']['horas'] += relatorio['horas']
+            tempo['3meses']['minutos'] += relatorio['minutos']
     
-    if tempo_total['minutos'] > 60:
-        tempo_total['horas'] += (tempo_total['minutos'] // 60)
-        tempo_total['minutos'] = (tempo_total['minutos'] % 60)
+    if tempo['total']['minutos'] > 60:
+        tempo['total']['horas'] += (tempo['total']['minutos'] // 60)
+        tempo['total']['minutos'] = (tempo['total']['minutos'] % 60)
+
+    if tempo['mes']['minutos'] > 60:
+        tempo['mes']['horas'] += (tempo['mes']['minutos'] // 60)
+        tempo['mes']['minutos'] = (tempo['mes']['minutos'] % 60)
+
+    if tempo['3meses']['minutos'] > 60:
+        tempo['3meses']['horas'] += (tempo['3meses']['minutos'] // 60)
+        tempo['3meses']['minutos'] = (tempo['3meses']['minutos'] % 60)
+    
+    tempo['mes']['horas'] //= 4
+    tempo['mes']['minutos'] //= 4
+    tempo['3meses']['horas'] //= 12
+    tempo['3meses']['minutos'] //= 12
 
     context_dictionary = {
         'membro': membro,
         'projetos': projetos,
         'atividades': atividades,
         'relatorio_atividades': relatorio_atividades,
-        'tempo_total': tempo_total,
+        'tempo': tempo,
         'DEBUG': settings.DEBUG
     }
 
