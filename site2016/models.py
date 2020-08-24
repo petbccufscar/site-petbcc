@@ -43,6 +43,7 @@ class Projeto(models.Model):
 
     STATUS_CHOICES = (
         ('D', 'Em desenvolvimento'),
+        ('P', 'Em planejamento'),
         ('A', 'Ativo'),
         ('F', 'Finalizado'),
         ('S', 'Suspenso')
