@@ -88,6 +88,12 @@
                 </div>
             </div>
             {% endif %}
+            
+            <div class="row">
+                <div class="column">
+                    <button id="mostrar_tudo" class="ui button">Mostrar tudo</button>
+                </div>
+            </div> 
 
             <div class="row">
                 <div class="column">
@@ -104,8 +110,8 @@
             {% endif %}
 
             {% for atividade in atividades %}
-            <div class="ui divider"></div>
-            <div class="row">
+            <div class="ui divider atividades {{atividade.dia | date:'dmY'}}"></div>
+            <div class="row atividades {{atividade.dia | date:'dmY'}}">
                 <div class="eight wide column">
                     <h3><i class="terminal icon"></i> {{ atividade.titulo }}</h3>
                     <h4>Projeto: {{ atividade.projeto.nome }}</h4>
@@ -125,19 +131,41 @@
 
 <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 <script>
+    function mostraClasses(nomeClasse){
+        classes = document.getElementsByClassName(nomeClasse)
+        for(var i = 0; i < classes.length; i++){
+            classes[i].style.display = "flex"
+        }
+    }
+    function escondeClasses(nomeClasse){
+        classes = document.getElementsByClassName(nomeClasse)
+        for(var i = 0; i < classes.length; i++){
+            classes[i].style.display = "none"
+        }
+    }
     anychart.onDocumentReady(function () {
+        
+        document.getElementById("mostrar_tudo").style.display = "none";
 
         // set the data
         var data = {
             header: ["Dia", "Minutos"],
             rows: [
                 {% for relatorio in relatorio_atividades %}
-                ["{{relatorio.dia|date:'d/m/Y'}}", {{relatorio.tempo}}],
+                ["{{relatorio.dia|date:'d/m/Y'|safe}}", {{relatorio.tempo}}],
                 {% endfor %}
             ]
         };
 
+        var data2 = [
+        {% for relatorio in relatorio_atividades %}
+        {x: "{{relatorio.dia|date:'d/m/Y'|safe}}", value: {{relatorio.tempo}}},
+        {% endfor %}
+        ]
+
         // create the chart
+        var dataSet = anychart.data.set(data2)
+        dataSet = dataSet.mapAs({x: 'x', value: 'value'});
         var chart = anychart.column();
 
         // add data
@@ -146,6 +174,19 @@
         // draw
         chart.container("container");
         chart.draw();
+        chart.listen("pointClick", function(e) {
+            document.getElementById("mostrar_tudo").style.display = "block";
+            mostraClasses('atividades');
+            escondeClasses('atividades');
+            mostraClasses(dataSet.get(e.pointIndex, 'x').replace('/', '').replace('/', '').replace('/', ''));
+        });
+
+        document.getElementById("mostrar_tudo").onclick = function() {
+            document.getElementById("mostrar_tudo").style.display = "none";
+            mostraClasses('atividades');
+            chart.getSeriesAt(0).unselect()
+        };
+
     });
 </script>
 {% endblock body %}
