@@ -15,6 +15,10 @@
     .three h4 {
         margin: 1rem 0;
     }
+
+    #mostrar_tudo {
+        display: none;
+    }
 </style>
 
 <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
@@ -75,7 +79,7 @@
 
             {% if atividades %}
             <div class="computer tablet only row">
-                <div id="container" style="width: 100%; height:40vh;"></div>
+                <div id="container" style="width: 100%; height:20rem;"></div>
                 <div class="three wide column">
                     <h4>Média semanal:</h4>
                     <h4>Média 3 meses:</h4>
@@ -144,22 +148,20 @@
         }
     }
     anychart.onDocumentReady(function () {
-        
-        document.getElementById("mostrar_tudo").style.display = "none";
 
         // set the data
         var data = {
             header: ["Dia", "Minutos"],
             rows: [
                 {% for relatorio in relatorio_atividades %}
-                ["{{relatorio.dia|date:'d/m/Y'|safe}}", {{relatorio.tempo}}],
+                    ["{{relatorio.dia|date:'d/m/Y'|safe}}", {{relatorio.tempo}}],
                 {% endfor %}
             ]
         };
 
         var data2 = [
         {% for relatorio in relatorio_atividades %}
-        {x: "{{relatorio.dia|date:'d/m/Y'|safe}}", value: {{relatorio.tempo}}},
+            {x: "{{relatorio.dia|date:'d/m/Y'|safe}}", value: {{relatorio.tempo}}},
         {% endfor %}
         ]
 
@@ -176,9 +178,8 @@
         chart.draw();
         chart.listen("pointClick", function(e) {
             document.getElementById("mostrar_tudo").style.display = "block";
-            mostraClasses('atividades');
             escondeClasses('atividades');
-            mostraClasses(dataSet.get(e.pointIndex, 'x').replace('/', '').replace('/', '').replace('/', ''));
+            mostraClasses(dataSet.get(e.pointIndex, 'x').replaceAll('/', ''));
         });
 
         document.getElementById("mostrar_tudo").onclick = function() {
