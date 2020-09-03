@@ -128,6 +128,8 @@
                 </div>
             </div>
             {% endfor %}
+            <div class="row centered" id="divMenuPaginas">
+            </div>
         </div>
     </div>
 
@@ -136,16 +138,68 @@
 <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 <script>
     function mostraClasses(nomeClasse){
-        classes = document.getElementsByClassName(nomeClasse)
+        classes = document.getElementsByClassName(nomeClasse);
         for(var i = 0; i < classes.length; i++){
-            classes[i].style.display = "flex"
+            classes[i].style.display = "flex";
         }
     }
     function escondeClasses(nomeClasse){
-        classes = document.getElementsByClassName(nomeClasse)
+        classes = document.getElementsByClassName(nomeClasse);
         for(var i = 0; i < classes.length; i++){
-            classes[i].style.display = "none"
+            classes[i].style.display = "none";
         }
+    }
+    function paginacao(nomeClasse, tamPagina){
+        escondeClasses('atividades');
+        classes = document.getElementsByClassName(nomeClasse);
+        numPagina = 1;
+        linha = 1;
+        rowCont = 0;
+        primeiraPag=0;
+        for(var i = 0; i < classes.length; i++){
+            classes[i].className = classes[i].className.replace(/(pagina)\d+/g, "")
+            classes[i].classList.add("pagina"+ numPagina.toString());
+            if(linha == 1){
+                linha = 0;
+            }
+            else{
+                linha = 1;
+                rowCont+=1;
+            }
+            if(primeiraPag == 0 && document.getElementById("menuPaginas") != null){
+                document.getElementById("divMenuPaginas").removeChild(document.getElementById("menuPaginas")); 
+            }
+            if(rowCont !=0 && rowCont % tamPagina == 0){
+                rowCont = 0;
+                aElement = document.createElement('a');
+                texto = document.createTextNode(numPagina.toString());
+                aElement.appendChild(texto);
+                if(primeiraPag == 0){ 
+                    aElement.classList.add("active");
+                    divElement = document.createElement('div');
+                    divElement.id = "menuPaginas";
+                    divElement.classList.add("ui");
+                    divElement.classList.add("pagination");
+                    divElement.classList.add("menu");
+                    document.getElementById("divMenuPaginas").appendChild(divElement);
+                    primeiraPag=1;
+                }
+                aElement.classList.add("item");
+                //Constantes utilizadas dentro da função do evento
+                const data = nomeClasse;
+                const pagina = nomeClasse + " pagina" + numPagina.toString();
+                aElement.addEventListener("click", function(){
+                    escondeClasses(data);
+                    ativo = document.getElementsByClassName("item active")[0];
+                    ativo.className = ativo.className.replace(/\b(active)\b/g, "");
+                    this.classList.add("active");
+                    mostraClasses(pagina);
+                });
+                document.getElementById("menuPaginas").appendChild(aElement);
+                numPagina++;
+            }
+        }
+        mostraClasses(nomeClasse + " pagina1");
     }
     anychart.onDocumentReady(function () {
 
@@ -166,7 +220,7 @@
         ]
 
         // create the chart
-        var dataSet = anychart.data.set(data2)
+        var dataSet = anychart.data.set(data2);
         dataSet = dataSet.mapAs({x: 'x', value: 'value'});
         var chart = anychart.column();
 
@@ -176,16 +230,17 @@
         // draw
         chart.container("container");
         chart.draw();
+        paginacao("atividades", 5);
         chart.listen("pointClick", function(e) {
             document.getElementById("mostrar_tudo").style.display = "block";
-            escondeClasses('atividades');
-            mostraClasses(dataSet.get(e.pointIndex, 'x').replace(/\//g, ''));
+            paginacao(dataSet.get(e.pointIndex, 'x').replace(/\//g, ''), 5);
         });
 
         document.getElementById("mostrar_tudo").onclick = function() {
             document.getElementById("mostrar_tudo").style.display = "none";
             mostraClasses('atividades');
-            chart.getSeriesAt(0).unselect()
+            chart.getSeriesAt(0).unselect();
+            paginacao("atividades", 5);
         };
 
     });
