@@ -39,26 +39,47 @@ def membro(request, id):
     atividades = Atividade.objects.filter(membro__id=id).order_by('-dia')
     tempo = {
         'total': {'horas': 0, 'minutos': 0},
+        'semana': {'horas': 0, 'minutos': 0},
         'mes': {'horas': 0, 'minutos': 0},
         '3meses': {'horas': 0, 'minutos': 0}
         }
 
+    # as medias de horas sao calculadas num intervalo de dias,
+    # ao inves de calcular um mes especifico
+    # ou seja, a media pode mudar a cada dia que passa
+
+    # calcula as datas de 7, 28 e 84 dias atras
+    ultimaSemana = datetime.date.today() - datetime.timedelta(7)
     ultimoMes = datetime.date.today() - datetime.timedelta(28)
     ultimos3 = datetime.date.today() - datetime.timedelta(84)
 
 
+    # a funcao annotate soma todo o tempo gasto para cada dia
     relatorio_atividades = (atividades.values('dia')
                             .annotate(horas=Sum('horas'))
                             .annotate(minutos=Sum('minutos'))
                             .order_by())
     
     for relatorio in relatorio_atividades:
+
+        # formata o tempo em minutos de cada dia
         if relatorio['minutos'] > 60:
             relatorio['horas'] += (relatorio['minutos'] // 60)
             relatorio['minutos'] = (relatorio['minutos'] % 60)
+
+        # gera uma entrada apenas em minutos para projetar no grafico
         relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+
+        # incrementa o tempo total
         tempo['total']['horas'] += relatorio['horas']
         tempo['total']['minutos'] += relatorio['minutos']
+
+
+        # incrementa cada intervalo se o dia da atividade estiver
+        # entre hoje e a data limite
+        if relatorio['dia'] >= ultimaSemana:
+            tempo['semana']['horas'] += relatorio['horas']
+            tempo['semana']['minutos'] += relatorio['minutos']
 
         if relatorio['dia'] >= ultimoMes:
             tempo['mes']['horas'] += relatorio['horas']
@@ -68,9 +89,22 @@ def membro(request, id):
             tempo['3meses']['horas'] += relatorio['horas']
             tempo['3meses']['minutos'] += relatorio['minutos']
     
+    
+    # tira a media semanal do mes e dos ultimos 3 meses
+    tempo['mes']['horas'] //= 4
+    tempo['mes']['minutos'] //= 4
+    tempo['3meses']['horas'] //= 12
+    tempo['3meses']['minutos'] //= 12
+    
+
+    # formata os minutos de cada entrada
     if tempo['total']['minutos'] > 60:
         tempo['total']['horas'] += (tempo['total']['minutos'] // 60)
         tempo['total']['minutos'] = (tempo['total']['minutos'] % 60)
+
+    if tempo['semana']['minutos'] > 60:
+        tempo['semana']['horas'] += (tempo['semana']['minutos'] // 60)
+        tempo['semana']['minutos'] = (tempo['semana']['minutos'] % 60)
 
     if tempo['mes']['minutos'] > 60:
         tempo['mes']['horas'] += (tempo['mes']['minutos'] // 60)
@@ -80,10 +114,15 @@ def membro(request, id):
         tempo['3meses']['horas'] += (tempo['3meses']['minutos'] // 60)
         tempo['3meses']['minutos'] = (tempo['3meses']['minutos'] % 60)
     
-    tempo['mes']['horas'] //= 4
-    tempo['mes']['minutos'] //= 4
-    tempo['3meses']['horas'] //= 12
-    tempo['3meses']['minutos'] //= 12
+    
+    # transforma o resultado em string para formatar com 0 padding
+    tempo['semana']['horas'] = str(tempo['semana']['horas']).zfill(2)
+    tempo['semana']['minutos'] = str(tempo['semana']['minutos']).zfill(2)
+    tempo['mes']['horas'] = str(tempo['mes']['horas']).zfill(2)
+    tempo['mes']['minutos'] = str(tempo['mes']['minutos']).zfill(2)
+    tempo['3meses']['horas'] = str(tempo['3meses']['horas']).zfill(2)
+    tempo['3meses']['minutos'] = str(tempo['3meses']['minutos']).zfill(2)
+    
 
     context_dictionary = {
         'membro': membro,
