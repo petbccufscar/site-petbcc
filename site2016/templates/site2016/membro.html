@@ -121,6 +121,13 @@
                 <div class="eight wide column">
                     <h3><i class="terminal icon"></i> {{ atividade.titulo }}</h3>
                     <h4>Projeto: {{ atividade.projeto.nome }}</h4>
+                    {% if atividade.membro.all|length > 1 and atividade.membro.all|length < 10 %}
+                        <ul>
+                            {% for membro in atividade.membro.all %}
+                            <li>{{ membro.nome }} {{ membro.sobrenome }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     <h4>{{ atividade.dia|date:'d/m/Y' }}</h4>
                 </div>
                 <div class="eight wide column">
