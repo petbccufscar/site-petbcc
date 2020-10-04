@@ -155,15 +155,15 @@
         var data = {
             header: ["Dia", "Minutos"],
             rows: [
-                {% for relatorio in relatorio_atividades %}
-                    ["{{relatorio.dia|date:'d/m/Y'|safe}}", {{relatorio.tempo}}],
+                {% for dado in dados_grafico %}
+                    ["{{dado.dia|date:'d/m/Y'|safe}}", {{dado.tempo}}],
                 {% endfor %}
             ]
         };
 
         var data2 = [
-        {% for relatorio in relatorio_atividades %}
-            {x: "{{relatorio.dia|date:'d/m/Y'|safe}}", value: {{relatorio.tempo}}},
+        {% for dado in dados_grafico %}
+            '{x: "{{dado.dia|safe}}", value: {{dado.tempo}}}',
         {% endfor %}
         ]
 

@@ -60,35 +60,64 @@ def membro(request, id):
                             .annotate(minutos=Sum('minutos'))
                             .order_by())
     
-    for relatorio in relatorio_atividades:
+    dados_grafico = []
+    
+    for i, relatorio in enumerate(relatorio_atividades):
 
-        # formata o tempo em minutos de cada dia
-        if relatorio['minutos'] > 60:
-            relatorio['horas'] += (relatorio['minutos'] // 60)
-            relatorio['minutos'] = (relatorio['minutos'] % 60)
-
-        # gera uma entrada apenas em minutos para projetar no grafico
-        relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
-
-        # incrementa o tempo total
-        tempo['total']['horas'] += relatorio['horas']
-        tempo['total']['minutos'] += relatorio['minutos']
-
-
-        # incrementa cada intervalo se o dia da atividade estiver
-        # entre hoje e a data limite
-        if relatorio['dia'] >= ultimaSemana:
-            tempo['semana']['horas'] += relatorio['horas']
-            tempo['semana']['minutos'] += relatorio['minutos']
-
-        if relatorio['dia'] >= ultimoMes:
-            tempo['mes']['horas'] += relatorio['horas']
-            tempo['mes']['minutos'] += relatorio['minutos']
-        
         if relatorio['dia'] >= ultimos3:
+
+            # gera uma entrada apenas em minutos para projetar no grafico
+            relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+
+            # incrementa o tempo total
+            tempo['total']['horas'] += relatorio['horas']
+            tempo['total']['minutos'] += relatorio['minutos']
+
+            # incrementa cada intervalo se o dia da atividade estiver
+            # entre hoje e a data limite
+            if relatorio['dia'] >= ultimaSemana:
+                tempo['semana']['horas'] += relatorio['horas']
+                tempo['semana']['minutos'] += relatorio['minutos']
+
+            if relatorio['dia'] >= ultimoMes:
+                tempo['mes']['horas'] += relatorio['horas']
+                tempo['mes']['minutos'] += relatorio['minutos']
+            
             tempo['3meses']['horas'] += relatorio['horas']
             tempo['3meses']['minutos'] += relatorio['minutos']
+
+            # adiciona o dia ao grafico
+            dados_grafico.append(relatorio)
+
+            # previne indexOutOfRange para as proximas operacoes
+            if i < relatorio_atividades.count()-1:
+
+                # calcula a distancia entre o dia da atividade atual e da proxima
+                diff_atividades = relatorio_atividades[i+1]['dia'] - relatorio_atividades[i]['dia']
+
+                # caso a distancia seja maior que 1, adiciona dias vazios entre as atividades
+                if diff_atividades > datetime.timedelta(days=1):
+
+                    # loop para adicionar J dias a partir do dia atual
+                    for J in range(1, diff_atividades.days):
+                        dia_vazio = {
+                            'dia': relatorio_atividades[i]['dia'] + datetime.timedelta(days=J),
+                            'tempo': 0,
+                        }
+
+                        dados_grafico.append(dia_vazio)
     
+    # adiciona dias vazios entre a ultima atividade e hoje
+    diff_hoje = datetime.date.today() - dados_grafico[-1]['dia']
+
+    if diff_hoje > datetime.timedelta(days=0):
+        for J in range(1, diff_hoje.days+1):
+            dia_vazio = {
+                'dia': relatorio_atividades[i]['dia'] + datetime.timedelta(days=J),
+                'tempo': 0,
+            }
+
+            dados_grafico.append(dia_vazio)
     
     # tira a media semanal do mes e dos ultimos 3 meses
     tempo['mes']['horas'] //= 4
@@ -128,7 +157,7 @@ def membro(request, id):
         'membro': membro,
         'projetos': projetos,
         'atividades': atividades,
-        'relatorio_atividades': relatorio_atividades,
+        'dados_grafico': dados_grafico,
         'tempo': tempo,
         'DEBUG': settings.DEBUG
     }
