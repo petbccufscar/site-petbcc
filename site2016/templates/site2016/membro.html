@@ -115,7 +115,7 @@
 
             {% for atividade in atividades %}
             <div class="ui divider atividades {{atividade.dia | date:'dmY'}}"></div>
-            <div class="row atividades {{atividade.dia | date:'dmY'}}">
+            <div class="row linha atividades {{atividade.dia | date:'dmY'}}">
                 <div class="eight wide column">
                     <h3><i class="terminal icon"></i> {{ atividade.titulo }}</h3>
                     <h4>Projeto: {{ atividade.projeto.nome }}</h4>
@@ -128,8 +128,17 @@
                 </div>
             </div>
             {% endfor %}
-            <div class="row centered" id="divMenuPaginas">
+
+            <div class="ui divider"></div>
+            <div class="row centered">
+                <div class="ui grid" style="max-width: 40%;">
+                    <div class="six wide column"><div id="paginaAnterior" class="small icon ui button"><i class="angle left icon"></i></div></div>
+                    <div class="four wide column"><strong id="pagina">1</strong></div>
+                    <div class="six wide column"><div id="proximaPagina" class="small icon ui button"><i class="angle right icon"></i></div></div>
+                </div>
             </div>
+            </div>
+        </div>
         </div>
     </div>
 
@@ -166,41 +175,40 @@
                 linha = 1;
                 rowCont+=1;
             }
-            if(primeiraPag == 0 && document.getElementById("menuPaginas") != null){
-                document.getElementById("divMenuPaginas").removeChild(document.getElementById("menuPaginas")); 
-            }
             if(rowCont !=0 && rowCont % tamPagina == 0){
                 rowCont = 0;
-                aElement = document.createElement('a');
-                texto = document.createTextNode(numPagina.toString());
-                aElement.appendChild(texto);
                 if(primeiraPag == 0){ 
-                    aElement.classList.add("active");
-                    divElement = document.createElement('div');
-                    divElement.id = "menuPaginas";
-                    divElement.classList.add("ui");
-                    divElement.classList.add("pagination");
-                    divElement.classList.add("menu");
-                    document.getElementById("divMenuPaginas").appendChild(divElement);
                     primeiraPag=1;
                 }
-                aElement.classList.add("item");
-                //Constantes utilizadas dentro da função do evento
-                const data = nomeClasse;
-                const pagina = nomeClasse + " pagina" + numPagina.toString();
-                aElement.addEventListener("click", function(){
-                    escondeClasses(data);
-                    ativo = document.getElementsByClassName("item active")[0];
-                    ativo.className = ativo.className.replace(/\b(active)\b/g, "");
-                    this.classList.add("active");
-                    mostraClasses(pagina);
-                });
-                document.getElementById("menuPaginas").appendChild(aElement);
                 numPagina++;
             }
         }
         mostraClasses(nomeClasse + " pagina1");
     }
+    
+    pagina_atual = 1;
+    dia_atividades = "";
+
+    document.getElementById("paginaAnterior").addEventListener("click",  function(){
+        escondeClasses('atividades');
+        if(pagina_atual > 1){
+            pagina_atual--;
+            document.getElementById('pagina').innerHTML = pagina_atual;
+        }
+        mostraClasses('atividades ' + dia_atividades +' pagina' + pagina_atual.toString())
+    });
+
+    tamPagina = 5; 
+    document.getElementById("proximaPagina").addEventListener("click",  function(){
+        escondeClasses('atividades');
+        aux = document.getElementsByClassName('atividades linha ' + dia_atividades).length / tamPagina;
+        if(aux > pagina_atual){
+            pagina_atual++;
+            document.getElementById('pagina').innerHTML = pagina_atual;
+        }
+        mostraClasses('atividades ' + dia_atividades +' pagina' + pagina_atual.toString())
+    });
+
     anychart.onDocumentReady(function () {
 
         // set the data
@@ -234,6 +242,9 @@
         chart.listen("pointClick", function(e) {
             document.getElementById("mostrar_tudo").style.display = "block";
             paginacao(dataSet.get(e.pointIndex, 'x').replace(/\//g, ''), 5);
+            dia_atividades = dataSet.get(e.pointIndex, 'x').replace(/\//g, '');
+            pagina_atual = 1;
+            document.getElementById('pagina').innerHTML = pagina_atual;
         });
 
         document.getElementById("mostrar_tudo").onclick = function() {
@@ -241,8 +252,10 @@
             mostraClasses('atividades');
             chart.getSeriesAt(0).unselect();
             paginacao("atividades", 5);
+            dia_atividades = "";
+            pagina_atual = 1;
+            document.getElementById('pagina').innerHTML = pagina_atual;
         };
-
     });
 </script>
 {% endblock body %}
