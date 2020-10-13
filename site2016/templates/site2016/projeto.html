@@ -184,7 +184,7 @@
         chart.listen("pointClick", function(e) {
             document.getElementById("mostrar_tudo").style.display = "block";
             escondeClasses('atividades');
-            mostraClasses(dataSet.get(e.pointIndex, 'x').replace(/\//g, ''));
+            mostraClasses(dataSet.get(e.pointIndex, 'x').toString().replace(/\//g, ''));
         });
 
         document.getElementById("mostrar_tudo").onclick = function() {
