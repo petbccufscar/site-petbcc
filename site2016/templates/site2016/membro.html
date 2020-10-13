@@ -117,7 +117,7 @@
 
             {% for atividade in atividades %}
             <div class="ui divider atividades {{atividade.dia | date:'dmY'}}"></div>
-            <div class="row atividades {{atividade.dia | date:'dmY'}}">
+            <div class="row linha atividades {{atividade.dia | date:'dmY'}}">
                 <div class="eight wide column">
                     <h3><i class="terminal icon"></i> {{ atividade.titulo }}</h3>
                     <h4>Projeto: {{ atividade.projeto.nome }}</h4>
@@ -137,6 +137,17 @@
                 </div>
             </div>
             {% endfor %}
+
+            <div class="ui divider"></div>
+            <div class="row centered">
+                <div class="ui grid middle aligned" style="max-width: 40%;">
+                    <div class="six wide column"><div id="paginaAnterior" class="small icon ui button"><i class="angle left icon"></i></div></div>
+                    <div class="four wide column"><strong id="pagina">1</strong></div>
+                    <div class="six wide column"><div id="proximaPagina" class="small icon ui button"><i class="angle right icon"></i></div></div>
+                </div>
+            </div>
+            </div>
+        </div>
         </div>
     </div>
 
@@ -145,17 +156,68 @@
 <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 <script>
     function mostraClasses(nomeClasse){
-        classes = document.getElementsByClassName(nomeClasse)
+        classes = document.getElementsByClassName(nomeClasse);
         for(var i = 0; i < classes.length; i++){
-            classes[i].style.display = "flex"
+            classes[i].style.display = "flex";
         }
     }
     function escondeClasses(nomeClasse){
-        classes = document.getElementsByClassName(nomeClasse)
+        classes = document.getElementsByClassName(nomeClasse);
         for(var i = 0; i < classes.length; i++){
-            classes[i].style.display = "none"
+            classes[i].style.display = "none";
         }
     }
+    function paginacao(nomeClasse, tamPagina){
+        escondeClasses('atividades');
+        classes = document.getElementsByClassName(nomeClasse);
+        numPagina = 1;
+        linha = 1;
+        rowCont = 0;
+        primeiraPag=0;
+        for(var i = 0; i < classes.length; i++){
+            classes[i].className = classes[i].className.replace(/(pagina)\d+/g, "")
+            classes[i].classList.add("pagina"+ numPagina.toString());
+            if(linha == 1){
+                linha = 0;
+            }
+            else{
+                linha = 1;
+                rowCont+=1;
+            }
+            if(rowCont !=0 && rowCont % tamPagina == 0){
+                rowCont = 0;
+                if(primeiraPag == 0){ 
+                    primeiraPag=1;
+                }
+                numPagina++;
+            }
+        }
+        mostraClasses(nomeClasse + " pagina1");
+    }
+    
+    pagina_atual = 1;
+    dia_atividades = "";
+
+    document.getElementById("paginaAnterior").addEventListener("click",  function(){
+        escondeClasses('atividades');
+        if(pagina_atual > 1){
+            pagina_atual--;
+            document.getElementById('pagina').innerHTML = pagina_atual;
+        }
+        mostraClasses('atividades ' + dia_atividades +' pagina' + pagina_atual.toString())
+    });
+
+    tamPagina = 5; 
+    document.getElementById("proximaPagina").addEventListener("click",  function(){
+        escondeClasses('atividades');
+        aux = document.getElementsByClassName('atividades linha ' + dia_atividades).length / tamPagina;
+        if(aux > pagina_atual){
+            pagina_atual++;
+            document.getElementById('pagina').innerHTML = pagina_atual;
+        }
+        mostraClasses('atividades ' + dia_atividades +' pagina' + pagina_atual.toString())
+    });
+
     anychart.onDocumentReady(function () {
 
         // set the data
@@ -175,7 +237,7 @@
         ]
 
         // create the chart
-        var dataSet = anychart.data.set(data2)
+        var dataSet = anychart.data.set(data2);
         dataSet = dataSet.mapAs({x: 'x', value: 'value'});
         var chart = anychart.column();
 
@@ -185,18 +247,24 @@
         // draw
         chart.container("container");
         chart.draw();
+        paginacao("atividades", 5);
         chart.listen("pointClick", function(e) {
             document.getElementById("mostrar_tudo").style.display = "block";
-            escondeClasses('atividades');
-            mostraClasses(dataSet.get(e.pointIndex, 'x').replace(/\//g, ''));
+            paginacao(dataSet.get(e.pointIndex, 'x').replace(/\//g, ''), 5);
+            dia_atividades = dataSet.get(e.pointIndex, 'x').replace(/\//g, '');
+            pagina_atual = 1;
+            document.getElementById('pagina').innerHTML = pagina_atual;
         });
 
         document.getElementById("mostrar_tudo").onclick = function() {
             document.getElementById("mostrar_tudo").style.display = "none";
             mostraClasses('atividades');
-            chart.getSeriesAt(0).unselect()
+            chart.getSeriesAt(0).unselect();
+            paginacao("atividades", 5);
+            dia_atividades = "";
+            pagina_atual = 1;
+            document.getElementById('pagina').innerHTML = pagina_atual;
         };
-
     });
 </script>
 {% endblock body %}
