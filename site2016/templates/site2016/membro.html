@@ -175,7 +175,7 @@
         rowCont = 0;
         primeiraPag=0;
         for(var i = 0; i < classes.length; i++){
-            classes[i].className = classes[i].className.replace(/(pagina)\d+/g, "")
+            classes[i].className = classes[i].className.toString().replace(/(pagina)\d+/g, "")
             classes[i].classList.add("pagina"+ numPagina.toString());
             if(linha == 1){
                 linha = 0;
@@ -232,7 +232,7 @@
 
         var data2 = [
         {% for dado in dados_grafico %}
-            '{x: "{{dado.dia|safe}}", value: {{dado.tempo}}}',
+            {x: '{{dado.dia|date:"d/m/Y"|safe}}', value: {{dado.tempo}}},
         {% endfor %}
         ]
 
@@ -250,8 +250,8 @@
         paginacao("atividades", 5);
         chart.listen("pointClick", function(e) {
             document.getElementById("mostrar_tudo").style.display = "block";
-            paginacao(dataSet.get(e.pointIndex, 'x').replace(/\//g, ''), 5);
-            dia_atividades = dataSet.get(e.pointIndex, 'x').replace(/\//g, '');
+            paginacao(dataSet.get(e.pointIndex, 'x').toString().replace(/\//g, ''), 5);
+            dia_atividades = dataSet.get(e.pointIndex, 'x').toString().replace(/\//g, '');
             pagina_atual = 1;
             document.getElementById('pagina').innerHTML = pagina_atual;
         });
