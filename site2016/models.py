@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.db.models import Q
 
 import datetime
 
@@ -291,6 +292,6 @@ class Atividade(models.Model):
             MinValueValidator(0)
         ])
 
-    membro = models.ManyToManyField(MembroEquipe, verbose_name='membros')
+    membro = models.ManyToManyField(MembroEquipe, verbose_name='membros', limit_choices_to=~Q(situacao='E'))
 
     projeto = models.ForeignKey(Projeto, verbose_name='projeto', on_delete=models.SET_NULL, blank=True, null=True)
