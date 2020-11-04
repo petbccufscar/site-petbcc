@@ -39,38 +39,101 @@ def membro(request, id):
     atividades = Atividade.objects.filter(membro__id=id).order_by('-dia')
     tempo = {
         'total': {'horas': 0, 'minutos': 0},
+        'semana': {'horas': 0, 'minutos': 0},
         'mes': {'horas': 0, 'minutos': 0},
         '3meses': {'horas': 0, 'minutos': 0}
         }
 
+    # as medias de horas sao calculadas num intervalo de dias,
+    # ao inves de calcular um mes especifico
+    # ou seja, a media pode mudar a cada dia que passa
+
+    # calcula as datas de 7, 28 e 84 dias atras
+    ultimaSemana = datetime.date.today() - datetime.timedelta(7)
     ultimoMes = datetime.date.today() - datetime.timedelta(28)
     ultimos3 = datetime.date.today() - datetime.timedelta(84)
 
 
+    # a funcao annotate soma todo o tempo gasto para cada dia
     relatorio_atividades = (atividades.values('dia')
                             .annotate(horas=Sum('horas'))
                             .annotate(minutos=Sum('minutos'))
                             .order_by())
     
-    for relatorio in relatorio_atividades:
-        if relatorio['minutos'] > 60:
-            relatorio['horas'] += (relatorio['minutos'] // 60)
-            relatorio['minutos'] = (relatorio['minutos'] % 60)
-        relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
-        tempo['total']['horas'] += relatorio['horas']
-        tempo['total']['minutos'] += relatorio['minutos']
+    dados_grafico = []
+    
+    for i, relatorio in enumerate(relatorio_atividades):
 
-        if relatorio['dia'] >= ultimoMes:
-            tempo['mes']['horas'] += relatorio['horas']
-            tempo['mes']['minutos'] += relatorio['minutos']
-        
         if relatorio['dia'] >= ultimos3:
+
+            # gera uma entrada apenas em minutos para projetar no grafico
+            relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+
+            # incrementa o tempo total
+            tempo['total']['horas'] += relatorio['horas']
+            tempo['total']['minutos'] += relatorio['minutos']
+
+            # incrementa cada intervalo se o dia da atividade estiver
+            # entre hoje e a data limite
+            if relatorio['dia'] >= ultimaSemana:
+                tempo['semana']['horas'] += relatorio['horas']
+                tempo['semana']['minutos'] += relatorio['minutos']
+
+            if relatorio['dia'] >= ultimoMes:
+                tempo['mes']['horas'] += relatorio['horas']
+                tempo['mes']['minutos'] += relatorio['minutos']
+            
             tempo['3meses']['horas'] += relatorio['horas']
             tempo['3meses']['minutos'] += relatorio['minutos']
+
+            # adiciona o dia ao grafico
+            dados_grafico.append(relatorio)
+
+            # previne indexOutOfRange para as proximas operacoes
+            if i < relatorio_atividades.count()-1:
+
+                # calcula a distancia entre o dia da atividade atual e da proxima
+                diff_atividades = relatorio_atividades[i+1]['dia'] - relatorio_atividades[i]['dia']
+
+                # caso a distancia seja maior que 1, adiciona dias vazios entre as atividades
+                if diff_atividades > datetime.timedelta(days=1):
+
+                    # loop para adicionar J dias a partir do dia atual
+                    for J in range(1, diff_atividades.days):
+                        dia_vazio = {
+                            'dia': relatorio_atividades[i]['dia'] + datetime.timedelta(days=J),
+                            'tempo': 0,
+                        }
+
+                        dados_grafico.append(dia_vazio)
     
+    # adiciona dias vazios entre a ultima atividade e hoje
+    diff_hoje = datetime.date.today() - dados_grafico[-1]['dia']
+
+    if diff_hoje > datetime.timedelta(days=0):
+        for J in range(1, diff_hoje.days+1):
+            dia_vazio = {
+                'dia': relatorio_atividades[i]['dia'] + datetime.timedelta(days=J),
+                'tempo': 0,
+            }
+
+            dados_grafico.append(dia_vazio)
+    
+    # tira a media semanal do mes e dos ultimos 3 meses
+    tempo['mes']['horas'] //= 4
+    tempo['mes']['minutos'] //= 4
+    tempo['3meses']['horas'] //= 12
+    tempo['3meses']['minutos'] //= 12
+    
+
+    # formata os minutos de cada entrada
     if tempo['total']['minutos'] > 60:
         tempo['total']['horas'] += (tempo['total']['minutos'] // 60)
         tempo['total']['minutos'] = (tempo['total']['minutos'] % 60)
+
+    if tempo['semana']['minutos'] > 60:
+        tempo['semana']['horas'] += (tempo['semana']['minutos'] // 60)
+        tempo['semana']['minutos'] = (tempo['semana']['minutos'] % 60)
 
     if tempo['mes']['minutos'] > 60:
         tempo['mes']['horas'] += (tempo['mes']['minutos'] // 60)
@@ -80,16 +143,23 @@ def membro(request, id):
         tempo['3meses']['horas'] += (tempo['3meses']['minutos'] // 60)
         tempo['3meses']['minutos'] = (tempo['3meses']['minutos'] % 60)
     
-    tempo['mes']['horas'] //= 4
-    tempo['mes']['minutos'] //= 4
-    tempo['3meses']['horas'] //= 12
-    tempo['3meses']['minutos'] //= 12
+    
+    # transforma o resultado em string para formatar com 0 padding
+    tempo['semana']['horas'] = str(tempo['semana']['horas']).zfill(2)
+    tempo['semana']['minutos'] = str(tempo['semana']['minutos']).zfill(2)
+    tempo['mes']['horas'] = str(tempo['mes']['horas']).zfill(2)
+    tempo['mes']['minutos'] = str(tempo['mes']['minutos']).zfill(2)
+    tempo['3meses']['horas'] = str(tempo['3meses']['horas']).zfill(2)
+    tempo['3meses']['minutos'] = str(tempo['3meses']['minutos']).zfill(2)
+    tempo['total']['horas'] = str(tempo['total']['horas']).zfill(2)
+    tempo['total']['minutos'] = str(tempo['total']['minutos']).zfill(2)
+    
 
     context_dictionary = {
         'membro': membro,
         'projetos': projetos,
         'atividades': atividades,
-        'relatorio_atividades': relatorio_atividades,
+        'dados_grafico': dados_grafico,
         'tempo': tempo,
         'DEBUG': settings.DEBUG
     }
@@ -145,31 +215,106 @@ def projeto(request, id):
     projeto = Projeto.objects.get(id=id)
     membros = projeto.membroequipe_set.all()
     atividades = Atividade.objects.filter(projeto__id=id).order_by('-dia')
-    tempo_total = {'horas': 0, 'minutos': 0}
+    tempo = {
+        'total': {'horas': 0, 'minutos': 0},
+        'semana': {'horas': 0, 'minutos': 0},
+        'mes': {'horas': 0, 'minutos': 0},
+        '3meses': {'horas': 0, 'minutos': 0}
+        }
 
     relatorio_atividades = (atividades.values('dia')
                             .annotate(horas=Sum('horas'))
                             .annotate(minutos=Sum('minutos'))
                             .order_by())
     
-    for relatorio in relatorio_atividades:
-        if relatorio['minutos'] > 60:
-            relatorio['horas'] += (relatorio['minutos'] // 60)
-            relatorio['minutos'] = (relatorio['minutos'] % 60)
-        relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
-        tempo_total['horas'] += relatorio['horas']
-        tempo_total['minutos'] += relatorio['minutos']
+    # logica comentada na rota membro
+    ultimaSemana = datetime.date.today() - datetime.timedelta(7)
+    ultimoMes = datetime.date.today() - datetime.timedelta(28)
+    ultimos3 = datetime.date.today() - datetime.timedelta(84)
     
-    if tempo_total['minutos'] > 60:
-        tempo_total['horas'] += (tempo_total['minutos'] // 60)
-        tempo_total['minutos'] = (tempo_total['minutos'] % 60)
+    dados_grafico = []
+    
+    for i, relatorio in enumerate(relatorio_atividades):
+
+        if relatorio['dia'] >= ultimos3:
+
+            relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+
+            tempo['total']['horas'] += relatorio['horas']
+            tempo['total']['minutos'] += relatorio['minutos']
+
+            if relatorio['dia'] >= ultimaSemana:
+                tempo['semana']['horas'] += relatorio['horas']
+                tempo['semana']['minutos'] += relatorio['minutos']
+
+            if relatorio['dia'] >= ultimoMes:
+                tempo['mes']['horas'] += relatorio['horas']
+                tempo['mes']['minutos'] += relatorio['minutos']
+            
+            tempo['3meses']['horas'] += relatorio['horas']
+            tempo['3meses']['minutos'] += relatorio['minutos']
+
+            dados_grafico.append(relatorio)
+
+            if i < relatorio_atividades.count()-1:
+                diff_atividades = relatorio_atividades[i+1]['dia'] - relatorio_atividades[i]['dia']
+
+                if diff_atividades > datetime.timedelta(days=1):
+                    for J in range(1, diff_atividades.days):
+                        dia_vazio = {
+                            'dia': relatorio_atividades[i]['dia'] + datetime.timedelta(days=J),
+                            'tempo': 0,
+                        }
+
+                        dados_grafico.append(dia_vazio)
+    
+    diff_hoje = datetime.date.today() - dados_grafico[-1]['dia']
+
+    if diff_hoje > datetime.timedelta(days=0):
+        for J in range(1, diff_hoje.days+1):
+            dia_vazio = {
+                'dia': relatorio_atividades[i]['dia'] + datetime.timedelta(days=J),
+                'tempo': 0,
+            }
+
+            dados_grafico.append(dia_vazio)
+    
+    tempo['mes']['horas'] //= 4
+    tempo['mes']['minutos'] //= 4
+    tempo['3meses']['horas'] //= 12
+    tempo['3meses']['minutos'] //= 12
+    
+    if tempo['total']['minutos'] > 60:
+        tempo['total']['horas'] += (tempo['total']['minutos'] // 60)
+        tempo['total']['minutos'] = (tempo['total']['minutos'] % 60)
+
+    if tempo['semana']['minutos'] > 60:
+        tempo['semana']['horas'] += (tempo['semana']['minutos'] // 60)
+        tempo['semana']['minutos'] = (tempo['semana']['minutos'] % 60)
+
+    if tempo['mes']['minutos'] > 60:
+        tempo['mes']['horas'] += (tempo['mes']['minutos'] // 60)
+        tempo['mes']['minutos'] = (tempo['mes']['minutos'] % 60)
+
+    if tempo['3meses']['minutos'] > 60:
+        tempo['3meses']['horas'] += (tempo['3meses']['minutos'] // 60)
+        tempo['3meses']['minutos'] = (tempo['3meses']['minutos'] % 60)
+    
+    tempo['semana']['horas'] = str(tempo['semana']['horas']).zfill(2)
+    tempo['semana']['minutos'] = str(tempo['semana']['minutos']).zfill(2)
+    tempo['mes']['horas'] = str(tempo['mes']['horas']).zfill(2)
+    tempo['mes']['minutos'] = str(tempo['mes']['minutos']).zfill(2)
+    tempo['3meses']['horas'] = str(tempo['3meses']['horas']).zfill(2)
+    tempo['3meses']['minutos'] = str(tempo['3meses']['minutos']).zfill(2)
+    tempo['total']['horas'] = str(tempo['total']['horas']).zfill(2)
+    tempo['total']['minutos'] = str(tempo['total']['minutos']).zfill(2)
 
     context_dictionary = {
         'projeto': projeto,
         'membros': membros,
         'atividades': atividades,
-        'relatorio_atividades': relatorio_atividades,
-        'tempo_total': tempo_total,
+        'dados_grafico': dados_grafico,
+        'tempo': tempo,
         'DEBUG': settings.DEBUG
     }
 
