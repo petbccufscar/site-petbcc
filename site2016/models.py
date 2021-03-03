@@ -243,6 +243,11 @@ class ProcessoSeletivo(models.Model):
         default=6
     )
 
+    vagas_colaborador = models.PositiveIntegerField(
+        verbose_name="vagas colaboradores(as)",
+        default=5
+    )
+
     data_inscricao_inicio = models.DateField(
         verbose_name="data inicial de inscrição")
     data_inscricao_fim = models.DateField(

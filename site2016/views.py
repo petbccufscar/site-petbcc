@@ -342,6 +342,7 @@ def processo_seletivo(request, ano, semestre):
                'resultado_divulgado': not ps.ativo,
                'vagas_bolsista': ps.vagas_bolsista,
                'vagas_nao_bolsista': ps.vagas_nao_bolsista,
+               'vagas_colaborador': ps.vagas_colaborador,
                'data_inscricao_inicio': ps.data_inscricao_inicio.strftime("%d/%m"),
                'data_inscricao_fim': ps.data_inscricao_fim.strftime("%d/%m"),
                'etapas': etapas_dict,
