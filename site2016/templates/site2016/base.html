@@ -27,9 +27,27 @@
     </script>
     {% endif %}
 
+    <!-- Para inserir códigos o site da Semantic UI usa highlight.js -->
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    <!-- Muda o estilo do codigo -->
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script>
+    hljs.highlightAll();
+    // Configurando a indentação
+    hljs.configure({
+        tabReplace: '  ' // Dois espaços
+    })
+    hljs.initHighlighting();
+    </script>
+
     <link rel="stylesheet" href="{% static 'site2016/css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'site2016/css/main.css' %}">
-
+    <!-- CSS rascunhado para manual -->
+    <link rel="stylesheet" href="{% static 'site2016/css/manual_c.css' %}">
+    
     <!--Favicon-->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static 'site2016/favicon/apple-touch-icon-57x57.png' %}" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'site2016/favicon/apple-touch-icon-114x114.png' %}" />

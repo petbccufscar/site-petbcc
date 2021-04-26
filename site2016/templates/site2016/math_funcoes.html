@@ -1,0 +1,116 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+    Funções &ltmath.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<!-- Inicio acos()-->
+<main role="main">
+	<header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+		<div class="ui grid">
+				<div class="column">
+						<div class="row" id="acos"> <!-- Link da para levar ate a seção da acos -->
+								<h1 class="ui inverted header" > <!-- Tirei o id, para ficar lowercase -->
+									<b  class="fundo_azul_titulo_manC">double</b> acos(<b  class="fundo_azul_titulo_manC">double</b> x)
+								</h1>
+						</div>
+				</div>
+		</div>
+	</header>
+	<section class="ui vertical stripe segment" role="region">
+		<div class="ui stackable grid container">
+			<div class="column">
+				<p><b  class="manC_laranja_escuro">Recebe:</b>
+					o cosseno de um ângulo; isto é, um número entre -1 e 1 →  -1<=cosseno<=1.</p>
+				<p><b class="manC_laranja_escuro">Retorna:</b>
+					o ângulo, em radianos, do cosseno que foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.</p>
+					<div class="ui horizontal divider">A seguir, um <b  class="manC_laranja_escuro">exemplo de código</b> que utiliza a função:</div>
+					<div class="ui container">
+						<pre>
+							<code class="c">
+	//EXEMPLO ACOS()
+
+	#include &ltstdio.h&gt									
+	#include &ltmath.h&gt
+		
+	int main() {
+		double cosseno;
+		scanf("%lf", &cosseno);
+		printf("o angulo cujo cosseno eh %.3lf, eh %.3lf aproximadamente", cosseno,
+		acos(cosseno));
+		return 0;
+	}		
+							</code>
+						</pre>
+					</div>
+					<div class="ui horizontal divider">Em seguida é a <b  class="manC_laranja_escuro">saída do terminal</b>:</div>
+					<div class="ui container">
+						<pre>
+							<code class="hljs bash">
+	>clang-7 -pthread -lm -o main main.c
+	>./main
+	0.5
+	o angulo cujo consseno eh 0.500, eh 1.047 aproximadamente
+							</code>
+						</pre>
+					</div>
+			</div>
+		</div>
+	</section>
+	<header class="ui inverted masthead center aligned segment">
+		<div class="ui grid middle aligned">
+			<div class="column">
+				<div class="row" id="asin">
+					<h1 class="ui inverted header fundo_azul_titulo_manC" >
+						<b class="fundo_azul_titulo_manC">double</b class="fundo_azul_titulo_manC"> asin(<b  class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="ui vertical stripe segment" role="region">
+		<div class="ui stackable grid container">
+					<div class="column">
+						<p><b class="manC_laranja_escuro">Recebe:</b>
+							o seno de um ângulo, tal que, -1 <= seno <= 1.</p>
+						<p><b class="manC_laranja_escuro">Retorna:</b>
+							o ângulo, em radianos, cujo seno foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.</p>
+							<div class="ui horizontal divider">A seguir, um <b  class="manC_laranja_escuro">exemplo de código</b> que utiliza a função:</div>
+							<div class="ui container">
+								<pre><code class="hljs c">
+	//EXEMPLO ASIN()
+
+	#include &ltstdio.h&gt											
+	#include &ltmath.h&gt
+		
+	int main() {
+		double seno;
+		scanf("%lf", &seno);
+		printf("o angulo cujo seno eh %.3lf, eh %.3lf aproximadamente", seno, asin(seno));
+		return 0;
+	}	
+									</code></pre>
+							</div>
+							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+	>clang-7 -pthread -lm -o main main.c
+	>./main
+	0.5
+	o angulo cujo seno eh 0.500, eh 0.524 aproximadamente
+									</code>
+								</pre>
+							</div>
+					</div>
+
+			</div>
+	</section>
+</main>
+{% endblock body %}

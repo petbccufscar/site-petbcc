@@ -1,0 +1,142 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+&ltmath.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+  <div class="ui grid">
+      <div class="column">
+          <div class="row">
+              <h1 class="ui inverted header" > <!-- Tirei o id, para ficar lowercase -->
+                &ltmath.h&gt <!-- &lt e h&gt é para setar os <> -->
+              </h1>
+          </div>
+      </div>
+  </div>
+</header>
+<main role="main">
+    <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+      <div class="ui stackable grid container">
+        <div class="column">
+          <div class="ui centered vertical padded segment">
+              <h1 class="ui large left aligned header manC_laranja">
+                Descrição:
+              </h1>
+              <p class="justificado">    Na biblioteca <b  class="manC_laranja_escuro">&ltmath.h&gt</b> estão contidas diversas funções matemáticas básicas, com ela podemos trabalhar com funções trigonométricas, funções para cálculo de raiz quadrada, valor absoluto, entre outras. Vale lembrar que todas as funções dessa biblioteca retornam valores do tipo double. Veremos, a seguir, todas elas.</p>
+          </div>
+          <div class="ui large left aligned huge header manC_laranja" >Funções:</div>
+          <div class="ui very relaxed divided list">
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd"  href="{% url 'math_funcoes' %}#acos">double acos(double x)</a>
+                <div class="description">RETORNA:  o cosseno de um ângulo; isto é, um número entre -1 e 1 →  -1<=cosseno<=1.
+                </div>
+                <div class="description">RECEBE: o ângulo, em radianos, do cosseno que foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro"  href="{% url 'math_funcoes' %}#asin">double asin(double x)</a>
+                <div class="description">RETORNA:  o seno de um ângulo, tal que, -1 <= seno <= 1.</div>
+                <div class="description">RECEBE: o ângulo, em radianos, cujo seno foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd">double atan(double x)</a>
+                <div class="description">RETORNA:  a tangente de um ângulo.</div>
+                <div class="description">RECEBE: o ângulo, em radianos, cuja tangente foi informado como parâmetro.</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro">double atan2(double x, double y)
+                </a>
+                <div class="description">RETORNA:  o arco tangente de y / x no intervalo de π a π radianos, dos valores informados como parâmetros.
+                </div>
+                <div class="description">RECEBE: dois argumentos do tipo double: x, y. Elas são representações de um ponto no plano cartesiano. </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd">double cos(double x)</a>
+                <div class="description">RETORNA: o valor do cosseno do ângulo que foi informado como parâmetro.
+                </div>
+                <div class="description">RECEBE:  um ângulo em radianos.</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro">double sin(double x)</a>
+                <div class="description">RETORNA:  o valor do seno do ângulo que foi informado como parâmetro.</div>
+                <div class="description">RECEBE: um ângulo em radianos.
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd">double tan(double x)</a>
+                <div class="description">RETORNA:  o valor da tangente do ângulo que foi informado como parâmetro.
+                </div>
+                <div class="description">RECEBE:  um ângulo em radianos.
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro">double cosh(double x)</a>
+                <div class="description">RETORNA:  o cosseno hiperbólico do valor informado como parâmetro.
+                </div>
+                <div class="description">RECEBE:o valor de um ângulo em radianos.
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd">double sinh(double x)</a>
+                <div class="description">RETORNA:  o seno hiperbólico do valor informado como parâmetro.
+                </div>
+                <div class="description">RECEBE: o valor de um ângulo em radianos.</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro">double tanh(double x, double y)
+                </a>
+                <div class="description">RETORNA:  a tangente hiperbólica do valor informado como parâmetro. 
+
+                </div>
+                <div class="description">RECEBE:  o valor de um ângulo em radianos.
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd">double exp(double x)</a>
+                <div class="description">RETORNA: o número de Euler (~2.71) elevado a x: ex  = exp(x), informado como parâmetro.
+                </div>
+                <div class="description">RECEBE:  um número x do tipo double.</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro">double log(double x)</a>
+                <div class="description">RETORNA:  o valor de ln x, ou seja, o logaritmo de x na base e.
+                </div>
+                <div class="description">RECEBE: uum valor x do tipo double.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+{% endblock body %}
