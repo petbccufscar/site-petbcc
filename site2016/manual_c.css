@@ -20,8 +20,8 @@
   display: inline-block;     
   position: relative;    
   z-index: 1;     
-  padding-left: 1em;     
-  margin-left: -1em; 
+  padding-left: 4em;     
+  margin-left: -4em; 
 }
 /* Links da lista de funções para as páginas principais de cada biblioteca */
 a.manC_laranja, a.manC_laranja_escuro {
@@ -34,17 +34,13 @@ b.manC_laranja_escuro{
   font-size: large;
 }
 
-a.manC_laranja:hover, a.manC_laranja_escuro:hover {
+.ui.list>.item a.manC_laranja:hover, .ui.list>.item a.manC_laranja_escuro:hover {
   color: #FF8F1F !important;
 }
 
-.manC_laranja.odd { /* Isso foi gambiarra, mas funciona */
+.ui.list>.item a.odd { /* Isso foi gambiarra, mas funciona */
   color: #007194 !important;
 } 
-
-.item {
-  padding-top: 5px;
-}
 
 /*  Teoricamente o codigo abaixo era pra funcionar, teoricamente...
 .ui.list>.item a:nth-child(odd) {
@@ -52,7 +48,7 @@ a.manC_laranja:hover, a.manC_laranja_escuro:hover {
 } */
 
 /* Padding nos retornos e recebes da lista de função */
-.description {
+.ui.list > .item .description {
   padding-top: 5px;
   padding-left: 15px;
 }
@@ -74,56 +70,22 @@ b.fundo_azul_titulo_manC {
   font-size:large !important;
 }
 
+header#fundo_azul_titulo.titulo_funcoes {
+  z-index: 0;
+  padding-top: 4em;
+}
+
 /* Estilo do texto do manC para o menu superior breadcrumb */
 a {
   color: black  !important;
 }
 
-/* Aumenta fonte da barra lateral */
-a.item.barra_lateral_fonte {
+.ui.vertical.menu .menu .item{
   font-size: medium !important;
+  padding-top: 5px !important;
+  padding-right: 25px !important;
 }
 
-/* Par ao menu ficar abaixo do titulo da página */
-.ui.right.fixed.vertical.menu, .ui.left.fixed.vertical.menu {
-  top: 9em;
-  z-index: 1;
-}
-
-.ui.right.fixed.vertical.menu.funcoes_manC, .ui.left.fixed.vertical.menu.funcoes_manC {
-  top: 3.5em;
-  z-index: 1;
-}
-
-/* div.barra_lateral_funcoes {
-  top: -7em !important;
-} */
-
-/* Faz o título ficar a frente das barras laterais */
-header#fundo_azul_titulo {
-  z-index: 2;
-}
-
-header#fundo_azul_titulo.titulo_funcoes {
-  padding-top: 2em;
-  z-index: 0;
-}
-
- /* Faz o rodapé ficar a frente das barras laterais */
-div#rodape {
-    z-index: 2;
-}
-
-.sixteen.wide.column.manC_title {
-  position: fixed !important;
-  padding: 0;
-  z-index: 1;
-}
-
-main.main_manC {
-  padding-top: 10em;
-}
-
-main.main_funcoes {
-  padding-top: 2em;
+a.barra_lateral:hover{
+  color: #FF8F1F !important;
 }

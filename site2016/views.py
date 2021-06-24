@@ -19,19 +19,6 @@ def home(request):
     else:
         return render(request, 'site2016/manutencao.html', {})
 
-def manual_c(request):
-    context_dictionary = {'pagina': 'manual_c', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/manualC_main_page.html', context_dictionary)
-
-def math_h(request):
-    context_dictionary = {'pagina': 'math_h', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/math_h.html', context_dictionary)
-
-def math_funcoes(request):
-    context_dictionary = {'pagina': 'math_funcoes', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/math_funcoes.html', context_dictionary)
-
-
 def equipe(request):
     context_dictionary = {'pagina': 'equipe',
                           'professores': Professor.objects.listar_membros_ativos().order_by('nome', 'sobrenome'),
@@ -399,3 +386,16 @@ def contato(request):
     else:
         context_dictionary = {'pagina': 'contato', 'DEBUG': settings.DEBUG}
         return render(request, 'site2016/contato.html', context_dictionary)
+
+""" Manual C """
+def manual_c(request):
+    context_dictionary = {'pagina': 'manual_c', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/manualC_main_page.html', context_dictionary)
+
+def math_h(request):
+    context_dictionary = {'pagina': 'math_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/math/math_h.html', context_dictionary)
+
+def math_funcoes(request):
+    context_dictionary = {'pagina': 'math_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/math/math_funcoes.html', context_dictionary)

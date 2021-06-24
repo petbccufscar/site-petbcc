@@ -1,0 +1,31 @@
+{% load static %}
+
+{% block sidebar_content2 %}
+<div class="ui stackable grid container">
+  <div class="center aligned one wide column">
+    <div class="ui right fixed top attached vertical menu funcoes_manC">
+      <div class="item">
+        <div class="header">
+          <h3 class="ui manC_laranja header">Funções</h3>
+        </div>
+      </div>
+      <div class="item">
+        <div class="menu">
+          <a class="item"  href="{% url 'math_funcoes' %}#acos"><b>acos()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#asin"><b>asin()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#atan"><b>atan()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#atan2"><b>atan2()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#cos"><b>cos()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#sin"><b>sin()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#tan"><b>tan()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#cosh"><b>cosh()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#sinh"><b>sinh()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#tanh"><b>tanh()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#exp"><b>exp()</b></a>
+          <a class="item"  href="{% url 'math_funcoes' %}#log"><b>log()</b></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
