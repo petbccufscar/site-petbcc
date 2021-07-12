@@ -13,6 +13,7 @@ urlpatterns = [
 
     # Manual C
     url(r'^manualc/$', views.manual_c, name='manual_c'),
+    url(r'^sobre/$', views.sobre, name='sobre'),
     #Math.h
     url(r'^math/$', views.math_h, name='math_h'),
     url(r'^mathfuncoes/$', views.math_funcoes, name='math_funcoes'),

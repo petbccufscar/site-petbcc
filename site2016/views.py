@@ -390,7 +390,11 @@ def contato(request):
 """ Manual C """
 def manual_c(request):
     context_dictionary = {'pagina': 'manual_c', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/manualC/manualC_main_page.html', context_dictionary)
+    return render(request, 'site2016/manualC/home.html', context_dictionary)
+
+def sobre(request):
+    context_dictionary = {'pagina': 'sobre', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/sobre.html', context_dictionary)
 
 def math_h(request):
     context_dictionary = {'pagina': 'math_h', 'DEBUG': settings.DEBUG}
