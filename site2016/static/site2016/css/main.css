@@ -10,6 +10,15 @@
     background: #FFFFFF;
 }
 
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    [class*="mobile hidden"],
+    [class*="or lower hidden"] {
+      display: none !important;
+    }
+  }
+  
+
 @media only screen and (min-width: 768px) {
     #hero_section {
         min-height: 550px;
