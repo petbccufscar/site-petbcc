@@ -19,7 +19,19 @@
                     <a class="ui item" href="{% ps_link_atual_simples %}"><b>Processo Seletivo</b></a>
                     <a href="{% url 'contato' %}"
                         class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
-        
+                    <div class="{% if pagina == 'manual_c' %}active{% endif %} item">
+                        <div class="ui pointing dropdown link">
+                            <a class="text"><b>Manual C</b></a>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a href="{% url 'manual_c' %}"
+                                    class="{% if pagina == 'manual_c' %}active{% endif %} item"><b>Bibliotecas</b></a>
+                                <a href="{% url 'sobre' %}"
+                                    class="{% if pagina == 'sobre' %} active{% endif %} item"><b>Sobre</b></a>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,26 +56,18 @@
                     <a href="{% url 'contato' %}"
                         class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
                     <div class="{% if pagina == 'manual_c' %}active{% endif %} item">
-                        <a href="{% url 'manual_c' %}"
-                        ><b>Manual C</b></a>
                         <div class="ui pointing dropdown link">
+                            <a class="text" href="{% url 'manual_c' %}"><b>Manual C</b></a>
                             <i class="dropdown icon"></i>
                             <div class="menu">
-                                <div class="header"><b>Bibliotecas</b></div>
-                                <div class="{% if pagina == 'math_h' %}active{% endif %}  item">
-                                    <i class="dropdown icon"></i>
-                                    <a href="{% url 'math_h' %}"
-                                    class="header"><b>math.h</b></a>
-                                    <div class="menu">
-                                        <a href="{% url 'math_funcoes' %}"
-                                        class="{% if pagina == 'math_funcoes' %}active{% endif %} item"><b>acos()</b></a>
-                                        <a href="{% url 'math_funcoes' %}#asin"
-                                        class="{% if pagina == 'math_funcoes' %}active{% endif %} item"><b>asin()</b></a>
-                                    </div>
-                                </div>
+                                <a href="{% url 'manual_c' %}"
+                                    class="{% if pagina == 'manual_c' %}active{% endif %} item"><b>Bibliotecas</b></a>
+                                <a href="{% url 'sobre' %}"
+                                    class="{% if pagina == 'sobre' %} active{% endif %} item"><b>Sobre</b></a>
+
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
