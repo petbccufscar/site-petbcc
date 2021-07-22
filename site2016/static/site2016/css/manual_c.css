@@ -42,7 +42,7 @@ a.manC_laranja_escuro:hover {
 }
 
 .item {
-  padding: 5px;
+  padding: 5px !important;
 }
 
 .item:hover {
@@ -86,11 +86,13 @@ a {
 /* Par ao menu ficar abaixo do titulo da página */
 .ui.right.fixed.vertical.menu,
 .ui.left.fixed.vertical.menu {
-  top: 2.5em;
-  font-size: medium !important;
+  top: 2em;
+  font-size: 18px;
   font-weight: bold !important;
   z-index: 0;
-  width: 9em;
+  width: 10em;
+  padding: 0em;
+  padding-top: 1em !important;
   z-index: 1;
 }
 
