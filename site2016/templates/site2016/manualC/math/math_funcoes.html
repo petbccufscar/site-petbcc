@@ -1,0 +1,1010 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltmath.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<!-- Inicio acos()-->
+			<main role="main">
+				<a id="acos"></a>
+				<header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo" id="acos">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> acos(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b>
+								o cosseno de um ângulo; isto é, um número entre -1 e 1 → -1<=cosseno<=1.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>
+										o ângulo, em radianos, do cosseno que foi informado como parâmetro ou NaN se o argumento estiver
+										fora do domínio de entrada.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO ACOS()
+
+#include &ltstdio.h&gt									
+#include &ltmath.h&gt
+	
+int main() {
+	double cosseno;
+	scanf("%lf", &cosseno);
+	printf("o angulo cujo cosseno eh %.3lf, eh %.3lf aproximadamente", cosseno,
+	acos(cosseno));
+	return 0;
+}		
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			0.5
+			o angulo cujo consseno eh 0.500, eh 1.047 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<!-- Link para barra lateral -->
+				<a id="asin"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header fundo_azul_titulo_manC">
+						<b class="fundo_azul_titulo_manC">double</b class="fundo_azul_titulo_manC"> asin(<b
+							class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b>
+								o seno de um ângulo, tal que, -1 <= seno <=1.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>
+										o ângulo, em radianos, cujo seno foi informado como parâmetro ou NaN se o argumento estiver fora do
+										domínio de entrada.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre><code class="hljs c">
+//EXEMPLO ASIN()
+
+#include &ltstdio.h&gt											
+#include &ltmath.h&gt
+
+int main() {
+	double seno;
+	scanf("%lf", &seno);
+	printf("o angulo cujo seno eh %.3lf, eh %.3lf aproximadamente", seno, asin(seno));
+	return 0;
+}	
+											</code></pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+											<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			0.5
+			o angulo cujo seno eh 0.500, eh 0.524 aproximadamente
+											</code>
+										</pre>
+									</div>
+						</div>
+					</div>
+					<a id="atan"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> atan(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b>
+								a tangente de um ângulo. </p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>o ângulo, em radianos, cuja tangente foi informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO ATAN()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double tangente;
+	scanf("%lf", &tangente);
+	printf("o angulo cuja tangente eh %.3lf, eh %.3lf aproximadamente", tangente, atan(tangente));
+	return 0;
+}		
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			o angulo cuja tangente eh 1.000, eh 0.785 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="atan2"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> atan2(<b class="fundo_azul_titulo_manC">double</b> x, <b class="fundo_azul_titulo_manC">double</b> y)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> dois argumentos do tipo double: x, y. Elas são representações de um ponto no plano cartesiano.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o arco tangente de y / x no intervalo de π a π radianos, dos valores informados como parâmetros.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO ATAN2()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x, y;
+	scanf("%lf %lf", &x, &y);
+	printf("%lf", atan2(y,x));
+	return 0;
+}		
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			2
+			2
+			0.785398
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="ceil"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> ceil(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> x, um valor do tipo double.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o menor inteiro maior ou igual a x.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO CEIL()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x;
+	scanf("%lf", &x);
+	printf("%.2lf", ceil(x));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+      6.55
+			6.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="cos"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> cos(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um ângulo em radianos.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o valor do cosseno do ângulo que foi informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO COS()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double angulo;
+	scanf("%lf", &angulo);
+	printf("o cosseno de %.3lf, eh %.3lf aproximadamente", angulo, cos(angulo));
+	return 0;
+}	
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1.047
+			o cosseno de 1.047, eh 0.500 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="cosh"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> cosh(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um ângulo em radianos.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o cosseno hiperbólico do ângulo que foi informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO COSH()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double angulo;
+	scanf("%lf", &angulo);
+	printf("o cosseno hiperbólico de %.3lf, eh %.3lf aproximadamente", angulo, cosh(angulo));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			3.14
+			o cosseno hiperbólico de 3.140, eh 11.574 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="exp"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> exp(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um número x do tipo double.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o número de Euler (~2.71) elevado a x: ex  = exp(x), informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO EXP()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x;
+	scanf("%lf", &x);
+	printf("%.2lf", exp(x));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			2.72
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="fabs"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> fabs(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b>  x, um valor do tipo double.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>  o módulo de x.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FABS()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x;
+	scanf("%lf", &x);
+	printf("%.2lf", fabs(x));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+      -9
+			9.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="floor"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> floor(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b>  x, um valor do tipo double.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>  o maior valor inteiro menor ou igual a x.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FLOOR()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x;
+	scanf("%lf", &x);
+	printf("%.2lf", floor(x));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+      8.79
+			8.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="frexp"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> frexp(<b class="fundo_azul_titulo_manC">double</b> x, <b class="fundo_azul_titulo_manC">int</b> *expoente)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> dois parâmetros, um do tipo float e outro do tipo ponteiro para o expoente inteiro armazenado.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> a mantissa (m). Se x for 0, a função retornará 0 para a mantissa e o expoente. A função divide o valor de ponto flutuante (x) em uma mantissa (m) e um expoente (n), de modo que o valor absoluto da mantissa seja maior ou igual a 0,5 e menor que 1,0 e x = m * 2n. O expoente inteiro n é armazenado no local apontado pelo ponteiro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FREXP()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	float x;
+	int expoente;
+	scanf("%f", &x);
+	printf("%.2lf", frexp(x, &expoente));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1024
+			0.50
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="ldexp"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> ldexp(<b class="fundo_azul_titulo_manC">double</b> x, <b class="fundo_azul_titulo_manC">int</b> *expoente)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b>  x, do tipo double que será a base e exp do tipo int que será o expoente.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> x * 2^exp dos valores informados como parâmetros.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO LDEXP()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x;
+	int expoente;
+	scanf("%lf %d", &x, &expoente);
+	printf("%.2lf", ldexp(x, expoente));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			4
+			3
+			32.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="log"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> log(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um valor x do tipo double.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o valor de ln x, ou seja, o logaritmo de x na base e.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO LOG()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+  double x;
+  scanf("%lf", &x);
+  printf("%.2lf", log(x));
+  return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			2.718
+			1.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="log10"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> log10(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um valor x do tipo double.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o valor do logaritmo de x na base 10.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO LOG10()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x;
+	scanf("%lf", &x);
+	printf("%.2lf", log10(x));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			100
+			2.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="modf"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> modf(<b class="fundo_azul_titulo_manC">double</b> x, <b class="fundo_azul_titulo_manC">double</b> *p)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> o valor double x e o endereço de um double p.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>  a parte decimal de x no valor da função e a parte inteira de x no parâmetro p.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO MODF()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x, p;
+	scanf("%lf", &x);
+	printf("%.5lf", modf(x, &p));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			2.58974
+			0.58974
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="pow"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> pow(<b class="fundo_azul_titulo_manC">double</b> x, <b class="fundo_azul_titulo_manC">double</b> y)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> dois valores do tipo double, x e y, em que x será a base e y será o expoente.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>  x elevado a y.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO POW()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x, y;
+	scanf("%lf%lf", &x, &y);
+	printf("%.2lf", pow(x, y));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			2
+			5
+			32.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="sin"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> sin(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um ângulo em radianos.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o valor do seno do ângulo que foi informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO SIN()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double angulo;
+	scanf("%lf", &angulo);
+	printf("o seno de %.3lf, eh %.3lf aproximadamente", angulo, sin(angulo));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1.047
+			o seno de 1.047, eh 0.866 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="sinh"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> sinh(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um ângulo em radianos.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o seno hiperbólico do ângulo que foi informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO SINH()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double angulo;
+	scanf("%lf", &angulo);
+	printf("o seno hiperbólico de %.3lf, eh %.3lf aproximadamente", angulo, sinh(angulo));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			3.14
+			o seno hiperbólico de 3.140, eh 11.530 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="sqrt"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> sqrt(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> x, um valor do tipo double.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>  a raiz quadrada de x ou NaN se x for negativo.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO SQRT()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double x;
+	scanf("%lf", &x);
+	printf("%.2lf", sqrt(x));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+      16
+			4.00
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="tan"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> tan(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um ângulo em radianos.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> o valor da tangente do ângulo que foi informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO TAN()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double angulo;
+	scanf("%lf", &angulo);
+	printf("a tangente de %.3lf, eh %.3lf aproximadamente", angulo, tan(angulo));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1.047
+			o seno de 1.047, eh 1.731 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="tanh"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">double</b> tanh(<b class="fundo_azul_titulo_manC">double</b> x)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um ângulo em radianos.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> a tangente hiperbólica do ângulo que foi informado como parâmetro.</p>
+									<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de código</b>
+										que utiliza a função:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO TANH()
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	double angulo;
+	scanf("%lf", &angulo);
+	printf("a tangente hiperbólica de %.3lf, eh %.3lf aproximadamente", angulo, tanh(angulo));
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			5
+			a tangente hiperbólica de 5, eh 1.000 aproximadamente
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+		<div class="right floated one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/math/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}

@@ -19,6 +19,19 @@
                     <a class="ui item" href="{% ps_link_atual_simples %}"><b>Processo Seletivo</b></a>
                     <a href="{% url 'contato' %}"
                         class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
+                    <div class="{% if pagina == 'manual_c' %}active{% endif %} item">
+                        <div class="ui pointing dropdown link">
+                            <a class="text"><b>Manual C</b></a>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a href="{% url 'manual_c' %}"
+                                    class="{% if pagina == 'manual_c' %}active{% endif %} item"><b>Bibliotecas</b></a>
+                                <a href="{% url 'sobre' %}"
+                                    class="{% if pagina == 'sobre' %} active{% endif %} item"><b>Sobre</b></a>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,9 +55,21 @@
                     <a class="ui item" href="{% ps_link_atual_simples %}"><b>Processo Seletivo</b></a>
                     <a href="{% url 'contato' %}"
                         class="{% if pagina == 'contato' %}active{% endif %} item"><b>Contato</b></a>
+                    <div class="{% if pagina == 'manual_c' %}active{% endif %} item">
+                        <div class="ui pointing dropdown link">
+                            <a class="text" href="{% url 'manual_c' %}"><b>Manual C</b></a>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a href="{% url 'manual_c' %}"
+                                    class="{% if pagina == 'manual_c' %}active{% endif %} item"><b>Bibliotecas</b></a>
+                                <a href="{% url 'sobre' %}"
+                                    class="{% if pagina == 'sobre' %} active{% endif %} item"><b>Sobre</b></a>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </nav>
     </div>
 
