@@ -17,4 +17,7 @@ urlpatterns = [
     #Math.h
     url(r'^math/$', views.math_h, name='math_h'),
     url(r'^mathfuncoes/$', views.math_funcoes, name='math_funcoes'),
+    #Ctype.h
+    url(r'^ctype/$', views.ctype_h, name='ctype_h'),
+    url(r'^ctypefuncoes/$', views.ctype_funcoes, name='ctype_funcoes'),
 ]

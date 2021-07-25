@@ -53,7 +53,7 @@ Manual C - PET-BCC UFSCar
                 <div class="ui basic segment">
                   <video width="500" height="180" controls>
                     <source src="../../../static/site2016/videos/gravacao_manualc.webm" type="video/webm">
-                  Your browser does not support the video tag.
+                    Your browser does not support the video tag.
                   </video>
                 </div>
               </div>
@@ -68,20 +68,34 @@ Manual C - PET-BCC UFSCar
           <div class="ui relaxed divided list">
             <div class="item">
               <div class="content">
+                <a class="manC_laranja odd" href="{% url 'ctype_h' %}">
+                  <h3>ctype.h</h3>
+                </a>
+                <div class="description">Na biblioteca &ltctype.h&gt estão
+                  funções para classificar caracteres ASCII, ou seja, para
+                  dizer se um dado byte representa uma letra, ou um dígito, 
+                  ou um branco etc. em código ASCII. Mesmo que o
+                  argumento de cada função não seja um char mas sim um 
+                  inteiro positivo, o caractere que é passado para a
+                  função, internamente, é convertido em seu valor ASCII 
+                  para a verificação.</div>
+                  
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
                 <a class="manC_laranja odd" href="{% url 'math_h' %}">
                   <h3>math.h</h3>
                 </a>
                 <div class="description">Na biblioteca &ltmath.h&gt estão
-            contidas diversas funções matemáticas básicas, com ela podemos
-            trabalhar com funções trigonométricas, funções para cálculo de raiz
-            quadrada, valor absoluto, entre outras.</div>
+                  contidas diversas funções matemáticas básicas, com ela podemos
+                  trabalhar com funções trigonométricas, funções para cálculo de raiz
+                  quadrada, valor absoluto, entre outras.</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
     </div>
   </section>
 </main>
