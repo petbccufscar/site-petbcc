@@ -99,7 +99,7 @@ Manual C - PET-BCC UFSCar
                       <form
                         class="ui form"
                         role="form"
-                        method="post"
+                        method="POST"
                         action="."
                       >
                         <input
@@ -108,7 +108,7 @@ Manual C - PET-BCC UFSCar
                           value="5N3scLRBfLJja0DTFc15yjHmIJ29YBE6Nl68peOPrHFYztptlj9Nkmj8X0xgj0I6"
                         />
                         <div class="field">
-                          <label>Seu nome</label>
+                          <label for="nome">Seu nome</label>
                           <input
                             name="nome"
                             placeholder="Seu nome"
@@ -121,22 +121,25 @@ Manual C - PET-BCC UFSCar
                               background-position: 98% 50%;
                               cursor: auto;
                             "
+                            id="nome"
                           />
                         </div>
                         <div class="field">
-                          <label>Seu e-mail</label>
+                          <label for="email">Seu e-mail</label>
                           <input
                             name="email"
                             placeholder="Seu e-mail"
                             type="text"
+                            id="email"
                           />
                         </div>
                         <div class="field">
-                          <label>Assunto da mensagem</label>
+                          <label for="mensagem">Assunto da mensagem</label>
                           <input
                             name="assunto"
                             placeholder="Assunto"
                             type="text"
+                            id="mensagem"
                           />
                         </div>
                       </form>
