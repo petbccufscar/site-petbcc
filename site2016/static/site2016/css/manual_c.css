@@ -41,9 +41,9 @@ a.manC_laranja_escuro:hover {
   color: #007194 !important;
 }
 
-.item {
+/* .item {
   padding: 5px !important;
-}
+} */
 
 .item:hover {
   color: #ba5e02 !important;
@@ -65,8 +65,11 @@ a.manC_laranja_escuro:hover {
   padding: 30px;
 }
 
-.ui.inverted.segment,
-.ui.inverted.header {
+.manC_sidebar {
+  padding: 4.5px !important;
+}
+
+.ui.inverted.segment.manC_header {
   background: var(--main-light-color);
   margin-bottom: 0em;
   margin-top: 0em;
@@ -79,7 +82,7 @@ b.fundo_azul_titulo_manC {
 }
 
 /* Estilo do texto do manC para o menu superior breadcrumb */
-a {
+a.text.menu_manC {
   color: black !important;
 }
 
