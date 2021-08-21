@@ -403,3 +403,11 @@ def math_h(request):
 def math_funcoes(request):
     context_dictionary = {'pagina': 'math_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/math/math_funcoes.html', context_dictionary)
+
+def ctype_h(request):
+    context_dictionary = {'pagina': 'ctype_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/ctype/ctype_h.html', context_dictionary)
+
+def ctype_funcoes(request):
+    context_dictionary = {'pagina': 'ctype_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/ctype/ctype_funcoes.html', context_dictionary)
