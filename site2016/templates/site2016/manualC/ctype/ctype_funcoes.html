@@ -30,7 +30,7 @@ Funções &ltctype.h&gt - Manual C
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p>
+							<p class="justificado">
 								<b class="manC_laranja_escuro">OBSERVAÇÃO:</b> o valor retornado, quando diferente de
 								zero, não é especificado no padrão da linguagem e, portanto, pode depender de qual
 								compilador e versão são usados, bem como do sistema operacional.
@@ -111,7 +111,7 @@ int main() {
 							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b>
 								1 caso seja uma letra do alfabeto maiúscula, 2 caso seja minúscula, 0 caso não esteja no
 								alfabeto.</p>
-							<p>
+							<p class="justificado">
 								<b class="manC_laranja_escuro">OBSERVAÇÃO:</b>
 								dependendo da IDE que você está usando, o valor de retorno para o caractere
 								alfanumérico, tanto maiúsculo quanto minúsculo, pode ser diferente de 1, entretanto,
@@ -832,7 +832,7 @@ int main()
 						<div class="twelve wide column">
 							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>  um único argumento (caractere) que será convertido para inteiro. Mesmo que toupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p>
+							<p class="justificado">
 								<b class="manC_laranja_escuro">OBSERVAÇÃO: se o argumento for <b>char</b>, a chamada deve usar typecast: <b>toupper((unsigned char)c)</b>, por conta da conversão de <b>signed char</b> para <b>int</b> (problema com o sinal).</b>
 							</p>
 							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> caso o argumento da função seja uma letra minúscula, retorna sua versão em maiúscula; caso contrário o próprio argumento é retornado sem modificações.
