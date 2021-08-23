@@ -1,0 +1,19 @@
+{% load static %}
+
+{% block sidebar_content2 %}
+<div class="mobile hidden ui centered stackable grid ">
+  <div class="ui right fixed vertical menu">
+      <div class="item">
+        <div class="header">
+          <h2 class="ui manC_laranja header">Funções</h2>
+        </div>
+      </div>
+      <div class="item">
+        <div class="menu">
+          <a class="item active manC_sidebar"  href="{% url 'assert_funcoes' %}#assert"><b>assert()</b></a>
+
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

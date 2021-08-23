@@ -1,0 +1,88 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltmath.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<main role="main">
+				<a id="assert"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo" id="acos">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">void</b> assert(<b class="fundo_azul_titulo_manC">int</b> expression)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado">A função assert() testa se uma expressão é verdadeira. Ao executar, se a expressão for verdadeira,  o programa continua executando normalmente. Entretanto, se a expressão for falsa, o programa será interrompido e uma mensagem de erro será exibida. O uso da função acrescenta uma sobrecarga à execução do programa e ao tamanho do código gerado.</p>
+							<p><b class="manC_laranja_escuro">Recebe:</b>
+								uma expressão para ser avaliada.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b>
+										não há valor de retorno.</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO ASSERT()
+
+#include &ltstdio.h&gt									
+#include &ltassert.h&gt
+
+	
+int main()
+{
+	int i;
+	for (i=3; i<=10; i++)
+	{
+			assert(i <= 7);
+			printf("i = %d\n", i);
+	}
+		return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+										terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+      i = 3
+			i = 4
+			i = 5
+			i = 6
+			i = 7
+			main: main.c:9: int main(): Assertion 'i <= 7' failed.
+			exited, aborted
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+		<div class="right one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/assert/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}
