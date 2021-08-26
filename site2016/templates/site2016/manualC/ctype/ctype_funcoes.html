@@ -21,7 +21,7 @@ Funções &ltctype.h&gt - Manual C
 			<!-- Inicio isalnum()-->
 			<main role="main">
 				<a id="isalnum"></a>
-				<header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo" id="acos">
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo" id="isalnum">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> isalnum (<b class="fundo_azul_titulo_manC">int</b> c)
@@ -30,19 +30,17 @@ Funções &ltctype.h&gt - Manual C
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p>
+							<p class="justificado">
 								<b class="manC_laranja_escuro">OBSERVAÇÃO:</b> o valor retornado, quando diferente de
 								zero, não é especificado no padrão da linguagem e, portanto, pode depender de qual
 								compilador e versão são usados, bem como do sistema operacional.
 							</p>
-							<p><b class="manC_laranja_escuro">Recebe:</b>
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
 								um argumento inteiro, cujo valor seja um caractere (ou seja, possa ser representado como
 								um unsigned char) ou o valor EOF.</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b>
 								 um valor diferente de zero caso o caractere seja alfanumérico ou 0 caso contrário.</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -76,7 +74,7 @@ int main() {
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -95,7 +93,7 @@ int main() {
 					<!-- Link para barra lateral -->
 					<a id="isalpha"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header fundo_azul_titulo_manC">
 						<b class="fundo_azul_titulo_manC">int</b class="fundo_azul_titulo_manC"> isalpha(<b
 							class="fundo_azul_titulo_manC">int</b> c)
@@ -104,23 +102,21 @@ int main() {
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b>
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
 								um único argumento (caractere) que será convertido para inteiro. Mesmo que isalpha()
 								receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
 								caractere é convertido em seu valor ASCII para a verificação.</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b>
 								1 caso seja uma letra do alfabeto maiúscula, 2 caso seja minúscula, 0 caso não esteja no
 								alfabeto.</p>
-							<p>
+							<p class="justificado">
 								<b class="manC_laranja_escuro">OBSERVAÇÃO:</b>
 								dependendo da IDE que você está usando, o valor de retorno para o caractere
 								alfanumérico, tanto maiúsculo quanto minúsculo, pode ser diferente de 1, entretanto,
 								sempre será zero caso não seja alfanumérico.
 
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre><code class="hljs c">
 //EXEMPLO isalpha()
@@ -145,7 +141,7 @@ int main()
 	
 											</code></pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -162,7 +158,7 @@ int main()
 					</div>
 					<a id="iscntrl"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> iscntrl(<b class="fundo_azul_titulo_manC">int</b> c)
@@ -171,17 +167,15 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b>
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
 								um único argumento (caractere) que será convertido para inteiro. Mesmo que iscntrl()
 								receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
 								caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um
 								caractere de controle (códigos de 0 a 31 na tabela ASCII) ou 0 caso contrário.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -216,7 +210,7 @@ int main() {
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -234,7 +228,7 @@ int main() {
 					</div>
 					<a id="isdigit"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> isdigit(<b class="fundo_azul_titulo_manC">int</b> c)
@@ -243,16 +237,14 @@ int main() {
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será
 								convertido para inteiro. Mesmo que isdigit() receba um inteiro como argumento, o
 								caractere é passado para a função. Internamente, o caractere é convertido em seu valor
 								ASCII para a verificação.</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero quando o caractere
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero quando o caractere
 								recebido é um dígito de 0 a 9 ou 0 caso contrário.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -276,7 +268,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -292,7 +284,7 @@ int main()
 					</div>
 					<a id="isgraph"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> isgraph(<b class="fundo_azul_titulo_manC">int</b>
@@ -302,17 +294,15 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será
 								convertido para inteiro. Mesmo que isgraph() receba um inteiro como argumento, o
 								caractere é passado para a função. Internamente, o caractere é convertido em seu valor
 								ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um
 								caractere que possa ser imprimido (exceto o espaço) ou 0 caso contrário.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -344,7 +334,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -361,7 +351,7 @@ int main()
 					</div>
 					<a id="islower"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> islower(<b class="fundo_azul_titulo_manC">int</b> c)
@@ -370,12 +360,10 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que islower () receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que islower () receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso o caractere seja uma letra minúscula ou zero caso contrário.</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso o caractere seja uma letra minúscula ou zero caso contrário.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -406,7 +394,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -424,7 +412,7 @@ int main()
 					</div>
 					<a id="isprint"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> isprint(<b class="fundo_azul_titulo_manC">int</b>
@@ -434,17 +422,15 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isprint() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isprint() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um caractere imprimível (incluindo o espaço) ou zero caso contrário.
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um caractere imprimível (incluindo o espaço) ou zero caso contrário.
 							</p>
 							<p>
 								<b class="manC_laranja_escuro">Os caracteres imprimíveis são:</b>
 								 ! ” # $ % & ’ ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 :  ; = < > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ ] _ a b c d e f g h i j k l m n o p q r s t u v w x y z { } ~
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -475,7 +461,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -493,7 +479,7 @@ int main()
 					</div>
 					<a id="ispunct"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> ispunct(<b class="fundo_azul_titulo_manC">int</b> c)
@@ -502,12 +488,10 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b>  um único argumento (caractere) que será convertido para inteiro. Mesmo que ispunct() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um sinal de pontuação (qualquer caractere imprimível que não seja espaço ou alfanumérico) ou 0 caso contrário.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>  um único argumento (caractere) que será convertido para inteiro. Mesmo que ispunct() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um sinal de pontuação (qualquer caractere imprimível que não seja espaço ou alfanumérico) ou 0 caso contrário.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -539,7 +523,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -557,7 +541,7 @@ int main()
 					</div>
 					<a id="isspace"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> isspace(<b class="fundo_azul_titulo_manC">int</b>
@@ -567,13 +551,11 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isspace() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isspace() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero  caso seja um espaço ou um caractere de mudança de linha (‘\n’), de retorno de carro (‘\r’), de mudança de página (‘\f’), ou de tabulações horizontal (‘\t’) ou vertical (‘\v’) ou 0 caso contrário.
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero  caso seja um espaço ou um caractere de mudança de linha (‘\n’), de retorno de carro (‘\r’), de mudança de página (‘\f’), ou de tabulações horizontal (‘\t’) ou vertical (‘\v’) ou 0 caso contrário.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -604,7 +586,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -622,7 +604,7 @@ int main()
 					</div>
 					<a id="isupper"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> isupper(<b class="fundo_azul_titulo_manC">int</b>
@@ -632,13 +614,11 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de um caso seja uma letra maiúscula (A a Z) ou 0 caso contrário.
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de um caso seja uma letra maiúscula (A a Z) ou 0 caso contrário.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -669,7 +649,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -687,7 +667,7 @@ int main()
 					</div>
 					<a id="isxdigit"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> isxdigit(<b class="fundo_azul_titulo_manC">int</b>
@@ -697,17 +677,15 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isxdigit() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isxdigit() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero  caso o caractere seja um dígito de um número  hexadecimal ou  0 caso contrário.
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero  caso o caractere seja um dígito de um número  hexadecimal ou  0 caso contrário.
 							</p>
 							<p>
 								<b class="manC_laranja_escuro">Caracteres hexadecimais:</b> 0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F
 
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -738,7 +716,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -756,7 +734,7 @@ int main()
 					</div>
 					<a id="tolower"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> tolower(<b class="fundo_azul_titulo_manC">int</b>
@@ -766,13 +744,11 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que tolower() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que tolower() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> caso o argumento da função seja uma letra maiúscula, retorna sua versão em letra minúscula; caso contrário o próprio argumento é retornado sem modificações.
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> caso o argumento da função seja uma letra maiúscula, retorna sua versão em letra minúscula; caso contrário o próprio argumento é retornado sem modificações.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -803,7 +779,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
@@ -821,7 +797,7 @@ int main()
 					</div>
 					<a id="toupper"></a>
 				</section>
-				<header class="ui inverted masthead center aligned segment">
+				<header class="ui inverted masthead center aligned segment manC_header">
 					<h1 class="ui inverted header">
 						<!-- Tirei o id, para ficar lowercase -->
 						<b class="fundo_azul_titulo_manC">int</b> toupper(<b class="fundo_azul_titulo_manC">int</b> c)
@@ -830,16 +806,14 @@ int main()
 				<section class="ui vertical stripe segment" role="region">
 					<div class="ui stackable centered grid container">
 						<div class="twelve wide column">
-							<p><b class="manC_laranja_escuro">Recebe:</b>  um único argumento (caractere) que será convertido para inteiro. Mesmo que toupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>  um único argumento (caractere) que será convertido para inteiro. Mesmo que toupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
 							</p>
-							<p>
+							<p class="justificado">
 								<b class="manC_laranja_escuro">OBSERVAÇÃO: se o argumento for <b>char</b>, a chamada deve usar typecast: <b>toupper((unsigned char)c)</b>, por conta da conversão de <b>signed char</b> para <b>int</b> (problema com o sinal).</b>
 							</p>
-							<p><b class="manC_laranja_escuro">Retorna:</b> caso o argumento da função seja uma letra minúscula, retorna sua versão em maiúscula; caso contrário o próprio argumento é retornado sem modificações.
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> caso o argumento da função seja uma letra minúscula, retorna sua versão em maiúscula; caso contrário o próprio argumento é retornado sem modificações.
 							</p>
-							<div class="ui horizontal divider">A seguir, um <b class="manC_laranja_escuro">exemplo de
-									código</b>
-								que utiliza a função:</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
 							<div class="ui container">
 								<pre>
 									<code class="c">
@@ -871,7 +845,7 @@ int main()
 									</code>
 								</pre>
 							</div>
-							<div class="ui horizontal divider">Em seguida é a <b class="manC_laranja_escuro">saída do
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
 									terminal</b>:</div>
 							<div class="ui container">
 								<pre>
