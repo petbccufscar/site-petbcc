@@ -53,7 +53,7 @@ Manual C - PET-BCC UFSCar
                 <div class="ui basic segment">
                   <video width="500" height="180" controls>
                     <source src="../../../static/site2016/videos/gravacao_manualc.webm" type="video/webm">
-                  Your browser does not support the video tag.
+                    Your browser does not support the video tag.
                   </video>
                 </div>
               </div>
@@ -66,6 +66,22 @@ Manual C - PET-BCC UFSCar
             Bibliotecas
           </h2>
           <div class="ui relaxed divided list">
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd" href="{% url 'ctype_h' %}">
+                  <h3>ctype.h</h3>
+                </a>
+                <div class="description">Na biblioteca &ltctype.h&gt estão
+                  funções para classificar caracteres ASCII, ou seja, para
+                  dizer se um dado byte representa uma letra, ou um dígito, 
+                  ou um branco etc. em código ASCII. Mesmo que o
+                  argumento de cada função não seja um char mas sim um 
+                  inteiro positivo, o caractere que é passado para a
+                  função, internamente, é convertido em seu valor ASCII 
+                  para a verificação.</div>
+                  
+              </div>
+            </div>
             <div class="item">
               <div class="content">
                 <a class="manC_laranja odd" href="{% url 'math_h' %}">
@@ -81,6 +97,7 @@ Manual C - PET-BCC UFSCar
                   <h3>assert.h</h3>
                 </a>
                 <div class="description">O arquivo de cabeçalhos assert.h tem apenas uma função: assert(), a qual pode ser usada para verificar a veracidade de uma expressão durante a execução do programa e interromper a execução do programa com uma mensagem de diagnóstico em caso de falha. </div>
+
               </div>
             </div>
           </div>
