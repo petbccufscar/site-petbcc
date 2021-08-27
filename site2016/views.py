@@ -19,6 +19,7 @@ def home(request):
     else:
         return render(request, 'site2016/manutencao.html', {})
 
+
 def equipe(request):
     context_dictionary = {'pagina': 'equipe',
                           'professores': Professor.objects.listar_membros_ativos().order_by('nome', 'sobrenome'),
@@ -41,7 +42,7 @@ def membro(request, id):
         'semana': {'horas': 0, 'minutos': 0},
         'mes': {'horas': 0, 'minutos': 0},
         '3meses': {'horas': 0, 'minutos': 0}
-        }
+    }
 
     # as medias de horas sao calculadas num intervalo de dias,
     # ao inves de calcular um mes especifico
@@ -52,21 +53,21 @@ def membro(request, id):
     ultimoMes = datetime.date.today() - datetime.timedelta(28)
     ultimos3 = datetime.date.today() - datetime.timedelta(84)
 
-
     # a funcao annotate soma todo o tempo gasto para cada dia
     relatorio_atividades = (atividades.values('dia')
                             .annotate(horas=Sum('horas'))
                             .annotate(minutos=Sum('minutos'))
                             .order_by())
-    
+
     dados_grafico = []
-    
+
     for i, relatorio in enumerate(relatorio_atividades):
 
         if relatorio['dia'] >= ultimos3:
 
             # gera uma entrada apenas em minutos para projetar no grafico
-            relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+            relatorio['tempo'] = (relatorio['horas'] * 60) + \
+                (relatorio['minutos'])
 
             # incrementa o tempo total
             tempo['total']['horas'] += relatorio['horas']
@@ -81,7 +82,7 @@ def membro(request, id):
             if relatorio['dia'] >= ultimoMes:
                 tempo['mes']['horas'] += relatorio['horas']
                 tempo['mes']['minutos'] += relatorio['minutos']
-            
+
             tempo['3meses']['horas'] += relatorio['horas']
             tempo['3meses']['minutos'] += relatorio['minutos']
 
@@ -92,7 +93,8 @@ def membro(request, id):
             if i < relatorio_atividades.count()-1:
 
                 # calcula a distancia entre o dia da atividade atual e da proxima
-                diff_atividades = relatorio_atividades[i+1]['dia'] - relatorio_atividades[i]['dia']
+                diff_atividades = relatorio_atividades[i +
+                                                       1]['dia'] - relatorio_atividades[i]['dia']
 
                 # caso a distancia seja maior que 1, adiciona dias vazios entre as atividades
                 if diff_atividades > datetime.timedelta(days=1):
@@ -105,7 +107,7 @@ def membro(request, id):
                         }
 
                         dados_grafico.append(dia_vazio)
-    
+
     # adiciona dias vazios entre a ultima atividade e hoje
     diff_hoje = datetime.date.today() - dados_grafico[-1]['dia']
 
@@ -117,13 +119,12 @@ def membro(request, id):
             }
 
             dados_grafico.append(dia_vazio)
-    
+
     # tira a media semanal do mes e dos ultimos 3 meses
     tempo['mes']['horas'] //= 4
     tempo['mes']['minutos'] //= 4
     tempo['3meses']['horas'] //= 12
     tempo['3meses']['minutos'] //= 12
-    
 
     # formata os minutos de cada entrada
     if tempo['total']['minutos'] > 60:
@@ -141,8 +142,7 @@ def membro(request, id):
     if tempo['3meses']['minutos'] > 60:
         tempo['3meses']['horas'] += (tempo['3meses']['minutos'] // 60)
         tempo['3meses']['minutos'] = (tempo['3meses']['minutos'] % 60)
-    
-    
+
     # transforma o resultado em string para formatar com 0 padding
     tempo['semana']['horas'] = str(tempo['semana']['horas']).zfill(2)
     tempo['semana']['minutos'] = str(tempo['semana']['minutos']).zfill(2)
@@ -152,7 +152,6 @@ def membro(request, id):
     tempo['3meses']['minutos'] = str(tempo['3meses']['minutos']).zfill(2)
     tempo['total']['horas'] = str(tempo['total']['horas']).zfill(2)
     tempo['total']['minutos'] = str(tempo['total']['minutos']).zfill(2)
-    
 
     context_dictionary = {
         'membro': membro,
@@ -194,7 +193,7 @@ def projetos(request):
             else:
                 projetos_en_pesq_ex.append(projeto_obj)
                 break
-            
+
     tecnologias = []
     for tecnologia in Tecnologia.objects.order_by('nome'):
         tecnologias.append(
@@ -219,25 +218,26 @@ def projeto(request, id):
         'semana': {'horas': 0, 'minutos': 0},
         'mes': {'horas': 0, 'minutos': 0},
         '3meses': {'horas': 0, 'minutos': 0}
-        }
+    }
 
     relatorio_atividades = (atividades.values('dia')
                             .annotate(horas=Sum('horas'))
                             .annotate(minutos=Sum('minutos'))
                             .order_by())
-    
+
     # logica comentada na rota membro
     ultimaSemana = datetime.date.today() - datetime.timedelta(7)
     ultimoMes = datetime.date.today() - datetime.timedelta(28)
     ultimos3 = datetime.date.today() - datetime.timedelta(84)
-    
+
     dados_grafico = []
-    
+
     for i, relatorio in enumerate(relatorio_atividades):
 
         if relatorio['dia'] >= ultimos3:
 
-            relatorio['tempo'] = (relatorio['horas'] * 60) + (relatorio['minutos'])
+            relatorio['tempo'] = (relatorio['horas'] * 60) + \
+                (relatorio['minutos'])
 
             tempo['total']['horas'] += relatorio['horas']
             tempo['total']['minutos'] += relatorio['minutos']
@@ -249,14 +249,15 @@ def projeto(request, id):
             if relatorio['dia'] >= ultimoMes:
                 tempo['mes']['horas'] += relatorio['horas']
                 tempo['mes']['minutos'] += relatorio['minutos']
-            
+
             tempo['3meses']['horas'] += relatorio['horas']
             tempo['3meses']['minutos'] += relatorio['minutos']
 
             dados_grafico.append(relatorio)
 
             if i < relatorio_atividades.count()-1:
-                diff_atividades = relatorio_atividades[i+1]['dia'] - relatorio_atividades[i]['dia']
+                diff_atividades = relatorio_atividades[i +
+                                                       1]['dia'] - relatorio_atividades[i]['dia']
 
                 if diff_atividades > datetime.timedelta(days=1):
                     for J in range(1, diff_atividades.days):
@@ -266,7 +267,7 @@ def projeto(request, id):
                         }
 
                         dados_grafico.append(dia_vazio)
-    
+
     diff_hoje = datetime.date.today() - dados_grafico[-1]['dia']
 
     if diff_hoje > datetime.timedelta(days=0):
@@ -277,12 +278,12 @@ def projeto(request, id):
             }
 
             dados_grafico.append(dia_vazio)
-    
+
     tempo['mes']['horas'] //= 4
     tempo['mes']['minutos'] //= 4
     tempo['3meses']['horas'] //= 12
     tempo['3meses']['minutos'] //= 12
-    
+
     if tempo['total']['minutos'] > 60:
         tempo['total']['horas'] += (tempo['total']['minutos'] // 60)
         tempo['total']['minutos'] = (tempo['total']['minutos'] % 60)
@@ -298,7 +299,7 @@ def projeto(request, id):
     if tempo['3meses']['minutos'] > 60:
         tempo['3meses']['horas'] += (tempo['3meses']['minutos'] // 60)
         tempo['3meses']['minutos'] = (tempo['3meses']['minutos'] % 60)
-    
+
     tempo['semana']['horas'] = str(tempo['semana']['horas']).zfill(2)
     tempo['semana']['minutos'] = str(tempo['semana']['minutos']).zfill(2)
     tempo['mes']['horas'] = str(tempo['mes']['horas']).zfill(2)
@@ -387,24 +388,45 @@ def contato(request):
         context_dictionary = {'pagina': 'contato', 'DEBUG': settings.DEBUG}
         return render(request, 'site2016/contato.html', context_dictionary)
 
+
 """ Manual C """
+
+
 def manual_c(request):
     context_dictionary = {'pagina': 'manual_c', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/home.html', context_dictionary)
+
 
 def sobre(request):
     context_dictionary = {'pagina': 'sobre', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/sobre.html', context_dictionary)
 
+
 def math_h(request):
     context_dictionary = {'pagina': 'math_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/math/math_h.html', context_dictionary)
+
+
 def math_funcoes(request):
     context_dictionary = {'pagina': 'math_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/math/math_funcoes.html', context_dictionary)
+
+
 def assert_h(request):
     context_dictionary = {'pagina': 'assert_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/assert/assert_h.html', context_dictionary)
+
+
 def assert_funcoes(request):
     context_dictionary = {'pagina': 'assert_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/assert/assert_funcoes.html', context_dictionary)
+
+
+def ctype_h(request):
+    context_dictionary = {'pagina': 'ctype_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/ctype/ctype_h.html', context_dictionary)
+
+
+def ctype_funcoes(request):
+    context_dictionary = {'pagina': 'ctype_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/ctype/ctype_funcoes.html', context_dictionary)

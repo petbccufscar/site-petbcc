@@ -1,12 +1,19 @@
-{% extends 'site2016/base.html' %} {% load static %} {% block title %} Manual C
-- PET-BCC UFSCar {% endblock title %} {% block head_extensions %} {% endblock
-head_extensions %} {% block body %}
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Manual C - PET-BCC UFSCar
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
 <div class="ui grid">
   <div class="sixteen wide column manC_title">
-    <header
-      class="ui inverted masthead center aligned segment"
-      id="fundo_azul_titulo"
-    >
+    <header class="ui inverted masthead center aligned segment"
+      id="fundo_azul_titulo">
       <div class="ui grid">
         <div class="column">
           <div class="row">
@@ -25,8 +32,9 @@ head_extensions %} {% block body %}
     <div class="ui relaxed grid">
       <div class="three wide column">
         <div class="ui sticky">
-          {% block sidebar_content %} {% include
-          'site2016/manualC/leftSidebar.html' %} {% endblock sidebar_content %}
+          {% block sidebar_content %}
+            {% include 'site2016/manualC/leftSidebar.html' %}
+          {% endblock sidebar_content %}
         </div>
       </div>
       <div class="twelve wide column">
@@ -62,20 +70,17 @@ head_extensions %} {% block body %}
         <div class="ui padded basic segment">
           <div class="ui stackable center aligned grid">
             <div class="column">
-              <h2 class="ui center aligned header manC_laranja">Guia Rápido</h2>
+              <h2 class="ui center aligned header manC_laranja">
+                Guia Rápido
+              </h2>
               <div class="ui basic segment">
                 <video width="720" height="400" controls>
-                  <source
-                    src="../../../static/site2016/videos/gravacao_manualc.webm"
-                    type="video/webm"
-                  />
-                  Your browser does not support the video tag.
+                  <source src="../../../static/site2016/videos/gravacao_manualc.webm" type="video/webm">
+                Your browser does not support the video tag.
                 </video>
               </div>
               <div>
-                Caso tenha dúvidas sobre a navegação, assista o vídeo acima.
-                Nele são demonstrados formas de navegar pelo site para
-                consultas.
+                Caso tenha dúvidas sobre a navegação, assista o vídeo acima. Nele são demonstrados formas de navegar pelo site para consultas. 
               </div>
             </div>
           </div>
@@ -90,31 +95,21 @@ head_extensions %} {% block body %}
                 </h2>
                 <div class="row">
                   <div class="justificado">
-                    Em caso de dúvidas sobre as bibliotecas ou funções, ou
-                    sugestões entre em contato conosco por:
+                    Em caso de dúvidas sobre as bibliotecas ou funções, ou sugestões entre em contato conosco por:
                   </div>
                 </div>
-                <div class="ui basic segment">
-                  <a
-                    class="ui left aligned aligned header manC_laranja_escuro"
-                    href="https://www.facebook.com/petbcc"
-                  >
-                    Facebook
-                  </a>
-                </div>
-                <div class="ui basic segment">
-                  <a
-                    class="ui left aligned aligned header manC_laranja odd"
-                    href="https://www.instagram.com/petbcc.ufscar/"
-                  >
-                    Instagram
-                  </a>
-                </div>
-                <div class="ui basic segment">
-                  <a class="ui left aligned aligned header manC_laranja_escuro">
-                    petbcc@ufscar.br
-                  </a>
-                </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja_escuro" href="https://www.facebook.com/petbcc">
+                  Facebook 
+                </a> </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja odd" href="https://www.instagram.com/petbcc.ufscar/">
+                  Instagram 
+                </a> </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja_escuro">
+                  petbcc@ufscar.br 
+                </a> </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja odd" href="https://github.com/petbccufscar/sitepetbcc">
+                   Repositório GitHub
+                </a> </div>
               </div>
             </div>
             <div class="column">
@@ -126,19 +121,12 @@ head_extensions %} {% block body %}
               <div class="ui centered grid">
                 <div class="two column row">
                   <div class="column">
-                    <img
-                      class="ui medium circular image"
-                      src="../../../static/site2016/images/jander_manC.png"
-                    />
+                    <img class="ui medium circular image" src="../../../static/site2016/images/jander_manC.png">
                   </div>
                   <div class="column">
-                    <h3 class="ui header manC_laranja">
-                      Prof. Dr. Jander Moreira
-                    </h3>
+                    <h3 class="ui header manC_laranja">Prof. Dr. Jander Moreira</h3>
                     <div class="justificado">
-                      Durante a realização do projeto contamos com a ajuda do
-                      Professor Doutor Jander Moreira para revisão das
-                      bibliotecas pesquisadas e disponibilizadas.
+                      Durante a realização do projeto contamos com a ajuda do Professor Doutor Jander Moreira para revisão das bibliotecas pesquisadas e disponibilizadas.
                     </div>
                   </div>
                 </div>
@@ -152,46 +140,47 @@ head_extensions %} {% block body %}
 </main>
 
 <script>
-  $('.ui.form').form({
-    on: 'blur',
-    fields: {
-      nome: {
-        identifier: 'nome',
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'Por favor, informe seu nome.',
-          },
-        ],
-      },
-      email: {
-        identifier: 'email',
-        rules: [
-          {
-            type: 'email',
-            prompt: 'Por favor, digite um endereço de e-mail válido.',
-          },
-        ],
-      },
-      assunto: {
-        identifier: 'assunto',
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'Por favor, preencha o campo Assunto.',
-          },
-        ],
-      },
-      name: {
-        identifier: 'mensagem',
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'Por favor, digite a sua mensagem.',
-          },
-        ],
-      },
-    },
-  })
+  $('.ui.form')
+          .form({
+              on: 'blur',
+              fields: {
+                  nome: {
+                      identifier: 'nome',
+                      rules: [
+                          {
+                              type: 'empty',
+                              prompt: 'Por favor, informe seu nome.'
+                          }
+                      ]
+                  },
+                  email: {
+                      identifier: 'email',
+                      rules: [
+                          {
+                              type: 'email',
+                              prompt: 'Por favor, digite um endereço de e-mail válido.'
+                          }
+                      ]
+                  },
+                  assunto: {
+                      identifier: 'assunto',
+                      rules: [
+                          {
+                              type: 'empty',
+                              prompt: 'Por favor, preencha o campo Assunto.'
+                          }
+                      ]
+                  },
+                  name: {
+                      identifier: 'mensagem',
+                      rules: [
+                          {
+                              type: 'empty',
+                              prompt: 'Por favor, digite a sua mensagem.'
+                          }
+                      ]
+                  }
+              }
+          });
 </script>
 {% endblock %}
