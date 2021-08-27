@@ -402,7 +402,6 @@ def math_h(request):
 def math_funcoes(request):
     context_dictionary = {'pagina': 'math_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/math/math_funcoes.html', context_dictionary)
-
 def assert_h(request):
     context_dictionary = {'pagina': 'assert_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/assert/assert_h.html', context_dictionary)

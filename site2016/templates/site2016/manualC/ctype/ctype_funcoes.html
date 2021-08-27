@@ -1,0 +1,874 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltctype.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<!-- Inicio isalnum()-->
+			<main role="main">
+				<a id="isalnum"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo" id="isalnum">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> isalnum (<b class="fundo_azul_titulo_manC">int</b> c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado">
+								<b class="manC_laranja_escuro">OBSERVAÇÃO:</b> o valor retornado, quando diferente de
+								zero, não é especificado no padrão da linguagem e, portanto, pode depender de qual
+								compilador e versão são usados, bem como do sistema operacional.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
+								um argumento inteiro, cujo valor seja um caractere (ou seja, possa ser representado como
+								um unsigned char) ou o valor EOF.</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b>
+								 um valor diferente de zero caso o caractere seja alfanumérico ou 0 caso contrário.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO isalnum()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main() {
+	char c;
+	int resultado;
+
+	c = '1';
+	resultado = isalnum(c);
+	printf("resultado: %d\n", resultado);
+
+	c = 'G';
+	resultado = isalnum(c);
+	printf("resultado: %d\n", resultado);
+
+	c = 'k';
+	resultado = isalnum(c);
+	printf("resultado: %d\n", resultado);
+
+	c = '+';
+	resultado = isalnum(c);
+	printf("resultado: %d\n", resultado);
+	return 0;
+
+}	
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			resultado: 1
+			resultado: 1
+			resultado: 1
+			resultado: 0
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<!-- Link para barra lateral -->
+					<a id="isalpha"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header fundo_azul_titulo_manC">
+						<b class="fundo_azul_titulo_manC">int</b class="fundo_azul_titulo_manC"> isalpha(<b
+							class="fundo_azul_titulo_manC">int</b> c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
+								um único argumento (caractere) que será convertido para inteiro. Mesmo que isalpha()
+								receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+								caractere é convertido em seu valor ASCII para a verificação.</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b>
+								1 caso seja uma letra do alfabeto maiúscula, 2 caso seja minúscula, 0 caso não esteja no
+								alfabeto.</p>
+							<p class="justificado">
+								<b class="manC_laranja_escuro">OBSERVAÇÃO:</b>
+								dependendo da IDE que você está usando, o valor de retorno para o caractere
+								alfanumérico, tanto maiúsculo quanto minúsculo, pode ser diferente de 1, entretanto,
+								sempre será zero caso não seja alfanumérico.
+
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs c">
+//EXEMPLO isalpha()
+
+#include &ltstdio.h&gt											
+#include &ltctype.h&gt
+
+int main()
+{
+   char c;
+   c = 'I';
+   printf("letra maiuscula presente no alfabeto retorna: %d\n", isalpha(c));
+
+   c = 'i';
+   printf("letra minuscula presente no alfabeto retorna: %d\n", isalpha(c));
+
+   c=',';
+   printf("caractere não presente no alfabeto retorna: %d\n", isalpha(c));
+
+   return 0;
+}
+	
+											</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+											<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			letra maiuscula presente no alfabeto retorna: 1
+			letra minuscula presente no alfabeto retorna: 2
+			caractere não presente no alfabeto retorna: 0
+											</code>
+										</pre>
+							</div>
+						</div>
+					</div>
+					<a id="iscntrl"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> iscntrl(<b class="fundo_azul_titulo_manC">int</b> c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
+								um único argumento (caractere) que será convertido para inteiro. Mesmo que iscntrl()
+								receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+								caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um
+								caractere de controle (códigos de 0 a 31 na tabela ASCII) ou 0 caso contrário.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO iscntrl()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main() {
+	char c;
+	int resultado;
+   
+	  c = '1';
+	  resultado = iscntrl(c);
+	  printf("resultado: %d\n", resultado);
+   
+	  c = 'G';
+	  resultado = iscntrl(c);
+	  printf("resultado: %d\n", resultado);
+   
+	  c = 'k';
+	  resultado = iscntrl(c);
+	  printf("resultado: %d\n", resultado);
+   
+	  c = '\n';
+	  resultado = iscntrl(c);
+	  printf("resultado: %d\n", resultado);
+   
+	  return 0;
+   
+   }	
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			resultado: 0
+			resultado: 0
+			resultado: 0
+			resultado: 1
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="isdigit"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> isdigit(<b class="fundo_azul_titulo_manC">int</b> c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será
+								convertido para inteiro. Mesmo que isdigit() receba um inteiro como argumento, o
+								caractere é passado para a função. Internamente, o caractere é convertido em seu valor
+								ASCII para a verificação.</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero quando o caractere
+								recebido é um dígito de 0 a 9 ou 0 caso contrário.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO isdigit()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+   char c;
+   c='7';
+   printf("caractere numerico: %d\n", isdigit(c));
+
+   c='=';
+   printf("caractere nao numerico: %d", isdigit(c));
+
+   return 0;
+}
+		
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			caractere numerico: 1
+			caractere nao numerico: 0
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="isgraph"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> isgraph(<b class="fundo_azul_titulo_manC">int</b>
+						c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será
+								convertido para inteiro. Mesmo que isgraph() receba um inteiro como argumento, o
+								caractere é passado para a função. Internamente, o caractere é convertido em seu valor
+								ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um
+								caractere que possa ser imprimido (exceto o espaço) ou 0 caso contrário.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO isgraph()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+   char c;
+    int resultado;
+
+    c = '!';
+    resultado = isgraph(c);
+    printf("resultado = %d\n", resultado);
+
+    c = ' ';
+    resultado = isgraph(c);
+    printf("resultado = %d\n", resultado);
+
+    c = '9';
+    resultado = isgraph(c);
+    printf("resultado = %d\n", resultado); 
+
+    return 0;
+}
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			resultado = 1
+			resultado = 0
+			resultado = 1
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="islower"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> islower(<b class="fundo_azul_titulo_manC">int</b> c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que islower () receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso o caractere seja uma letra minúscula ou zero caso contrário.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO islower()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c='i'; //letra minúscula
+    printf("%d\n", islower(c));
+ 
+    c='S';
+    printf("%d\n", islower(c));
+ 
+     c='*';
+    printf("%d\n", islower(c));
+ 
+     c='p'; //letra minúscula
+    printf("%d\n", islower(c));
+ 
+    return 0;
+}
+	
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			0
+			0
+			1
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="isprint"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> isprint(<b class="fundo_azul_titulo_manC">int</b>
+						c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isprint() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um caractere imprimível (incluindo o espaço) ou zero caso contrário.
+							</p>
+							<p>
+								<b class="manC_laranja_escuro">Os caracteres imprimíveis são:</b>
+								 ! ” # $ % & ’ ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 :  ; = < > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ ] _ a b c d e f g h i j k l m n o p q r s t u v w x y z { } ~
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO isprint()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c=' '; //imprimível
+    printf("%d\n", isprint(c));
+ 
+    c='S'; //imprimível
+    printf("%d\n", isprint(c));
+ 
+     c='*'; //imprimível
+    printf("%d\n", isprint(c));
+ 
+     c='\n'; //não imprimível
+    printf("%d\n", isprint(c));
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			1
+			1
+			0
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="ispunct"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> ispunct(<b class="fundo_azul_titulo_manC">int</b> c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>  um único argumento (caractere) que será convertido para inteiro. Mesmo que ispunct() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero caso seja um sinal de pontuação (qualquer caractere imprimível que não seja espaço ou alfanumérico) ou 0 caso contrário.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO ispunct()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c=' '; //não é pontuação
+    printf("%d\n", ispunct(c));
+ 
+    c='S'; //não é pontuação
+    printf("%d\n", ispunct(c));
+ 
+     c='*'; //é pontuação
+    printf("%d\n", ispunct(c));
+ 
+     c='.'; //é pontuação
+    printf("%d\n", ispunct(c));
+ 
+    return 0;
+}
+ 
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			0
+			0
+			1
+			1
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="isspace"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> isspace(<b class="fundo_azul_titulo_manC">int</b>
+						c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isspace() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero  caso seja um espaço ou um caractere de mudança de linha (‘\n’), de retorno de carro (‘\r’), de mudança de página (‘\f’), ou de tabulações horizontal (‘\t’) ou vertical (‘\v’) ou 0 caso contrário.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO isspace()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c=' ';
+    printf("%d\n", isspace(c));
+ 
+    c='i';
+    printf("%d\n", isspace(c));
+ 
+     c='\n';
+    printf("%d\n", isspace(c));
+ 
+     c='\r';
+    printf("%d\n", isspace(c));
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			0
+			1
+			1
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="isupper"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> isupper(<b class="fundo_azul_titulo_manC">int</b>
+						c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de um caso seja uma letra maiúscula (A a Z) ou 0 caso contrário.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO isupper()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c = 'G'; //maiúsculo
+    printf("%d\n", isupper(c));
+ 
+    c = 'i';
+    printf("%d\n", isupper(c));
+ 
+    c = '\n';
+    printf("%d\n", isupper(c));
+ 
+    c = 'M'; //maiúsculo
+    printf("%d\n", isupper(c));
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			0
+			0
+			1
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="isxdigit"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> isxdigit(<b class="fundo_azul_titulo_manC">int</b>
+						c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que isxdigit() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> um valor diferente de zero  caso o caractere seja um dígito de um número  hexadecimal ou  0 caso contrário.
+							</p>
+							<p>
+								<b class="manC_laranja_escuro">Caracteres hexadecimais:</b> 0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F
+
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO isxdigit()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c = 'A'; //hexadecimal
+    printf("%d\n", isxdigit(c));
+ 
+    c = 'f'; //hexadecimal
+    printf("%d\n", isxdigit(c));
+ 
+    c = 'P'; // não hexadecimal
+    printf("%d\n", isxdigit(c));
+ 
+    c = ' '; //não hexadecimal
+    printf("%d\n", isxdigit(c));
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			1
+			0
+			0
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="tolower"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> tolower(<b class="fundo_azul_titulo_manC">int</b>
+						c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b> um único argumento (caractere) que será convertido para inteiro. Mesmo que tolower() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> caso o argumento da função seja uma letra maiúscula, retorna sua versão em letra minúscula; caso contrário o próprio argumento é retornado sem modificações.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO tolower()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c='A'; //maiúsculo
+    printf("%c\n", tolower(c));
+ 
+    c='M'; //maiúsculo
+    printf("%c\n", tolower(c));
+ 
+     c='/'; // não maiúsculo
+    printf("%c\n", tolower(c));
+ 
+     c='f'; //não maiúsculo
+    printf("%c\n", tolower(c));
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			a
+			m
+			/
+			f
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<a id="toupper"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> toupper(<b class="fundo_azul_titulo_manC">int</b> c)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>  um único argumento (caractere) que será convertido para inteiro. Mesmo que toupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em seu valor ASCII para a verificação.
+							</p>
+							<p class="justificado">
+								<b class="manC_laranja_escuro">OBSERVAÇÃO: se o argumento for <b>char</b>, a chamada deve usar typecast: <b>toupper((unsigned char)c)</b>, por conta da conversão de <b>signed char</b> para <b>int</b> (problema com o sinal).</b>
+							</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b> caso o argumento da função seja uma letra minúscula, retorna sua versão em maiúscula; caso contrário o próprio argumento é retornado sem modificações.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO toupper()
+
+#include &ltstdio.h&gt
+#include &ltctype.h&gt
+
+int main()
+{
+    char c;
+ 
+    c='r'; //minúsculo
+    printf("%c\n", toupper(c));
+ 
+    c='i'; //minúsculo
+    printf("%c\n", toupper(c));
+ 
+     c='*'; //não minúsculo
+    printf("%c\n", toupper(c));
+ 
+     c='G'; //não minúsculo
+    printf("%c\n", toupper(c));
+ 
+    return 0;
+}
+ 
+
+									</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs bash">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			R
+			I
+			*
+			G
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+
+			</main>
+		</div>
+		<div class="right floated one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/ctype/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}

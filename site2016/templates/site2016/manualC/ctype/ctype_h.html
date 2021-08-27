@@ -1,0 +1,252 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Manual C - PET-BCC UFSCar
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <div class="ui grid">
+        <div class="column">
+          <div class="row">
+            <h1 class="ui inverted header">
+              <!-- Tirei o id, para ficar lowercase -->
+              &ltctype.h&gt
+              <!-- &lt e h&gt é para setar os <> -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %}
+        {% include 'site2016/manualC/leftSidebar.html' %}
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            A maioria das funções deste arquivo de cabeçalhos serve para classificar caracteres ASCII, ou seja, para
+            dizer se um dado byte representa uma letra, ou um dígito, ou um branco etc. em código ASCII. Mesmo que o
+            argumento de cada função não seja um char mas sim um inteiro positivo, o caractere que é passado para a
+            função, internamente, é convertido em seu valor ASCII para a verificação.
+          </p>
+        </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'ctype_funcoes' %}#isalnum">
+                <h3>int isalnum (int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: Um valor diferente de zero caso o caractere seja alfanumérico ou 0 caso contrário.
+              </div>
+              <div class="description">
+                RECEBE: um argumento inteiro, cujo valor seja um caractere (ou seja, possa ser representado como um
+                unsigned char) ou o valor EOF.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'ctype_funcoes' %}#isalpha">
+                <h3>int isalpha(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: 1 caso seja uma letra do alfabeto maiúscula, 2 caso seja minúscula, 0 caso não esteja no
+                alfabeto.
+              </div>
+              <div class="description">
+                RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo que isalpha() receba um
+                inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em
+                seu valor ASCII para a verificação.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'ctype_funcoes' %}#iscntrl">
+                <h3>int iscntrl(int c)</h3>
+              </a>
+              <div class="description">RETORNA: um valor diferente de zero caso seja um caractere de controle (códigos
+                de 0 a 31 na tabela ASCII) ou 0 caso contrário. </div>
+              <div class="description">
+                RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo que iscntrl() receba um
+                inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em
+                seu valor ASCII para a verificação.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'ctype_funcoes' %}#isdigit">
+                <h3>int isdigit(int c) </h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de zero quando o caractere recebido é um dígito de 0 a 9 ou 0 caso
+                contrário.
+              </div>
+              <div class="description">
+                RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo que isdigit() receba um
+                inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em
+                seu valor ASCII para a verificação.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'ctype_funcoes' %}#isdigit">
+                <h3>int isgraph(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de zero caso seja um caractere que possa ser imprimido (exceto o espaço) ou
+                0 caso contrário.
+              </div>
+              <div class="description">RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo
+                que isgraph() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+                caractere é convertido em seu valor ASCII para a verificação. </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'ctype_funcoes' %}#islower">
+                <h3>int islower(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de zero caso o caractere seja uma letra minúscula ou zero caso contrário.
+              </div>
+              <div class="description">RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo
+                que islower () receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+                caractere é convertido em seu valor ASCII para a verificação. </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'ctype_funcoes' %}#isprint">
+                <h3>int isprint(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de zero caso seja um caractere imprimível (incluindo o espaço) ou zero caso
+                contrário.
+              </div>
+              <div class="description">RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo
+                que isprint() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+                caractere é convertido em seu valor ASCII para a verificação. </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'ctype_funcoes' %}#ispunct">
+                <h3>int ispunct(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de zero caso seja um sinal de pontuação (qualquer caractere imprimível que
+                não seja espaço ou alfanumérico) ou 0 caso contrário.
+              </div>
+              <div class="description">
+                RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo que ispunct() receba um
+                inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em
+                seu valor ASCII para a verificação.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'ctype_funcoes' %}#isspace">
+                <h3>int isspace(int c) </h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de zero caso seja um espaço ou um caractere de mudança de linha (‘\n’), de
+                retorno de carro (‘\r’), de mudança de página (‘\f’), ou de tabulações horizontal (‘\t’) ou vertical
+                (‘\v’) ou 0 caso contrário.
+              </div>
+              <div class="description">RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo
+                que isspace() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+                caractere é convertido em seu valor ASCII para a verificação. </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'ctype_funcoes' %}#isupper">
+                <h3>int isupper(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de um caso seja uma letra maiúscula (A a Z) ou 0 caso contrário.
+              </div>
+              <div class="description">
+                RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo que isupper() receba um
+                inteiro como argumento, o caractere é passado para a função. Internamente, o caractere é convertido em
+                seu valor ASCII para a verificação.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'ctype_funcoes' %}#isxdigit">
+                <h3>int isxdigit(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor diferente de zero caso o caractere seja um dígito de um número hexadecimal ou 0 caso
+                contrário.
+              </div>
+              <div class="description">RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo
+                que isxdigit() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+                caractere é convertido em seu valor ASCII para a verificação. </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'ctype_funcoes' %}#tolower">
+                <h3>int tolower(int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: caso o argumento da função seja uma letra maiúscula, retorna sua versão em letra minúscula;
+                caso contrário o próprio argumento é retornado sem modificações.
+              </div>
+              <div class="description">RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo
+                que tolower() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+                caractere é convertido em seu valor ASCII para a verificação. </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'ctype_funcoes' %}#toupper">
+                <h3>int toupper (int c)</h3>
+              </a>
+              <div class="description">
+                RETORNA: caso o argumento da função seja uma letra minúscula, retorna sua versão em maiúscula; caso
+                contrário o próprio argumento é retornado sem modificações.
+              </div>
+              <div class="description">RECEBE: um único argumento (caractere) que será convertido para inteiro. Mesmo
+                que toupper() receba um inteiro como argumento, o caractere é passado para a função. Internamente, o
+                caractere é convertido em seu valor ASCII para a verificação. </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="one wide column">
+        {% block sidebar_content2 %}
+        {% include 'site2016/manualC/ctype/rightSidebar.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
