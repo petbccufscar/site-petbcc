@@ -14,10 +14,10 @@ urlpatterns = [
     # Manual C
     url(r'^manualc/$', views.manual_c, name='manual_c'),
     url(r'^sobre/$', views.sobre, name='sobre'),
-    #Math.h
+    # Math.h
     url(r'^math/$', views.math_h, name='math_h'),
     url(r'^mathfuncoes/$', views.math_funcoes, name='math_funcoes'),
-    #Ctype.h
-    url(r'^ctype/$', views.ctype_h, name='ctype_h'),
-    url(r'^ctypefuncoes/$', views.ctype_funcoes, name='ctype_funcoes'),
+    # Assert.h
+    url(r'^assert/$', views.assert_h, name='assert_h'),
+    url(r'^assertfuncoes/$', views.assert_funcoes, name='assert_funcoes'),
 ]

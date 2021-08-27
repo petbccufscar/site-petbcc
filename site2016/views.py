@@ -399,15 +399,12 @@ def sobre(request):
 def math_h(request):
     context_dictionary = {'pagina': 'math_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/math/math_h.html', context_dictionary)
-
 def math_funcoes(request):
     context_dictionary = {'pagina': 'math_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/math/math_funcoes.html', context_dictionary)
-
-def ctype_h(request):
-    context_dictionary = {'pagina': 'ctype_h', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/manualC/ctype/ctype_h.html', context_dictionary)
-
-def ctype_funcoes(request):
-    context_dictionary = {'pagina': 'ctype_funcoes', 'DEBUG': settings.DEBUG}
-    return render(request, 'site2016/manualC/ctype/ctype_funcoes.html', context_dictionary)
+def assert_h(request):
+    context_dictionary = {'pagina': 'assert_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/assert/assert_h.html', context_dictionary)
+def assert_funcoes(request):
+    context_dictionary = {'pagina': 'assert_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/assert/assert_funcoes.html', context_dictionary)
