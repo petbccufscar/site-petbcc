@@ -8,7 +8,8 @@ urlpatterns = [
     url(r'^equipe/(?P<id>[0-9]{1,3})/$', views.membro, name='membro'),
     url(r'^projetos/$', views.projetos, name='projetos'),
     url(r'^projetos/(?P<id>[0-9]{1,3})/$', views.projeto, name='projeto'),
-    url(r'^processoseletivo/(?P<ano>[0-9]{4})/(?P<semestre>[0-9]{1})/$', views.processo_seletivo, name='processo_seletivo'),
+    url(r'^processoseletivo/(?P<ano>[0-9]{4})/(?P<semestre>[0-9]{1})/$',
+        views.processo_seletivo, name='processo_seletivo'),
     url(r'^contato/$', views.contato, name='contato'),
 
     # Manual C
@@ -20,4 +21,7 @@ urlpatterns = [
     # Assert.h
     url(r'^assert/$', views.assert_h, name='assert_h'),
     url(r'^assertfuncoes/$', views.assert_funcoes, name='assert_funcoes'),
+    # Ctype.h
+    url(r'^ctype/$', views.ctype_h, name='ctype_h'),
+    url(r'^ctypefuncoes/$', views.ctype_funcoes, name='ctype_funcoes'),
 ]

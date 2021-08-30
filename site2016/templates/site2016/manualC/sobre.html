@@ -94,76 +94,22 @@ Manual C - PET-BCC UFSCar
                   Sugestões
                 </h2>
                 <div class="row">
-                  <div class="ui two column stackable centered grid">
-                    <div class="column">
-                      <form
-                        class="ui form"
-                        role="form"
-                        method="POST"
-                        action="."
-                      >
-                        <input
-                          type="hidden"
-                          name="csrfmiddlewaretoken"
-                          value="5N3scLRBfLJja0DTFc15yjHmIJ29YBE6Nl68peOPrHFYztptlj9Nkmj8X0xgj0I6"
-                        />
-                        <div class="field">
-                          <label for="nome">Seu nome</label>
-                          <input
-                            name="nome"
-                            placeholder="Seu nome"
-                            type="text"
-                            style="
-                              background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==');
-                              background-repeat: no-repeat;
-                              background-attachment: scroll;
-                              background-size: 16px 18px;
-                              background-position: 98% 50%;
-                              cursor: auto;
-                            "
-                            id="nome"
-                          />
-                        </div>
-                        <div class="field">
-                          <label for="email">Seu e-mail</label>
-                          <input
-                            name="email"
-                            placeholder="Seu e-mail"
-                            type="text"
-                            id="email"
-                          />
-                        </div>
-                        <div class="field">
-                          <label for="mensagem">Assunto da mensagem</label>
-                          <input
-                            name="assunto"
-                            placeholder="Assunto"
-                            type="text"
-                            id="mensagem"
-                          />
-                        </div>
-                      </form>
-                    </div>
-                    <div class="column">
-                      <form
-                        class="ui form"
-                        role="form"
-                        method="post"
-                        action="."
-                      >
-                        <div class="field">
-                          <label>Mensagem</label>
-                          <textarea
-                            name="mensagem"
-                            style="height: 30px"
-                          ></textarea>
-                        </div>
-                        <button class="ui button" type="submit">Enviar</button>
-                        <div class="ui error message"></div>
-                      </form>
-                    </div>
+                  <div class="justificado">
+                    Em caso de dúvidas sobre as bibliotecas ou funções, ou sugestões entre em contato conosco por:
                   </div>
                 </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja_escuro" href="https://www.facebook.com/petbcc">
+                  Facebook 
+                </a> </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja odd" href="https://www.instagram.com/petbcc.ufscar/">
+                  Instagram 
+                </a> </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja_escuro">
+                  petbcc@ufscar.br 
+                </a> </div>
+                <div class="ui basic segment"><a class="ui left aligned aligned header manC_laranja odd" href="https://github.com/petbccufscar/sitepetbcc">
+                   Repositório GitHub
+                </a> </div>
               </div>
             </div>
             <div class="column">
@@ -192,4 +138,49 @@ Manual C - PET-BCC UFSCar
     </div>
   </section>
 </main>
+
+<script>
+  $('.ui.form')
+          .form({
+              on: 'blur',
+              fields: {
+                  nome: {
+                      identifier: 'nome',
+                      rules: [
+                          {
+                              type: 'empty',
+                              prompt: 'Por favor, informe seu nome.'
+                          }
+                      ]
+                  },
+                  email: {
+                      identifier: 'email',
+                      rules: [
+                          {
+                              type: 'email',
+                              prompt: 'Por favor, digite um endereço de e-mail válido.'
+                          }
+                      ]
+                  },
+                  assunto: {
+                      identifier: 'assunto',
+                      rules: [
+                          {
+                              type: 'empty',
+                              prompt: 'Por favor, preencha o campo Assunto.'
+                          }
+                      ]
+                  },
+                  name: {
+                      identifier: 'mensagem',
+                      rules: [
+                          {
+                              type: 'empty',
+                              prompt: 'Por favor, digite a sua mensagem.'
+                          }
+                      ]
+                  }
+              }
+          });
+</script>
 {% endblock %}
