@@ -24,4 +24,6 @@ urlpatterns = [
     # Ctype.h
     url(r'^ctype/$', views.ctype_h, name='ctype_h'),
     url(r'^ctypefuncoes/$', views.ctype_funcoes, name='ctype_funcoes'),
+    # Errno.h
+    url(r'^errno/$', views.errno_h, name='errno_h'),
 ]
