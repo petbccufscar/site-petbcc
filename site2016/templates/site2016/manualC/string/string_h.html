@@ -1,0 +1,326 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+String.h - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header
+      class="ui inverted masthead center aligned segment"
+      id="fundo_azul_titulo"
+      >
+      <div class="ui grid">
+        <div class="column">
+          <div class="row">
+            <h1 class="ui inverted header">
+              <!-- Tirei o id, para ficar lowercase -->
+              &ltstring.h&gt
+              <!-- &lt e h&gt é para setar os <> -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %} 
+        {% include 'site2016/manualC/leftSidebar.html' %} 
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            Esta é uma biblioteca padrão da linguagem C. Nela estão contidos protótipos utilizados para a manipulação de <b>strings</b>, também conhecidos como array de <b>chars</b>. Estas funções são capazes desde a contagem, cópia e concatenação, comparação e diversas outras modificações como podemos ver nos exemplos a seguir.
+          </p>
+        </div>
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Tipos:</h1>
+          <p class="justificado">
+            Está presente na biblioteca <b>&ltstring.h&gt</b> o seguinte tipo:<br>
+              <b>size_t:</b> Um longo inteiro sem sinal, responsável por guardar a quantidade de bytes de qualquer objeto retornado pelo operador sizeof.<br>
+              <b>NULL</b>(Macro): Um ponteiro constante que aponta para 0 (zero), pode ser escrito com uma chamada de cast definida por: (void *)(0)
+          </p>
+        </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strcat">
+                <h3>char* strcat( char* destino, const char* fonte )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: String de destino concatenada com a string fonte. A primeira letra da string fonte substitui o caractere terminal da string de destino, e após toda a string fonte ser concatenada, o caractere terminal é inserido no final da string de destino.
+              </div>
+              <div class="description justificado">
+                RECEBE: Uma string de destino, uma string fonte.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a
+                class="manC_laranja_escuro"
+                href="{% url 'string_funcoes' %}#strncat"
+              >
+                <h3>char* strncat( char* destino, const char* fonte, size_t num )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: String de destino concatenada com os num primeiros caracteres da string fonte. A primeira letra da string fonte substitui o caractere terminal da string de destino, e após os num primeiros caracteres da string fonte ser concatenada, o caractere terminal é inserido no final da string de destino.
+              </div>
+              <div class="description justificado">
+                RECEBE: Uma string de destino, uma string fonte, um valor size_t (longo inteiro sem sinal).
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strcpy">
+                <h3>char* strcpy( char* destino, const char* fonte )</h3>
+              </a>
+              <div class="description justificado">RETORNA: Copia a string fonte para a string de destino, incluindo o caractere terminal de string. Caso a string fonte seja de tamanho maior que a string de destino, pode se causar um OVERFLOW, ou seja, quando os dados transbordam o tamanho disponível para eles, podendo causar problemas de memória e acessos indesejados. Caso a string fonte seja de tamanho menor que a string de destino, não há problemas, pois o caractere terminal da string fonte é copiado junto para a string de destino, finalizando a string onde deveria.</div>
+              <div class="description justificado">
+                RECEBE: Uma string de destino, uma string fonte.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#strncpy">
+                <h3>char* strncpy( char* destino, const char* fonte, size_t num )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Copia os num caracteres da string fonte para a string de destino. Caso a string fonte seja de tamanho maior que a string de destino, pode se causar um OVERFLOW, ou seja, quando os dados transbordam o tamanho disponível para eles, podendo causar problemas de memória e acessos indesejados. Caso a quantidade de caracteres da string fonte que serão copiados seja de tamanho menor que a string de destino, deve-se adicionar o caractere terminal ‘\0’ ao final da string de destino, pois o mesmo não é adicionado automaticamente.
+              </div>
+              <div class="description justificado">
+                RECEBE: Uma string de destino, uma string fonte, um valor size_t (longo inteiro sem sinal).
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strcmp">
+                <h3>int strcmp( const char* stringA, const char* stringB )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Retorna um valor após a comparação character-a-character das duas strings. De forma detalhada, a função compara o primeiro caractere da stringA com o primeiro caractere da stringB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência ou quando o caractere terminal é encontrado em qualquer uma das strings.
+              </div>
+              <div class="description justificado">RECEBE: Uma string de comparação A, uma string de comparação B.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#strncmp">
+                <h3>char* strncmp( const char* stringA, const char* stringB, size_t num )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA:  Retorna um valor após a comparação character-a-character das duas strings. De forma detalhada, a função compara o primeiro caractere da stringA com o primeiro caractere da stringB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência, ou quando o caractere terminal é encontrado em qualquer uma das strings, ou quando há um número num de caracteres idênticos.
+              </div>
+              <div class="description justificado">RECEBE: Uma string de comparação A, uma string de comparação B, um valor size_t (longo inteiro sem sinal).</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strcoll">
+                <h3>int strcoll( const char* stringA, const char* stringB )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA:  Retorna um valor após a comparação character-a-character das duas strings com base no LC_COLLATE. De forma detalhada, a função compara o primeiro caractere da stringA com o primeiro caractere da stringB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência ou quando o caractere terminal é encontrado em qualquer uma das strings.
+              </div>
+              <div class="description justificado">RECEBE: Uma string de comparação A, uma string de comparação B.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#strlen">
+                <h3>size_t strlen( const char* fonte )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Um size_t (longo inteiro sem sinal) com o valor da quantidade de caracteres daquela string. Não confundir com o tamanho do array de char definido na criação da string. A função conta o número de caracteres até encontrar o caractere terminal na string. Como o retorno é um long unsigned int e estamos utilizando diretamente para informar o valor ao usuário, utilizar ‘%d’ ou ‘%i’ pode gerar warnings. Para evitá-los, utilize ‘%lu’ (long unsigned).
+              </div>
+              <div class="description justificado">
+                RECEBE: Uma string fonte.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strchr">
+                <h3>char* strchr( const char* fonte, int caractere)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Retorna um ponteiro para primeira ocorrência do ‘caractere’ na string ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &ltstring.h&gt. Toda conversão entre char e int é feita de forma automática.
+              </div>
+              <div class="description justificado">
+                RECEBE: Uma string fonte, um char convertido para int. 
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#strtok">
+                <h3>char* strtok( char* fonte, const char* delimitadores )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Separa a string ao encontrar um caractere pertencente a string dos delimitadores. Em outras palavras, percorre a string fonte à procura de algum caractere da string delimitadores. Quando a função é chamada, adiciona um ponteiro inicial ao início da string fonte, quando o primeiro delimitador é encontrado (ou a string se finaliza), um ponteiro final é adicionado, e então, a string resultante é formada.
+                Caso a função seja chamada novamente, utilizando NULL como um ponteiro fonte, ela percorre a mesma string usada anteriormente, porém, exatamente do ponteiro final adicionado anteriormente.
+              </div>
+              <div class="description justificado">
+                RECEBE: Uma string fonte, uma string de caracteres delimitadores.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strspn">
+                <h3>size_t strspn( const char* fonte, const char* comparacao )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: A quantidade de elementos da string ‘comparacao’ no início da string ‘fonte’ no tipo size_t (inteiro longo sem-sinal). De forma simples, se o caractere inicial da string ‘fonte’ pertencer a string ‘comparacao’, a função retorna a quantidade de caracteres até que encontre um caractere que não pertença a string ‘comparacao’. Caso o caractere inicial não pertença a string ‘comparacao’, é retornado 0 imediatamente.
+              </div>
+              <div class="description justificado">RECEBE: Uma string fonte. Uma string de comparação.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#strcspn">
+                <h3>size_t strcspn( const char* fonte, const char* comparacao )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: A quantidade de elementos percorridos da string ‘fonte’ antes da primeira ocorrência de qualquer caractere pertencente da string ‘comparacao’ na string ‘fonte’. Caso o primeiro caractere da string ‘fonte’ seja também pertencente da string ‘comparacao’, seu retorno é 0. Caso não encontre nenhum caractere da string ‘comparacao’, o valor de retorno será igual a quantidade de caracteres da string ‘fonte’.
+              </div>
+              <div class="description justificado">RECEBE: Uma string fonte. Uma string de comparação.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strpbrk">
+                <h3>char* strpbrk( const char* fonte, const char* comparacao )</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Um ponteiro para a primeira ocorrência de qualquer caractere da string ‘comparacao’ que pertença a string ‘fonte’. Caso não haja ocorrência, um ponteiro NULL é retornado.
+
+              </div>
+              <div class="description justificado">RECEBE: Uma string fonte. Uma string de comparação.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#strrchr">
+                <h3>char* strrchr( const char* fonte, int caractere)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Um ponteiro para última ocorrência do ‘caractere’ na string ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &ltstring.h&gt. Toda conversão entre char e int é feita de forma automática.
+              </div>
+              <div class="description justificado">RECEBE: Uma string fonte, um char convertido para int. 
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#strerror">
+                <h3>char* strerror( int errno)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Interpreta o número do erro e retorna uma string equivalente ao erro obtido pela variável. Comumente usado juntamente com a biblioteca &errno.h&gt.
+              </div>
+              <div class="description justificado">RECEBE:  Um int com código de erro. 
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#strstr">
+                <h3>char* strstr( const char* fonte, const char* comparacao)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Retorna um ponteiro para o primeiro caractere da ocorrência caso a subsequência ‘comparacao’ seja encontrada na string ‘fonte’. Caso a string ‘comparacao’ não esteja presente na string ‘fonte’, um ponteiro NULL é retornado.
+              </div>
+              <div class="description justificado">RECEBE: Uma string fonte. Uma string para comparação. 
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#memchr">
+                <h3>void* memchr( const void* fonte, int caractere, size_t num)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Retorna um ponteiro do tipo ‘void’ para primeira ocorrência do ‘caractere’ nos ‘num’-primeiros bytes do bloco de memória ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &ltstring.h&gt. Toda conversão entre char e int é feita de forma automática. 
+              </div>
+              <div class="description justificado">RECEBE: Uma bloco de memória fonte, um caractere que será convertido para int, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#memcmp">
+                <h3>int memcmp( const void* fonteA, const void* fonteB, size_t num)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Retorna um valor após a comparação byte-a-byte dos dois blocos de memória. De forma detalhada, a função compara o primeiro byte da fonteA com o primeiro byte da fonteB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência, ou quando a quantidade ‘num’ de bytes são lidos. Diferente da função strcmp(), a leitura não é interrompida caso encontre um caractere nulo. 
+              </div>
+              <div class="description justificado">RECEBE: Uma bloco de memória fonteA, Uma bloco de memória fonteB, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#memcpy">
+                <h3>void* memcpy( void* destino, const void* fonte, size_t num)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Copia a quantidade ‘num’ de bytes do bloco de memória fonte para o bloco de memória de destino. Nenhuma verificação é feita, pois é executada uma cópia direta de bytes, com isso, o tipo do destino e da fonte são irrelevantes. No caso de strings, nenhuma verificação sobre o caractere terminal é feita. Para se evitar overflows, tenha certeza de que o bloco de memória comporte todos os bytes que serão copiados. Caso necessite, utilize memmove() por ser mais seguro.
+              </div>
+              <div class="description justificado">RECEBE:  Um bloco de memória de destino, um bloco de memória fonte, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'string_funcoes' %}#memmove">
+                <h3>void* memmove( void* destino, const void* fonte, size_t num)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Move a quantidade ‘num’ de bytes do bloco de memória fonte para o bloco de memória de destino. Nenhuma verificação é feita, pois é executada uma cópia direta de bytes para um buffer intermediário, assim, podendo se sobrepor com isso, o tipo do destino e da fonte são irrelevantes. No caso de strings, nenhuma verificação sobre o caractere terminal é feita. Para se evitar overflows, tenha certeza de que o bloco de memória comporte todos os bytes que serão movidos.
+              </div>
+              <div class="description justificado">RECEBE:  Um bloco de memória de destino, um bloco de memória fonte, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'string_funcoes' %}#memset">
+                <h3>void* memset( const void* fonte, int caractere, size_t num)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: Substitui os ‘num’ primeiros bytes do bloco de memória ‘fonte’ pelo ‘caractere’. Por ser uma substituição direta do bloco de byte, é possível sobrescrever o caractere terminal.
+              </div>
+              <div class="description justificado">RECEBE:  Uma bloco de memória fonte, um caractere que será convertido para int, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="one wide column">
+        {% block sidebar_content2 %}
+        {% include 'site2016/manualC/string/rightSidebar.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

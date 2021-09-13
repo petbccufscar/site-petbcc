@@ -1,0 +1,1234 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltstring.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<main role="main">
+				<a id="strcat"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char *</b> strcat(<b class="fundo_azul_titulo_manC">char*</b> destino, <b class="fundo_azul_titulo_manC">char*</b> fonte)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string de destino, uma string fonte.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> String de destino concatenada com a string fonte. A primeira letra da string fonte substitui o caractere terminal da string de destino, e após toda a string fonte ser concatenada, o caractere terminal é inserido no final da string de destino.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRCAT()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char resultado[50] = "Programa ";
+	printf("%s\n", resultado);
+
+	strcat(resultado, "de Ensino ");
+	printf("%s\n", resultado);
+
+	strcat(resultado, "e Tutoria");
+	printf("%s\n", resultado);
+	
+	char curso[10] = " - BCC";
+	strcat(resultado, curso);
+	printf("%s", resultado);
+	
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Programa
+			Programa de Ensino
+			Programa de Ensino e Tutoria
+			Programa de Ensino e Tutoria - BCC
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strncat"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char *</b> strncat(<b class="fundo_azul_titulo_manC">char*</b> destino, <b class="fundo_azul_titulo_manC">char*</b> fonte, <b class="fundo_azul_titulo_manC">size_t*</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string de destino, uma string fonte, um valor size_t (longo inteiro sem sinal).</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> String de destino concatenada com os num primeiros caracteres da string fonte. A primeira letra da string fonte substitui o caractere terminal da string de destino, e após os num primeiros caracteres da string fonte ser concatenada, o caractere terminal é inserido no final da string de destino.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRNCAT()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	size_t num = 5;
+	char resultado[50] = "Programa de Ensino ";
+	printf("String original:\n%s\n\n", resultado);
+	
+	strncat(resultado, "e Tutoria - BCC", num);
+	printf("String após os 5 primeiros caracteres serem concatenados:\n");
+	printf("%s\n", resultado);
+	
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String original:
+			Programa de Ensino
+
+			String após os 5 primeiros catacteres serem concatenados:
+			Programa de Ensino e Tut
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strcpy"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char *</b> strcpy(<b class="fundo_azul_titulo_manC">char*</b> destino, <b class="fundo_azul_titulo_manC">char*</b> fonte)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string de destino, uma string fonte.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Copia a string fonte para a string de destino, incluindo o caractere terminal de string. Caso a string fonte seja de tamanho maior que a string de destino, pode se causar um OVERFLOW, ou seja, quando os dados transbordam o tamanho disponível para eles, podendo causar problemas de memória e acessos indesejados. Caso a string fonte seja de tamanho menor que a string de destino, não há problemas, pois o caractere terminal da string fonte é copiado junto para a string de destino, finalizando a string onde deveria.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRCPY()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char fonte[5] = "BCC";
+	char destino[50] = "Programa de Ensino e Tutoria";
+	printf("String fonte: %s\n", fonte);
+	printf("String destino: %s\n\n", destino);
+	
+	strcpy(destino, fonte);
+	printf("String destino após a cópia ser realizada:\n");
+	printf("%s\n", destino);
+	
+	return 0;
+}
+	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String fonte: BCC
+			String destino: Programa de Ensino e Tutoria
+
+			String destino após a cópia ser realizada: BCC
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strncpy"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char *</b> strncpy(<b class="fundo_azul_titulo_manC">char*</b> destino, <b class="fundo_azul_titulo_manC">char*</b> fonte, <b class="fundo_azul_titulo_manC">size_t</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string de destino, uma string fonte, um valor size_t (longo inteiro sem sinal).</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Copia os num caracteres da string fonte para a string de destino. Caso a string fonte seja de tamanho maior que a string de destino, pode se causar um OVERFLOW, ou seja, quando os dados transbordam o tamanho disponível para eles, podendo causar problemas de memória e acessos indesejados. Caso a quantidade de caracteres da string fonte que serão copiados seja de tamanho menor que a string de destino, deve-se adicionar o caractere terminal ‘\0’ ao final da string de destino, pois o mesmo não é adicionado automaticamente.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRNCPY()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	size_t num = 4;
+	char fonte[12] = "Computacao";
+	char destino[50] = "Programa de Ensino e Tutoria";
+	printf("String fonte: %s\n", fonte);
+	printf("String destino: %s\n\n", destino);
+	
+	strncpy(destino, fonte, num);
+	destino[num] = '\0';	//Caractere Terminal adicionado manualmente
+
+	printf("String destino após a cópia ser realizada:\n");
+	printf("%s\n", destino);
+	
+	return 0;
+}
+	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String fonte: Computacao
+			String destino: Programa de Ensino e Tutoria
+			String destino após cópia ser realizada: 
+			Comp
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strcmp"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">int</b> strcmp(<b class="fundo_azul_titulo_manC">const char*</b> stringA, <b class="fundo_azul_titulo_manC">const char*</b> stringB)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string de comparação A, uma string de comparação B.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um valor após a comparação character-a-character das duas strings. De forma detalhada, a função compara o primeiro caractere da stringA com o primeiro caractere da stringB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência ou quando o caractere terminal é encontrado em qualquer uma das strings.</p>
+							<table class="ui celled table">
+								<thead>
+									<!-- Título(labels) -->
+									<tr class="center aligned"><th>Valor de Retorno</th>
+									<th>Indicativo do Retorno</th>
+								</tr></thead>
+								<tbody>
+									<tr class="center aligned">
+										<!-- Valores por linha -->
+										<td data-label="Valor de Retorno">Menor que 0</td>
+										<td data-label="Indicativo do Retorno">Caso o caractere da stringA tenha valor menor que o da stringB</td>
+									</tr>
+									<tr class="center aligned">
+										<td data-label="Valor de Retorno">0 (zero)</td>
+										<td data-label="Indicativo do Retorno">As duas strings são exatamente iguais</td>
+									</tr>
+									<tr class="center aligned">
+										<td data-label="Valor de Retorno">Maior que 0</td>
+										<td data-label="Indicativo do Retorno">Caso o caractere da stringA tenha valor maior que o da stringB</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="justificado">Ou seja, de forma mais detalhada, caso a stringA seja “Amora” e a stringB seja “Banana”, o resultado será a diferença da primeira ocorrência diferente em cada string utilizando seus valores da tabela ASCII: ‘A’ - ‘B’ = -1, que é o mesmo que 65 - 66 = -1</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRCMP()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char stringA[12] = "Computacao";
+	char stringB[12] = "Computador";
+	printf("String A: %s\n", stringA);
+	printf("String B: %s\n", stringB);
+	printf("Valor da primeira comparação: %d\n\n", strcmp(stringA, stringB));
+
+	char stringC[12] = "BCC";
+	char stringD[12] = "BCC";
+	printf("String C: %s\n", stringC);
+	printf("String D: %s\n", stringD);
+	printf("Valor da segunda comparação: %d\n\n", strcmp(stringC, stringD));
+	
+	return 0;
+}
+		
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String A: Computacao
+			String B: Computador
+			Valor da primeira comparação: -1
+			
+			String C: BCC
+			String D: BCC
+			Valor da segunda comparação: 0
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strncmp"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">int</b> strncmp(<b class="fundo_azul_titulo_manC">const char*</b> stringA, <b class="fundo_azul_titulo_manC">const char*</b> stringB, <b class="fundo_azul_titulo_manC">size_t</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string de comparação A, uma string de comparação B, um valor size_t (longo inteiro sem sinal).
+							</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um valor após a comparação character-a-character das duas strings. De forma detalhada, a função compara o primeiro caractere da stringA com o primeiro caractere da stringB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência, ou quando o caractere terminal é encontrado em qualquer uma das strings, ou quando há um número num de caracteres idênticos.</p>
+							<table class="ui celled table">
+								<thead>
+									<!-- Título(labels) -->
+									<tr class="center aligned"><th>Valor de Retorno</th>
+									<th>Indicativo do Retorno</th>
+								</tr></thead>
+								<tbody>
+									<tr class="center aligned">
+										<!-- Valores por linha -->
+										<td data-label="Valor de Retorno">Menor que 0</td>
+										<td data-label="Indicativo do Retorno">Caso o caractere da stringA tenha valor menor que o da stringB</td>
+									</tr>
+									<tr class="center aligned">
+										<td data-label="Valor de Retorno">0 (zero)</td>
+										<td data-label="Indicativo do Retorno">As duas strings são exatamente iguais</td>
+									</tr>
+									<tr class="center aligned">
+										<td data-label="Valor de Retorno">Maior que 0</td>
+										<td data-label="Indicativo do Retorno">Caso o caractere da stringA tenha valor maior que o da stringB</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="justificado">Ou seja, de forma mais detalhada, caso a stringA seja “Amora” e a stringB seja “Banana”, o resultado será a diferença da primeira ocorrência diferente em cada string utilizando seus valores da tabela ASCII: ‘A’ - ‘B’ = -1, que é o mesmo que 65 - 66 = -1</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRNCMP()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	size_t num = 5;
+	char stringA[] = "Computacao";
+	char stringB[] = "Computador";
+	printf("String A: %s\n", stringA);
+	printf("String B: %s\n", stringB);
+	printf("Valor da comparação: %d\n\n", strncmp(stringA, stringB, num));
+
+	return 0;
+}
+	
+		
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String A: Computacao
+			String B: Computador
+			Valor da primeira comparação: 0
+								</code></pre>
+							</div>
+							<p class="justificado">Como apenas os 5 primeiros valores da string são comparados, a função afirma que as duas strings são idênticas. Abaixo, veremos uma aplicação prática da função acima.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Aplicação prática</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRNCMP()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char listaNomes[][12] = {"Maria", "Joao", "Marcos", "Roger"};
+	char comparacao[] = "Ma";
+	printf("Imprimindo nomes que começam com %s:\n", comparacao);
+	for(int i = 0; i < 4; i++){
+		if(strncmp(listaNomes[i], comparacao, 2) == 0){
+			printf("%s\n", listaNomes[i]);
+		}
+	}
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Imprimindo nomes que começam com Ma:
+			Maria
+			Marcos
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strcoll"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">int</b> strcoll(<b class="fundo_azul_titulo_manC">char*</b> stringA, <b class="fundo_azul_titulo_manC">char*</b> stringB)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string de comparação A, uma string de comparação B.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um valor após a comparação character-a-character das duas strings com base no LC_COLLATE. De forma detalhada, a função compara o primeiro caractere da stringA com o primeiro caractere da stringB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência ou quando o caractere terminal é encontrado em qualquer uma das strings.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRCOLL()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char stringA[] = "Computacao";
+	char stringB[] = "Computador";
+	printf("String A: %s\n", stringA);
+	printf("String B: %s\n", stringB);
+	printf("Valor da primeira comparação: %d\n\n", strcoll(stringA, stringB));
+	
+	char stringC[] = "BCC";
+	char stringD[] = "BCC";
+	printf("String C: %s\n", stringC);
+	printf("String D: %s\n", stringD);
+	printf("Valor da segunda comparação: %d\n\n", strcoll(stringC, stringD));
+		
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String A: Computacao
+			String B: Computador
+			Valor da primeira comparação: -1
+			
+			String C: BCC
+			String D: BCC
+			Valor da segunda comparação: 0
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strlen"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">size_t</b> strlen(<b class="fundo_azul_titulo_manC">char*</b> fonte)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte..</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Um size_t (longo inteiro sem sinal) com o valor da quantidade de caracteres daquela string. Não confundir com o tamanho do array de char definido na criação da string. A função conta o número de caracteres até encontrar o caractere terminal na string. Como o retorno é um long unsigned int e estamos utilizando diretamente para informar o valor ao usuário, utilizar ‘%d’ ou ‘%i’ pode gerar warnings. Para evitá-los, utilize ‘%lu’ (long unsigned).</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRLEN()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char stringA[] = "PET - BCC";
+	char stringB[] = "Computacao UFSCar";
+	printf("String A: %s\n", stringA);
+	printf("Tamanho da string A: %lu\n\n", strlen(stringA));
+	printf("String B: %s\n", stringB);
+	printf("Tamanho da string B: %lu\n\n", strlen(stringB));
+	
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String A: PET - BCC
+			Tamanho da string A: 9
+
+			String B: Computacao UFSCar
+			Tamanho da string B: 17
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strchr"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char*</b> strchr(<b class="fundo_azul_titulo_manC">const char*</b> fonte, <b class="fundo_azul_titulo_manC">int</b> caractere)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte, um char convertido para int. </p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um ponteiro para primeira ocorrência do ‘caractere’ na string ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &ltstring.&gt. Toda conversão entre char e int é feita de forma automática.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRCHR()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	int caractere = 'a';
+	char fonte[] = "Programa de Ensino e Tutoria - BCC";
+
+	printf("Localizar a primeira letra '%c' na frase: %s\n", caractere, fonte);
+	if(strchr(fonte, caractere) != NULL){
+		printf("\nCaractere %c encontrado!\n", caractere);
+		printf("String a partir dele: %s\n", strchr(fonte, caractere));
+	} else {
+		printf("\nCaractere %c não encontrado!\n", caractere);
+	}
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Localizar a primeira letra 'a' na frase: Programa de Ensino e Tutoria - BCC
+			
+			Caractere a encontrado!
+			String a partir dele: ama de Ensino e Tutoria - BCC
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strtok"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char*</b> strtok(<b class="fundo_azul_titulo_manC">char*</b> fonte, <b class="fundo_azul_titulo_manC">const char*</b> delimitadores)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte, uma string de caracteres delimitadores.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Separa a string ao encontrar um caractere pertencente a string dos delimitadores. Em outras palavras, percorre a string fonte à procura de algum caractere da string delimitadores. Quando a função é chamada, adiciona um ponteiro inicial ao início da string fonte, quando o primeiro delimitador é encontrado (ou a string se finaliza), um ponteiro final é adicionado, e então, a string resultante é formada.
+								Caso a função seja chamada novamente, utilizando NULL como um ponteiro fonte, ela percorre a mesma string usada anteriormente, porém, exatamente do ponteiro final adicionado anteriormente.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRTOK()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char fonte[] = "Programa de.Ensino e#Tutoria-BCC-UFSCar";
+	char delimitadores[] = "-,.#";
+		
+	printf("String 'fonte':\n%s\n\n", fonte);
+	printf("String 'delimitadores':\n%s\n\n", delimitadores);
+		
+	char * resultado = strtok(fonte, delimitadores);    //Primeira chamada
+		
+	while(resultado != NULL){
+		printf("%s\n", resultado);
+		/* Segunda chamada, função utiliza fonte anterior
+		e parte do ponteiro final adicionado anteriormente */
+		resultado = strtok(NULL, delimitadores);
+	}
+		
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String 'fonte':
+			Programa de .Ensino e#Tutoria-BCC-UFSCar
+
+			String 'delimitadores':
+			-,.#
+
+			Programa de
+			Ensino e
+			Tutoria
+			BCC
+			UFSCar
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strspn"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">size_t</b> strspn(<b class="fundo_azul_titulo_manC">const char*</b> fonte, <b class="fundo_azul_titulo_manC">const char*</b> comparacao)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte. Uma string de comparação.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna a quantidade de elementos da string ‘comparacao’ no início da string ‘fonte’ no tipo size_t (inteiro longo sem-sinal). De forma simples, se o caractere inicial da string ‘fonte’ pertencer a string ‘comparacao’, a função retorna a quantidade de caracteres até que encontre um caractere que não pertença a string ‘comparacao’. Caso o caractere inicial não pertença a string ‘comparacao’, é retornado 0 imediatamente.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRSPN()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char fonteA[] = "198462-PET-BCC/UFSCar";
+	char fonteB[] = "PET-BCC/UFSCar-198462";
+  char comparacao[] = "0123456789";
+    
+	printf("String 'fonteA':\n%s\n\n", fonteA);
+	printf("String 'fonteB':\n%s\n\n", fonteB);
+  printf("String 'comparacao':\n%s\n\n", comparacao);
+    
+  printf("Há um total de %lu dígitos iniciais na string fonteA.\n", strspn(fonteA, comparacao));
+  printf("Há um total de %lu dígitos iniciais na string fonteB.", strspn(fonteB, comparacao));
+    
+  return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String 'fonteA':
+			198462-PET-BCC/UFSCar
+
+			String 'fonteB':
+			PET-BCC/UFSCar-198462
+
+			String 'comparacao':
+			0123456789
+
+			Há um total de 6 dígitos iniciais na string fonteA.
+			Há um total de 0 dígitos iniciais na string fonteB.
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strcspn"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">size_t</b> strcspn(<b class="fundo_azul_titulo_manC">const char*</b> fonte, <b class="fundo_azul_titulo_manC">const char*</b> comparacao)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte. Uma string de comparação.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna a quantidade de elementos percorridos da string ‘fonte’ antes da primeira ocorrência de qualquer caractere pertencente da string ‘comparacao’ na string ‘fonte’. Caso o primeiro caractere da string ‘fonte’ seja também pertencente da string ‘comparacao’, seu retorno é 0. Caso não encontre nenhum caractere da string ‘comparacao’, o valor de retorno será igual a quantidade de caracteres da string ‘fonte’.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRCSPN()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char fonte[][20] = {"PET-BCC/UFS1Car", "1PET-BCC/UFSCar", "PET-BCC/UFSCar"};
+
+  char comparacao[] = "0123456789";
+    
+  for(int i = 0; i < 3; i++){
+		printf("String 'fonte%d': %s\n\n", i, fonte[i]);
+	}
+  printf("String 'comparacao':\n%s\n\n", comparacao);
+    
+  for(int i = 0; i < 3; i++){
+		printf("Foram lidos um total de %lu caracteres antes da ocorrência"
+		"na 'fonte%d'.\n", strcspn(fonte[i], comparacao), i);
+  }
+  
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String 'fonte0': PET-BCC/UFS1Car
+
+			String 'fonte1': 1PET-BCC/UFSCar
+
+			String 'fonte2': PET-BCC/UFSCar
+
+			String 'comparacao':
+			0123456789
+
+			Foram lidos um total de 11 caracteres antes da ocorrência na 'fonte0'.
+			Foram lidos um total de 0  caracteres antes da ocorrência na 'fonte1'.
+			Foram lidos um total de 14 caracteres antes da ocorrência na 'fonte2'.
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strpbrk"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char*</b> strpbrk(<b class="fundo_azul_titulo_manC">const char*</b> fonte, <b class="fundo_azul_titulo_manC">const char*</b> comparacao)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte. Uma string de comparação.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um ponteiro para a primeira ocorrência de qualquer caractere da string ‘comparacao’ que pertença a string ‘fonte’. Caso não haja ocorrência, um ponteiro NULL é retornado.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRPBRK()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char fonte[] = "Programa de Ensino e Tutoria - BCC/UFSCar";
+  char comparacao[] = "aeiou";
+    
+	printf("String 'fonte': \n%s\n\n", fonte);
+  printf("String 'comparacao':\n%s\n\n", comparacao);
+    
+  printf("String após a primeira ocorrência de uma vogal: %s\n", strpbrk(fonte, comparacao));
+
+  return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String 'fonte': 
+			Programa de Ensino e Tutoria - BCC/UFSCar
+
+			String 'comparacao':
+			aeiou
+
+			String final: ograma de Ensino e Tutoria - BCC/UFSCar
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Aplicação prática</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+// quantidade de vogais na frase
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	char * ponteiro;
+  int quantidade = 0;
+	char fonte[] = "Programa de Ensino e Tutoria - BCC/UFSCar";
+  char comparacao[] = "aeiouAEIOU";
+    
+	printf("String 'fonte': \n%s\n\n", fonte);
+  printf("String 'comparacao':\n%s\n\n", comparacao);
+    
+  ponteiro = strpbrk(fonte, comparacao);
+    
+  while(ponteiro != NULL){
+  quantidade++;
+  ponteiro = strpbrk(ponteiro + 1, comparacao);   
+  }
+
+  printf("Na string 'fonte' há um total de %d vogais!", quantidade);
+  return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			String 'fonte': 
+			Programa de Ensino e Tutoria - BCC/UFSCar
+
+			String 'comparacao':
+			aeiouAEIOU
+
+			Na string fonte há um total de 14 vogais!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strrchr"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char *</b> strrchr(<b class="fundo_azul_titulo_manC">const char*</b> fonte, <b class="fundo_azul_titulo_manC">int</b> caractere)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte, um char convertido para int.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um ponteiro para última ocorrência do ‘caractere’ na string ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &ltstring.h&gt. Toda conversão entre char e int é feita de forma automática.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRRCHR()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+
+int main(){
+	int caractere = 'a';
+	char fonte[] = "Programa de Ensino e Tutoria - BCC";
+
+	printf("Localizar a última letra '%c' na frase: %s\n", caractere, fonte);
+	if(strchr(fonte, caractere) != NULL){
+		printf("\nCaractere %c encontrado!\n", caractere);
+	printf("String a partir dele: %s\n", strrchr(fonte, caractere));
+	} else {
+		printf("\nCaractere %c não encontrado!\n", caractere);
+	}
+
+	return 0;	
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Localizar a última letra 'a' na frase: Programa de Ensino de Tutoria - BCC
+
+			Caractere a encontrado!
+			String a partir dele: a - BCC
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strerror"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char *</b> strerror(<b class="fundo_azul_titulo_manC">int</b> errno)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte, um char convertido para int.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um ponteiro para última ocorrência do ‘caractere’ na string ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &ltstring.h&gt. Toda conversão entre char e int é feita de forma automática.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRERROR()
+
+#include &ltmath.h&gt
+#include &ltstudio.h&gt
+#include &lterrno.h&gt
+#include &ltstring.h&gt
+	
+int main(){
+	printf("log(-1.0) = %f\n", log(-1.0));
+	printf("Erro de número %d obtido!\n", errno);
+	printf("Descrição do erro: %s\n\n", strerror(errno));
+	
+	printf("log(0.0) = %f\n", log(0.0));
+	printf("Erro de número %d obtido!\n", errno);
+	printf("Descrição do erro: %s", strerror(errno));
+	
+	return 0;
+}
+	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			log(-1.0) = nan
+			Erro de número 33 obtido!
+			Descrição do erro: Numerical argument out of domain
+
+			lof(0.0) = -inf
+			Erro de número 34 obtido!
+			Descrição do erro: Numerical result out of range
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strstr"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">char *</b> strstr(<b class="fundo_azul_titulo_manC">const char*</b> fonte, <b class="fundo_azul_titulo_manC">const char*</b> comparacao)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma string fonte. Uma string para comparação.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um ponteiro para o primeiro caractere da ocorrência caso a subsequência ‘comparacao’ seja encontrada na string ‘fonte’. Caso a string ‘comparacao’ não esteja presente na string ‘fonte’, um ponteiro NULL é retornado.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRSTR()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+	
+int main(){
+	char * ponteiro;
+	char fonte[] = "Programa de Ensino e Tutoria - BCC";
+	char comparacao[] = "Ensino";
+	
+	printf("String 'fonte':\n%s\n\n", fonte);
+	printf("Substring 'comparacao':\n%s\n\n", comparacao);
+			
+	ponteiro = strstr(fonte, comparacao);
+			
+	if(ponteiro != NULL){
+		printf("Substring encontrada!\n");
+		printf("Substring inicia na posição %ld\n", ponteiro - fonte);
+	} else {
+		printf("Substring não encontrada!\n");
+	}
+			
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console terminal">
+			>./main
+			log(-1.0) = nan
+			Erro de número 33 obtido!
+			Descrição do erro: Numerical argument out of domain
+
+			lof(0.0) = -inf
+			Erro de número 34 obtido!
+			Descrição do erro: Numerical result out of range
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="memchr"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">void</b> memchr(<b class="fundo_azul_titulo_manC">const void*</b> fonte, <b class="fundo_azul_titulo_manC">int</b> comparacao, <b class="fundo_azul_titulo_manC">size_t</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma bloco de memória fonte, um caractere que será convertido para int, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um ponteiro do tipo ‘void’ para primeira ocorrência do ‘caractere’ nos ‘num’-primeiros bytes do bloco de memória ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &ltstring.h&gt. Toda conversão entre char e int é feita de forma automática.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MEMCHR()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+	
+int main(){
+	int caractere = 'a';
+	char * ponteiro;
+	char fonte[] = "Programa de Ensino e Tutoria - BCC";
+
+	// Como é retornando um ponteiro do tipo "void", uma conversão deve ser
+	// feita para um ponteiro de "char"
+	ponteiro = (char *)memchr(fonte, caractere, 10);
+
+	printf("Localizar a primeira letra '%c' nos 10 primeiros bytes do bloco de memória", caractere);
+	if(ponteiro != NULL){
+		printf("\nCaractere %c encontrado na posição %ld\n", caractere, ponteiro-fonte+1);
+	} else {
+		printf("\nCaractere %c não encontrado!\n", caractere);
+	}
+
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Localizar a primeira letra 'a' nos 10 primeiros bytes do bloco de memória
+			Caractere a encontrado na posição 6
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="memcmp"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">int</b> memcmp(<b class="fundo_azul_titulo_manC">const void*</b> fonteA, <b class="fundo_azul_titulo_manC">const void*</b> fonteB, <b class="fundo_azul_titulo_manC">size_t</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma bloco de memória fonteA, Uma bloco de memória fonteB, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Retorna um valor após a comparação byte-a-byte dos dois blocos de memória. De forma detalhada, a função compara o primeiro byte da fonteA com o primeiro byte da fonteB. Caso sejam iguais, ele parte para o segundo caractere. Isso se repete até que ocorra uma divergência, ou quando a quantidade ‘num’ de bytes são lidos. Diferente da função strcmp(), a leitura não é interrompida caso encontre um caractere nulo.</p>
+							<table class="ui celled table">
+								<thead>
+									<!-- Título(labels) -->
+									<tr class="center aligned"><th>Valor de Retorno</th>
+									<th>Indicativo do Retorno</th>
+								</tr></thead>
+								<tbody>
+									<tr class="center aligned">
+										<!-- Valores por linha -->
+										<td data-label="Valor de Retorno">Menor que 0</td>
+										<td data-label="Indicativo do Retorno">Caso o byte da fonteA tenha valor menor que o da fonteB</td>
+									</tr>
+									<tr class="center aligned">
+										<td data-label="Valor de Retorno">0 (zero)</td>
+										<td data-label="Indicativo do Retorno">As duas fontes são exatamente iguais</td>
+									</tr>
+									<tr class="center aligned">
+										<td data-label="Valor de Retorno">Maior que 0</td>
+										<td data-label="Indicativo do Retorno">Caso o byte da fonteA tenha valor maior que o da fonteB</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MEMCMP()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+	
+int main(){
+	char fonteA[12] = "Computacao";
+	char fonteB[12] = "Computador";
+	printf("Bloco de memória A: %s\n", fonteA);
+	printf("Bloco de memória B: %s\n", fonteB);
+	printf("Valor da primeira comparação: %d\n\n", memcmp(fonteA, fonteB, sizeof(fonteA)));
+
+	char fonteC[12] = "BCC";
+	char fonteD[12] = "BCC";
+	printf("String C: %s\n", fonteC);
+	printf("String D: %s\n", fonteD);
+	printf("Valor da segunda comparação: %d\n\n", memcmp(fonteC, fonteD, sizeof(fonteC)));
+	
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Bloco de memória A: Computacao
+			Bloco de memória B: Computador
+			Valor da primeira comparação: -256
+
+			String C: BCC
+			String D: BCC
+			Valor da segunda comparação: 0
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="memcpy"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">void*</b> memcpy(<b class="fundo_azul_titulo_manC">void*</b> destino, <b class="fundo_azul_titulo_manC">const void*</b> fonte, <b class="fundo_azul_titulo_manC">size_t</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Um bloco de memória de destino, um bloco de memória fonte, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Copia a quantidade ‘num’ de bytes do bloco de memória fonte para o bloco de memória de destino. Nenhuma verificação é feita, pois é executada uma cópia direta de bytes, com isso, o tipo do destino e da fonte são irrelevantes. No caso de strings, nenhuma verificação sobre o caractere terminal é feita. Para se evitar overflows, tenha certeza de que o bloco de memória comporte todos os bytes que serão copiados. Caso necessite, utilize memmove() por ser mais seguro.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MEMCPY()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+	
+int main(){
+	char fonte[5] = "BCC";
+	char destino[50] = "Programa de Ensino e Tutoria";
+	printf("Bloco de memória fonte: %s\n", fonte);
+	printf("Bloco de memória de destino: %s\n\n", destino);
+		
+	// Utilizamos sizeof() para contar exatamente o número de bytes do
+	// bloco de memória fonte.
+	memcpy(destino, fonte, sizeof(fonte));
+	printf("Bloco de memória de destino após a cópia ser realizada:\n");
+	printf("%s\n", destino);
+		
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Bloco de memória fonte: BCC
+			Bloco de memória de destino: Programa de Ensino e Tutoria
+
+			Bloco de memória de destino após a cópia ser realizada:
+			BCC
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="memmove"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">void*</b> memmove(<b class="fundo_azul_titulo_manC">void*</b> destino, <b class="fundo_azul_titulo_manC">const void*</b> fonte, <b class="fundo_azul_titulo_manC">size_t</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Um bloco de memória de destino, um bloco de memória fonte, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Move a quantidade ‘num’ de bytes do bloco de memória fonte para o bloco de memória de destino. Nenhuma verificação é feita, pois é executada uma cópia direta de bytes para um buffer intermediário, assim, podendo se sobrepor com isso, o tipo do destino e da fonte são irrelevantes. No caso de strings, nenhuma verificação sobre o caractere terminal é feita. Para se evitar overflows, tenha certeza de que o bloco de memória comporte todos os bytes que serão movidos.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MEMMOVE()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+	
+int main(){
+	char fonte[5] = "BCC";
+	char destino[50] = "Programa de Ensino e Tutoria";
+	printf("Bloco de memória fonte: %s\n", fonte);
+	printf("Bloco de memória de destino: %s\n\n", destino);
+	
+	// Utilizamos sizeof() para contar exatamente o número de bytes do
+	// bloco de memória fonte.
+	memmove(destino, fonte, sizeof(fonte));
+	printf("Bloco de memória de destino após ser movido:\n");
+	printf("%s\n", destino);
+	
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Bloco de memória fonte: BCC
+			Bloco de memória de destino: Programa de Ensino e Tutoria
+
+			Bloco de memória de destino após a cópia ser realizada:
+			BCC
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="memset"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">void*</b> memset(<b class="fundo_azul_titulo_manC">const void*</b> fonte, <b class="fundo_azul_titulo_manC">int</b> caractere, <b class="fundo_azul_titulo_manC">size_t</b> num)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> Uma bloco de memória fonte, um caractere que será convertido para int, um valor size_t (longo inteiro sem sinal) representando o número de bytes a serem lidos do bloco.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> Substitui os ‘num’ primeiros bytes do bloco de memória ‘fonte’ pelo ‘caractere’. Por ser uma substituição direta do bloco de byte, é possível sobrescrever o caractere terminal.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MEMSET()
+
+#include &ltstudio.h&gt
+#include &ltstring.h&gt
+	
+int main(){
+	char fonte[50] = "Programa de Ensino e Tutoria";
+	printf("Bloco de memória fonte: %s\n\n", fonte);
+	
+	// Utilizamos sizeof() para contar exatamente o número de bytes do
+	// bloco de memória fonte.
+	memset(fonte, '-', 9);
+	printf("Bloco de memória de fonte após ser alterado:\n");
+	printf("%s\n", fonte);
+	
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Bloco de memória fonte: Programa de Ensino e Tutoria
+			Bloco de memória de fonte após ser alterado: 
+			---------de Ensino e Tutoria
+
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>					
+			</main>
+		</div>
+		<div class="right one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/string/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}

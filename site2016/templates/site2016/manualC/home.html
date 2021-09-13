@@ -66,6 +66,7 @@ Manual C - PET-BCC UFSCar
             Bibliotecas
           </h2>
           <div class="ui relaxed divided list">
+            <!-- assert inicio -->
             <div class="item">
               <div class="content">
                 <a class="manC_laranja odd" href="{% url 'assert_h' %}">
@@ -76,12 +77,13 @@ Manual C - PET-BCC UFSCar
                   execução do programa com uma mensagem de diagnóstico em caso de falha. </div>
               </div>
             </div>
+            <!-- ctype inicio -->
             <div class="item">
               <div class="content">
                 <a class="manC_laranja_escuro" href="{% url 'ctype_h' %}">
                   <h3>ctype.h</h3>
                 </a>
-                <div class="description">Na biblioteca &ltctype.h&gt estão
+                <div class="description justificado">Na biblioteca &ltctype.h&gt estão
                   funções para classificar caracteres ASCII, ou seja, para
                   dizer se um dado byte representa uma letra, ou um dígito,
                   ou um branco etc. em código ASCII. Mesmo que o
@@ -104,15 +106,22 @@ Manual C - PET-BCC UFSCar
 
               </div>
             </div>
+            <!-- math inicio -->
             <div class="item">
               <div class="content">
                 <a class="manC_laranja_escuro" href="{% url 'math_h' %}">
                   <h3>math.h</h3>
                 </a>
-                <div class="description">Na biblioteca &ltmath.h&gt estão
-                  contidas diversas funções matemáticas básicas, com ela podemos
-                  trabalhar com funções trigonométricas, funções para cálculo de raiz
-                  quadrada, valor absoluto, entre outras.</div>
+                <div class="description justificado">Na biblioteca &ltmath.h&gt estão contidas diversas funções matemáticas básicas, com ela podemos trabalhar com funções trigonométricas, funções para cálculo de raiz quadrada, valor absoluto, entre outras.</div>
+              </div>
+            </div>
+            <!-- string inicio -->
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro" href="{% url 'string_h' %}">
+                  <h3>string.h</h3>
+                </a>
+                <div class="description justificado"> Na biblioteca &ltstring.h&gt estão contidos protótipos utilizados para a manipulação de strings, também conhecidos como array de chars. Estas funções são capazes desde a contagem, cópia e concatenação, comparação e diversas outras modificações como podemos ver nos exemplos a seguir.</div>
               </div>
             </div>
 
