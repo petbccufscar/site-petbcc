@@ -1,0 +1,131 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Manual C - PET-BCC UFSCar
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <div class="ui grid">
+        <div class="column">
+          <div class="row">
+            <h1 class="ui inverted header">
+              <!-- Tirei o id, para ficar lowercase -->
+              &lterrno.h&gt
+              <!-- &lt e h&gt é para setar os <> -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %}
+        {% include 'site2016/manualC/leftSidebar.html' %}
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            O arquivo de cabeçalhos <b class="manC_laranja_escuro">&lterrno.h&gt</b> fornece alguns macros de números
+            inteiros para reconhecer e relatar erros de execução através de códigos de erro, esses códigos são
+            fornecidos pelo próprio sistema operacional e retornados ao programa durante sua execução.
+            <br />A variável errno recebe um valor inteiro referente ao erro obtido. Uma tabela de todos os erros pode
+            ser encontrada em <a href="https://linux.die.net/man/3/errno">errno</a>.<br/>Em um escopo de cálculos
+            matemáticos, os que mais ocorrem são:
+          </p>
+          <p>
+          <ul>
+            <li>
+              <p class="justificado">
+                EDOM (33): Um argumento viola o domínio dos valores suportados, ou seja, quando deixa de pertencer aos
+                números reais. Geralmente sua compilação não é impedida, porém, o resultado “nan” (not a number) é
+                mostrado.
+
+              </p>
+            </li>
+            <li>
+              <p class="justificado">
+                ERANGE (34): O resultado da função está fora do intervalo dos valores válidos. Quando utilizado junto
+                com a biblioteca &ltmath.h&gt, os resultados “inf”e “-inf” são obtidos.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <div class="description">
+                Não há funções nesta biblioteca.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui stackable centered grid container">
+        <div class="twelve wide column">
+          <div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso</b>:</div>
+          <div class="ui container">
+            <pre>
+              <code class="c">
+//EXEMPLO ERRNO.h
+
+#include &ltstdio.h&gt									
+#include &ltmath.h&gt
+#include &lterrno.h&gt
+#include &ltstring.h&gt
+  
+
+int main(){
+  printf("log(-1.0) = %f\n", log(-1.0));
+  printf("Erro de número %d obtido!\n", errno);
+  printf("Descrição do erro: %s\n\n", strerror(errno));
+  
+  printf("log(0.0) = %f\n", log(0.0));
+  printf("Erro de número %d obtido!\n", errno);
+  printf("Descrição do erro: %s", strerror(errno));
+  
+  return 0;
+}
+
+              </code>
+            </pre>
+          </div>
+          <div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+              terminal</b>:</div>
+          <div class="ui container">
+            <pre>
+              <code class="console">
+  >clang-7 -pthread -lm -o main main.c
+  >./main
+  log(-1.0) = -nan
+  Erro de número 33 obtido!
+  Descrição do erro: Numerical argument out of domain
+
+  log(0.0) = -inf
+  Erro de número 34 obtido!
+  Descrição do erro: Numerical result out of range
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
