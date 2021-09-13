@@ -93,15 +93,10 @@ a.text.menu_manC {
   font-size: 18px;
   font-weight: bold !important;
   z-index: 0;
-  width: 10em;
+  width: 9em;
   padding: 0em;
   padding-top: 1em !important;
   z-index: 1;
-}
-
-/* Faz o rodapé ficar a frente das barras laterais */
-div#rodape {
-  z-index: 2;
 }
 
 main.main_funcoes {

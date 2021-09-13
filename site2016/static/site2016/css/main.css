@@ -81,6 +81,8 @@
 
 body {
   background: var(--main-dark-color);
+  position: relative;
+  min-height: 100vh;
 }
 
 .justificado {
@@ -154,6 +156,11 @@ p {
   justify-content: center;
   align-items: center;
   background: none repeat scroll 0 0 #ffffff;
+}
+
+footer {
+  margin-top: 10px;
+  bottom: 0;
 }
 
 footer .ui.icon.button,
