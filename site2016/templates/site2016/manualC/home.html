@@ -72,7 +72,9 @@ Manual C - PET-BCC UFSCar
                 <a class="manC_laranja odd" href="{% url 'assert_h' %}">
                   <h3>assert.h</h3>
                 </a>
-                <div class="description justificado">Na biblioteca &ltassert.h&gt tem apenas uma função: assert(), a qual pode ser usada para verificar a veracidade de uma expressão durante a execução do programa e interromper a execução do programa com uma mensagem de diagnóstico em caso de falha. </div>
+                <div class="description">O arquivo de cabeçalhos assert.h tem apenas uma função: assert(), a qual pode
+                  ser usada para verificar a veracidade de uma expressão durante a execução do programa e interromper a
+                  execução do programa com uma mensagem de diagnóstico em caso de falha. </div>
               </div>
             </div>
             <!-- ctype inicio -->
@@ -83,19 +85,31 @@ Manual C - PET-BCC UFSCar
                 </a>
                 <div class="description justificado">Na biblioteca &ltctype.h&gt estão
                   funções para classificar caracteres ASCII, ou seja, para
-                  dizer se um dado byte representa uma letra, ou um dígito, 
+                  dizer se um dado byte representa uma letra, ou um dígito,
                   ou um branco etc. em código ASCII. Mesmo que o
-                  argumento de cada função não seja um char mas sim um 
+                  argumento de cada função não seja um char mas sim um
                   inteiro positivo, o caractere que é passado para a
-                  função, internamente, é convertido em seu valor ASCII 
+                  função, internamente, é convertido em seu valor ASCII
                   para a verificação.</div>
-                  
+
+              </div>
+            </div>
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd" href="{% url 'errno_h' %}">
+                  <h3>errno.h</h3>
+                </a>
+                <div class="description">O arquivo de cabeçalhos &lterrno.h&gt fornece alguns macros de números inteiros
+                  para reconhecer e relatar erros de execução através de códigos de erro, esses códigos são fornecidos
+                  pelo próprio sistema operacional e retornados ao programa durante sua execução.
+                </div>
+
               </div>
             </div>
             <!-- math inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja odd" href="{% url 'math_h' %}">
+                <a class="manC_laranja_escuro" href="{% url 'math_h' %}">
                   <h3>math.h</h3>
                 </a>
                 <div class="description justificado">Na biblioteca &ltmath.h&gt estão contidas diversas funções matemáticas básicas, com ela podemos trabalhar com funções trigonométricas, funções para cálculo de raiz quadrada, valor absoluto, entre outras.</div>

@@ -27,4 +27,6 @@ urlpatterns = [
     # String.h
     url(r'^string/$', views.string_h, name='string_h'),
     url(r'^stringfuncoes/$', views.string_funcoes, name='string_funcoes'),
+    # Errno.h
+    url(r'^errno/$', views.errno_h, name='errno_h'),
 ]
