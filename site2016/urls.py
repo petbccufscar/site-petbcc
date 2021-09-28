@@ -29,4 +29,7 @@ urlpatterns = [
     url(r'^stringfuncoes/$', views.string_funcoes, name='string_funcoes'),
     # Errno.h
     url(r'^errno/$', views.errno_h, name='errno_h'),
+    # Stdlib.h
+    url(r'^stdlib/$', views.stdlib_h, name='stdlib_h'),
+    url(r'^stdlibfuncoes/$', views.stdlib_funcoes, name='stdlib_funcoes'),
 ]

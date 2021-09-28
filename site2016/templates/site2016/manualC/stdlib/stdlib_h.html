@@ -1,0 +1,375 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Stdlib.h - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <h1 class="ui inverted header">
+        &ltstdlib.h&gt
+      </h1>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %} 
+        {% include 'site2016/manualC/leftSidebar.html' %} 
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            No cabeçalho <b>stdlib.h</b> estão localizadas as funções responsáveis pela manipulação da alocação de memória, e da desalocação também, bem como funções para converter números que estão representados em strings para algum tipo de dado responsável por representar números, como, por exemplo, double, entre outras funcionalidades úteis, como funções de algoritmos de ordenação.
+          </p>
+        </div>
+        <div class="ui grid">
+          <div class="ui two column row">
+            <div class="column">
+              <div class="ui centered vertical padded segment">
+                <h1 class="manC_laranja">Variáveis:</h1>
+                <p class="justificado">
+                  <b>size_t</b>: tem por finalidade indicar o tamanho, em bytes, que uma variável ocupa na memória.
+                  <br><br><b>wchar_t</b>: tem por finalidade representar caracteres com codificação não suportada pelo tipo char, ou seja, caracteres com códigos maiores que aqueles que o tipo char representa.
+                  <br><br><b>div_t</b>: struct que contém dois campos do tipo int; um dos campos do struct armazena o resultado da divisão entre  dois números e o outro campo armazena o resto da divisão.
+                  <br><br><b>ldiv_t</b>: struct que contém dois campos do tipo long int; um dos campos do struct armazena o resultado da divisão entre  dois números e o outro campo armazena o resto da divisão.
+                </p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui centered vertical padded segment">
+                <h1 class="manC_laranja">Macros:</h1>
+                <p class="justificado">
+                  <b>NULL</b>: macro utilizado para indicar que um ponteiro não está apontando para lugar algum da memória.
+                  <br><br><b>EXIT_FAILURE</b>: macro utilizado para indicar que um programa foi finalizado de forma inesperada, com erro.
+                  <br><br><b>EXIT_SUCCESS</b>: macro utilizado para indicar que um programa foi finalizado conforme o esperado, com sucesso.
+                  <br><br><b>RAND_MAX</b>: macro que indica o valor máximo retornado pela função rand().
+                  <br><br><b>MB_CUR_MAX</b>: valor máximo de memória que um caractere, que ocupa mais de um byte, pode ter.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content"><!-- stdlib_funcoes -->
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#atof">
+                <h3>double atof(const char *stringNum)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o número presente na string convertido para o tipo double.
+              </div>
+              <div class="description justificado">
+                RECEBE: uma variável que seja um array de caracteres.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#atoi">
+                <h3>int atoi(const char* stringNum)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o número presente na string convertido para o tipo int.
+              </div>
+              <div class="description justificado">
+                RECEBE: uma string na qual um número esteja sendo representado.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#atol">
+                <h3>long atol(const char *stringNum)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o número presente na string convertido para o tipo long.
+              </div>
+              <div class="description justificado">
+                RECEBE: uma string na qual um número esteja sendo representado.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#strtod">
+                <h3>double strtod(const char *stringComNum, char **resto)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para double.
+              </div>
+              <div class="description justificado">
+                RECEBE: uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#strtol">
+                <h3>long strtol(const char *stringComNum, char **resto, int base)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para long na base indicada.
+              </div>
+              <div class="description justificado">
+                RECEBE: uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#strtoul">
+                <h3>unsigned long strtoul(const char *stringComNum, char **resto, int base)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA:  o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para unsigned long na base indicada.
+              </div>
+              <div class="description justificado">
+                RECEBE: uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#rand">
+                <h3>int rand()</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: um número do tipo inteiro, não negativo, "aleatório".
+              </div>
+              <div class="description justificado">
+                RECEBE: não recebe parâmetros.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#srand">
+                <h3>void srand(int valor)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: sem retorno, porque a srand() tem por finalidade configurar um valor inicial a partir do qual uma sequência de números serão aleatorizados, sendo o valor padrão 1.
+              </div>
+              <div class="description justificado">
+                RECEBE: um número do tipo inteiro.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#calloc">
+                <h3>size_t calloc(size_t quantidadeElementos, size_t tamanhoDoTipo)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o endereço inicial do espaço alocado; aloca espaço na memória de acordo com o tipo indicado em tamanhoDoTipo em blocos, conforme a quantidade de blocos indicada em quantidadeElementos, e inicializa todos os bytes do espaço alocado para 0.
+              </div>
+              <div class="description justificado">
+                RECEBE: a quantidade de blocos do tipo a ser alocado, em quantidadeElementos, e o tipo (int, float, double, char, etc). 
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#malloc">
+                <h3>malloc(size_t tamanhoDoTipo)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o endereço inicial do espaço alocado; aloca espaço conforme o valor indicado em tamanhoDoTipo.
+              </div>
+              <div class="description justificado">
+                RECEBE: a quantidade de memória a ser alocada, comumente indicada por sizeof(int), por exemplo.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#realloc">
+                <h3>realloc(void *ponteiro, size_t tamanhoDoTipo)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: um endereço inicial do novo espaço alocado; realoca o espaço de memória para o qual ponteiro aponta, conforme o valor especificado em tamanhoDoTipo.
+              </div>
+              <div class="description justificado">
+                RECEBE: o ponteiro da variável dinamicamente alocada e a quantia de memória que será reajustada para essa variável.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#free">
+                <h3>free(void *ponteiro)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: void; free(ponteiro) libera o espaço alocado por calloc, malloc ou realloc para o qual ponteiro aponta.
+              </div>
+              <div class="description justificado">
+                RECEBE: o ponteiro que aponta para a variável dinamicamente alocada, a qual pretende-se liberar o espaço de memória alocado para esta.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#abort">
+                <h3>abort()</h3>
+              </a>
+              <div class="description justificado">
+                void; interrompe e aborta a execução do programa no ponto em que abort() é chamada.
+              </div>
+              <div class="description justificado">
+                RECEBE: não recebe parâmetros.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#exit">
+                <h3>exit(int status)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o tipo de retorno com o qual pretende-se finalizar a execução do programa.
+              </div>
+              <div class="description justificado">
+                RECEBE: o status do término da execução do programa e finaliza a sua execução no ponto em que exit(status) é chamada.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#atexit">
+                <h3>atexit(void funcao(void))</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: um inteiro não nulo caso não seja possível chamar funcao() ao fim da execução do programa, caso contrário, retorna 0.
+              </div>
+              <div class="description justificado">
+                RECEBE: um procedimento a ser chamado ao fim da execução do programa. 
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#system">
+                <h3>system(const char *comandoSO)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: um inteiro não nulo caso não seja possível fazer a requisição da execução da instrução indicada por comandoSO.
+              </div>
+              <div class="description justificado">RECEBE: um comando a ser executado pelo Sistema Operacional, passado como uma string. 
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#getenv">
+                <h3>getenv(const char *nomeVariavel)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: uma string contendo o caminho para o qual a variável de sistema nomeVariavel aponta. 
+              </div>
+              <div class="description justificado">
+                RECEBE: uma string com o nome de uma variável do Sistema Operacional.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#bsearch">
+                <h3>bsearch(const void *chave, const void *array, size_t tamanhoDoArray, size_t tipoDoArray, int (*compara)(const void *, const void *))</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o endereço no qual o valor indicado por *chave está localizado; se o valor não estiver em *array, retorna NULL. 
+              </div>
+              <div class="description justificado">
+                RECEBE: uma variável com o valor que se deseja procurar, com passagem por referência, o array no qual será feita a busca, o tamanho do array, o tamanho do tipo que o array armazena, e uma função que efetua a comparação de duas variáveis e retorna um valor inteiro, para fins de comparação, como resultado.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#qsort">
+                <h3>qsort(void *array, size_t tamanhoDoArray, size_t tipoDoArray, int (*compara)(const void*, const void *))</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: void; a função ordena o array passado como parâmetro em ordem crescente.
+              </div>
+              <div class="description justificado">RECEBE:  o array que será ordenado, o tamanho do array, o tamanho do tipo que o array armazena, e uma função que efetua a comparação de duas variáveis e retorna um valor inteiro, para fins de comparação, como resultado.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#abs">
+                <h3>abs(int numero)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o módulo do número passado como parâmetro.
+              </div>
+              <div class="description justificado">
+                RECEBE:  um número do tipo inteiro, para o qual deseja-se obter o módulo.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#labs">
+                <h3>labs(long numero)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: um número do tipo long int, para o qual deseja-se obter o módulo.
+              </div>
+              <div class="description justificado">
+                RECEBE:  o módulo do número passado como parâmetro.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdlib_funcoes' %}#div">
+                <h3>div(int numerador, int denominador)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o resultado da divisão numerador/denominador e o resto da divisão armazenados em um struct do tipo div_t.
+              </div>
+              <div class="description justificado">
+                RECEBE: dois números do tipo inteiro.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdlib_funcoes' %}#ldiv">
+                <h3>ldiv(long numerador, long denominador)</h3>
+              </a>
+              <div class="description justificado">
+                RETORNA: o resultado da divisão numerador/denominador e o resto da divisão armazenados em um struct do tipo ldiv_t.
+              </div>
+              <div class="description justificado">
+                RECEBE: dois números do tipo long int.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="one wide column">
+        {% block sidebar_content2 %}
+        {% include 'site2016/manualC/stdlib/rightSidebar.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
