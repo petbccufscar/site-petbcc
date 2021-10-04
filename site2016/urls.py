@@ -32,4 +32,7 @@ urlpatterns = [
     # Stdlib.h
     url(r'^stdlib/$', views.stdlib_h, name='stdlib_h'),
     url(r'^stdlibfuncoes/$', views.stdlib_funcoes, name='stdlib_funcoes'),
+    # Time.h
+    url(r'^time/$', views.time_h, name='time_h'),
+    url(r'^timefuncoes/$', views.time_funcoes, name='time_funcoes'),
 ]

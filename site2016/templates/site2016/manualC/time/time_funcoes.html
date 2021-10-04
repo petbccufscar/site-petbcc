@@ -1,0 +1,448 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &lttime.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<main role="main">
+				<a id="clock"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">long int</b> clock(<b class="fundo_azul_titulo_manC">void</b>)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> void (não recebe parâmetro nenhum).</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o valor, utilizando long int, da quantidade de pulsos de clock que o processador executou a partir do instante em que o programa foi inicializado até o momento em que clock() foi chamada. Caso seja necessário conhecer o tempo em segundos, e não em quantidade de pulsos de clock, então basta dividir o valor retornado por clock() por CLOCKS_PER_SEC.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO CLOCK()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+
+int main() {
+	printf("Pulsos de clock até o momento: %ld\n", clock());
+	printf("printf Aleatório\n");
+	printf("Mais um teste da quantidade de pulsos de clock: %ld\n",
+			clock());
+
+	return 0;
+}
+
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Pulsos de clock até o momento: 1701
+			printf aleatório
+			Mais um teste da quantidade de pulsos de clock: 1797
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="time"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">time_t</b> time(<b class="fundo_azul_titulo_manC">time_t *</b>ponteiro_tempo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável do tipo time_t, a passagem deve ser por referência.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> a data e hora do sistema e atribui esse valor à variável passada como parâmetro.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO TIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+
+int main() {
+	time_t tempo = time(NULL);
+	printf(ctime(&tempo));
+
+	time(&tempo);
+	printf("Outro teste: %s", ctime(&tempo));
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Thu May 27 20:20:01 2021
+			Outro teste: Thu May 27 20:20:01 2021
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="difftime"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">struct tm</b> difftime(<b class="fundo_azul_titulo_manC">time_t</b> tempo, <b class="fundo_azul_titulo_manC">time_t</b> tempo0)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> duas variáveis do tipo time_t, por meio de passagem por valor.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> a diferença, em segundos, entre tempo e tempo0.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO DIFFTIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+	
+int main() {
+	struct tm tempo, tempo0;
+
+	tempo.tm_sec = 2*42;
+	tempo.tm_min = 1;
+	tempo.tm_hour = 1;
+	tempo.tm_mday = 1;
+	tempo.tm_mon = 1;
+	tempo.tm_year = 1;
+	tempo.tm_wday = 1;
+
+	tempo0.tm_sec = 42;
+	tempo0.tm_min = 1;
+	tempo0.tm_hour = 1;
+	tempo0.tm_mday = 1;
+	tempo0.tm_mon = 1;
+	tempo0.tm_year = 1;
+	tempo0.tm_wday = 1;
+	
+	printf("Diferença: %lf\n",
+			difftime(mktime(&tempo),
+				mktime(&tempo0)));
+
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Diferença: 42.000000
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="mktime"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">time_t</b> mktime(<b class="fundo_azul_titulo_manC">struct tm *</b>tempo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável do tipo struct tm, com passagem por referência.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> os valores nos moldes do tipo time_t, fazendo uso dos valores presentes na variável do tipo struct tm.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MKTIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+
+int main() {
+	struct tm tempo;
+
+	tempo.tm_sec = 42;
+	tempo.tm_min = 59;
+	tempo.tm_hour = 23;
+	tempo.tm_mday = 25;
+	tempo.tm_mon = 12;
+	tempo.tm_year = 10191 - 1900;
+	tempo.tm_wday = 1;
+	//tempo.tm_yday = ;
+	//tempo.tm_isdst = ;
+	
+	time_t tempoConvertido = mktime(&tempo);
+	
+	printf(ctime(&tempoConvertido));
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Wed Jan 25 23:59:42 10192
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="asctime"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">string</b> asctime(<b class="fundo_azul_titulo_manC">const struct tm *</b>tp)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável do tipo struct tm, com passagem por referência.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> uma string, contendo os campos do struct tm fornecidos, formatados conforme o seguinte: 'Dia da semana' Mês Dia Hora:Minutos:Segundos Mês\n\0.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO ASCTIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+
+int main() {
+	struct tm tempo;
+
+	tempo.tm_sec = 42;
+	tempo.tm_min = 59;
+	tempo.tm_hour = 23;
+	tempo.tm_mday = 25;
+	tempo.tm_mon = 12 - 1;
+	tempo.tm_year = 10191 - 1900;
+	tempo.tm_wday = 3;
+	//tempo.tm_yday = ;
+	//tempo.tm_isdst = ;
+	
+	printf(asctime(&tempo));
+
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Wed Dec 25 23:59:42 10191
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="ctime"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">string</b> ctime(<b class="fundo_azul_titulo_manC">const time *</b> tempo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável do tipo time_t, com passagem por referência.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> uma string, contendo os valores da variável *tempo, de tipo time_t, formatando as informações de data e hora conforme o seguinte: 'Dia da semana' Mês Dia Hora:Minutos:Segundos Mês\n\0.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO CTIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+
+int main() {
+	time_t tempo;
+	time(&tempo);
+
+	printf(ctime(&tempo));
+
+	return 0;
+}	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Thu May 27 21:14:34 2021
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="gmtime"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">struct tm</b> gmtime(<b class="fundo_azul_titulo_manC">const time_t *</b> tempo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável do tipo time_t, com passagem por referência.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um struct tm, com base nas informações contidas na variável de tipo time_t, a partir do qual é possível manipular data e hora com base em um fuso horário qualquer, uma vez que o struct retorna já modificada para interagir com manipulações de diferentes valores de UTC/GMT.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO GMTIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+
+/* definindo o UTC/GMT do Brasil e do Japão */
+#define BRT -3
+#define JST 9
+
+int main() {
+	time_t tempo;
+	time(&tempo);
+
+	struct tm *tempo0 = gmtime(&tempo);
+
+	printf("Horário no Japão: %02d:%02d:%02d\n"
+					"Horário no Brasil: %02d:%02d:%02d\n",
+					tempo0->tm_hour + JST, tempo0->tm_min,
+					tempo0->tm_sec, tempo0->tm_hour + BRT,
+					tempo0->tm_min, tempo0->tm_sec);
+
+	return 0;
+}
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Horário no Japão: 13:14:07
+			Horário no Brasil: 01:14:07
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="localtime"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">struct tm</b> localtime(<b class="fundo_azul_titulo_manC">const time_t *</b>tempo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável do tipo time_t, com passagem por referência.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um struct tm que aponta/recebe as informações contidas em time_t.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO LOCALTIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+
+int main() {
+	time_t tempo;
+	time(&tempo);
+	struct tm *tempo0 = localtime(&tempo);
+
+	printf("Horário atual: %02d:%02d:%02d\n",
+					tempo0->tm_hour, tempo0->tm_min, tempo0->tm_sec);
+
+	return 0;
+}
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Horário atual: 01:19:11
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strftime"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">struct tm</b> strftime(<b class="fundo_azul_titulo_manC">char *</b> string_armazena_data, <b class="fundo_azul_titulo_manC">size_t</b> tamanho_da_string, <b class="fundo_azul_titulo_manC">const char*</b> formato, <b class="fundo_azul_titulo_manC">const struct tm *</b> tempo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> um ponteiro do tipo char (a partir do qual é possível criar uma string de caracteres), a quantidade de espaço alocado para o ponteiro de caractere, o tipo do ponteiro (no caso, "%c", pois é do tipo char), uma variável do tipo struct tm que irá fornecer as informações sobre data e hora para criação da string.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> os valores presentes em *tempo para armazenar os valores em string_armazena_data, no formato de uma string com data e horário já formatados o seguinte: 'Dia da semana' Mês Dia Hora:Minutos:Segundos Mês\0.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRFTIME()
+
+#include &ltstudio.h&gt
+#include &lttime.h&gt
+#include &ltstdlib.h&gt
+
+
+int main() {
+	time_t tempo;
+	time(&tempo);
+
+	struct tm *tempo0 = localtime(&tempo);
+
+	char *string_armazena_data = (char *)malloc(100*sizeof(char));
+
+	strftime(string_armazena_data, 100, "%c", tempo0);
+
+	printf("%s\n", string_armazena_data);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Fri May 28 19:51:07 2021
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+		<div class="right one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/time/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}

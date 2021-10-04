@@ -455,3 +455,13 @@ def stdlib_h(request):
 def stdlib_funcoes(request):
     context_dictionary = {'pagina': 'stdlib_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/stdlib/stdlib_funcoes.html', context_dictionary)
+
+
+def time_h(request):
+    context_dictionary = {'pagina': 'time_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/time/time_h.html', context_dictionary)
+
+
+def time_funcoes(request):
+    context_dictionary = {'pagina': 'time_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/time/time_funcoes.html', context_dictionary)
