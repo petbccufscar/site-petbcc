@@ -35,4 +35,6 @@ urlpatterns = [
     # Time.h
     url(r'^time/$', views.time_h, name='time_h'),
     url(r'^timefuncoes/$', views.time_funcoes, name='time_funcoes'),
+    # Limits.h
+    url(r'^limits/$', views.limits_h, name='limits_h'),
 ]

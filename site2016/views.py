@@ -465,3 +465,8 @@ def time_h(request):
 def time_funcoes(request):
     context_dictionary = {'pagina': 'time_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/time/time_funcoes.html', context_dictionary)
+
+
+def limits_h(request):
+    context_dictionary = {'pagina': 'limits_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/limits/limits_h.html', context_dictionary)
