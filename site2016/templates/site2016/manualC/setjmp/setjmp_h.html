@@ -67,7 +67,7 @@ Setjmp.h - Manual C
           <div class="item">
             <div class="content">
               <a class="manC_laranja odd" href="{% url 'setjmp_funcoes' %}#setjmp">
-                <h3>setjmp(jmp_buf ponto)</h3>
+                <h3>int setjmp(jmp_buf ponto)</h3>
               </a>
               <div class="description">
                 RETORNA: 0 a primeira vez em que é chamada, e um valor diferente de zero após o primeiro salto que faz uso da variável passada como parâmetro no chamado de setjmp().
@@ -81,11 +81,10 @@ Setjmp.h - Manual C
           <div class="item">
             <div class="content">
               <a class="manC_laranja_escuro" href="{% url 'setjmp_funcoes' %}#longjmp">
-                <h3>longjmp(jmp_buf ponto, int valor) </h3>
+                <h3>void longjmp(jmp_buf ponto, int valor) </h3>
               </a>
               <div class="description">
-                RETORNA: 1 caso seja uma letra do alfabeto maiúscula, 2 caso seja minúscula, 0 caso não esteja no
-                alfabeto.
+                RETORNA: void, função sem retorno.
               </div>
               <div class="description">
                 RECEBE: uma variável do tipo jmp_buf, que indica para onde a função deverá saltar, e um valor numérico diferente de zero, o qual será utilizado pela função setjmp() para retornar o valor inteiro não igual a zero após a execução do primeiro salto.

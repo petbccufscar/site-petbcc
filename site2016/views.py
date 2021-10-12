@@ -442,7 +442,15 @@ def setjmp_h(request):
 def setjmp_funcoes(request):
     context_dictionary = {'pagina': 'setjmp_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/setjmp/setjmp_funcoes.html', context_dictionary)
-  
+
+def stdio_h(request):
+    context_dictionary = {'pagina': 'stdio_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/stdio/stdio_h.html', context_dictionary)
+
+def stdio_funcoes(request):
+    context_dictionary = {'pagina': 'stdio_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/stdio/stdio_funcoes.html', context_dictionary)
+
 def string_h(request):
     context_dictionary = {'pagina': 'string_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/string/string_h.html', context_dictionary)

@@ -1,0 +1,391 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Stdio.h - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header
+      class="ui inverted masthead center aligned segment"
+      id="fundo_azul_titulo"
+    >
+      <div class="ui grid">
+        <div class="column">
+          <div class="row">
+            <h1 class="ui inverted header">
+              <!-- Tirei o id, para ficar lowercase -->
+              &ltstdio.h&gt
+              <!-- &lt e h&gt é para setar os <> -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %} 
+        {% include 'site2016/manualC/leftSidebar.html' %} 
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            No cabeçalho <b class="manC_laranja_escuro">&ltstdio.h&gt</b> estão localizadas as funções referentes às operações nas quais os mecanismos operam em função da entrada e da saída padrão, bem como em arquivos também. Portanto, por meio das variáveis, macros, e funções é possível realizar tarefas de leitura e escrita, tanto por meio da entrada e saída disponibilizada pela máquina, quanto por escrita e leitura em arquivos.
+          </p>
+        </div>
+        <div class="ui centered vertical padded segment">
+          <div class="ui large left aligned huge header manC_laranja">
+            <h1>Tipos:</h1>
+          </div>
+          <div class="ui very relaxed divided list">
+            <div class="item">
+              <div class="content">
+                <div class="description">
+                  <b>FILE</b>: estrutura que apresenta os atributos necessários para se operar com arquivos.
+                  <br><br>            
+                  <b>fpos_t</b>: tipo inteiro positivo destinado a armazenar a posição corrente em um arquivo.
+                  <br>
+                  <br>
+                  <b>size_t</b>: tipo inteiro positivo destinado a guardar o tamanho que um objeto ocupa na memória.
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui centered vertical padded segment">
+          <div class="ui large left aligned huge header manC_laranja">
+            <h1>Macros:</h1>
+          </div>
+          <div class="ui very relaxed divided list">
+            <div class="item">
+              <div class="content">
+                <div class="description">
+                  <p><b>NULL</b>: valor que indica que algo não existe; usualmente é o valor zero.
+                  </p>
+                  <p><b>_IOFBF</b>,
+                  <br>
+                  <b>_IOLBF</b>,
+                  <br>
+                  <!-- todo arrumar esses links de funções não implementadas -->
+                  <b>_IONBF</b>: ver a função<a class="item active manC_sidebar"  href=""><b>setvbuf()</b></a>.</p>
+                  
+            
+                  <p><b>BUFSIZE</b>: ver a função<a class="item active manC_sidebar"  href=""><b>setbuf()</b></a>.</p>
+                  
+                  <p><b>EOF</b>: valor retornado quando uma função de operação (ver getchar e fscanf, por exemplo) de arquivos tenta fazer uma leitura depois do fim do arquivo; utiliza um valor inteiro negativo.
+                  <b>FOPEN_MAX</b>: quantidade máxima de arquivos que podem ser abertos, simultaneamente, durante a execução do programa.
+                  </p>
+                  <p><b>FILENAME_MAX</b>: tamanho máximo que uma string indicando o nome de um arquivo a ser aberto pode ter .
+                  L_tmpnam: tamanho que um array de caracteres precisa ter a fim de que a função tmpnam() possa ser usada de forma apropriada com esse array.
+                  </p>
+                  <p><b>SEEK_CUR</b>,
+                  
+                  <br>
+                  <b>SEEK_END</b>,
+                  <br>
+                  <b>SEEK_SET</b>: ver a função<a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fseek"><b>fseek()</b></a>.</p>
+                  
+                  <p><b>TMP_MAX</b>: ver a função<a class="item active manC_sidebar"  href=""><b>tmpnam()</b></a>.</p>
+                  
+                  <p><b>stderr</b>,
+                  
+                  <br>
+                  <b>stdin</b>,
+                  <br>
+                  <b>stdout</b>: designam os ponteiros que apontam para as streams padrão de erro, entrada e saída, respectivamente.
+                </p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#fopen">
+                <h3>FILE *fopen(const char *nomeArquivo, const char *modoDeAbertura)</h3>
+              </a>
+              <div class="description">
+                RETORNA: o endereço no qual o arquivo foi aberto, o tipo de dados utilizado é o tipo FILE.
+              </div>
+              <div class="description">
+                RECEBE: um array de caracteres contendo o nome do arquivo e outro com o modo de abertura.
+
+              </div>
+            </div>
+          </div>
+          
+          <div class="item">
+            <div class="content">
+              <a
+                class="manC_laranja_escuro"
+                href="{% url 'stdio_funcoes' %}#fclose"
+              >
+                <h3>int fclose(FILE *arquivo)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0 no caso de sucesso, ou EOF em caso de falha.
+
+              </div>
+              <div class="description">
+                RECEBE: uma variável contendo o endereço de um descritor de arquivo.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#fread">
+                <h3>size_t fread(void *itemLer, size_t tamanhoDoItem, size_t quantidadeItem, FILE *arquivo)</h3>
+              </a>
+              <div class="description">RETORNA: a quantidade de itens lidos na chamada da função.</div>
+              <div class="description">
+                RECEBE: o endereço do local onde se irá armazenar o que for lido do arquivo, o tamanho, em bytes, de um item individual que será lido, a quantidade de itens que serão lidos e o arquivo endereço do descritor de arquivo.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#fwrite">
+                <h3>size_t fwrite(void *itemEscrita, size_t tamanhoDoItem, size_t quantidadeItem, FILE *arquivo)
+                </h3>
+              </a>
+              <div class="description">
+                RETORNA: a quantidade de itens escritos na chamada da função.
+
+              </div>
+              <div class="description">
+                RECEBE: a variável contendo o que será escrito no arquivo, o tamanho, em bytes do que será escrito, a quantidade de vezes que será escrito o item indicado, o arquivo no qual o objeto será escrito.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#fseek">
+                <h3>int fseek(FILE *arquivo, long salto, int origemDoSalto)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um inteiro diferente de zero caso tenha ocorrido algum erro na execução da função.
+
+              </div>
+              <div class="description">RECEBE: uma variável contendo um arquivo aberto, e a quantidade de posições que se deseja deslocar no arquivo.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#ftell">
+                <h3>long int ftell(FILE *arquivo)</h3>
+              </a>
+              <div class="description">
+                RETORNA: o posicionamento para leitura e/ou escrita na qual o arquivo está no momento da chamada da função.
+
+              </div>
+              <div class="description">RECEBE: o arquivo do qual deseja-se saber em que posição ele está.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#rewind">
+                <h3>void rewind(FILE *arquivo)</h3>
+              </a>
+              <div class="description">
+                RETORNA: a função não tem retorno; void.
+
+              </div>
+              <div class="description">RECEBE: o arquivo para o qual deseja-se fazer o reposicionamento para o início.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#fflush">
+                <h3>int fflush(FILE *stream)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando o valor numérico para EOF.
+
+              </div>
+              <div class="description">
+                RECEBE: o arquivo para o qual deseja-se limpar o buffer de operações de leitura e escrita.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#fprintf">
+                <h3>int fprintf(FILE *stream, const char *stringParaEscrita, <b>(variáveis serão utilizadas, assim como em printf)</b>)
+                </h3>
+              </a>
+              <div class="description">
+                RETORNA: o número de caracteres escrito, ou, caso a operação não seja bem sucedida, um valor negativo.
+              </div>
+              <div class="description">
+                RECEBE: o arquivo no qual deseja-se efetuar a escrita da string, a string a ser escrita, as variáveis referentes a formatação da string.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#fscanf">
+                <h3>int fscanf(FILE *stream, const char *stringParaEscrita, <b>(variáveis que serão utilizadas na formatação)</b>)
+                </h3>
+              </a>
+              <div class="description">
+                RETORNA: EOF, caso tenha atingido o fim do arquivo, ou então retorna a quantidade de leituras realizadas.
+
+              </div>
+              <div class="description">
+                RECEBE: o arquivo a partir do qual deseja-se copiar o conteúdo para uma string, a string para a qual o conteúdo será escrito.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#int">
+                <h3>int feof(FILE *arquivo)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um inteiro diferente de zero caso o programa tenha chegado ao fim do arquivo.
+
+              </div>
+              <div class="description">RECEBE: o arquivo para o qual deseja-se saber se o seu final foi alcançado.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#remove">
+                <h3>int remove(const char *nomeArquivo)</h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando um inteiro diferente de 0.
+
+              </div>
+              <div class="description">RECEBE: uma string contendo o nome do arquivo que se deseja remover.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#rename">
+                <h3>int rename(const char *nomeArquivo, const char *renomearArquivo)
+                </h3>
+              </a>
+              <div class="description">
+                RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando um inteiro diferente de 0.
+
+              </div>
+              <div class="description">RECEBE: uma string com o nome do arquivo que será renomeado, uma string contendo o novo nome do arquivo.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#printf">
+                <h3>int printf(const char *stringParaEscrita, <b>(variáveis que serão utilizadas na formatação)</b>)
+                </h3>
+              </a>
+              <div class="description">
+                RETORNA: o número de caracteres escritos, ou, caso a operação não tenha sido bem sucedida, um valor negativo.
+
+              </div>
+              <div class="description">RECEBE: a string que será impressa na saída padrão, as variáveis indicadas na string para devida formatação.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#scanf">
+                <h3>int scanf(const char *stringDeLeitura, <b>(variáveis que receberão os valores indicados na entrada padrão)</b>)
+                </h3>
+              </a>
+              <div class="description">
+                RETORNA: EOF, caso tenha atingido o fim do arquivo, ou então retorna a quantidade de leituras realizadas.
+
+              </div>
+              <div class="description">RECEBE: string indicando quais os tipos das variáveis que receberão os valores indicados na entrada padrão, as variáveis que tiveram seus tipos indicadas na string.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#getc">
+                <h3>int getc(FILE *stream)</h3>
+              </a>
+              <div class="description">
+                RETORNA: o próximo caractere presente na stream indicada.
+              </div>
+              <div class="description">RECEBE: a stream a partir da qual o próximo caractere será lido.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#gets">
+                <h3>char *gets(FILE *stream)</h3>
+              </a>
+              <div class="description">
+                RETORNA: a string lida na chamada da função ou NULL, em caso de erro.
+
+              </div>
+              <div class="description">RECEBE: a stream a partir da qual a próxima linha contendo uma string será lida.
+
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'stdio_funcoes' %}#getchar">
+                <h3>int getchar()</h3>
+              </a>
+              <div class="description">
+                RETORNA: o próximo caractere presente na entrada padrão.
+              </div>
+              <div class="description">RECEBE: não recebe parâmetros; void.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'stdio_funcoes' %}#putchar">
+                <h3>int putchar(int caractere); </h3>
+              </a>
+              <div class="description">
+                RETORNA: o caractere escrito na saída padrão.
+              </div>
+              <div class="description">RECEBE: um caractere.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="one wide column">
+        {% block sidebar_content2 %} 
+        {% include 'site2016/manualC/stdio/rightSidebar.html' %} 
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
