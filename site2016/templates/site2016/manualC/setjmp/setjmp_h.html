@@ -1,0 +1,95 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Setjmp.h - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <div class="ui grid">
+        <div class="column">
+          <div class="row">
+            <h1 class="ui inverted header">
+              <!-- Tirei o id, para ficar lowercase -->
+              &ltsetjmp.h&gt
+              <!-- &lt e h&gt é para setar os <> -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %}
+        {% include 'site2016/manualC/leftSidebar.html' %}
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            No cabeçalho &ltsetjmp.h&gt estão presentes funções e tipos que são capazes de manipular o 
+            fluxo de execução de um programa. Portanto, trata-se de um cabeçalho do qual seus recursos devem 
+            ser utilizados apenas em situações nas quais estes são a única opção, caso o código escrito esteja 
+            seguindo o paradigma de programação estruturada, uma vez que os efeitos das funções presentes neste cabeçalho assemelham-se ao uso de goto's no código.
+          </p>
+        </div>
+
+
+
+
+
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'setjmp_funcoes' %}#setjmp">
+                <h3>setjmp(jmp_buf ponto)</h3>
+              </a>
+              <div class="description">
+                RETORNA: 0 a primeira vez em que é chamada, e um valor diferente de zero após o primeiro salto que faz uso da variável passada como parâmetro no chamado de setjmp().
+
+              </div>
+              <div class="description">
+                RECEBE: uma variável que irá indicar o ponto a partir do qual o código é executado quando a função longjmp().
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'setjmp_funcoes' %}#longjmp">
+                <h3>longjmp(jmp_buf ponto, int valor) </h3>
+              </a>
+              <div class="description">
+                RETORNA: 1 caso seja uma letra do alfabeto maiúscula, 2 caso seja minúscula, 0 caso não esteja no
+                alfabeto.
+              </div>
+              <div class="description">
+                RECEBE: uma variável do tipo jmp_buf, que indica para onde a função deverá saltar, e um valor numérico diferente de zero, o qual será utilizado pela função setjmp() para retornar o valor inteiro não igual a zero após a execução do primeiro salto.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="one wide column">
+        {% block sidebar_content2 %}
+        {% include 'site2016/manualC/setjmp/rightSidebar.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

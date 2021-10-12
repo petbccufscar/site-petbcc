@@ -24,6 +24,9 @@ urlpatterns = [
     # Ctype.h
     url(r'^ctype/$', views.ctype_h, name='ctype_h'),
     url(r'^ctypefuncoes/$', views.ctype_funcoes, name='ctype_funcoes'),
+    # Setjmp.h
+    url(r'^setjmp/$', views.setjmp_h, name='setjmp_h'),
+    url(r'^setjmpfuncoes/$', views.setjmp_funcoes, name='setjmp_funcoes'),
     # String.h
     url(r'^string/$', views.string_h, name='string_h'),
     url(r'^stringfuncoes/$', views.string_funcoes, name='string_funcoes'),
