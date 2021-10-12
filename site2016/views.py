@@ -431,6 +431,10 @@ def ctype_funcoes(request):
     context_dictionary = {'pagina': 'ctype_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/ctype/ctype_funcoes.html', context_dictionary)
 
+def float_h(request):
+    context_dictionary = {'pagina': 'float_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/float/float_h.html', context_dictionary)
+
 def setjmp_h(request):
     context_dictionary = {'pagina': 'setjmp_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/setjmp/setjmp_h.html', context_dictionary)
@@ -450,5 +454,8 @@ def string_funcoes(request):
 def errno_h(request):
     context_dictionary = {'pagina': 'errno_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/errno/errno_h.html', context_dictionary)
+
+
+
 
 
