@@ -1,0 +1,151 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Manual C - PET-BCC UFSCar
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <div class="ui grid">
+        <div class="column">
+          <div class="row">
+            <h1 class="ui inverted header">
+              <!-- Tirei o id, para ficar lowercase -->
+              &ltstdarg.h&gt
+              <!-- &lt e h&gt é para setar os <> -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %}
+        {% include 'site2016/manualC/leftSidebar.html' %}
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            No cabeçalho encontram-se macros e tipos extremamente úteis, no que tange a criação de funções para as quais
+            a quantidade de argumentos não tem uma quantidade finita definida. Assim, o cabeçalho <b
+              class="manC_laranja_escuro">&ltstdarg.h&gt</b> é de muita valia com tais recursos, uma vez que o
+            planejamento de funções sem um número fixo de argumentos torna-se algo viável.
+          </p>
+          <p>
+        </div>
+        <div class="ui centered vertical padded segment">
+          <div class="ui large left aligned huge header manC_laranja">
+            <h1>Tipos:</h1>
+          </div>
+          <div class="ui very relaxed divided list">
+            <div class="item">
+              <div class="content">
+                <div class="description">
+                  <b>va_list</b>: armazena os valores passados como argumento na função em que for declarado.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui centered vertical padded segment">
+          <div class="ui large left aligned huge header manC_laranja">
+            <h1>Macros:</h1>
+          </div>
+          <div class="ui very relaxed divided list">
+            <div class="item">
+              <div class="content">
+                <div class="description">
+
+                  <p><b>va_start(va_list nTermos, ...)</b>: inicializa os n termos passado como argumento na função para
+                    a variável nTermos.
+                    <br>
+                  </p>
+
+                  <p><b>va_arg(va_list nTermos, </b><b class="manC_laranja odd">tipo das variáveis passadas como
+                      argumento</b><b>)</b>: percorre a lista dos argumentos na ordem em que eles foram passados.
+                    <br>
+                  </p>
+                  <p> <b>va_end(va_list nTermos)</b>: deve ser chamada imediatamente antes da função em que as macros
+                    estão sendo utilizadas retornar algum valor.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <div class="description">
+                Não há funções nesta biblioteca.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui stackable centered grid container">
+        <div class="twelve wide column">
+          <div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso</b>:</div>
+          <div class="ui container">
+            <pre>
+              <code class="c">
+//EXEMPLO STDARG.h
+
+#include &ltstdio.h&gt
+#include &ltstdarg.h&gt
+  
+int multiplica(int nTermos, ...) {
+    va_list listaTermos;
+    va_start(listaTermos, nTermos);
+  
+    int resultado = 1;
+  
+    for (int i = 0; i < nTermos; i++)
+        resultado = resultado*va_arg(listaTermos, int);
+  
+    va_end(listaTermos);
+  
+    return resultado;
+}
+  
+int main() {
+    printf("8! = %d\n", multiplica(7, 8, 7, 6, 5, 4, 3, 2));
+  
+    return 0;
+}
+              </code>
+            </pre>
+          </div>
+          <div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+              terminal</b>:</div>
+          <div class="ui container">
+            <pre>
+              <code class="console">
+  >clang-7 -pthread -lm -o main main.c
+  >./main
+  8! = 40320
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

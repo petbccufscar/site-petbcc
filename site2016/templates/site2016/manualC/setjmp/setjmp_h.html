@@ -39,16 +39,26 @@ Setjmp.h - Manual C
         <div class="ui centered vertical padded segment">
           <h1 class="manC_laranja">Descrição:</h1>
           <p class="justificado">
-            No cabeçalho &ltsetjmp.h&gt estão presentes funções e tipos que são capazes de manipular o 
+            No cabeçalho <b class="manC_laranja_escuro">&ltsetjmp.h&gt</b> estão presentes funções e tipos que são capazes de manipular o 
             fluxo de execução de um programa. Portanto, trata-se de um cabeçalho do qual seus recursos devem 
             ser utilizados apenas em situações nas quais estes são a única opção, caso o código escrito esteja 
             seguindo o paradigma de programação estruturada, uma vez que os efeitos das funções presentes neste cabeçalho assemelham-se ao uso de goto's no código.
           </p>
         </div>
-
-
-
-
+        <div class="ui centered vertical padded segment">
+          <div class="ui large left aligned huge header manC_laranja">
+            <h1>Tipos:</h1>
+          </div>
+          <div class="ui very relaxed divided list">
+            <div class="item">
+              <div class="content">
+                <div class="description">
+              <b>jmp_buf</b>: armazena dados referentes sobre o ponto para o qual a função longjmp deve saltar quando for chamada, por meio do uso da função setjmp, que memoriza esse ponto do salto por meio da variável declarada com este tipo.</p>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="ui large left aligned huge header manC_laranja">
           <h1>Funções:</h1>

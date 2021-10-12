@@ -447,6 +447,10 @@ def string_h(request):
     context_dictionary = {'pagina': 'string_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/string/string_h.html', context_dictionary)
 
+def stdarg_h(request):
+    context_dictionary = {'pagina': 'stdarg_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/stdarg/stdarg_h.html', context_dictionary)
+
 def string_funcoes(request):
     context_dictionary = {'pagina': 'string_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/string/string_funcoes.html', context_dictionary)
