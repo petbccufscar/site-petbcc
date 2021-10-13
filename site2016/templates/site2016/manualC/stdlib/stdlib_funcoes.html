@@ -1,0 +1,1028 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltstdlib.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<main role="main">
+				<a id="atof"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">double</b> atof(<b class="fundo_azul_titulo_manC">const char*</b> stringNum)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável que seja um array de caracteres.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número presente na string convertido para o tipo double.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO ATOF()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	char *exemplo = "42\0";
+
+	double resposta = atof(exemplo);
+
+	printf("%.0lf é a resposta!!!\n", resposta);
+
+	return 0;
+}
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			42 é a resposta!!!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="atoi"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">int</b> atoi(<b class="fundo_azul_titulo_manC">const char*</b> stringNum)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma string na qual um número esteja sendo representado.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número presente na string convertido para o tipo int.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO ATOI()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	char *exemplo = "42\0";
+
+	int resposta = atoi(exemplo);
+
+	printf("%d é a resposta!!!\n", resposta);
+
+	return 0;
+}
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			42 é a resposta!!!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="atol"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">long</b> atol(<b class="fundo_azul_titulo_manC">const char*</b> stringNum)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma string na qual um número esteja sendo representado.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número presente na string convertido para o tipo long.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO ATOL()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int main() {
+		char *exemplo = "42\0";
+	
+		long int resposta = atol(exemplo);
+	
+		printf("%ld é a resposta!!!\n", resposta);
+	
+		return 0;
+}
+	
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			42 é a resposta!!!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strtod"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">double</b> strtod(<b class="fundo_azul_titulo_manC">const char*</b> stringComNum, <b class="fundo_azul_titulo_manC">char**</b> resto)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para double.
+							</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRTOD()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	char *exemplo = "42 é a resposta!!!\0";
+	
+	double resposta = strtod(exemplo, NULL);
+
+	printf("%.0lf!!!\n", resposta);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			42!!!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strtol"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">long int</b> strtol(<b class="fundo_azul_titulo_manC">const char*</b> stringComNum, <b class="fundo_azul_titulo_manC">char**</b> resto,<b class="fundo_azul_titulo_manC">int</b> base)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para long na base indicada.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRTOL()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	char *exemplo = "42 é a resposta!!!\0";
+	
+	long int resposta = strtol(exemplo, NULL, 0);
+
+	printf("%ld!!!\n", resposta);
+
+	return 0;
+}		
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			42!!!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="strtoul"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">unsigned long int</b> strtoul(<b class="fundo_azul_titulo_manC">const char*</b> stringComNum, <b class="fundo_azul_titulo_manC">char**</b> resto, <b class="fundo_azul_titulo_manC">int</b> base)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.
+							</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para unsigned long na base indicada.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRTOUL()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	char *exemplo = "42 é a resposta!!!\0";
+	
+	unsigned long int resposta = strtoul(exemplo, NULL, 0);
+
+	printf("%ld!!!\n", resposta);
+
+	return 0;
+}		
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			42!!!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="rand"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">int</b> rand()
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> não recebe parâmetros.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um número do tipo inteiro, não negativo, "aleatório".</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO RAND()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	/*Número randômico entre 0 e 9*/
+	int randomico = rand()%10;
+
+	printf("%d.\n", randomico);
+
+	/*
+	 * Número randômico entre 0 e (n - 1)
+	 * int randomico = rand()%n
+	 * */
+
+	randomico = rand()%42;
+
+	printf("%d não é a resposta...\n", randomico);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			3.
+			3 não é a resposta...
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="srand"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC"></b> srand(<b class="fundo_azul_titulo_manC">int</b> valor)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> um número do tipo inteiro.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> void; srand() tem por finalidade configurar um valor inicial a partir do qual uma sequência de números serão aleatorizados, sendo o valor padrão 1.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRLEN()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	srand(42);
+
+	int randomico = rand()%10;
+
+	printf("%d.\n", randomico);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			6.
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="calloc"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">size_t*</b> calloc(<b class="fundo_azul_titulo_manC">size_t</b> quantidadeElementos, <b class="fundo_azul_titulo_manC">size_t</b> tamanhoDoTipo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> a quantidade de blocos do tipo a ser alocado, em quantidadeElementos, e o tipo (int, float, double, char, etc).</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o endereço inicial do espaço alocado; aloca espaço na memória de acordo com o tipo indicado em tamanhoDoTipo em blocos, conforme a quantidade de blocos indicada em quantidadeElementos, e inicializa todos os bytes do espaço alocado para 0.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO CALLOC()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	int *numero = (int *)calloc(1, sizeof(int));
+
+	printf("%d não é a resposta...\n", *numero);
+
+	*numero = 42;
+
+	printf("%d é a resposta em uma variável dinamicamente alocada\n"
+			"utilizando calloc()!\n", *numero);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			0 não é a resposta...
+			42 é a resposta em uma variável dinamicamente alocada
+			utilizando calloc()!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="malloc"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						malloc(<b class="fundo_azul_titulo_manC">size_t</b> tamanhoDoTipo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> a quantidade de memória a ser alocada, comumente indicada por sizeof(int), por exemplo.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o endereço inicial do espaço alocado; aloca espaço conforme o valor indicado em tamanhoDoTipo.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MALLOC()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	int *numero = (int *)malloc(sizeof(int));
+
+	printf("%d não é a resposta...\n", *numero);
+
+	*numero = 42;
+
+	printf("%d é a resposta em uma variável dinamicamente alocada\n"
+			"utilizando malloc()!\n", *numero);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			0 não é a resposta...
+			42 é a resposta em uma variável dinamicamente alocada
+			utilizando malloc()!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="realloc"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						realloc(<b class="fundo_azul_titulo_manC">void</b> *ponteiro, <b class="fundo_azul_titulo_manC">size_t</b> tamanhoDoTipo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o ponteiro da variável dinamicamente alocada e a quantia de memória que será reajustada para essa variável.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um endereço inicial do novo espaço alocado; realoca o espaço de memória para o qual ponteiro aponta, conforme o valor especificado em tamanhoDoTipo.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO REALLOC()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	int *numero = (int *)malloc(sizeof(int));
+
+	*numero = 42;
+
+	printf("%d é a resposta em uma variável dinamicamente alocada\n"
+			"utilizando calloc()!\n", *numero);
+
+	numero = realloc(numero, 10*sizeof(int));
+
+	for (int i = 0; i < 10; i++)
+		*(numero + i) = 42;
+
+	for (int i = 0; i < 10; i++)
+		printf("%d ", *(numero + i));
+
+	putchar('\n');
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			42 é a resposta em uma variável dinamicamente alocada
+			utilizando realloc()!
+			42 42 42 42 42 42 42 42 42 42
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="free"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						free(<b class="fundo_azul_titulo_manC">void </b> *ponteiro)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o ponteiro que aponta para a variável dinamicamente alocada, a qual pretende-se liberar o espaço de memória alocado para esta.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> void; free(ponteiro) libera o espaço alocado por calloc, malloc ou realloc para o qual ponteiro aponta.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO FREE()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	int *numero = (int *)malloc(sizeof(int));
+
+	*numero = 42;
+
+	free(numero);
+	printf("Ponteiro liberado!\n");
+
+	return 0;
+}
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Ponteiro liberado!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="abort"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						abort()
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> não recebe parâmetros.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b>void; interrompe e aborta a execução do programa no ponto em que abort() é chamada.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO ABORT()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	printf("Essa mensagem será mostrada na saída padrão.\n");
+
+	abort();
+
+	printf("Essa mensagem não será mostrada na saída padrão.\n");
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Essa mensagem será mostrada na saída padrão.
+			Aborted (core dumped)
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="exit"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						exit(<b class="fundo_azul_titulo_manC">int</b> status)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o tipo de retorno com o qual pretende-se finalizar a execução do programa.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o status do término da execução do programa e finaliza a sua execução no ponto em que exit(status) é chamada.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO EXIT()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+
+int main() {
+	int numero = 422;
+
+	if (numero != 42) {
+		exit(EXIT_FAILURE);
+		printf("Sáida!\n"):
+	}
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Saída!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="atexit"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						atexit(<b class="fundo_azul_titulo_manC">void</b> funcao(<b class="fundo_azul_titulo_manC">void</b>))
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> um procedimento a ser chamado ao fim da execução do programa.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um inteiro não nulo caso não seja possível chamar funcao() ao fim da execução do programa, caso contrário, retorna 0.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO ATEXIT()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+void Resposta() {
+	printf("42 é a resposta!\n");
+}
+
+int main() {
+	atexit(Resposta);
+
+	printf("Mensagem qualquer antes de finalizar o programa...\n");
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			Mensagem qualquer antes de finalizar o programa...
+			42 é a resposta!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="system"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						system(<b class="fundo_azul_titulo_manC">const char*</b> comandoSO)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> um comando a ser executado pelo Sistema Operacional, passado como uma string.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um inteiro não nulo caso não seja possível fazer a requisição da execução da instrução indicada por comandoSO.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO STRSTR()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int main() {
+	system("echo \"42 é a resposta!\"");
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console terminal">
+			>./main
+			42 é a resposta!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="getenv"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						getenv(<b class="fundo_azul_titulo_manC">const char*</b> nomeVariavel)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma string com o nome de uma variável do Sistema Operacional.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b>uma string contendo o caminho para o qual a variável de sistema nomeVariavel aponta.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO MEMCHR()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int main() {
+	char *path = getenv("HOME");
+
+	printf("%s\n", path);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			/home/user
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="bsearch"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						bsearch(<b class="fundo_azul_titulo_manC">const void*</b> chave, <b class="fundo_azul_titulo_manC">const void*</b> array, <b class="fundo_azul_titulo_manC">size_t</b> tamanhoDoArray,<b class="fundo_azul_titulo_manC">size_t</b> tipoDoArray, <b class="fundo_azul_titulo_manC">int </b> (*compara)(const void *, const void *))
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável com o valor que se deseja procurar, com passagem por referência, o array no qual será feita a busca, o tamanho do array, o tamanho do tipo que o array armazena, e uma função que efetua a comparação de duas variáveis e retorna um valor inteiro, para fins de comparação, como resultado.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o endereço no qual o valor indicado por *chave está localizado; se o valor não estiver em *array, retorna NULL.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO BSEARCH()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int Compara(const void *a, const void *b) {
+	return (*((int *)a) - *((int *)b));
+}
+
+int main() {
+	int array[10] = {1, 2, 3, 4, 5,
+	6, 7, 8, 9, 10};
+
+	int chave = 9;
+
+	int *achou;
+
+	achou = bsearch(&chave, array, 10, sizeof(int), Compara);
+
+	if (achou == NULL)
+		printf("O número informado não está no array.\n");
+	else
+		printf("O número %d está no array!\n", *achou);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			O número 9 está no array!
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="qsort"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						qsort(<b class="fundo_azul_titulo_manC">void*</b> array, <b class="fundo_azul_titulo_manC">size_t</b> tamanhoDoArray, <b class="fundo_azul_titulo_manC">size_t</b> tipoDoArray, <b class="fundo_azul_titulo_manC">int </b> (*compara)(const void *, const void *))
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o array que será ordenado, o tamanho do array, o tamanho do tipo que o array armazena, e uma função que efetua a comparação de duas variáveis e retorna um valor inteiro, para fins de comparação, como resultado.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> void; a função ordena o array passado como parâmetro em ordem crescente.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO QSORT()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int Compara(const void *a, const void *b) {
+	return (*((int *)a) - *((int *)b));
+}
+
+int main() {
+	int array[10] = {7, 8, 3, 5, 9,
+	1, 4, 6, 10, 2};
+
+	printf("O array antes de chamar qsort():\n");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", array[i]);
+	putchar('\n');
+
+	qsort(array, 10, sizeof(int), Compara);
+
+	printf("O array após chamar qsort():\n");
+	for (int i = 0; i < 10; i++)
+		printf("%d\t", array[i]); 
+	putchar('\n');
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			O array antes de chamar qsort():
+			7 8 3 5 9 1 4 6 10 2
+			O array após chamar qsort();
+			1 2 3 4 5 6 7 8 9 10
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="abs"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						abs(<b class="fundo_azul_titulo_manC">int</b> numero)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> um número do tipo inteiro, para o qual deseja-se obter o módulo.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o módulo do número passado como parâmetro.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO ABS()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int main() {
+	int respostaNegativa = -42;
+
+	printf("O número informado é: %d\n"
+			"E o módulo do número é: %d\n",
+			respostaNegativa, abs(respostaNegativa));
+
+	return 0;
+}
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			O número informado é: -42
+			E o módulo do número é: 42
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="labs"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">long int</b> labs(<b class="fundo_azul_titulo_manC">long</b> numero)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> um número do tipo long int, para o qual deseja-se obter o módulo.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o módulo do número passado como parâmetro.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO LABS()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int main() {
+	long int respostaNegativa = -42;
+
+	printf("O número informado é: %ld\n"
+			"E o módulo do número é: %ld\n",
+			respostaNegativa, labs(respostaNegativa));
+
+	return 0;
+}
+
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			O número informado é: -42
+			E o módulo do número é: 42
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="div"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">div_t</b> div(<b class="fundo_azul_titulo_manC">int</b> numerador, <b class="fundo_azul_titulo_manC">int</b> denominador)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> dois números do tipo inteiro.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o resultado da divisão numerador/denominador e o resto da divisão armazenados em um struct do tipo div_t.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO DIV()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int main() {
+	int numerador = 9;
+	int denominador = 3;
+
+	div_t divisao = div(numerador, denominador);
+
+	printf("A divisão de %d por %d resulta em: %d\n"
+			"O resto da divisão é: %d\n",
+			numerador, denominador, divisao.quot, divisao.rem);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			A divisão de 9 por 3 resulta em: 3
+			O resto da divisão é: 0
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+				<a id="ldiv"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">ldiv_t</b> ldiv(<b class="fundo_azul_titulo_manC">long</b> numerador, <b class="fundo_azul_titulo_manC">long</b> denominador)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> dois números do tipo long int.</p>
+							<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o resultado da divisão numerador/denominador e o resto da divisão armazenados em um struct do tipo ldiv_t.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="c">
+//EXEMPLO LDIV()
+
+#include &ltstudio.h&gt
+#include &ltstdlib.h&gt
+	
+int main() {
+	long int numerador = 9;
+	long int denominador = 3;
+
+	ldiv_t divisao = ldiv(numerador, denominador);
+
+	printf("A divisão de %ld por %ld resulta em: %ld\n"
+			"O resto da divisão é: %ld\n",
+			numerador, denominador, divisao.quot, divisao.rem);
+
+	return 0;
+}
+								</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do terminal</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs console">
+			>./main
+			A divisão de 9 por 3 resulta em: 3
+			O resto da divisão é: 0
+								</code></pre>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+		<div class="right one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/stdlib/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}

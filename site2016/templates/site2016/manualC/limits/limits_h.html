@@ -1,0 +1,61 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+limits.h - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <h1 class="ui inverted header">
+        &ltlimits.h&gt
+      </h1>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %} 
+        {% include 'site2016/manualC/leftSidebar.html' %} 
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <br class="justificado">
+            No cabeçalho <b class="manC_laranja_escuro">limits.h</b> estão definidas as constantes que delimitam os valores máximos e mínimos que variáveis de um dado tipo podem assumir. Assim, é possível operar com os tipos presentes na linguagem C tendo-se absoluta certeza que uma determinada variável serve ao propósito de alguma aplicação para a qual ele foi designado, uma vez que se espera que essa variável esteja limitada superiormente e inferiormente.
+          </p>
+        </div>
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Macros:</h1>
+          <p class="justificado">
+            <b>CHAR_BIT</b>: quantidade de bits necessários para se representar uma variável do tipo char.
+            <br><br><b>SCHAR_MIN</b>: valor numérico mínimo que um signed char pode assumir.
+            <br><br><b>SCHAR_MAX</b>: valor numérico máximo que um signed char pode assumir.
+            <br><br><b>UCHAR_MAX</b>: valor numérico máximo que um unsigned char pode assumir.
+            <br><br><b>CHAR_MIN</b>: valor numérico mínimo que um char pode assumir.
+            <br><br><b>CHAR_MAX</b>: valor numérico máximo que um char pode assumir.
+            <br><br><b>SHRT_MIN</b>: valor numérico mínimo que um short int pode assumir.
+            <br><br><b>SHRT_MAX</b>: valor numérico máximo que um short int pode assumir.
+            <br><br><b>USHRT_MAX</b>: valor numérico máximo que um unsigned short int pode assumir.
+            <br><br><b>INT_MIN</b>: valor numérico mínimo que um int pode assumir.
+            <br><br><b>INT_MAX</b>: valor numérico máximo que um int pode assumir.
+            <br><br><b>UINT_MAX</b>: valor numérico máximo que um unsigned int pode assumir.
+            <br><br><b>LONG_MIN</b>: valor numérico mínimo que um long int pode assumir.
+            <br><br><b>LONG_MAX</b>: valor numérico máximo que um long int pode assumir.
+            <br><br><b>ULONG_MAX</b>: valor numérico máximo que um unsigned long int pode assumir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
