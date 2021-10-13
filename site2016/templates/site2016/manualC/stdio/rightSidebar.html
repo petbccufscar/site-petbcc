@@ -1,0 +1,36 @@
+{% load static %}
+
+{% block sidebar_content2 %}
+<div class="mobile hidden ui centered stackable grid ">
+  <div class="ui right fixed vertical menu">
+      <div class="item">
+        <div class="header">
+          <h2 class="ui manC_laranja header">Funções</h2>
+        </div>
+      </div>
+      <div class="item">
+        <div class="menu">
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fopen"><b>fopen()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fclose"><b>fclose()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fread"><b>fread()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fwrite"><b>fwrite()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fseek"><b>fseek()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#ftell"><b>ftell()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#rewind"><b>rewind()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fflush"><b>fflush()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fprintf"><b>fprintf()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#fscanf"><b>fscanf()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#feof"><b>feof()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#remove"><b>remove()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#rename"><b>rename()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#printf"><b>printf()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#scanf"><b>scanf()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#getc"><b>getc()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#gets"><b>gets()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#getchar"><b>getchar()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'stdio_funcoes' %}#putchar"><b>putchar()</b></a>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

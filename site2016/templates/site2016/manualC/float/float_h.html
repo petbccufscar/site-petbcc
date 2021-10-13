@@ -1,0 +1,178 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Float.h - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <div class="ui grid">
+        <div class="column">
+          <div class="row">
+            <h1 class="ui inverted header">
+              <!-- Tirei o id, para ficar lowercase -->
+              &ltfloat.h&gt
+              <!-- &lt e h&gt é para setar os <> -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %}
+        {% include 'site2016/manualC/leftSidebar.html' %}
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <p class="justificado">
+            O arquivo de cabeçalhos <b class="manC_laranja_escuro">&ltfloat.h&gt</b> fornece alguns macros de números de 
+              pontos flutuantes do tipo ‘float’ para o sistema específico e a 
+              implementação para o compilador utilizado.<br>
+              Um número de ponto flutuante são compostos por 4 (quatro) elementos:
+              <ul>
+                <li>
+                  Um sinal: sendo negativo ou não-negativo em sua ausência
+                </li>
+                <li>
+                  Uma base: a qual representa qual base o número será escrito (2 para binário, 10 para decimal, 16 para hexadecimal, 8 para octal e assim por diante).
+                </li>
+                <li>
+                  Uma mantissa: que é uma sequência de números na base mencionada. O número de dígitos aqui expressos também é conhecido como sua precisão.
+                </li>
+                <li>
+                  Um expoente: que representa o deslocamento da mantissa, afetando o número da seguinte maneira:
+                </li>
+                <br>
+                <table border="1" style="margin-left: auto;margin-right: auto;">
+                  <tr>
+                    <td>
+                      Valor do Ponto Flutuante = [sinal] mantissa x base<sup>expoente</sup> 
+                    </td>
+                  </tr>
+                </table>
+              </ul>
+          </p>
+          <p>
+        </div>
+        <div class="ui centered vertical padded segment">
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Macros:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <div class="description">
+                O prefixo das macros está diretamente relacionado ao seu tipo, onde 
+                <b>FLT</b> (float), <b>DBL</b> (double) e <b>LDBL</b> (long double). Estão presentes na biblioteca &ltfloat.h&gt as seguintes macros:
+                <ul>
+                  <li>
+                    <b>FLT_ROUNDS</b>: Informa o modo de arredondamento para todos os valores do tipo float, double e long double. Pode ser alterado com as funções presentes na biblioteca <b>&ltfenv.h&gt</b>. 
+                    Cada valor, representa um modo, sendo eles:
+                    <ul>
+                      <li>
+                        -1: indeterminado
+                      </li>
+                      <li>
+                        0: em direção a zero
+                      </li>
+                      <li>
+                        1: para o valor mais próximo
+                      </li>
+                      <li>
+                        2: em direção ao infinito positivo
+                      </li>
+                      <li>
+                        3: em direção ao infinito negativo
+                      </li>
+                      <br>
+                    </ul>
+                  </li>
+                  <br>
+                  <li>
+                    <b>FLT_RADIX</b>: Informa a base do expoente, sendo <b>2</b> (binário), <b>10</b> (decimal) ou <b>16</b> (hexadecimal).
+                  </li>
+                  <br>
+                  <li>
+                    <b>
+                    FLT_MANT_DIG<br>
+                    DBL_MANT_DIG<br>
+                    LDBL_MANT_DIG</b>: Informam o número de dígitos do número na base FLT_RADIX.
+
+                  </li>
+                  <br>
+                  <li>
+                    <b>
+                    FLT_DIG<br>
+                    DBL_DIG<br>
+                    LDBL_DIG</b>: Informam a quantidade máxima de dígitos decimais que podem ser representados sem sofrerem mudanças por arredondamento.
+
+                  </li>
+                  <br>
+                  <li><b>
+                    FLT_MIN_EXP<br>
+                    DBL_MIN_EXP<br>
+                    LDBL_MIN_EXP</b>: Informam o menor valor inteiro negativo para um expoente na base FLT_RADIX.
+                  </li>
+                  <br>
+                  <li>
+                    <b>FLT_MIN_10_EXP<br>
+                      DBL_MIN_10_EXP<br>
+                      LDBL_MIN_10_EXP</b>: Informam o menor valor inteiro negativo para um expoente na base decimal.
+                  </li>
+                  <br>
+                  <li>
+                    <b>FLT_MAX_EXP<br>DBL_MAX_EXP<br>LDBL_MAX_EXP</b>: Informam o maior valor inteiro para um expoente na base FLT_RADIX.
+                  </li>
+                  <br>
+                  <li>
+                  <b>FLT_MAX_10_EXP<br>DBL_MAX_10_EXP<br>LDBL_MAX_10_EXP</b>: Informam o maior valor inteiro para um expoente na base decimal.
+                  </li>
+                  <br>
+                  <li>
+                    <b>FLT_MAX<br>DBL_MAX<br>LDBL_MAX</b>: Informam o maior valor finito de um ponto flutuante.
+                  </li>
+                  <br>
+                  <li>
+                    <b>FLT_MIN<br>DBL_MIN<br>LDBL_MIN</b>: Informam o menor valor finito de um ponto flutuante.
+                  </li>
+                  <br>
+                  <li>
+                    <b>FLT_EPSILON<br>DBL_EPSILON<br>LDBL_EPSILON</b>: Informam o dígito menos significativo representável.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <div class="description">
+                Não há funções nesta biblioteca.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

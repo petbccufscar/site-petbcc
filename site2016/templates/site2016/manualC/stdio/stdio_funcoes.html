@@ -1,0 +1,1088 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltstdio.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<!-- Inicio acos()-->
+			<main role="main">
+				<a id="fopen"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo" id="fopen">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">FILE *</b>fopen(<b class="fundo_azul_titulo_manC">const char *</b>nomeArquivo, <b class="fundo_azul_titulo_manC">const char *</b>modoDeAbertura)
+
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b>
+								um array de caracteres contendo o nome do arquivo e outro com o modo de abertura.
+</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b>
+										o endereço de uma estrutura do  tipo FILE usada pelo sistema para gerenciar o arquivo aberto. Em caso de falha na abertura, o valor NULL é retornado.
+</p>
+<p class="justificado">
+	A função solicita ao sistema operacional o acesso a um determinado arquivo, usando os seguintes modos:
+	<br>
+	<ul>
+		<li>
+			r: abertura com permissão exclusiva para leitura, com posição corrente ajustada para o início do arquivo;
+		</li>
+		<li>
+			r+: abertura com permissão para leitura e escrita, com posição corrente ajustada para o início do arquivo;
+		
+		</li><li>w: truncamento do arquivo para tamanho zero ou criação de um arquivo novo com permissão exclusiva para escrita e posição corrente ajustada para o início do arquivo;
+</li><li>w+: truncamento do arquivo para tamanho zero ou criação de um arquivo novo com permissão para escrita e leitura, com posição corrente ajustada para o início do arquivo;
+</li><li>a: abertura com permissão exclusiva para escrita, com ajuste da posição corrente para o final do arquivo; se o arquivo não existir ele é criado;
+</li><li>a: abertura com permissão para leitura e escrita, com ajuste da posição corrente para o final do arquivo; se o arquivo não existir ele é criado.
+</li>
+	</ul>
+	<br>
+	O modo pode conter também o caractere ‘b’, usado para compatibilidade com o padrão C89. Ele é ignorado em sistemas POSIX. Este caractere é usado para indicar que o arquivo é aberto no modo binário.
+
+</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FOPEN()
+
+#include &ltstdio.h&gt		
+ 
+	int main(void)
+	{
+		char *nomeArquivo = "exemplo.dat";
+		FILE *arquivo = fopen(nomeArquivo, "w");
+	 
+		if(arquivo == NULL)
+			printf(“Falha\n”);
+		else
+			fclose(arquivo);
+	 
+		return 0;
+	}
+			
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			>ls
+			exemplo.dat main main.c 
+										</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<!-- Link para barra lateral -->
+				<a id="fclose"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header fundo_azul_titulo_manC">
+						<b class="fundo_azul_titulo_manC">int</b> fclose(<b class="fundo_azul_titulo_manC">FILE *</b>arquivo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b>
+								uma variável contendo o endereço de um descritor de arquivo.
+</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b>
+										um valor do tipo int indicando se a operação foi bem sucedida, retornando 0 no caso de sucesso, ou EOF em caso de falha.
+</p>
+<p>
+	A função dispara as ações para o fechamento do arquivo, o que inclui qualquer escrita de dados ainda pendente, e libera o recurso usado no sistema operacional.
+O comportamento da função é indefinido caso o endereço passado não corresponda a um descritor de arquivo aberto ou válido.
+Em caso de falha, o valor de errno é usado para indicar o erro.
+
+</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre><code class="hljs c">
+//EXEMPLO FCLOSE()
+
+#include &ltstdio.h&gt		
+
+int main(void)
+{
+    char *nomeArquivo = "exemplo.dat";
+    FILE *arquivo = fopen(nomeArquivo, "w");
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+
+											</code></pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+											<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			>ls
+			exemplo.dat main main.c
+											</code>
+										</pre>
+									</div>
+						</div>
+					</div>
+					<a id="fread"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">size_t</b> fread(<b class="fundo_azul_titulo_manC">void *</b>itemLer, <b class="fundo_azul_titulo_manC">size_t</b> tamanhoDoItem, <b class="fundo_azul_titulo_manC">size_t</b> quantidadeItem, <b class="fundo_azul_titulo_manC">FILE *</b>arquivo)</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b>
+								o endereço do local onde se irá armazenar o que for lido do arquivo, o tamanho, em bytes, de um item individual que será lido, a quantidade de itens que serão lidos e o arquivo endereço do descritor de arquivo.
+ </p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> a quantidade de itens lidos na chamada da função.
+									</p>
+									<p>
+										A função tenta transferir <b>quantidadeItem</b> itens, cada um com <b>tamanhoDoItem</b> bytes para a memória iniciada no endereço <b>itemLer</b>. O valor retornado é a quantidade de itens lidos com sucesso, que pode ser inferior à solicitada.
+<br>Não é feito um tratamento de erros, de forma que as funções <b>feof</b> e <b>ferror</b> podem ser utilizadas para verificar a razão de eventuais falhas.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FREAD()
+
+#include &ltstdio.h&gt	
+
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "r");
+ 
+    char copia[99];
+ 
+    int itens_lidos = fread(copia, sizeof(char), 99, arquivo);
+    
+    printf("Foram lidos %d itens\n", itens_lidos);
+    for(int i = 0; i &lt itens_lidos; i++)
+        printf("%c", copia[i]);
+    printf("\n");
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+	
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			Foram lidos 14 itens
+			Hello, World!
+
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="fwrite"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b>size_t</b> fwrite(<b>void *</b>itemEscrita, <b>size_t</b> tamanhoDoItem, <br>
+						<b>size_t</b> quantidadeItem, <b>FILE *</b>arquivo)
+
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> a variável contendo o que será escrito no arquivo, o tamanho, em bytes do que será escrito, a quantidade de vezes que será escrito o item indicado, o arquivo no qual o objeto será escrito.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> a quantidade de itens escritos na chamada da função.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FWRITE()
+
+#include &ltstdio.h&gt											
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "w");
+ 
+    char copia[99] = "Hello, World.\n\0";
+ 
+    fwrite(copia, 99*sizeof(char), 1, arquivo);
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+	
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			>cat exemplo.dat
+			Hello, World.
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="fseek"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> fseek(<b class="fundo_azul_titulo_manC">FILE *</b>arquivo, <b class="fundo_azul_titulo_manC">long</b> salto, <b class="fundo_azul_titulo_manC">int</b> origemDoSalto)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma variável contendo um arquivo aberto, e a quantidade de posições que se deseja deslocar no arquivo.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um inteiro diferente de zero caso tenha ocorrido algum erro na execução da função.</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FSEEK()
+
+#include &ltstdio.h&gt	
+										
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "r");
+ 
+    char copia[99];
+ 
+    fseek(arquivo, 0, SEEK_SET);
+    fread(copia, 99*sizeof(char), 1, arquivo);
+ 
+    printf("%s\n", copia);
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			Hello, World.
+
+			
+      
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="ftell"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">long int</b> <b class="fundo_azul_titulo_manC"></b>ftell(<b class="fundo_azul_titulo_manC">FILE *</b>arquivo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o arquivo do qual deseja-se saber em que posição ele está.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o posicionamento para leitura e/ou escrita na qual o arquivo está no momento da chamada da função.
+
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FTELL()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "r");
+ 
+    printf("%ld\n", ftell(arquivo));
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			0
+
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="rewind"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">void</b> rewind(<b class="fundo_azul_titulo_manC">FILE *</b>arquivo)	
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o arquivo para o qual deseja-se fazer o reposicionamento para o início.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> a função não tem retorno; void.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO REWIND()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "w+");
+ 
+    char copia[99] = "Hello, World.";
+ 
+    fwrite(copia, 99*sizeof(char), 1, arquivo);
+    fwrite("Teste.", 8*sizeof(char), 1, arquivo);
+ 
+    rewind(arquivo);
+ 
+    char teste[99];
+    fread(teste, 99*sizeof(char), 1, arquivo);
+ 
+    printf("%s\n", teste);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			Hello, World.
+			>ls
+			exemplo.dat main main.c
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="fflush"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> fflush(<b class="fundo_azul_titulo_manC">FILE *</b>stream)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o arquivo para o qual deseja-se limpar o buffer de operações de leitura e escrita.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando o valor numérico para EOF.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FFLUSH()
+
+#include &ltstdio.h&gt
+
+int main(void)
+{
+    char *nomeArquivo = "exemplo.dat";
+    FILE *arquivo = fopen(nomeArquivo, "w");
+ 
+    char textoQualquer[99] = "Teste do teste de testes.\n";
+ 
+    fwrite(textoQualquer, 99*sizeof(char), 1, arquivo);
+    fflush(arquivo);
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			>ls
+			exemplo.dat main main.c
+			>cat exemplo.dat
+			Teste do teste de testes.
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="fprintf"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> fprintf(<b class="fundo_azul_titulo_manC">FILE *</b>stream, <b class="fundo_azul_titulo_manC">const char *</b>stringParaEscrita, <b><br>
+						(variáveis serão utilizadas, assim como em printf)</b>)
+	
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o arquivo no qual deseja-se efetuar a escrita da string, a string a ser escrita, as variáveis referentes a formatação da string.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número de caracteres escrito, ou, caso a operação não seja bem sucedida, um valor negativo.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FPRINTF()
+
+#include &ltstdio.h&gt	
+
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "w");
+ 
+    fprintf(arquivo, "%d é a resposta.\n", 42);
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			>ls
+			exemplo.dat main main.c
+			>cat exemplo.dat
+			42 é a resposta.
+
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="fscanf"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> fscanf(<b class="fundo_azul_titulo_manC">FILE *s</b>tream, <b class="fundo_azul_titulo_manC">const char *</b>stringParaEscrita, <b><br>
+						(variáveis que serão utilizadas na formatação)</b>)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o arquivo a partir do qual deseja-se copiar o conteúdo para uma string, a string para a qual o conteúdo será escrito.</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> EOF, caso tenha atingido o fim do arquivo, ou então retorna a quantidade de leituras realizadas.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FSCANF()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "w+");
+ 
+    char fraseQualquer[99];
+    fprintf(arquivo, "Este não é um teste.\n");
+    fprintf(arquivo, "Este é O Teste.\n");
+ 
+    rewind(arquivo);
+ 
+    while (fscanf(arquivo, "%s", fraseQualquer) != EOF)
+        printf("%s ", fraseQualquer);
+ 
+    putchar('\n');
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			>ls
+			exemplo.dat main main.c
+			>cat exemplo.dat
+			Este não é um teste.
+			Este é O Teste.
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="feof"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> feof(<b class="fundo_azul_titulo_manC">FILE *</b>arquivo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> o arquivo para o qual deseja-se saber se o seu final foi alcançado.</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> um inteiro diferente de zero caso o programa tenha chegado ao fim do arquivo.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO FEOF()
+
+#include &ltstdio.h&gt											
+ 
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "r");
+ 
+    printf("%d\n", feof(arquivo));
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			0
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="remove"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> remove(<b class="fundo_azul_titulo_manC">const char *</b>nomeArquivo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b>uma string contendo o nome do arquivo que se deseja remover.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b>um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando um inteiro diferente de 0.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO REMOVE()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    remove("exemplo2.dat");
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>ls
+			exemplo2.dat main main.c
+			>./main
+			>ls
+			main main.c
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="rename"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> rename(<b class="fundo_azul_titulo_manC">const char *</b>nomeArquivo, <b class="fundo_azul_titulo_manC">const char *</b>renomearArquivo)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> uma string com o nome do arquivo que será renomeado, uma string contendo o novo nome do arquivo.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b>  um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando um inteiro diferente de 0.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO RENAME()
+
+#include &ltstdio.h&gt		
+
+int main(void)
+{
+    rename("exemplo.dat", "exemplo2.dat");
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>ls
+			exemplo.dat main main.c
+			>./main
+			>ls
+			exemplo2.dat main main.c
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="printf"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> printf(<b class="fundo_azul_titulo_manC">const char *</b>stringParaEscrita, <br>
+						<b>(variáveis que serão utilizadas na formatação)</b>)
+
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> a string que será impressa na saída padrão, as variáveis indicadas na string para devida formatação.</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o número de caracteres escritos, ou, caso a operação não tenha sido bem sucedida, um valor negativo.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO printf()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    printf("%d é a resposta.\n", 42);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			42 é a resposta.
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="scanf"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> scanf(<b class="fundo_azul_titulo_manC">const char *</b>stringDeLeitura,<br>
+						 <b>(variáveis que receberão os valores indicados na entrada padrão)</b>)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> string indicando quais os tipos das variáveis que receberão os valores indicados na entrada padrão, as variáveis que tiveram seus tipos indicadas na string.
+
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> EOF, caso tenha atingido o fim do arquivo, ou então retorna a quantidade de leituras realizadas.</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO SCANF()
+
+#include &ltstdio.h&gt	
+
+int main(void)
+{
+    int numeros[7];
+ 
+    for (int i = 0; i &lt 7; i++)
+        scanf("%d", numeros + i);
+ 
+    putchar('{');
+    for (int i = 0; i &lt 7; i++)
+        printf("%d, ", numeros[i]);
+    printf("...}\n");
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			1
+			2
+			3
+			4
+			5
+			6
+			7
+			{1, 2, 3, 4, 5, 6, 7, ...}
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="getc"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> getc(<b class="fundo_azul_titulo_manC">FILE *</b>stream)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> a stream a partir da qual o próximo caractere será lido.</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o próximo caractere presente na stream indicada.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO GETC()
+
+#include &ltstdio.h&gt	
+
+int main(void)
+{
+    FILE *arquivo = fopen("exemplo.dat", "w+");
+ 
+    fprintf(arquivo, "%d é a resposta.\n", 42);
+ 
+    rewind(arquivo);
+ 
+    char c;
+ 
+    while ((c = getc(arquivo)) != EOF)
+        putchar(c);
+ 
+    fclose(arquivo);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			42 é a resposta.
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="gets"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+					<b class="fundo_azul_titulo_manC">char *</b>gets(<b class="fundo_azul_titulo_manC">FILE *</b>stream)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> a stream a partir da qual a próxima linha contendo uma string será lida.
+							</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> a string lida na chamada da função ou NULL, em caso de erro.
+									</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO GETS()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    char texto[99];
+ 
+    gets(texto);
+ 
+    printf("%s\n", texto);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			O teste dos testes de casos teste.
+			O teste dos testes de casos teste.
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="getchar"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> getchar()
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> não recebe parâmetros; void.</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o próximo caractere presente na entrada padrão.</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO GETCHAR()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    char c, frase[99];
+    int i = 0;
+ 
+    while ((c = getchar()) != EOF)
+        frase[i++] = c;
+ 
+    printf("%s", frase);
+ 
+    return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			O teste do teste de todos os testes
+			Fim.
+			O teste do teste de todos os testes
+			Fim.
+
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				<a id="putchar"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header">
+						<!-- Tirei o id, para ficar lowercase -->
+						<b class="fundo_azul_titulo_manC">int</b> putchar(<b class="fundo_azul_titulo_manC">int</b> caractere)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado"><b class="manC_laranja_escuro">Recebe:</b> um caractere.</p>
+									<p class="justificado"><b class="manC_laranja_escuro">Retorna:</b> o caractere escrito na saída padrão.</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO PUTCHAR()
+
+#include &ltstdio.h&gt											
+
+int main(void)
+{
+    putchar(';');
+    putchar('\n');
+ 
+    return 0;
+}
+
+								</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+											terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			;
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+					<a id="tan"></a>
+				</section>
+			</main>
+		</div>
+		<div class="right one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/stdio/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}

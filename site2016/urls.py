@@ -24,6 +24,16 @@ urlpatterns = [
     # Ctype.h
     url(r'^ctype/$', views.ctype_h, name='ctype_h'),
     url(r'^ctypefuncoes/$', views.ctype_funcoes, name='ctype_funcoes'),
+    # Float.h
+    url(r'^float/$', views.float_h, name='float_h'),
+    # Setjmp.h
+    url(r'^setjmp/$', views.setjmp_h, name='setjmp_h'),
+    url(r'^setjmpfuncoes/$', views.setjmp_funcoes, name='setjmp_funcoes'),
+    # Stdarg.h
+    url(r'^stdarg/$', views.stdarg_h, name='stdarg_h'),
+    # Stdio.h
+    url(r'^stdio/$', views.stdio_h, name='stdio_h'),
+    url(r'^stdiofuncoes/$', views.stdio_funcoes, name='stdio_funcoes'),
     # String.h
     url(r'^string/$', views.string_h, name='string_h'),
     url(r'^stringfuncoes/$', views.string_funcoes, name='string_funcoes'),

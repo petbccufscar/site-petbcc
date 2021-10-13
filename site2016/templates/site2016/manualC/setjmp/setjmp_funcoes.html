@@ -1,0 +1,149 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltsetjmp.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<!-- Inicio setjmp()-->
+			<main role="main">
+				<a id="setjmp"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo" id="isalnum">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">int</b> setjmp (<b class="fundo_azul_titulo_manC">jmp_buf</b> ponto)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
+								uma variável que irá indicar o ponto a partir do qual o código é executado quando a função longjmp().</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b>
+								em sua primeira chamada com uma mesma variável, a função retorna zero, e após a primeira vez um valor diferente de zero.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="c">
+//EXEMPLO setjmp()
+
+#include &ltstdio.h&gt
+#include &ltsetjmp.h&gt
+	
+int main() {
+	jmp_buf pulo;
+	
+	int controle = setjmp(pulo);
+	
+	printf("Ao infinito e além! %d\n", controle);
+	
+	if (controle == 0)
+		longjmp(pulo, 42);
+	
+	return 0;
+}
+										</code>
+								</pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			Ao infinito e além! 0
+			Ao infinito e além! 42
+									</code>
+								</pre>
+							</div>
+						</div>
+					</div>
+					<!-- Link para barra lateral -->
+					<a id="longjmp"></a>
+				</section>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header fundo_azul_titulo_manC">
+						<b class="fundo_azul_titulo_manC">void</b class="fundo_azul_titulo_manC"> longjmp(<b
+							class="fundo_azul_titulo_manC">jmp_buf</b> ponto, <b class="fundo_azul_titulo_manC">int</b> valor)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p class="justificado" ><b class="manC_laranja_escuro">Recebe:</b>
+								uma variável do tipo jmp_buf, que indica para onde a função deverá saltar,
+								 e um valor numérico diferente de zero, o qual será utilizado pela função setjmp() para retornar o valor inteiro não igual a zero após a execução do primeiro salto.</p>
+							<p class="justificado" ><b class="manC_laranja_escuro">Retorna:</b>
+								void, função sem retorno.</p>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+							<div class="ui container">
+								<pre><code class="hljs c">
+//EXEMPLO longjmp()
+
+#include &ltstdio.h&gt
+#include &ltsetjmp.h&gt
+	
+int main() {
+	jmp_buf pulo;
+	
+	int controle = setjmp(pulo);
+	
+	if (controle == 1) {
+		printf("Eu pulo... ");
+		controle = setjmp(pulo);
+	}
+	if (controle == 2) {
+		printf("e pulo... ");
+		controle = setjmp(pulo);
+	}
+	if (controle == 3) {
+		printf("e pulo sem parar!!\n");
+		controle = setjmp(pulo);
+	}
+	
+	if (controle != 4)
+		longjmp(pulo, controle + 1);
+	
+	return 0;
+}
+	
+	
+											</code></pre>
+							</div>
+							<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+									terminal</b>:</div>
+							<div class="ui container">
+								<pre>
+											<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+			Eu pulo... e pulo... e pulo sem parar!!
+
+											</code>
+										</pre>
+							</div>
+						</div>
+					</div>					
+			</main>
+		</div>
+		<div class="right floated one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/setjmp/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}
