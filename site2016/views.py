@@ -492,3 +492,12 @@ def time_funcoes(request):
 def limits_h(request):
     context_dictionary = {'pagina': 'limits_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/limits/limits_h.html', context_dictionary)
+
+def signal_h(request):
+    context_dictionary = {'pagina': 'signal_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/signal/signal_h.html', context_dictionary)
+
+
+def signal_funcoes(request):
+    context_dictionary = {'pagina': 'signal_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/signal/signal_funcoes.html', context_dictionary)

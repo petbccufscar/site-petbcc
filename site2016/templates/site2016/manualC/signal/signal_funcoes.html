@@ -1,0 +1,125 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+Funções &ltsignal.h&gt - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui stackable centered grid">
+	<div class="row">
+		<div class="one wide left floated column">
+			{% block sidebar_content %}
+			{% include 'site2016/manualC/leftSidebar.html' %}
+			{% endblock %}
+		</div>
+		<div class="fourteen wide column">
+			<main role="main">
+				<a id="signal"></a>
+				<header class="ui inverted masthead center aligned segment manC_header" id="fundo_azul_titulo" id="acos">
+					<h1 class="ui inverted header">
+						<b class="fundo_azul_titulo_manC">void</b> signal(<b class="fundo_azul_titulo_manC">int</b> sinal, <b class="fundo_azul_titulo_manC">void</b>(*tratamento)<b class="fundo_azul_titulo_manC">(int)(int)</b>)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> uma variável inteira que indica qual dos sinais deve ser tratado adiante e qual o tratamento deve ser dado quando o programa enviar um sinal do tipo informado.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> void, função sem retorno.</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO SIGNAL()
+
+#include &ltstdio.h&gt									
+#include &ltsignal.h&gt
+
+int main() {
+	signal(SIGTERM, SIG_IGN);
+
+	raise(SIGTERM);
+
+	printf("O programa não terminou a execução a ainda!\n");
+
+	return 0;
+}
+
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+										terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+      O programa não terminou a execução ainda!
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				</section>
+				<a id="raise"></a>
+				<header class="ui inverted masthead center aligned segment manC_header">
+					<h1 class="ui inverted header fundo_azul_titulo_manC">
+						<b class="fundo_azul_titulo_manC">int</b> raise(<b class="fundo_azul_titulo_manC">int</b> sig)
+					</h1>
+				</header>
+				<section class="ui vertical stripe segment" role="region">
+					<div class="ui stackable centered grid container">
+						<div class="twelve wide column">
+							<p><b class="manC_laranja_escuro">Recebe:</b> um valor inteiro, que representa um dos sinais presentes no cabeçalho signal.h.</p>
+									<p><b class="manC_laranja_escuro">Retorna:</b> 0, em caso de sucesso da execução da função, ou um valor diferente de zero, caso contrário.</p>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Exemplo de uso da função</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="c">
+//EXEMPLO RAISE()
+
+#include &ltstdio.h&gt									
+#include &ltsignal.h&gt
+
+int main() {
+	printf("O programa terá sua execução interrompida!\n");
+
+	raise(SIGTERM);
+
+	printf("Eu avisei...\n");
+
+	return 0;
+}
+									</code>
+								</pre>
+									</div>
+									<div class="ui horizontal divider"><b class="manC_laranja_escuro">Saída do
+										terminal</b>:</div>
+									<div class="ui container">
+										<pre>
+									<code class="hljs console">
+			>clang-7 -pthread -lm -o main main.c
+			>./main
+      O programa terá sua execução interrompida!
+			Terminated
+									</code>
+								</pre>
+									</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+		<div class="right one wide column">
+			{% block sidebar_content2 %}
+			{% include 'site2016/manualC/signal/rightSidebar.html' %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock body %}
