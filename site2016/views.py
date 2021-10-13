@@ -431,16 +431,42 @@ def ctype_funcoes(request):
     context_dictionary = {'pagina': 'ctype_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/ctype/ctype_funcoes.html', context_dictionary)
 
+
 def string_h(request):
     context_dictionary = {'pagina': 'string_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/string/string_h.html', context_dictionary)
 
+
 def string_funcoes(request):
     context_dictionary = {'pagina': 'string_funcoes', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/string/string_funcoes.html', context_dictionary)
-  
+
+
 def errno_h(request):
     context_dictionary = {'pagina': 'errno_h', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/errno/errno_h.html', context_dictionary)
 
 
+def stdlib_h(request):
+    context_dictionary = {'pagina': 'stdlib_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/stdlib/stdlib_h.html', context_dictionary)
+
+
+def stdlib_funcoes(request):
+    context_dictionary = {'pagina': 'stdlib_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/stdlib/stdlib_funcoes.html', context_dictionary)
+
+
+def time_h(request):
+    context_dictionary = {'pagina': 'time_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/time/time_h.html', context_dictionary)
+
+
+def time_funcoes(request):
+    context_dictionary = {'pagina': 'time_funcoes', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/time/time_funcoes.html', context_dictionary)
+
+
+def limits_h(request):
+    context_dictionary = {'pagina': 'limits_h', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/manualC/limits/limits_h.html', context_dictionary)

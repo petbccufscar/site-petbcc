@@ -11,19 +11,11 @@ Manual C - PET-BCC UFSCar
 
 {% block body %}
 <div class="ui grid">
-  <div class="sixteen wide column manC_title">
-    <header class="ui inverted masthead center aligned segment"
-      id="fundo_azul_titulo">
-      <div class="ui grid">
-        <div class="column">
-          <div class="row">
-            <h1 class="ui inverted header">
-              <!-- Tirei o id, para ficar lowercase -->
-              Manual C
-            </h1>
-          </div>
-        </div>
-      </div>
+  <div class="sixteen wide column">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <h1 class="ui inverted header">
+        Manual C
+      </h1>
     </header>
   </div>
 </div>
@@ -138,49 +130,4 @@ Manual C - PET-BCC UFSCar
     </div>
   </section>
 </main>
-
-<script>
-  $('.ui.form')
-          .form({
-              on: 'blur',
-              fields: {
-                  nome: {
-                      identifier: 'nome',
-                      rules: [
-                          {
-                              type: 'empty',
-                              prompt: 'Por favor, informe seu nome.'
-                          }
-                      ]
-                  },
-                  email: {
-                      identifier: 'email',
-                      rules: [
-                          {
-                              type: 'email',
-                              prompt: 'Por favor, digite um endereço de e-mail válido.'
-                          }
-                      ]
-                  },
-                  assunto: {
-                      identifier: 'assunto',
-                      rules: [
-                          {
-                              type: 'empty',
-                              prompt: 'Por favor, preencha o campo Assunto.'
-                          }
-                      ]
-                  },
-                  name: {
-                      identifier: 'mensagem',
-                      rules: [
-                          {
-                              type: 'empty',
-                              prompt: 'Por favor, digite a sua mensagem.'
-                          }
-                      ]
-                  }
-              }
-          });
-</script>
 {% endblock %}

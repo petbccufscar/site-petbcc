@@ -13,16 +13,9 @@ Manual C - PET-BCC UFSCar
 <div class="ui grid">
   <div class="sixteen wide column">
     <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
-      <div class="ui grid">
-        <div class="column">
-          <div class="row">
-            <h1 class="ui inverted header">
-              <!-- Tirei o id, para ficar lowercase -->
-              Manual C
-            </h1>
-          </div>
-        </div>
-      </div>
+      <h1 class="ui inverted header">
+        Manual C
+      </h1>
     </header>
   </div>
 </div>
@@ -72,9 +65,9 @@ Manual C - PET-BCC UFSCar
                 <a class="manC_laranja odd" href="{% url 'assert_h' %}">
                   <h3>assert.h</h3>
                 </a>
-                <div class="description">O arquivo de cabeçalhos assert.h tem apenas uma função: assert(), a qual pode
-                  ser usada para verificar a veracidade de uma expressão durante a execução do programa e interromper a
-                  execução do programa com uma mensagem de diagnóstico em caso de falha. </div>
+                <div class="description justificado">Na biblioteca &ltassert.h&gt tem apenas uma função: assert(), a
+                  qual pode ser usada para verificar a veracidade de uma expressão durante a execução do programa e
+                  interromper a execução do programa com uma mensagem de diagnóstico em caso de falha. </div>
               </div>
             </div>
             <!-- ctype inicio -->
@@ -91,28 +84,36 @@ Manual C - PET-BCC UFSCar
                   inteiro positivo, o caractere que é passado para a
                   função, internamente, é convertido em seu valor ASCII
                   para a verificação.</div>
-
               </div>
             </div>
+            <!-- limits inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja odd" href="{% url 'errno_h' %}">
-                  <h3>errno.h</h3>
+                <a class="manC_laranja odd" href="{% url 'limits_h' %}">
+                  <h3>limits.h</h3>
                 </a>
-                <div class="description">O arquivo de cabeçalhos &lterrno.h&gt fornece alguns macros de números inteiros
-                  para reconhecer e relatar erros de execução através de códigos de erro, esses códigos são fornecidos
-                  pelo próprio sistema operacional e retornados ao programa durante sua execução.
-                </div>
-
+                <div class="description justificado">
+                  No cabeçalho &ltlimits.h&gt estão definidas as constantes que delimitam os valores máximos e mínimos que variáveis de um dado tipo podem assumir. Assim, é possível operar com os tipos presentes na linguagem C tendo-se absoluta certeza que uma determinada variável serve ao propósito de alguma aplicação para a qual ele foi designado, uma vez que se espera que essa variável esteja limitada superiormente e inferiormente.</div>
               </div>
             </div>
             <!-- math inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja_escuro" href="{% url 'math_h' %}">
+                <a class="manC_laranja_escuro">
                   <h3>math.h</h3>
                 </a>
-                <div class="description justificado">Na biblioteca &ltmath.h&gt estão contidas diversas funções matemáticas básicas, com ela podemos trabalhar com funções trigonométricas, funções para cálculo de raiz quadrada, valor absoluto, entre outras.</div>
+                <div class="description justificado">Na biblioteca &ltmath.h&gt estão contidas diversas funções
+                  matemáticas básicas, com ela podemos trabalhar com funções trigonométricas, funções para cálculo de
+                  raiz quadrada, valor absoluto, entre outras.</div>
+              </div>
+            </div>
+            <!-- stdlib inicio -->
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd" href="{% url 'stdlib_h' %}">
+                  <h3>stdlib.h</h3>
+                </a>
+                <div class="description justificado">No cabeçalho &ltstdlib.h&gt estão localizadas as funções responsáveis pela manipulação da alocação de memória, e da desalocação também, bem como funções para converter números que estão representados em strings para algum tipo de dado responsável por representar números, como, por exemplo, double, entre outras funcionalidades úteis, como funções de algoritmos de ordenação.</div>
               </div>
             </div>
             <!-- string inicio -->
@@ -121,10 +122,21 @@ Manual C - PET-BCC UFSCar
                 <a class="manC_laranja_escuro" href="{% url 'string_h' %}">
                   <h3>string.h</h3>
                 </a>
-                <div class="description justificado"> Na biblioteca &ltstring.h&gt estão contidos protótipos utilizados para a manipulação de strings, também conhecidos como array de chars. Estas funções são capazes desde a contagem, cópia e concatenação, comparação e diversas outras modificações como podemos ver nos exemplos a seguir.</div>
+                <div class="description justificado"> Na biblioteca &ltstring.h&gt estão contidos protótipos utilizados
+                  para a manipulação de strings, também conhecidos como array de chars. Estas funções são capazes desde
+                  a contagem, cópia e concatenação, comparação e diversas outras modificações como podemos ver nos
+                  exemplos a seguir.</div>
               </div>
             </div>
-
+            <!-- time inicio -->
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd" href="{% url 'time_h' %}">
+                  <h3>time.h</h3>
+                </a>
+                <div class="description justificado"> No cabeçalho &lttime.h&gt estão localizadas as funções, variáveis, e macros para manipulação de unidades de tempo, como, por exemplo, o ano, mês, dia, hora, minutos, e segundos. A partir das funções fornecidas é possível obter, por exemplo, a data e o horário retornadas pelo sistema, entre outras funcionalidades relacionadas a operações com data e hora. Ou seja, é um cabeçalho muito poderoso em termos de controle da execução do programa por intermédio do "tempo", e no que diz respeito a manipulação de ações e operações que tem como referência datas e horas.</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
