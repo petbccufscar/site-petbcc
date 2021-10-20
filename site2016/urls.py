@@ -47,4 +47,7 @@ urlpatterns = [
     url(r'^timefuncoes/$', views.time_funcoes, name='time_funcoes'),
     # Limits.h
     url(r'^limits/$', views.limits_h, name='limits_h'),
+    # Signal.h
+    url(r'^signal/$', views.signal_h, name='signal_h'),
+    url(r'^signalfuncoes/$', views.signal_funcoes, name='signal_funcoes'),
 ]

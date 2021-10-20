@@ -1,0 +1,92 @@
+{% extends 'site2016/base.html' %}
+{% load static %}
+
+{% block title %}
+signal.h - Manual C
+{% endblock title %}
+
+{% block head_extensions %}
+
+{% endblock head_extensions %}
+
+{% block body %}
+<div class="ui grid">
+  <div class="sixteen wide column manC_title">
+    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
+      <h1 class="ui inverted header">
+        &ltsignal.h&gt
+      </h1>
+    </header>
+  </div>
+</div>
+<main role="main" class="main_manC">
+  <section class="ui vertical stripe segment" id="fundo_cinza" role="region">
+    <div class="ui stackable centered grid container">
+      <div class="one wide column">
+        {% block sidebar_content %} 
+        {% include 'site2016/manualC/leftSidebar.html' %} 
+        {% endblock %}
+      </div>
+      <div class="twelve wide column">
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Descrição:</h1>
+          <br class="justificado">
+            No cabeçalho <b class="manC_laranja_escuro">signal.h</b> estão presentes funções e macros que lidam com os sinais enviados pelo programa executado no momento em que ele está sendo executado, como, por exemplo, quando o programa é finalizado de forma anormal ou quando algum tipo de operação aritmética apresenta erros, como a divisão por zero.
+          </p>
+        </div>
+        <div class="ui centered vertical padded segment">
+          <h1 class="manC_laranja">Macros:</h1>
+          <p class="justificado">
+            <b>SIG_DFL</b>: indica o tratamento padrão fornecido pelo sistema pelo envio de algum sinal enviado pelo programa em execução.
+            <br><br><b>SIG_IGN</b>: indica que o tratamento fornecido para um tipo de sinal será ignorá-lo.
+            <br><br><b>SIG_ERR</b>: sinal padrão para o tratamento de sinais que indicam erro.
+            <br><br><b>SIGABRT</b>: programa finalizado de forma anormal, com execução inesperada.
+            <br><br><b>SIGFPE</b>: erro em operações de aritmética, como operações aritméticas proibidas ou tentativa de operar com valores que extrapolam os limites de um determinado tipo.
+            <br><br><b>SIGILL</b>: instrução não permitida.
+            <br><br><b>SIGINT</b>: interrupção de execução do programa, como quando o usuário forçadamente cancela a execução.
+            <br><br><b>SIGSEGV</b>: erro de acesso de memória, seja por tentar acessar um posição de memória não permitida ou por tentativa de uso de memória sendo que não existe mais espaço na mesma.
+            <br><br><b>SIGTERM</b>: requisição de finalização do programa.
+
+          </p>
+        </div>
+        <div class="ui large left aligned huge header manC_laranja">
+          <h1>Funções:</h1>
+        </div>
+        <div class="ui very relaxed divided list">
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'signal_funcoes' %}#signal">
+                <h3>void signal(int sinal, void (*tratamento)(int))(int)</h3>
+              </a>
+              <div class="description">
+                RETORNA: void, função sem retorno.
+              </div>
+              <div class="description">
+                RECEBE: uma variável inteira que indica qual dos sinais deve ser tratado adiante e qual o tratamento deve ser dado quando o programa enviar um sinal do tipo informado.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja_escuro" href="{% url 'signal_funcoes' %}#raise">
+                <h3>int raise(int sig)</h3>
+              </a>
+              <div class="description">
+                RETORNA: 0, em caso de sucesso da execução da função, ou um valor diferente de zero, caso contrário.
+              </div>
+              <div class="description">
+                RECEBE: um valor inteiro, que representa um dos sinais presentes no cabeçalho signal.h.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right one wide column">
+        {% block sidebar_content2 %}
+        {% include 'site2016/manualC/signal/rightSidebar.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

@@ -62,7 +62,7 @@ Manual C - PET-BCC UFSCar
             <!-- assert inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja odd" href="{% url 'assert_h' %}">
+                <a class="manC_laranja_escuro" href="{% url 'assert_h' %}">
                   <h3>assert.h</h3>
                 </a>
                 <div class="description justificado">Na biblioteca &ltassert.h&gt tem apenas uma função: assert(), a
@@ -73,7 +73,7 @@ Manual C - PET-BCC UFSCar
             <!-- ctype inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja_escuro" href="{% url 'ctype_h' %}">
+                <a class="manC_laranja odd" href="{% url 'ctype_h' %}">
                   <h3>ctype.h</h3>
                 </a>
                 <div class="description justificado">Na biblioteca &ltctype.h&gt estão
@@ -86,23 +86,32 @@ Manual C - PET-BCC UFSCar
                   para a verificação.</div>
               </div>
             </div>
+            <!-- errno inicio -->
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja_escuro" href="{% url 'errno_h' %}">
+                  <h3>errno.h</h3>
+                </a>
+                <div class="description">O arquivo de cabeçalhos &errno.h.h&gt fornece alguns macros de números inteiros para reconhecer e relatar erros de execução através de códigos de erro, esses códigos são fornecidos pelo próprio sistema operacional e retornados ao programa durante sua execução.</div>
+              </div>
+            </div>
+            <!-- float inicio -->
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd" href="{% url 'float_h' %}">
+                  <h3>float.h</h3>
+                </a>
+                <div class="description">O arquivo de cabeçalhos &ltfloat.h&gt fornece alguns macros de números de pontos flutuantes do tipo ‘float’ para o sistema específico e a implementação para o compilador utilizado.</div>
+              </div>
+            </div>
             <!-- limits inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja odd" href="{% url 'limits_h' %}">
+                <a class="manC_laranja_escuro" href="{% url 'limits_h' %}">
                   <h3>limits.h</h3>
                 </a>
                 <div class="description justificado">
                   No cabeçalho &ltlimits.h&gt estão definidas as constantes que delimitam os valores máximos e mínimos que variáveis de um dado tipo podem assumir. Assim, é possível operar com os tipos presentes na linguagem C tendo-se absoluta certeza que uma determinada variável serve ao propósito de alguma aplicação para a qual ele foi designado, uma vez que se espera que essa variável esteja limitada superiormente e inferiormente.</div>
-              </div>
-            </div> 
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja_escuro" href="{% url 'float_h' %}">
-                  <h3>float.h</h3>
-                </a>
-                <div class="description">O arquivo de cabeçalhos &ltfloat.h&gt fornece alguns macros de números de pontos flutuantes do tipo ‘float’ para o sistema específico e a implementação para o compilador utilizado.</div>
-
               </div>
             </div>
             <!-- math inicio -->
@@ -116,20 +125,10 @@ Manual C - PET-BCC UFSCar
                   raiz quadrada, valor absoluto, entre outras.</div>
               </div>
             </div>
-            <!-- stdlib inicio -->
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja_escuro" href="{% url 'stdlib_h' %}">
-                  <h3>stdlib.h</h3>
-                </a>
-                <div class="description justificado">No cabeçalho &ltstdlib.h&gt estão localizadas as funções responsáveis pela manipulação da alocação de memória, e da desalocação também, bem como funções para converter números que estão representados em strings para algum tipo de dado responsável por representar números, como, por exemplo, double, entre outras funcionalidades úteis, como funções de algoritmos de ordenação.</div>
-              </div>
-            </div>
-            
             <!-- setjmp inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja odd" href="{% url 'setjmp_h' %}">
+                <a class="manC_laranja_escuro" href="{% url 'setjmp_h' %}">
                   <h3>setjmp.h</h3>
                 </a>
                 <div class="description">No cabeçalho &ltsetjmp.h&gt estão presentes funções e tipos que são capazes de manipular o fluxo de execução de um programa. Portanto, trata-se de um cabeçalho do qual seus recursos devem ser utilizados apenas em 
@@ -141,7 +140,7 @@ Manual C - PET-BCC UFSCar
             <!-- stdarg inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja_escuro" href="{% url 'stdarg_h' %}">
+                <a class="manC_laranja odd" href="{% url 'stdarg_h' %}">
                   <h3>stdarg.h</h3>
                 </a>
                 <div class="description">No cabeçalho encontram-se macros e tipos extremamente úteis, no que tange a criação de funções para as quais a quantidade de argumentos não tem uma quantidade finita definida. Assim, o cabeçalho &ltstdarg.h&gt é de muita valia com tais recursos, uma vez que o planejamento de funções sem um número fixo de argumentos torna-se algo viável.</div>
@@ -150,11 +149,20 @@ Manual C - PET-BCC UFSCar
             <!-- stdio inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja odd" href="{% url 'stdio_h' %}">
+                <a class="manC_laranja_escuro" href="{% url 'stdio_h' %}">
                   <h3>stdio.h</h3>
                 </a>
                 <div class="description">No cabeçalho &ltstdio.h&gt estão localizadas as funções referentes às operações nas quais os mecanismos operam em função da entrada e da saída padrão, bem como em arquivos também. Portanto, por meio das variáveis, macros, e funções é possível realizar tarefas de leitura e escrita, tanto por meio da entrada e saída disponibilizada pela máquina, quanto por escrita e leitura em arquivos.
                 </div>
+              </div>
+            </div>
+            <!-- stdlib inicio -->
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd" href="{% url 'stdlib_h' %}">
+                  <h3>stdlib.h</h3>
+                </a>
+                <div class="description justificado">No cabeçalho &ltstdlib.h&gt estão localizadas as funções responsáveis pela manipulação da alocação de memória, e da desalocação também, bem como funções para converter números que estão representados em strings para algum tipo de dado responsável por representar números, como, por exemplo, double, entre outras funcionalidades úteis, como funções de algoritmos de ordenação.</div>
               </div>
             </div>
             <!-- string inicio -->
@@ -163,16 +171,24 @@ Manual C - PET-BCC UFSCar
                 <a class="manC_laranja_escuro" href="{% url 'string_h' %}">
                   <h3>string.h</h3>
                 </a>
-                <div class="description justificado"> Na biblioteca &ltstring.h&gt estão contidos protótipos utilizados
-                  para a manipulação de strings, também conhecidos como array de chars. Estas funções são capazes desde
-                  a contagem, cópia e concatenação, comparação e diversas outras modificações como podemos ver nos
+                <div class="description justificado"> Na biblioteca &ltstring.h&gt estão contidos protótipos utilizados para a manipulação de strings, também conhecidos como array de chars. Estas funções são capazes desde a contagem, cópia e concatenação, comparação e diversas outras modificações como podemos ver nos
                   exemplos a seguir.</div>
+              </div>
+            </div>
+            <!-- signal inicio -->
+            <div class="item">
+              <div class="content">
+                <a class="manC_laranja odd" href="{% url 'signal_h' %}">
+                  <h3>signal.h</h3>
+                </a>
+                <div class="description justificado"> Na biblioteca &ltsignal.h&gt estão presentes funções e macros que lidam com os sinais enviados pelo programa executado no momento em que ele está sendo executado, como, por exemplo, quando o programa é finalizado de forma anormal ou quando algum tipo de operação aritmética apresenta erros, como a divisão por zero.
+                </div>
               </div>
             </div>
             <!-- time inicio -->
             <div class="item">
               <div class="content">
-                <a class="manC_laranja odd" href="{% url 'time_h' %}">
+                <a class="manC_laranja_escuro" href="{% url 'time_h' %}">
                   <h3>time.h</h3>
                 </a>
                 <div class="description justificado"> No cabeçalho &lttime.h&gt estão localizadas as funções, variáveis, e macros para manipulação de unidades de tempo, como, por exemplo, o ano, mês, dia, hora, minutos, e segundos. A partir das funções fornecidas é possível obter, por exemplo, a data e o horário retornadas pelo sistema, entre outras funcionalidades relacionadas a operações com data e hora. Ou seja, é um cabeçalho muito poderoso em termos de controle da execução do programa por intermédio do "tempo", e no que diz respeito a manipulação de ações e operações que tem como referência datas e horas.</div>
