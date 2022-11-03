@@ -397,6 +397,10 @@ def manual_c(request):
     return render(request, 'site2016/manualC/home.html', context_dictionary)
 
 
+def politica_planner(request):
+    context_dictionary = {'pagina': 'ufscar_planner', 'DEBUG': settings.DEBUG}
+    return render(request, 'site2016/ufscar_planner/politica.html', context_dictionary)
+
 def sobre(request):
     context_dictionary = {'pagina': 'sobre', 'DEBUG': settings.DEBUG}
     return render(request, 'site2016/manualC/sobre.html', context_dictionary)

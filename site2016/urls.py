@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^processoseletivo/(?P<ano>[0-9]{4})/(?P<semestre>[0-9]{1})/$',
         views.processo_seletivo, name='processo_seletivo'),
     url(r'^contato/$', views.contato, name='contato'),
+    url(r'^ufscar_planner/politica/$', views.politica_planner, name='politica_planner'),
 
     # Manual C
     url(r'^manualc/$', views.manual_c, name='manual_c'),
