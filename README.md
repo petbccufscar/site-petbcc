@@ -1,4 +1,8 @@
-# Site do PET-BCC
+# Site do PET-BCC • ![Finalizado](https://img.shields.io/badge/Finalizado-blue)
+
+[![Django](https://img.shields.io/badge/Django-092E20.svg?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![HTML](https://img.shields.io/badge/HTML-E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS](https://img.shields.io/badge/CSS-1572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 <img src="https://raw.githubusercontent.com/petbccufscar/.github/main/profile/icon.png" align="right" />
 
 > Site desenvolvido em HTML, CSS, JS e Django
