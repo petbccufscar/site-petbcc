@@ -1,20 +1,35 @@
-# Site do PET-BCC UFSCar
+# Site do PET-BCC
+<img src="https://raw.githubusercontent.com/petbccufscar/.github/main/profile/icon.png" align="right" />
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/653edaf2858a4c079c921565915c53b4)](https://www.codacy.com/app/marcelodeoliveira/sitepetbcc?utm_source=github.com&utm_medium=referral&utm_content=marcelodeolive1ra/sitepetbcc&utm_campaign=badger)
+> Site desenvolvido em HTML, CSS, JS e Django
 
-Projeto Django para o site do PET-BCC UFSCar.
+Este repositório contém o código-fonte para o site do PET-BCC UFSCar, desenvolvido utilizando HTML, CSS, JS e Django para o backend.
 
-[https://petbcc.ufscar.br](https://petbcc.ufscar.br)
+O site do PET-BCC UFSCar serve como uma plataforma para fornecer informações sobre o programa, suas atividades e eventos para seus membros e o público em geral.
 
-## Requisitos
-+ Python 3
-+ SendGrid
-+ Django 2.0.2
-+ Pillow 4
+- **Site**: https://petbcc.ufscar.br
 
+## Estrutura do Repositório
 
-#### Requisitos já inclusos no projeto
-+ [Semantic-UI 2.2.10](https://github.com/Semantic-Org/Semantic-UI)
-+ [jQuery 3.1.1](https://github.com/jquery/jquery)
-+ [animate.css 3.5.2](https://github.com/daneden/animate.css)
-+ [WOW.js 1.1.3](https://github.com/matthieua/WOW)
+- **media:**
+- **site2016:**
+- **sitepetbcc:**
+
+## Como Contribuir
+
+Se você deseja contribuir para o projeto, siga os passos abaixo:
+
+1. Faça um fork do repositório para a sua conta do GitHub.
+2. Clone o fork para a sua máquina local: `git clone https://github.com/petbccufscar/site-petbcc.git`
+3. Crie uma branch para a sua contribuição: `git checkout -b nome-da-sua-branch`
+4. Commit suas alterações: `git commit -m "Adicionando..."`
+5. Faça push para a sua branch: `git push origin nome-da-sua-branch`
+6. Abra um pull request no repositório original.
+
+## Contato
+
+Se você tiver alguma dúvida, sugestão ou precisar de suporte, por favor, sinta-se à vontade para entrar em contato conosco:
+
+- **E-mail:** petbcc.ufscar@gmail.com
+
+Você também pode criar uma **Issue** no [GitHub](https://github.com/petbccufscar/site-petbcc/issues) para relatar problemas, sugerir melhorias ou contribuir para o desenvolvimento do Site do PET-BCC UFSCar. Estamos sempre abertos para receber feedback e colaboração. Obrigado!
