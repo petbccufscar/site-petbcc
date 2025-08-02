@@ -4,15 +4,103 @@
 :root {
   --main-dark-color: #007194;
   --main-light-color: #008db9;
+
+  --dark-text-color: #1d1d1d;
+  --dark-text-color-2: #414141;
+  --light-text-color: #ffffff;
+  --light-text-color-2: #e0e1e2;
+
+  --small-text-size: 12px;
+  --medium-text-size: 16px;
+  --large-text-size: 20px;
+
+  --horizontal-padding: 10px;
+  --vertical-padding: 10px;
 }
 
-.branco {
+.page__header {
+  /* TODO: Ajustar esse margin-top*/
+  margin-top: 50px;
+  background: var(--main-light-color);
+  color: var(--light-text-color);
+  padding: 1.5em var(--horizontal-padding);
+}
+
+.page__title {
+  font-size: var(--large-text-size);
+  padding: 6px 14px;
+  border-left: 4px solid var(--main-dark-color);
+}
+
+main {
   background: #ffffff;
   /* Mantem o rodapé sempre no final da página
   a ideia é colocar o corpo da pagina com 100% 
   do espaço(100vh) menos o tamanho do rodapé(138px) */
   min-height: calc(100vh - 138px) !important;
 }
+
+main > .content {
+  padding: var(--vertical-padding) var(--horizontal-padding) calc(var(--vertical-padding) * 2);
+
+  /* TODO: Quando upar o processo seletivo, ajustar .content */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em; 
+}
+
+.text__medium {
+  font-size: var(--medium-text-size);
+  color: var(--dark-text-color-2);
+}
+
+.text__large {
+  font-size: var(--large-text-size);
+  color: var(--dark-text-color);
+}
+
+.text__justify {
+  text-align: justify;
+}
+
+.content {
+  /* */
+}
+
+.main__section .header {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--dark-text-color);
+}
+
+.section .header {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark-text-color);
+}
+
+.content .list > li {
+  /* margin-bottom: 0.5em; */
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  :root {
+    --horizontal-padding: 20vw;
+    --vertical-padding: 40px;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1440px) {
+}
+
+/* ^^ NOVO CSS ^^ */
 
 /* Mobile */
 @media only screen and (max-width: 767px) {

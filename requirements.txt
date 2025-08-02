@@ -12,9 +12,9 @@ django-xmlrpc==0.1.8
 mots-vides==2015.5.11
 Pillow==8.3.2
 pyparsing==2.4.7
-python-decouple==3.1
+python-decouple==3.8
 python-http-client==3.0.0
-pytz==2017.3
+pytz>=2022.7
 rcssmin==1.0.6
 regex==2020.4.4
 rjsmin==1.0.12

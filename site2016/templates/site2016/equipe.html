@@ -11,17 +11,12 @@
 {% endblock head_extensions %}
 
 {% block body %}
-    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
-        <div class="ui grid">
-            <div class="column">
-                <div class="row">
-                    <h1 class="ui inverted header" id="titulo_pagina">
-                        Equipe PET-BCC
-                    </h1>
-                </div>
-            </div>
-        </div>
+    <header class="page__header">
+        <h1 class="page__title">
+            Equipe PET BCC
+        </h1>
     </header>
+
 
     <main role="main">
         {% if professores %}
@@ -291,46 +286,6 @@
             <div class="ui container processo_seletivo">
                 <h1 class="ui centered inverted header">Processo Seletivo</h1>
                 <h3 class="ui centered inverted header">Interessado em fazer parte da equipe? {% ps_link_atual %}!</h3>
-            </div>
-        </section>
-
-        <section class="ui vertical stripe segment" role="region">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="column">
-                        <h1 class="ui centered header wow fadeInDown" data-wow-delay="0.1s" id="titulo_secao">Quais são
-                            as
-                            vagas para fazer parte da equipe?</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="sixteen wide column">
-                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.2s">Bolsistas</h2>
-                        <p class="justificado wow fadeInDown" data-wow-delay="0.2s">
-                            O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$ 400,00
-                            mensalmente. A
-                            dedicação é de 20 horas semanais e a participação no PET por pelo menos um ano garante as
-                            60 horas de Atividades Complementares exigidas no curso de Ciência da Computação da
-                            UFSCar.</p>
-                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.3s">Não-bolsistas</h2>
-                        <p class="justificado wow fadeInDown" data-wow-delay="0.3s">
-                            Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode
-                            ainda ter 6 alunos
-                            atuando como não-bolsistas. As obrigações são as mesmas dos alunos bolsistas, assim como o
-                            certificado recebido, que também vale como Atividades Complementares para o curso. No caso
-                            de
-                            algum bolsista se desligar do PET, os alunos não bolsistas viram bolsistas automaticamente,
-                            sem
-                            necessidade de novo processo seletivo. A ordem de distribuição das bolsas é definida pela
-                            classificação do candidato no processo seletivo o qual participou.</p>
-                        <h2 class="ui header wow fadeInDown" data-wow-delay="0.4s">Colaboradores</h2>
-                        <p class="justificado wow fadeInDown" data-wow-delay="0.4s">
-                            Se as 18 vagas para bolsistas e não-bolsistas já estiverem preenchidas, ainda
-                            é possível ser um
-                            membro do PET como um colaborador. Mesmo como colaborador você terá participação efetiva nos
-                            projetos, garantindo muito conhecimento e um grande incremento em sua graduação.</p>
-                    </div>
-                </div>
             </div>
         </section>
     </main>

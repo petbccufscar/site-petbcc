@@ -6,199 +6,102 @@
 {% endblock title %}
 
 {% block head_extensions %}
-    <link rel="stylesheet" href="{% static 'site2016/css/main.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'site2016/css/main.css' %}"?v={{ timestamp }} xmlns="http://www.w3.org/1999/html">
 {% endblock head_extensions %}
 
 {% block body %}
-    <header class="ui inverted masthead center aligned segment" id="fundo_azul_titulo">
-        <div class="ui grid">
-            <div class="column">
-                <div class="row">
-                    <h1 class="ui inverted header" id="titulo_pagina">
-                        Processo Seletivo
-                    </h1>
-                </div>
-            </div>
-        </div>
+    <header class="page__header">
+        <h1 class="page__title">
+            Processo Seletivo
+        </h1>
     </header>
 
     <main role="main">
-        <div class="ui vertical segment">
-            <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="sixteen wide column">
+        <div class="content">
+            <div class="main__section">
+                <h1 class="header">
+                    Processo Seletivo - {{ ps.edicao }}
 
-                        <h1 class="ui top attached block header">
-                            Processo Seletivo {{ ps.edicao }}
+                    {% if ps.resultado_divulgado %}
+                        <div class="ui big blue label">Resultados divulgados</div>
+                    {% endif %}
+                </h1>
+                <p class="text__medium text__justify">
+                    Todos os alunos regularmente matriculados no curso de Bacharelado em Ciência da
+                    Computação da UFSCar estão convidados a participar do processo seletivo {{ ps.edicao }} do PET-BCC.
+                </p>
+            </div>
+            <div class="section">
+                <h2 class="header">Sobre as vagas</h2>
+                <ul class="list text__justify text__medium">
+                    <li><b>Bolsista:</b> O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$700,00 mensalmente. A dedicação é de 20 horas semanais e a participação no PET por pelo menos um ano garante as 60 horas de Atividades Complementares exigidas no curso de Ciência da Computação da UFSCar.</li>
+                    <li><b>Não-bolsista:</b> Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode ainda ter 6 alunos atuando como não-bolsistas. As obrigações são as mesmas dos alunos bolsistas, assim como o certificado recebido, que também vale como Atividades Complementares para o curso. No caso de algum bolsista se desligar do PET, os alunos não bolsistas viram bolsistas automaticamente, sem necessidade de novo processo seletivo. A ordem de distribuição das bolsas é definida pela classificação do candidato no processo seletivo o qual participou.</li>
+                    <li><b>Colaborador(a):</b> Se as 18 vagas para bolsistas e não-bolsistas já estiverem preenchidas, ainda é possível ser um membro do PET como um colaborador. Mesmo como colaborador você terá participação efetiva nos projetos, garantindo muito conhecimento e um grande incremento em sua graduação.</li>
+                </ul>
+                <h3 class="text__medium text__justify">Vagas disponíveis neste processo: 4 vagas (não-bolsista)</h3>
+            </div>
+            <div class="section">
+                <h2 class="header">Etapas</h2>
+                <div class="ui stackable four centered cards">
+                    {% for etapa in ps.etapas %}
+                        <div class="card wow fadeInLeft" data-wow-delay="0.7s">
+                            <div class="content">
+                                <div class="ui icon header">
+                                    <i class="
+                                    {% if etapa.mostrar_resultado %}
+                                    blue
+                                    {% else %}
+                                    grey
+                                    {% endif %}
+                                        checkmark box icon"></i>
+                                    <div class="content">[Etapa {{ forloop.counter }}]</div>
+                                </div>
 
-                            {% if ps.resultado_divulgado %}
-                                <div class="ui big blue label">Resultados divulgados</div>
-                            {% endif %}
-
-                        </h1>
-
-                        <div class="ui attached segment">
-                            <p class="justificado">
-                                Todos os alunos regularmente matriculados no curso de Bacharelado em Ciência da
-                                Computação
-                                da
-                                UFSCar estão convidados a participar do processo seletivo {{ ps.edicao }} do PET-BCC.
-                            </p>
-
-                            <h2 class="ui header wow fadeInDown" data-wow-delay="0.3s">Informações importantes</h2>
-
-                            <div class="ui grid">
-                                <div class="column">
-                                    <div class="ui divided stackable grid">
-                                        <div class="five wide column">
-                                            <div class="ui two column grid">
-                                                <div class="center aligned column wow fadeInRight"
-                                                     data-wow-delay="0.5s">
-                                                    <h3 class="ui icon header">
-                                                        <i class="ui users icon"></i>
-                                                        <div class="content">Vagas</div>
-
-                                                        {% if ps.vagas_bolsista %}
-                                                            <div class="sub header"><b>Bolsista:</b> {{ ps.vagas_bolsista }}
-                                                            </div>
-                                                        {% endif %}
-
-                                                        {% if ps.vagas_nao_bolsista %}
-                                                            <div class="sub header">
-                                                                <b>Não-bolsista:</b> {{ ps.vagas_nao_bolsista }}</div>
-                                                        {% endif %}
-
-                                                        {% if ps.vagas_colaborador %}
-                                                            <div class="sub header">
-                                                                <b>Colaborador(a):</b> {{ ps.vagas_colaborador }}</div>
-                                                        {% endif %}
-
-
-                                                    </h3>
-                                                </div>
-                                                <div class="center aligned column wow fadeInRight"
-                                                     data-wow-delay="0.5s">
-                                                    <h3 class="ui icon header">
-                                                        <i class="ui calendar icon"></i>
-                                                        <div class="content">Inscrições</div>
-                                                        <div class="sub header">{{ ps.data_inscricao_inicio }}
-                                                            a {{ ps.data_inscricao_fim }}</div>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="eleven wide column">
-                                            <div class="ui stackable four centered cards">
-                                                {% for etapa in ps.etapas %}
-                                                    <div class="card wow fadeInLeft" data-wow-delay="0.7s">
-                                                        <div class="content">
-                                                            <div class="ui icon header">
-                                                                <i class="ui
-                                                                {% if etapa.mostrar_resultado %}
-                                                                blue
-                                                                {% else %}
-                                                                grey
-                                                                {% endif %}
-                                                                 checkmark box icon"></i>
-                                                                <div class="content">[Etapa {{ forloop.counter }}]</div>
-                                                            </div>
-
-                                                            <div class="center aligned">
-                                                                <h4>{{ etapa.titulo }}</h4>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="center aligned extra content">
-                                                            {{ etapa.data_inicio }}
-                                                            {% if etapa.data_fim %}
-                                                                a {{ etapa.data_fim }}
-                                                            {% elif etapa.mostrar_hora %}
-                                                                - {{ etapa.horario }}
-                                                            {% endif %}
-
-                                                            {% if etapa.data_resultado %}
-                                                                <br>{{ etapa.data_resultado }} - Resultado
-                                                            {% endif %}
-                                                        </div>
-
-                                                        {% if etapa.mostrar_resultado %}
-                                                            <div class="ui green bottom attached button"
-                                                                 id="botao_modal{{ forloop.counter }}">
-                                                                <i class="eye icon"></i>
-                                                                Resultado
-                                                            </div>
-                                                        {% endif %}
-
-                                                    </div>
-                                                {% empty %}
-                                                    Não há etapas disponíveis
-                                                {% endfor %}
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="center aligned">
+                                    <h4>{{ etapa.titulo }}</h4>
                                 </div>
                             </div>
 
-                            <h2 class="ui header wow fadeInDown" data-wow-delay="0.5s">Requisitos</h2>
-                            <p class="wow fadeInDown" data-wow-delay="0.7s">Para se inscrever no processo seletivo, o
-                                candidato deverá:</p>
-                            <ol class="ui list wow fadeInDown" data-wow-delay="0.7s">
-                                {{ ps.requisitos|safe }}
-                            </ol>
+                            <div class="center aligned extra content">
+                                {{ etapa.data_inicio }}
+                                {% if etapa.data_fim %}
+                                    a {{ etapa.data_fim }}
+                                {% elif etapa.mostrar_hora %}
+                                    - {{ etapa.horario }}
+                                {% endif %}
 
-                            <h2 class="ui header wow fadeInDown" data-wow-delay="0.5s">Inscrições</h2>
-                            <p class="wow fadeInDown" data-wow-delay="0.7s">As inscrições devem ser realizadas
-                                exclusivamente por e-mail:
-                                <a href="mailto:{{ ps.email_inscricao }}">{{ ps.email_inscricao }}</a>.<br>
-                                Detalhes sobre documentos necessários, critérios, cronograma e outras informações devem
-                                ser verificadas no edital.</p>
-
-                            <h2 class="ui header wow fadeInDown" data-wow-delay="0.5s">Edital</h2>
-                            <p class="wow fadeInDown" data-wow-delay="0.7s">Acesse o edital clicando no ícone a
-                                seguir:
-                                <a href="{{ ps.edital }}"><i
-                                        class="huge download icon wow fadeInDown" data-wow-delay="0.7s"></i></a></p>
+                                {% if etapa.data_resultado %}
+                                    <br>Resultado: {{ etapa.data_resultado }}
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
+                    {% empty %}
+                        Não há etapas disponíveis
+                    {% endfor %}
                 </div>
+            </div> 
+            
+            <div class="section">
+                <h2 class="header">Requisitos</h2>
+
+                <p class="text__medium text__justify">Para se inscrever no processo seletivo, o candidato deverá:</p>
+                <ol class="list text__justify text__medium"" data-wow-delay="0.7s">
+                    {{ ps.requisitos|safe }}
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2 class="header">Inscrições</h2>
+
+                <p class="text__medium text__justify">As inscrições devem ser realizadas por meio do preenchimento do formulário digital. Acesse o formulário <a target="_blank" href=""><b>em breve</b></a>.</p>
+                <p class="text__medium text__justify">ATENÇÃO: As incrições estarão abertas entre <b>04/08/2025</b> e <b>25/08/2025.</b></p>
+            </div>
+
+             <div class="section">
+                <h2 class="header">Edital</h2>
+
+                <p class="text__medium text__justify">Detalhes sobre documentos necessários, critérios, cronograma e outras informações devem ser verificadas no edital. Acesse o edital <a target="_blank" href="{{ ps.edital }}"><b>clicando aqui</b></a>.</p>
             </div>
         </div>
-
-        {% for etapa in ps.etapas %}
-            {% if etapa.mostrar_resultado %}
-            <div class="ui large modal" id="modal{{ forloop.counter}}">
-                <i class="close icon"></i>
-                <div class="header">
-                    Processo Seletivo {{ edicao }} - Resultado da Etapa {{ forloop.counter }}
-                </div>
-                <div class="content">
-                    <div class="description">
-
-                        {{ etapa.resultado|safe }}
-
-                    </div>
-                </div>
-                <div class="actions">
-                    <div class="ui blue ok button">
-                        <i class="close icon"></i>
-                        Fechar
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-        {% endfor %}
-
-        <script type="text/javascript">
-            {% for etapa in ps.etapas %}
-                {% if etapa.mostrar_resultado %}
-                    $('#modal{{ forloop.counter }}').modal('attach events', '#botao_modal{{ forloop.counter }}', 'show');
-                {% endif %}
-            {% endfor %}
-        </script>
-
     </main>
 {% endblock body %}

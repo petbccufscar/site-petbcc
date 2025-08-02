@@ -69,12 +69,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sitepetbcc.wsgi.application'
 
 DATABASES = {
-    'default': config(
-        'DATABASE_URL',
-        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
-        cast=db_url
-    ),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
+# config(
+#         'DATABASE_URL',
+#         default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
+#         cast=db_url
+#     ),
 
 AUTH_PASSWORD_VALIDATORS = [
     {
