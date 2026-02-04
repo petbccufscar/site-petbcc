@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-def index(request):
-    return render(request, 'core/index.html')
+def inicio(request):
+    return render(request, 'core/inicio.html')
 
 def equipe(request):
     return render(request, 'core/equipe.html')

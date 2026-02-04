@@ -1,13 +1,76 @@
-<nav class="bg-white shadow-md">
-  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <a href="/" class="text-xl font-bold text-blue-600">Logo</a>
-    <ul class="flex space-x-4">
-      <li><a href="/" class="hover:text-blue-500">Início</a></li>
-      <li><a href="/equipe" class="hover:text-blue-500">Equipe</a></li>
-      <li><a href="/projetos" class="hover:text-blue-500">Projetos</a></li>
-      <li><a href="/processo-seletivo" class="hover:text-blue-500">Processo Seletivo</a></li>
-      <li><a href="/contato" class="hover:text-blue-500">Contato</a></li>
-      <li><a href="/manual-c" class="hover:text-blue-500">Manual C</a></li>
+{% load static %}
+
+<nav class="bg-gradient-to-r from-primary to-primary-light shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+    <img
+      src="{% static 'images/logo_branco_sem_titulo.png' %}"
+      alt="Logo do PET BCC"
+      class="w-20"
+    />
+
+    {% comment %} MENU MOBILE {% endcomment %}
+
+    <ion-icon
+      name="menu-outline"
+      class="md:hidden text-3xl text-gray-50 cursor-pointer"
+      onclick="toggleSidebar()"
+    ></ion-icon>
+
+    <div
+      id="sidebar-overlay"
+      class="fixed md:hidden inset-0 bg-black/50 hidden"
+      onclick="toggleSidebar()"
+    ></div>
+
+    <aside
+      id="sidebar"
+      class="fixed md:hidden top-0 left-0 h-fit w-full p-6 bg-gradient-to-r from-primary to-primary-light transform -translate-y-full transition-transform duration-300"
+    >
+      <div class="flex justify-end">
+        <ion-icon
+          name="close-outline"
+          class="text-3xl text-gray-50 cursor-pointer mb-4"
+          onclick="toggleSidebar()"
+        ></ion-icon>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        {% for item in menu_items %}
+        <a
+          href="{% url item.route %}"
+          class="p-3 rounded-xl hover:bg-gray-100/10 text-gray-50 text-center {% if item.active %} font-bold !bg-gray-100/20 {% endif %} cursor-pointer"
+        >
+          {{ item.label }}
+        </a>
+        {% endfor %}
+      </div>
+    </aside>
+
+    {% comment %} MENU DESKTOP {% endcomment %}
+
+    <ul class="hidden md:flex gap-6">
+      {% for item in menu_items %}
+      <li>
+        <a
+          href="{% url item.route %}"
+          class="text-gray-50 hover:underline underline-offset-8 {% if item.active %} font-bold tracking-tight underline {% endif %}"
+        >
+          {{ item.label }}
+        </a>
+      </li>
+      {% endfor %}
     </ul>
   </div>
 </nav>
+
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebar-overlay");
+
+    const isOpen = !sidebar.classList.contains("-translate-y-full");
+
+    sidebar.classList.toggle("-translate-y-full");
+    overlay.classList.toggle("hidden");
+  }
+</script>

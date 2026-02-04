@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# TODO: Remover esse static ao subir para prod
 
 if settings.DEBUG:
     # Include django_browser_reload URLs only in DEBUG mode
