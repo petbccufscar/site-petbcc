@@ -1,0 +1,19 @@
+{% load static tailwind_tags %}
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Meu Projeto Django{% endblock title %}</title>
+
+    {% tailwind_css %} {% block extra_head %} {% endblock extra_head %}
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans antialiased">
+    {% include "components/navbar.html" %}
+
+    <main class="container mx-auto px-4 py-8 min-h-screen">
+      {% block content %} {% endblock content %}
+    </main>
+  </body>
+</html>
