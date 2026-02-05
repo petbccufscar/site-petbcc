@@ -803,6 +803,102 @@ input:where([type='file']):focus {
   top: 0px;
 }
 
+.top-10 {
+  top: 2.5rem;
+}
+
+.top-5 {
+  top: 1.25rem;
+}
+
+.top-12 {
+  top: 3rem;
+}
+
+.top-14 {
+  top: 3.5rem;
+}
+
+.top-16 {
+  top: 4rem;
+}
+
+.top-8 {
+  top: 2rem;
+}
+
+.top-6 {
+  top: 1.5rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
+.top-32 {
+  top: 8rem;
+}
+
+.top-64 {
+  top: 16rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
+.top-\[85px\] {
+  top: 85px;
+}
+
+.top-\[200px\] {
+  top: 200px;
+}
+
+.top-\[800px\] {
+  top: 800px;
+}
+
+.top-\[600px\] {
+  top: 600px;
+}
+
+.top-\[500px\] {
+  top: 500px;
+}
+
+.top-\[400px\] {
+  top: 400px;
+}
+
+.top-\[450px\] {
+  top: 450px;
+}
+
+.top-\[480px\] {
+  top: 480px;
+}
+
+.top-\[501px\] {
+  top: 501px;
+}
+
+.top-\[-500px\] {
+  top: -500px;
+}
+
+.-top-\[500px\] {
+  top: -500px;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -847,6 +943,10 @@ input:where([type='file']):focus {
 
 .w-full {
   width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .max-w-7xl {
@@ -921,28 +1021,22 @@ input:where([type='file']):focus {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-red-200 {
+  --tw-gradient-from: #fecaca var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(254 202 202 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .to-primary-light {
   --tw-gradient-to: #09ADC9 var(--tw-gradient-to-position);
 }
 
-.to-primary\/10 {
-  --tw-gradient-to: rgb(8 145 178 / 0.1) var(--tw-gradient-to-position);
-}
-
-.p-4 {
-  padding: 1rem;
+.p-3 {
+  padding: 0.75rem;
 }
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
 }
 
 .px-4 {
@@ -968,6 +1062,16 @@ input:where([type='file']):focus {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .text-center {
@@ -1016,10 +1120,6 @@ input:where([type='file']):focus {
 
 .tracking-tight {
   letter-spacing: -0.025em;
-}
-
-.tracking-tighter {
-  letter-spacing: -0.05em;
 }
 
 .text-blue-600 {

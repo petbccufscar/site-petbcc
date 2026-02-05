@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="bg-gradient-to-r from-primary to-primary-light shadow-md">
+<nav class="fixed top-0 left-0 w-screen bg-gradient-to-r from-primary to-primary-light shadow-md">
   <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
     <img
       src="{% static 'images/logo_branco_sem_titulo.png' %}"
@@ -22,9 +22,9 @@
       onclick="toggleSidebar()"
     ></div>
 
-    <aside
+    <div
       id="sidebar"
-      class="fixed md:hidden top-0 left-0 h-fit w-full p-6 bg-gradient-to-r from-primary to-primary-light transform -translate-y-full transition-transform duration-300"
+      class="fixed md:hidden top-0 left-0 h-fit w-full p-6 bg-gradient-to-r from-primary-200 to-primary-light transform -translate-y-full transition-transform duration-300 shadow-md"
     >
       <div class="flex justify-end">
         <ion-icon
@@ -44,7 +44,7 @@
         </a>
         {% endfor %}
       </div>
-    </aside>
+    </div>
 
     {% comment %} MENU DESKTOP {% endcomment %}
 
