@@ -1,4 +1,4 @@
-{% load static tailwind_tags %}
+{% load static tailwind_tags %} {% load static %}
 
 <!doctype html>
 <html lang="pt-br">
@@ -18,10 +18,10 @@
 
     {% tailwind_css %} {% block extra_head %} {% endblock extra_head %}
   </head>
-  <body class="bg-gray-50 text-gray-900 font-sans antialiased">
+  <body class="bg-gray-50 antialiased">
     {% include "components/navbar.html" %}
 
-    <main class="max-w-7xl container mx-auto px-4 py-16 min-h-screen">
+    <main class="mt-[70px] min-h-screen">
       {% block content %} {% endblock content %}
     </main>
   </body>

@@ -44,8 +44,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "#0891B2",
-        "primary-light": "#09ADC9", 
+        primary: "#0891B2",
+        "primary-light": "#06B6D4",
       },
     },
   },

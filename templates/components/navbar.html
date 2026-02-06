@@ -1,7 +1,9 @@
 {% load static %}
 
-<nav class="fixed top-0 left-0 w-screen bg-gradient-to-r from-primary to-primary-light shadow-md">
-  <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+<nav
+  class="fixed top-0 left-0 z-50 w-screen bg-gradient-to-r from-primary to-primary-light shadow-md"
+>
+  <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
     <img
       src="{% static 'images/logo_branco_sem_titulo.png' %}"
       alt="Logo do PET BCC"
@@ -24,7 +26,7 @@
 
     <div
       id="sidebar"
-      class="fixed md:hidden top-0 left-0 h-fit w-full p-6 bg-gradient-to-r from-primary to-primary-light transform -translate-y-full transition-transform duration-300 shadow-md"
+      class="fixed md:hidden top-0 left-0 h-fit w-full p-6 bg-gradient-to-r from-primaryaai to-primary-light transform -translate-y-full transition-transform duration-300 shadow-md"
     >
       <div class="flex justify-end">
         <ion-icon
