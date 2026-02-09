@@ -1,29 +1,82 @@
 {% load static %}
 
-<footer class="w-full bg-gradient-to-r from-primary to-primary-light text-gray-50">
-    <div class="flex flex-col max-w-[1040px] mx-auto px-2 lg:p-0 py-4 lg:py-6 gap-6 items-center justify-center">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center justify-center">
-            <div class="flex flex-col gap-4">
-                <p class="font-bold">PET-BCC UFSCar</p>
-                <p>Programa de Educação Tutorial em Bacharelado em Ciência da Computação da UFSCar Campus São Carlos</p>
-            </div>
-            <div class="flex flex-col gap-4">
-                <p class="font-bold">Contato</p>
-                <p>Rod. Washington Luís, s/n - Monjolinho, São Carlos - SP, 13565-905 - Departamento de Computação petbcc.ufscar@gmail.com</p>
-            </div>
-            <div class="flex flex-col gap-4">
-                <p class="font-bold">Redes Sociais</p>
-                <div class="flex flex-col gap-1 underline">
-                    <p><a href="">Facebook</a></p>
-                    <p><a href="">YouTube</a></p>
-                    <p><a href="">Github</a></p>
-                </div>
-            </div>
-            <div class="flex flex-row gap-4 items-center justify-center">
-                <img src="{% static 'images/footer/dc_branco.png' %}" alt="Logo Departamento de Computação" srcset=""><img src="{% static 'images/footer/ufscar_branco.png' %}" alt="Logo UFSCar" srcset=""><img src="{% static 'images/footer/ministerio_da_educacao_vertical.png' %}" alt="Logo Ministério da Educação" srcset="">
-            </div>
+<footer
+  class="w-full bg-gradient-to-r from-primary to-primary-light text-gray-50"
+>
+  <div
+    class="flex flex-col max-w-[1040px] mx-auto px-2 lg:p-0 py-4 lg:py-6 gap-6 items-center justify-center"
+  >
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center justify-center"
+    >
+      <div class="flex flex-col gap-4">
+        <p class="font-bold">PET-BCC UFSCar</p>
+        <p>
+          Programa de Educação Tutorial em Bacharelado em Ciência da Computação
+          da UFSCar Campus São Carlos
+        </p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <p class="font-bold">Contato</p>
+        <p>
+          Rod. Washington Luís, s/n - Monjolinho, São Carlos - SP, 13565-905 -
+          Departamento de Computação petbcc.ufscar@gmail.com
+        </p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <p class="font-bold">Redes Sociais</p>
+        <div class="flex flex-col gap-1">
+          <p>
+            <a
+              href="https://www.facebook.com/petbcc"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visite nossa página no Facebook (abre em nova guia)"
+              class="underline underline-offset-4"
+              >Facebook</a
+            >
+          </p>
+          <p>
+            <a
+              href="https://www.youtube.com/channel/UCyoSac6aP0aGWMDw0XnsnqA"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visite nosso canal no YouTube (abre em nova guia)"
+              class="underline underline-offset-4"
+              >YouTube</a
+            >
+          </p>
+          <p>
+            <a
+              href="https://github.com/petbccufscar"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Veja nossos repositórios no Github (abre em nova guia)"
+              class="underline underline-offset-4"
+              >Github</a
+            >
+          </p>
         </div>
-        <hr class="w-full border-1 border-cyan-500" />
-        <p class="text-gray-50">© 2025 PET-BCC UFSCar. Todos os direitos reservados</p>
+      </div>
+      <div class="flex flex-row gap-4 items-center justify-center">
+        <img
+          src="{% static 'images/footer/dc_branco.png' %}"
+          alt="Logo Departamento de Computação"
+          srcset=""
+        /><img
+          src="{% static 'images/footer/ufscar_branco.png' %}"
+          alt="Logo UFSCar"
+          srcset=""
+        /><img
+          src="{% static 'images/footer/ministerio_da_educacao_vertical.png' %}"
+          alt="Logo Ministério da Educação"
+          srcset=""
+        />
+      </div>
     </div>
+    <hr class="w-full border-1 border-cyan-500" />
+    <p class="text-gray-50">
+      © 2025 PET-BCC UFSCar. Todos os direitos reservados
+    </p>
+  </div>
 </footer>

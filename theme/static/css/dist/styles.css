@@ -1297,6 +1297,10 @@ input:where([type='file']):focus {
   text-underline-offset: auto;
 }
 
+.underline-offset-4 {
+  text-underline-offset: 4px;
+}
+
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
