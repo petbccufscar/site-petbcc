@@ -1,26 +1,26 @@
 {% load static %}
 
-<footer class="w-full bg-gradient-to-r from-primary to-primary-light">
-    <div class="flex flex-col max-w-[1040px] mx-auto py-6 gap-6 items-center justify-center">
-        <div>
-            <div>
-                <p>PET-BCC UFSCar</p>
+<footer class="w-full bg-gradient-to-r from-primary to-primary-light text-gray-50">
+    <div class="flex flex-col max-w-[1040px] mx-auto px-2 lg:p-0 py-4 lg:py-6 gap-6 items-center justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center justify-center">
+            <div class="flex flex-col gap-4">
+                <p class="font-bold">PET-BCC UFSCar</p>
                 <p>Programa de Educação Tutorial em Bacharelado em Ciência da Computação da UFSCar Campus São Carlos</p>
             </div>
-            <div>
-                <p>Contato</p>
+            <div class="flex flex-col gap-4">
+                <p class="font-bold">Contato</p>
                 <p>Rod. Washington Luís, s/n - Monjolinho, São Carlos - SP, 13565-905 - Departamento de Computação petbcc.ufscar@gmail.com</p>
             </div>
-            <div>
-                <p></p>
-                <div>
-                    <p><a href=""></a></p>
-                    <p><a href=""></a></p>
-                    <p><a href=""></a></p>
+            <div class="flex flex-col gap-4">
+                <p class="font-bold">Redes Sociais</p>
+                <div class="flex flex-col gap-1 underline">
+                    <p><a href="">Facebook</a></p>
+                    <p><a href="">YouTube</a></p>
+                    <p><a href="">Github</a></p>
                 </div>
             </div>
-            <div>
-                <img src="" alt="" srcset=""><img src="" alt="" srcset=""><img src="" alt="" srcset="">
+            <div class="flex flex-row gap-4 items-center justify-center">
+                <img src="{% static 'images/footer/dc_branco.png' %}" alt="Logo Departamento de Computação" srcset=""><img src="{% static 'images/footer/ufscar_branco.png' %}" alt="Logo UFSCar" srcset=""><img src="{% static 'images/footer/ministerio_da_educacao_vertical.png' %}" alt="Logo Ministério da Educação" srcset="">
             </div>
         </div>
         <hr class="w-full border-1 border-cyan-500" />
