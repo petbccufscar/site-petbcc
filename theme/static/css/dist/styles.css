@@ -1290,6 +1290,10 @@ input:where([type='file']):focus {
     padding: 3rem;
   }
 
+  .md\:p-\[200px\] {
+    padding: 200px;
+  }
+
   .md\:py-12 {
     padding-top: 3rem;
     padding-bottom: 3rem;
