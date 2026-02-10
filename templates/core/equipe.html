@@ -1,5 +1,4 @@
-{% extends "base.html" %} {% block title %}PET BCC | Equipe{% endblock title %}
-{% load static %} {% block content %}
+{% extends "base.html" %} {% block title %}PET BCC | Equipe{% endblock title %} {% block content %}
 <div class="text-center">
   <section class="bg-gradient-to-r from-primary to-primary-light p-6">
     <ion-icon name="people-outline" class="text-6xl text-gray-50"></ion-icon>
@@ -8,185 +7,58 @@
   </section>
   <section class="p-6 space-y-8">
     <section>
-      <h1 class="text-lg mb-6 font-bold text-gray-800">Professores</h1>
-      <div class="flex flex-col items-center gap-6">
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-      </div>
-    </section>
-    <section>
       <h1 class="text-lg mb-6 font-bold text-gray-800">Bolsistas</h1>
       <div class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-6">
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
+        {% include "../components/membro_equipe.html" with nome="Renato" descricao="Tutor" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
       </div>
     </section>
     <section>
       <h1 class="text-lg mb-6 font-bold text-gray-800">Não bolsistas</h1>
       <div class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-6">
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
       </div>
     </section>
     <section>
       <h1 class="text-lg mb-6 font-bold text-gray-800">Colaboradores</h1>
       <div class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-6">
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
       </div>
     </section>
     <section>
       <h1 class="text-lg mb-6 font-bold text-gray-800">Ex-membros</h1>
       <div
-        class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-6 bg-gray-100 border border-gray-200 p-6 rounded-xl"
-      >
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
-        <div>
-          <img src="{% static 'images/renato.png' %}" alt="" class="mb-2" />
-          <p class="text-gray-600">Renato</p>
-          <p class="text-cyan-600 text-sm">Tutor</p>
-        </div>
+        class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-6 bg-gray-100 border border-gray-200 p-6 rounded-xl">
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
+        {% include "../components/membro_equipe.html" with nome="Aluno" descricao="BCC25" %}
       </div>
     </section>
   </section>
