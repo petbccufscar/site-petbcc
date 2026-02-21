@@ -1,14 +1,129 @@
-{% extends "base.html" %}
-
-{% block title %}PET BCC | Projetos{% endblock title %}
-
+{% extends 'base.html' %} {% block title %}
+  PET BCC | Projetos
+{% endblock %}
+{% load estilos_tags %}
 {% block content %}
-<div class="text-center py-10">
-  <h1 class="text-4xl font-bold text-blue-600 mb-4">
-    Bem-vindo ao Django com Tailwind!
-  </h1>
-  <p class="text-lg text-gray-600 mb-6">
-    Projetos
-  </p>
-</div>
-{% endblock content %}
+  <div>
+    <section class="text-center bg-gradient-to-r from-primary to-primary-light p-6">
+      <ion-icon name="code-slash-outline" class="text-6xl text-gray-50"></ion-icon>
+      <h1 class="text-gray-50 font-bold text-lg mb-4">Nosss projetos</h1>
+      <p class="text-gray-50">Conheça os projetos que o PET-BCC desenvolve nas áreas de ensino, pesquisa e extensão</p>
+    </section>
+    <section class="max-w-6xl mx-auto p-6 md:py-12 space-y-8 md:space-y-12">
+      <section>
+        <div>
+          <form method="get" class="block md:hidden">
+            <select name="categoria" onchange="this.form.submit()" class="w-full border rounded-lg px-4 py-2 bg-white">
+              <option value="">Todas</option>
+              {% for categoria in categorias %}
+                <option value="{{ categoria.slug }}"
+                  {% if categoria.slug == categoria_ativa %} selected {% endif %}>
+                  {{ categoria.nome }}
+                </option>
+              {% endfor %}
+
+            </select>
+          </form>
+        </div>
+        <div class="hidden md:flex bg-gray-100 p-2 rounded-full gap-4 justify-center m-auto w-fit">
+          <!-- prettier-ignore -->
+          <a href="{% url 'core:projetos' %}"
+            class="px-4 py-2 font-bold rounded-full hover:bg-gray-300
+            {% if not categoria_ativa %}
+                !bg-gray-800 text-white
+            {% else %}
+                text-gray-600
+            {% endif %}">
+            Todos
+          </a>
+          <!-- prettier-ignore -->
+          <a href="?categoria=ensino"
+            class="px-4 py-2 font-bold rounded-full hover:bg-gray-300
+            {% if categoria_ativa == 'ensino' %} 
+              !bg-blue-500 text-white 
+            {% else %} 
+              text-gray-600 
+            {% endif %}">
+            Ensino
+          </a>
+          <!-- prettier-ignore -->
+          <a href="?categoria=pesquisa"
+            class="px-4 py-2 font-bold rounded-full hover:bg-gray-300
+            {% if categoria_ativa == 'pesquisa' %}
+               !bg-green-500 text-white
+            {% else %}
+               text-gray-600
+            {% endif %}">
+            Pesquisa
+          </a>
+          <!-- prettier-ignore -->
+          <a href="?categoria=extensao"
+            class="px-4 py-2 font-bold rounded-full hover:bg-gray-300
+            {% if categoria_ativa == 'extensao' %}
+               !bg-blue-500 text-white
+            {% else %}
+               text-gray-600
+            {% endif %}">
+            Extensão
+          </a>
+          <!-- prettier-ignore -->
+          <a href="?categoria=desenvolvimento"
+            class="px-4 py-2 font-bold rounded-full hover:bg-gray-300
+            {% if categoria_ativa == 'desenvolvimento' %}
+               !bg-orange-500 text-white
+            {% else %}
+               text-gray-600
+            {% endif %}">
+            Desenvolvimento
+          </a>
+        </div>
+      </section>
+      <section class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-0">
+        {% for projeto in projetos %}
+          <div class="flex gap-4 flex-col p-6 mb-4 rounded-lg border-2 border-gray-200 bg-white">
+            <div class="flex justify-between">
+              {% include 'components/badge.html' with texto=projeto.categoria.nome estilo=projeto.categoria.slug|estilo_categoria %}
+              <div class="flex gap-2">
+                {% include 'components/badge.html' with texto=projeto.status estilo=projeto.status|estilo_status_projeto %}
+                {% include 'components/badge.html' with texto=projeto.inicio.year estilo='bg-white text-gray-800 border-gray-200 border' %}
+              </div>
+            </div>
+
+            <div class="space-y-2 flex-1">
+              <h2 class="font-bold text-gray-800">{{ projeto.nome }}</h2>
+              <p class="text-gray-600">{{ projeto.descricao }}</p>
+            </div>
+
+            <div class="flex gap-2 items-center">
+              <p>{{ projeto.tecnologias|join:', ' }}</p>
+              <a href="{{ projeto.github }}" target="_blank" class="ml-auto flex justify-center items-center hover:bg-gray-200 text-gray-700 p-3 rounded-lg"><ion-icon class="text-2xl" name="logo-github"></ion-icon></a>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+      <section class="md:hidden space-y-4">
+        {% for projeto in projetos %}
+          <div class="space-y-4 p-6 rounded-lg border-2 border-gray-200 bg-white">
+            <div class="flex justify-between">
+              {% include 'components/badge.html' with texto=projeto.categoria.nome estilo=projeto.categoria.slug|estilo_categoria %}
+              <div class="flex gap-2">
+                {% include 'components/badge.html' with texto=projeto.status estilo=projeto.status|estilo_status_projeto %}
+                {% include 'components/badge.html' with texto=projeto.inicio.year estilo='bg-white text-gray-800 border-gray-200 border' %}
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <h2 class="font-bold text-gray-800">{{ projeto.nome }}</h2>
+              <p class="text-gray-600">{{ projeto.descricao }}</p>
+            </div>
+
+            <div class="flex gap-2 items-center">
+              <p>{{ projeto.tecnologias|join:', ' }}</p>
+              <a href="{{ projeto.github }}" target="_blank" class="ml-auto flex justify-center items-center hover:bg-gray-200 text-gray-700 p-3 rounded-lg"><ion-icon class="text-2xl" name="logo-github"></ion-icon></a>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+    </section>
+  </div>
+{% endblock %}
