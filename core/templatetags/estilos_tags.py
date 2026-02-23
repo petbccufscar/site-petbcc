@@ -3,11 +3,11 @@ from django import template
 register = template.Library()
 
 @register.filter
-def estilo_categoria(categoria):
+def estilo_categoria(categoria, extra=None):
     cores = {
         "ensino": "bg-blue-500 text-gray-50",
         "pesquisa": "bg-green-500 text-gray-50",
-        "extensao": "bg-purple-500 text-gray-50",
+        "extensao": "bg-red-500 text-gray-50",
         "desenvolvimento": "bg-orange-500 text-gray-50",
         "marketing": "bg-blue-200 text-gray-50",
         "financeiro": "bg-teal-500 text-gray-50",
@@ -15,15 +15,15 @@ def estilo_categoria(categoria):
         "gestao-de-pessoas": "bg-pink-500 text-gray-50",
     }
     
-    return cores.get(str(categoria).lower(), "bg-white text-gray-800 border-gray-200 border")
+    return cores.get(str(categoria).lower(), "bg-white text-gray-800 border-gray-200 border") + (" " + extra if extra else "")
 
 @register.filter
-def estilo_status_projeto(categoria):
+def estilo_status_projeto(categoria, extra=None):
     cores = {
-        "ativo": "bg-green-600 text-white",
-        "suspenso": "bg-orange-500 text-white",
-        "planejamento": "bg-gray-100 text-gray-400",
-        "finalizado": "bg-green-500 text-white",
+        "ativo": "bg-yellow-500 text-white",
+        "suspenso": "bg-gray-100 text-gray-500",
+        "planejamento": "bg-purple-500 text-white ",
+        "finalizado": "bg-green-600 text-white",
     }
     
-    return cores.get(str(categoria).lower(), "bg-white text-gray-800 border-gray-200 border")
+    return cores.get(str(categoria).lower(), "bg-white text-gray-800 border-gray-200 border") + (" " + extra if extra else "")

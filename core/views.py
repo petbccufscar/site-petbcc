@@ -5,7 +5,192 @@ def inicio(request):
     return render(request, 'core/inicio.html')
 
 def equipe(request):
-    return render(request, 'core/equipe.html')
+    return render(request, 'core/equipe.html', {
+        "bolsistas": [
+            {
+                "nome": "Alice Silva",
+                "descricao": "Tutor",
+            },
+            {
+                "nome": "Bruno Costa",
+                "descricao": "BCC 24",
+            },
+            {
+                "nome": "Carla Souza",
+                "descricao": "BCC 23",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            }
+        ],
+        "nao_bolsistas": [
+            {
+                "nome": "Alice Silva",
+                "descricao": "Tutor",
+            },
+            {
+                "nome": "Bruno Costa",
+                "descricao": "BCC 24",
+            },
+            {
+                "nome": "Carla Souza",
+                "descricao": "BCC 23",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+        ],
+        "colaboradores": [
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            }
+        ],
+        "ex_membros": [
+            {
+                "nome": "Alice Silva",
+                "descricao": "Tutor",
+            },
+            {
+                "nome": "Bruno Costa",
+                "descricao": "BCC 24",
+            },
+            {
+                "nome": "Carla Souza",
+                "descricao": "BCC 23",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            },
+            {
+                "nome": "Diego Lima",
+                "descricao": "BCC 22",
+            }
+        ]
+    })
 
 def projetos(request):
     categoria = request.GET.get("categoria")
