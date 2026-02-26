@@ -9,16 +9,31 @@
       Tutorial em Ciência da Computação
     </p>
   </section>
-  <section class="py-10 w-full max-w-5xl flex flex-col justify-start">
-    <h2 class="text-lg mb-6 font-bold text-gray-800">Sobre as vagas</h2>
-    <div class="grid h-full grid-cols-3 gap-3">
-      {% include"../components/card_tipo_vaga.html" with categoria="Bolsista"
-      paragrafo_1_descricao="O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$700,00 mensalmente."
-      paragrafo_2_descricao="A dedicação é de 20 horas semanaisd e a participação no PET garante ao aluno participação em 60 horas de atividades complementares elegíveis no curso de Ciência da Computação."
-      %}
-      {% include "../components/card_tipo_vaga.html" with categoria="Não-Bolsista"%}
-      {% include "../components/card_tipo_vaga.html" with categoria="Colaborador"%}
-    </div>
-  </section>
+  <div class="w-full max-w-5xl px-4 xl:p-0 flex flex-col justify-start gap-10">
+    <section class="w-full flex flex-col md:flex-row gap-4 p-8 justify-start items-start bg-cyan-50 border-2 border-cyan-500 rounded-lg">
+      <div class="flex p-3 bg-cyan-500 rounded-xl">
+            <ion-icon name="calendar-outline" class="text-4xl text-gray-50"></ion-icon>
+      </div>
+      <div class="w-full flex flex-col gap-4">
+        <h2 class="text-lg font-bold text-gray-800">Processo Seletivo - 2025/1</h2>
+        <p class="text-justify">Todos os alunos regularmente matriculados no curso de Bacharelado em Ciência da Computação da UFSCar estão convidados a participar do processo seletivo 2025/1 do PET-BCC.</p>
+        <div><span class="text-white px-3 py-2 bg-cyan-500 rounded-lg">Inscrições Abertas</span></div>
+      </div>
+    </section>
+    <section class="py-10 w-full flex flex-col justify-start">
+      <h2 class="text-lg mb-6 font-bold text-gray-800">Sobre as vagas</h2>
+      <div class="grid h-full grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3">
+        {% include "../components/card_tipo_vaga.html" with categoria="Bolsista" paragrafo_1_descricao="O PET pode ter até <span class='font-bold'>12 alunos bolsistas</span>, que recebem uma bolsa de <span class='font-bold'>R$700,00</span> mensalmente." paragrafo_2_descricao="A dedicação é de <span class='font-bold'>20 horas semanais</span> e a participação no PET garante ao aluno participação em 60 horas de atividades complementares elegíveis no curso de Ciência da Computação." qtd_vagas="12" %}
+        {% include "../components/card_tipo_vaga.html" with categoria="Não-Bolsista" paragrafo_1_descricao="Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode ainda ter <span class='font-bold'>6 alunos</span> atuando como não-bolsistas." paragrafo_2_descricao="As condições são as mesmas dos bolsistas, bem como o certificado, que também vale como Atividades Complementares." qtd_vagas="6" %}
+        {% include "../components/card_tipo_vaga.html" with categoria="Colaborador" paragrafo_1_descricao="Caso as vagas para bolsistas e não-bolsistas já estiverem preenchidas, ainda é possível ser um membro do PET como um colaborador." paragrafo_2_descricao=" Mesmo como colaborador você terá participação efetiva nos projetos, garantindo muito conhecimento e um grande incremento em sua graduação." qtd_vagas="-" %}
+      </div>
+    </section>
+    
+    <section class="py-10 w-full flex flex-col justify-start">
+      <h2 class="text-lg mb-6 font-bold text-gray-800">Sobre as etapas</h2>
+      <div class="grid h-full grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3">
+        </div>
+    </section>
+  </div>
 </div>
 {% endblock content %}

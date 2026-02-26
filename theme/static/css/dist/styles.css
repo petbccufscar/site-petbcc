@@ -843,10 +843,6 @@ input:where([type='file']):focus {
   z-index: 50;
 }
 
-.row-auto {
-  grid-row: auto;
-}
-
 .m-auto {
   margin: auto;
 }
@@ -870,10 +866,6 @@ input:where([type='file']):focus {
 
 .mb-8 {
   margin-bottom: 2rem;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .mt-\[73px\] {
@@ -909,6 +901,10 @@ input:where([type='file']):focus {
   height: fit-content;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -934,12 +930,16 @@ input:where([type='file']):focus {
   width: 100vw;
 }
 
-.max-w-6xl {
-  max-width: 72rem;
+.w-auto {
+  width: auto;
 }
 
 .max-w-5xl {
   max-width: 64rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
 }
 
 .border-collapse {
@@ -1011,8 +1011,16 @@ input:where([type='file']):focus {
   gap: 0.25rem;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .gap-4 {
@@ -1021,10 +1029,6 @@ input:where([type='file']):focus {
 
 .gap-6 {
   gap: 1.5rem;
-}
-
-.gap-3 {
-  gap: 0.75rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1045,16 +1049,6 @@ input:where([type='file']):focus {
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
-.space-y-1 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -1065,6 +1059,10 @@ input:where([type='file']):focus {
 
 .border {
   border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-cyan-50 {
@@ -1086,8 +1084,18 @@ input:where([type='file']):focus {
   background-color: rgb(243 244 246 / 0.2) !important;
 }
 
+.bg-\[\#A855F7\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(168 85 247 / var(--tw-bg-opacity, 1));
+}
+
 .bg-black\/50 {
   background-color: rgb(0 0 0 / 0.5);
+}
+
+.bg-cyan-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 254 255 / var(--tw-bg-opacity, 1));
 }
 
 .bg-cyan-500 {
@@ -1108,20 +1116,6 @@ input:where([type='file']):focus {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
-}
-
-.bg-\[\] {
-  background-color: ;
-}
-
-.bg-\[\#A855F7\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(168 85 247 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gradient-to-r {
@@ -1199,6 +1193,15 @@ input:where([type='file']):focus {
   padding: 1.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1209,22 +1212,18 @@ input:where([type='file']):focus {
   padding-bottom: 2.5rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
 .pt-20 {
   padding-top: 5rem;
-}
-
-.pt-\[73px\] {
-  padding-top: 73px;
 }
 
 .text-center {
@@ -1237,6 +1236,11 @@ input:where([type='file']):focus {
 
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -1272,11 +1276,6 @@ input:where([type='file']):focus {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-bold {
@@ -1336,6 +1335,11 @@ input:where([type='file']):focus {
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .underline {
@@ -1418,8 +1422,16 @@ input:where([type='file']):focus {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:flex-col {
+    flex-direction: column;
   }
 
   .md\:from-5\% {
@@ -1428,6 +1440,10 @@ input:where([type='file']):focus {
 
   .md\:p-12 {
     padding: 3rem;
+  }
+
+  .md\:p-0 {
+    padding: 0px;
   }
 
   .md\:py-12 {
@@ -1447,5 +1463,23 @@ input:where([type='file']):focus {
 @media (min-width: 1024px) {
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:p-0 {
+    padding: 0px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xl\:p-0 {
+    padding: 0px;
   }
 }
