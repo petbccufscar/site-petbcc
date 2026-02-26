@@ -1,14 +1,24 @@
-{% extends "base.html" %}
-
-{% block title %}PET BCC | Processo Seletivo{% endblock title %}
-
+{% extends "base.html" %} {% block title %}PET BCC | Equipe{% endblock title %}
 {% block content %}
-<div class="text-center py-10">
-  <h1 class="text-4xl font-bold text-blue-600 mb-4">
-    Bem-vindo ao Django com Tailwind!
-  </h1>
-  <p class="text-lg text-gray-600 mb-6">
-    Processo seletivo
-  </p>
+<div class="justify-center items-center flex flex-col gap-6">
+  <section class="w-full text-center bg-gradient-to-r from-primary to-primary-light p-6">
+    <ion-icon name="happy-outline" class="text-6xl text-gray-50"></ion-icon>
+    <h1 class="text-gray-50 font-bold text-lg mb-4">Processo Seletivo</h1>
+    <p class="text-gray-50">
+      Participe do processo seletivo e faça parte do Programa de Educação
+      Tutorial em Ciência da Computação
+    </p>
+  </section>
+  <section class="py-10 w-full max-w-5xl flex flex-col justify-start">
+    <h2 class="text-lg mb-6 font-bold text-gray-800">Sobre as vagas</h2>
+    <div class="grid h-full grid-cols-3 gap-3">
+      {% include"../components/card_tipo_vaga.html" with categoria="Bolsista"
+      paragrafo_1_descricao="O PET pode ter até 12 alunos bolsistas, que recebem uma bolsa de R$700,00 mensalmente."
+      paragrafo_2_descricao="A dedicação é de 20 horas semanaisd e a participação no PET garante ao aluno participação em 60 horas de atividades complementares elegíveis no curso de Ciência da Computação."
+      %}
+      {% include "../components/card_tipo_vaga.html" with categoria="Não-Bolsista"%}
+      {% include "../components/card_tipo_vaga.html" with categoria="Colaborador"%}
+    </div>
+  </section>
 </div>
 {% endblock content %}
