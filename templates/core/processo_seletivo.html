@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}PET BCC | Equipe{% endblock title %}
 {% block content %}
-<div class="justify-center items-center flex flex-col gap-6">
+<div class="justify-center items-center flex flex-col gap-6 mb-16">
   <section class="w-full text-center bg-gradient-to-r from-primary to-primary-light p-6">
     <ion-icon name="happy-outline" class="text-6xl text-gray-50"></ion-icon>
     <h1 class="text-gray-50 font-bold text-lg mb-4">Processo Seletivo</h1>
@@ -32,7 +32,56 @@
     <section class="py-10 w-full flex flex-col justify-start">
       <h2 class="text-lg mb-6 font-bold text-gray-800">Sobre as etapas</h2>
       <div class="grid h-full grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3">
+        {% include "../components/card_etapa.html" with etapa="1" nome_etapa="Apresentação individual via vídeo" descricao="Envio de vídeo de apresentação pessoal com tema livre" data_inicio="26/08" data_fim="07/09" data_resultado="16/09" %}
+        {% include "../components/card_etapa.html" with etapa="2" nome_etapa="Proposta de projeto para o PET-BCC" descricao="Elaboração de um documento contendo uma proposta de projeto real" data_inicio="23/09" data_fim="05/10" %}
+        {% include "../components/card_etapa.html" with etapa="3" nome_etapa="Entrevista individual e arguição da Etapa 2" descricao="Entrevista online sobre a Etapa 2 junto com entrevista pessoal" data_inicio="06/10" data_fim="10/10" data_resultado="21/10" %}
         </div>
+    </section>
+
+    <section class="w-full flex flex-col">
+      <h2 class="text-lg mb-6 font-bold text-gray-800">Requisitos</h2>
+      <div class="w-full flex flex-col justify-start gap-2 bg-cyan-50 border-2 rounded-xl border-cyan-500 p-8">
+        <p>Para se inscrever no processo seletivo, o candidato deverá:</p>
+        <div class="flex gap-2 items-start">
+          <span class="mx-1">1.</span>
+          <p>Ser aluno(a) regularmente matriculado(a) no curso de <span class="font-bold">Bacharelado em Ciência da Computação da UFSCar</span>, campus São Carlos;</p>
+        </div>
+         <div class="flex gap-4 items-start">
+          <span class="mx-1">2.</span>
+          <p>Caso o CANDIDATO já tenha tido vínculo com o PET BCC UFSCar (como bolsista ou não bolsista) e tenha sido desligado do programa, <span class="font-bold">poderá ser inscrever novamente no processo seletivo se</span>, e somente se, <span class="font-bold">entre a data do seu desligamento e a inscrição tenha ocorrido a finalização de um semestre letivo com digitação de nota</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full flex flex-col">
+      <h2 class="text-lg mb-6 font-bold text-gray-800">Inscrição</h2>
+      <div class="w-full flex flex-row justify-start gap-4 bg-cyan-50 border rounded-xl border-gray-200 p-8">
+        <div>
+          <div class="flex bg-blue-500 p-3 h-auto rounded-xl">{% include "../components/icons/clipboard.html" with class="w-8 h-8 text-white self-center" %}</div>
+        </div>
+        <div class="flex flex-col gap-4">
+          <h3 class="text-xl font-normal">Formulário de Inscrição</h3>
+          <p>As inscrições devem ser realizadas por meio do preenchimento do formulário digital.</p>
+          <p><span class="font-bold">ATENÇÃO:</span> As inscrições estarão abertas entre <span class="font-bold">04/08/2025 e 25/08/2025</span></p>
+          <div><button class="flex px-4 py-2 bg-cyan-500 text-cyan-50 border border-cyan-50 rounded-lg transition-colors hover:bg-cyan-50 hover:text-cyan-500 hover:border-cyan-500">Acesse o formulário clicando aqui</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full flex flex-col">
+      <h2 class="text-lg mb-6 font-bold text-gray-800">Edital</h2>
+      <div class="w-full flex flex-row justify-start gap-4 bg-cyan-50 border rounded-xl border-gray-200 p-8">
+        <div>
+          <div class="flex bg-purple-500 p-3 h-auto rounded-xl">
+            {% include "../components/icons/document.html" with class="w-8 h-8 text-white self-center" %}
+          </div>
+        </div>
+        <div class="flex flex-col gap-4">
+          <h3 class="text-xl font-normal">Documento Oficial</h3>
+          <p>Detalhes sobre documentos necessários, critérios, cronogramas e outras informações devem ser verificados no edital.</p>
+          <div><button class="flex px-4 py-2 bg-cyan-50 text-purple-500 border border-purple-500 rounded-lg transition-colors hover:bg-purple-500 hover:text-cyan-50 hover:border-cyan-50">Acesse o edital clicando aqui</button></div>
+        </div>
+      </div>
     </section>
   </div>
 </div>
