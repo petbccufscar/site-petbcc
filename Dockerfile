@@ -31,6 +31,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the source code into the container.
 COPY . .
 
+# Instala dependências do Tailwind (node_modules)
+RUN python manage.py tailwind install
+
 # Copy the entrypoint script and make it executable.
 COPY entrypoint.sh .
 RUN chmod +x /app/entrypoint.sh

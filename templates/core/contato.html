@@ -1,14 +1,52 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}PET BCC | Contato{% endblock title %}
+{% block title %}
+  PET BCC | Contato
+{% endblock %}
 
 {% block content %}
-<div class="text-center py-10">
-  <h1 class="text-4xl font-bold text-blue-600 mb-4">
-    Bem-vindo ao Django com Tailwind!
-  </h1>
-  <p class="text-lg text-gray-600 mb-6">
-    Contato
-  </p>
-</div>
-{% endblock content %}
+  {% include 'components/cabecalho_pagina.html' with icone='mail-outline' titulo='Contato' texto='Dúvidas, sugestões ou comentários? Entre em contato conosco pelo formulário a seguir' %}
+
+  <div class="max-w-md mx-auto p-6 md:py-12">
+    <form method="POST" class="space-y-4 max-w-md">
+      {% csrf_token %}
+
+      <!-- Nome -->
+      <div>
+        <label class="block text-sm font-medium mb-2 text-gray-700">{{ form.name.label }}</label>
+        {{ form.name }}
+        {% if form.name.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-medium mb-2 text-gray-700">{{ form.email.label }}</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Assunto -->
+      <div>
+        <label class="block text-sm font-medium mb-2 text-gray-700">{{ form.subject.label }}</label>
+        {{ form.subject }}
+        {% if form.subject.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.subject.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Mensagem -->
+      <div>
+        <label class="block text-sm font-medium mb-2 text-gray-700">{{ form.message.label }}</label>
+        {{ form.message }}
+        {% if form.message.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ form.message.errors.0 }}</p>
+        {% endif %}
+      </div>
+      <button type="submit" class="w-full bg-blue-200 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Enviar</button>
+    </form>
+  </div>
+{% endblock %}

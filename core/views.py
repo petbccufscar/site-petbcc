@@ -1,4 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+from django.core.mail import EmailMessage
+from django.contrib import messages
+
+from core.forms import ContactForm
+
 from datetime import date
 
 def inicio(request):
@@ -352,7 +358,25 @@ Mesmo como colaborador você terá participação efetiva nos projetos, garantin
     })
 
 def contato(request):
-    return render(request, 'core/contato.html')
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            EmailMessage(
+                subject=form.cleaned_data["subject"],
+                body=form.cleaned_data["message"],
+                from_email="SEU_EMAIL",
+                to=["vini.cotrim@hotmail.com"],
+                reply_to=[form.cleaned_data["email"]],
+            ).send()
+
+            messages.success(request, "Mensagem enviada com sucesso!")
+
+            return redirect("contact")  # redirect só aqui
+    else:
+        form = ContactForm()
+
+    return render(request, "core/contato.html", {"form": form})
 
 def manual_c(request):
     return render(request, 'core/manual_c.html')
