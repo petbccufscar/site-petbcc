@@ -1,7 +1,12 @@
-{% extends 'base.html' %} {% block title %}
+{% extends 'base.html' %}
+
+{% block title %}
   PET BCC | Início
 {% endblock %}
-{% load static %} {% block content %}
+
+{% load static %}
+
+{% block content %}
   <div class="relative h-fit bg-cover bg-center" style="background-image: url('{% static 'images/foto_equipe.png' %}')">
     <div class="absolute inset-0 bg-gradient-to-t from-black/70 md:from-5% from-40% via-black/30 to-transparent"></div>
 
@@ -23,7 +28,7 @@
     </section>
     <section class="p-6 md:py-12">
       <h1 class="text-2xl mb-6 md:mb-10 text-center text-gray-800 font-medium">Sobre o PET BCC</h1>
-      <p class="text-justify bg-white shadow p-6 md:p-12 rounded-lg text-gray-700">O grupo PET do curso de Bacharelado em Ciência da Computação (PET-BCC) da Universidade Federal de São Carlos (UFSCar), campus São Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05. Uma particularidade desse edital é que a chamada foi para grupos temáticos, isto é, além de estarem vinculados a um curso de graduação, também deveriam ter um tema para nortear suas atividades e projetos. O tema do PET-BCC é desenvolvimento de software.</p>
+      <p class="text-justify bg-white shadow p-6 md:p-12 rounded-lg text-gray-700">O grupo PET do curso de Bacharelado em Ciência da Computação (PET BCC) da Universidade Federal de São Carlos (UFSCar), campus São Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05. Uma particularidade desse edital é que a chamada foi para grupos temáticos, isto é, além de estarem vinculados a um curso de graduação, também deveriam ter um tema para nortear suas atividades e projetos. O tema do PET BCC é desenvolvimento de software.</p>
     </section>
     <section class="p-6 md:py-12">
       <h1 class="text-2xl mb-6 md:mb-12 text-center text-gray-800 font-medium">Pilares do PET BCC</h1>
@@ -39,7 +44,7 @@
           <p class="text-gray-600">Incentivo à produção ciêntífica e à participação em projetos de pesquisa</p>
         </div>
         <div class="space-y-2">
-          <ion-icon name="people-outline" class="contain-none text-4xl bg-red-500 text-gray-50 p-5 rounded-xl shadow"></ion-icon>
+          <ion-icon name="earth-outline" class="contain-none text-4xl bg-red-500 text-gray-50 p-5 rounded-xl shadow"></ion-icon>
           <p class="text-gray-700">Extensão</p>
           <p class="text-gray-600">Projetos que conectam a universidade com a comunidade externa</p>
         </div>

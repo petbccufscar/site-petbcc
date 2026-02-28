@@ -330,7 +330,7 @@ Mesmo como colaborador você terá participação efetiva nos projetos, garantin
         },
         {
             "etapa": 2,
-            "titulo": "Proposta de projeto para o PET-BCC",
+            "titulo": "Proposta de projeto para o PET BCC",
             "descricao": "Elaboração de um documento contendo uma proposta de projeto real",
             "data_inicio": "23/09",
             "data_fim": "05/10",
