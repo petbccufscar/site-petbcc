@@ -10,9 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
-
-import platform
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,13 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-8=h@0hwpk$+#4-*lhoe)rgkg%8pvv)_z=gfm1f^m(&cjuy-ls="
+SECRET_KEY = os.getenv("SECRET_KEY", default="your-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "1"
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="127.0.0.1,localhost,petbcc.ufscar.br").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", default="http://localhost:8000").split(",")
+MAINTENANCE_MODE = os.getenv("MAINTENANCE_MODE") == "1"
 
 # Application definition
 
@@ -54,6 +54,7 @@ if DEBUG:
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -125,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = os.getenv("TIME_ZONE", default="America/Sao_Paulo")
 
 USE_I18N = True
 
@@ -136,6 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -145,12 +147,3 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# Configuração do NPM para o Tailwind
-# Se for Windows, usa o seu caminho. Se for Linux, usa o padrão.
-if platform.system() == "Windows":
-    # COLE O SEU CAMINHO AQUI DENTRO (mantenha o r antes das aspas)
-    NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-else:
-    # Caminho padrão para Linux/Mac (não precisa mexer)
-    NPM_BIN_PATH = "/usr/local/bin/npm"

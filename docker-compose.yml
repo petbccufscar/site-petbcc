@@ -1,0 +1,14 @@
+services:
+  server:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      DEBUG: "1"       
+      MAINTENANCE_MODE: "0"         
+      SECRET_KEY: "dev-secret"  
+      ALLOWED_HOSTS: "127.0.0.1,localhost"
+      CSRF_TRUSTED_ORIGINS: "http://localhost:8000"
+      TIME_ZONE: "America/Sao_Paulo"
