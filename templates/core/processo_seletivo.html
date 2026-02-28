@@ -1,14 +1,113 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}PET BCC | Processo Seletivo{% endblock title %}
+{% block title %}
+  PET BCC | Processo Seletivo
+{% endblock %}
 
 {% block content %}
-<div class="text-center py-10">
-  <h1 class="text-4xl font-bold text-blue-600 mb-4">
-    Bem-vindo ao Django com Tailwind!
-  </h1>
-  <p class="text-lg text-gray-600 mb-6">
-    Processo seletivo
-  </p>
-</div>
-{% endblock content %}
+  <div class="justify-center items-center flex flex-col gap-6 mb-16">
+    <section class="w-full text-center bg-gradient-to-r from-primary to-primary-light p-6">
+      <ion-icon name="happy-outline" class="text-5xl text-gray-50"></ion-icon>
+      <h1 class="text-gray-50 font-bold text-lg mb-4">Processo Seletivo</h1>
+      <p class="text-gray-50">Participe do processo seletivo e faça parte do Programa de Educação Tutorial em Ciência da Computação</p>
+    </section>
+    <div class="w-full max-w-5xl px-4 xl:p-0 space-y-8 md:space-y-12">
+      <section class="w-full flex flex-col md:flex-row gap-4 p-8 text-center md:text-left bg-cyan-50 border-2 border-cyan-500 rounded-lg">
+        <div>
+          <div class="inline-flex p-3 bg-cyan-500 rounded-xl">
+            <ion-icon name="calendar-outline" class="text-4xl text-gray-50"></ion-icon>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <h2 class="text-lg font-bold text-gray-800 mb-2">Processo Seletivo - 2025/1</h2>
+            <p class="text-justify text-gray-600">
+              Todos os alunos regularmente matriculados no curso de Bacharelado em Ciência da Computação da UFSCar estão convidados a participar do processo seletivo 2025/1 do PET-BCC. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeADsYl3HJAUoWHmLZj3J6WdxDUENngPCDGoMiNrOdfRdmC-Q/closedform" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Inscrições abertas!</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-lg mb-6 font-bold text-gray-800 text-center md:text-left">Sobre as vagas</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3">
+          {% for vaga in vagas %}
+            {% include 'components/card_tipo_vaga.html' with categoria=vaga.categoria descricao=vaga.descricao qtd_vagas=vaga.qtd_vagas %}
+          {% endfor %}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-lg mb-6 font-bold text-gray-800 text-center md:text-left">Sobre as etapas</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3">
+          {% for etapa in etapas %}
+            {% include 'components/card_etapa.html' with etapa=etapa.etapa titulo=etapa.titulo descricao=etapa.descricao data_inicio=etapa.data_inicio data_fim=etapa.data_fim data_resultado=etapa.data_resultado %}
+          {% endfor %}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-lg mb-6 font-bold text-gray-800 text-center md:text-left">Requisitos</h2>
+        <div class="w-full space-y-2 bg-cyan-50 border-2 rounded-xl border-cyan-500 p-6">
+          <p class="text-gray-600">Para se inscrever no processo seletivo, o candidato deverá:</p>
+          <ul class="list-decimal list-inside">
+            <li class="flex gap-2">
+              <span class="text-gray-600">1.</span>
+              <p class="text-gray-600">
+                Ser aluno(a) regularmente matriculado(a) no curso de
+                <strong>Bacharelado em Ciência da Computação da UFSCar</strong>, campus São Carlos;
+              </p>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-gray-600">2.</span>
+              <p class="text-gray-600">
+                Caso o CANDIDATO já tenha tido vínculo com o PET BCC UFSCar (como bolsista ou não bolsista) e tenha sido desligado do programa,
+                <strong>poderá ser inscrever novamente no processo seletivo se</strong>, e somente se,
+                <strong>entre a data do seu desligamento e a inscrição tenha ocorrido a finalização de um semestre letivo com digitação de nota</strong>.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="w-full flex flex-col text-center md:text-left">
+        <h2 class="text-lg mb-6 font-bold text-gray-800">Inscrição</h2>
+        <div class="w-full flex flex-col md:flex-row justify-start gap-6 bg-cyan-50 border rounded-xl border-gray-200 p-8">
+          <div>
+            <ion-icon name="clipboard-outline" class="bg-blue-500 text-gray-50 p-3 rounded-xl text-3xl"></ion-icon>
+          </div>
+          <div class="space-y-4">
+            <div class="space-y-2">
+              <h3 class="text-lg text-gray-800">Formulário de Inscrição</h3>
+              <p class="text-gray-600">As inscrições devem ser realizadas por meio do preenchimento do formulário digital.</p>
+              <p class="text-gray-600">
+                <strong>ATENÇÃO:</strong> As inscrições estarão abertas entre <strong>04/08/2025 e 25/08/2025</strong>
+              </p>
+            </div>
+            <div>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSeADsYl3HJAUoWHmLZj3J6WdxDUENngPCDGoMiNrOdfRdmC-Q/closedform" target="_blank" rel="noopener noreferrer" class="inline-flex px-4 py-2 bg-cyan-500 text-cyan-50 border border-cyan-50 rounded-lg transition-colors hover:bg-cyan-50 hover:text-cyan-500 hover:border-cyan-500" aria-label="Preencher formulário de Google Forms">Acessar o Formulário</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full flex flex-col text-center md:text-left">
+        <h2 class="text-lg mb-6 font-bold text-gray-800">Edital</h2>
+        <div class="w-full flex flex-col md:flex-row justify-start gap-6 bg-cyan-50 border rounded-xl border-gray-200 p-8">
+          <div>
+            <ion-icon name="document-text-outline" class="bg-purple-500 text-gray-50 p-3 rounded-xl text-3xl"></ion-icon>
+          </div>
+          <div class="space-y-4">
+            <div class="space-y-2">
+              <h3 class="text-xl text-gray-800">Documento Oficial</h3>
+              <p class="text-gray-600">Detalhes sobre documentos necessários, critérios, cronogramas e outras informações devem ser verificados no edital.</p>
+            </div>
+            <div>
+              <a href="https://petbcc.ufscar.br/media/Edital2025-PS-PET-BCC_3.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf" aria-label="Ler o Edital do Processo Seletivo 2025 em PDF" class="inline-flex px-4 py-2 bg-cyan-50 text-purple-500 border border-purple-500 rounded-lg transition-colors hover:bg-purple-500 hover:text-cyan-50 hover:border-cyan-50">Ler Edital Completo (PDF)</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+{% endblock %}
