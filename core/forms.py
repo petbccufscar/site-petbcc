@@ -28,8 +28,8 @@ class ContactForm(forms.Form):
         super().__init__(*args, **kwargs)
 
         base_classes = (
-            "w-full p-2 border border-gray-200 rounded-lg placeholder:text-gray-300 text-blue-800 font-medium "
-            "focus:ring-2 focus:ring-cyan-500 "
+            "w-full p-4 border border-gray-200 rounded-lg placeholder:text-gray-400 text-gray-800 font-medium "
+            "focus:ring-2 focus:ring-primary-light "
             "focus:outline-none transition duration-200"
         )
 

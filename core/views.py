@@ -362,17 +362,19 @@ def contato(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            EmailMessage(
-                subject=form.cleaned_data["subject"],
+            result = EmailMessage(
+                subject=f"CONTATO VIA SITE: {form.cleaned_data['subject']}",
                 body=form.cleaned_data["message"],
-                from_email="SEU_EMAIL",
-                to=["vini.cotrim@hotmail.com"],
+                from_email=f"{form.cleaned_data['name']} <{form.cleaned_data['email']}>",
+                to=["petbcc.ufscar@gmail.com"],
                 reply_to=[form.cleaned_data["email"]],
             ).send()
 
+            print("Email enviado com sucesso!" if result else "Falha ao enviar email.")
+
             messages.success(request, "Mensagem enviada com sucesso!")
 
-            return redirect("contact")  # redirect só aqui
+            return redirect("core:contato") 
     else:
         form = ContactForm()
 
