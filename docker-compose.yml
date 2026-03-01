@@ -6,9 +6,22 @@ services:
     volumes:
       - .:/app
     environment:
-      DEBUG: "1"       
-      MAINTENANCE_MODE: "0"         
-      SECRET_KEY: "dev-secret"  
+      DEBUG: "1"
+      SECRET_KEY: "dev-secret"
       ALLOWED_HOSTS: "127.0.0.1,localhost"
       CSRF_TRUSTED_ORIGINS: "http://localhost:8000"
       TIME_ZONE: "America/Sao_Paulo"
+    depends_on:
+      - tailwind
+
+  tailwind:
+    build:
+      context: .
+      dockerfile: Dockerfile.tailwind
+    stdin_open: true 
+    tty: true       
+    volumes:
+      - .:/app
+      - /app/theme/static_src/node_modules
+    environment:
+      - NODE_ENV=development

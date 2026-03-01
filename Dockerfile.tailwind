@@ -1,0 +1,15 @@
+FROM node:20-slim
+
+WORKDIR /app
+
+# Instalação das dependências
+COPY theme/static_src/package.json theme/static_src/package-lock.json ./theme/static_src/
+WORKDIR /app/theme/static_src
+RUN npm install
+
+# Copia o resto do código
+WORKDIR /app
+COPY . .
+
+# Array do CMD para melhor gerenciamento de sinais
+CMD ["npm", "run", "dev", "--prefix", "theme/static_src"]
