@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
+from core.models import Membro
+
 from core.forms import ContactForm
 
 from datetime import date
@@ -11,191 +13,18 @@ def inicio(request):
     return render(request, 'core/inicio.html')
 
 def equipe(request):
+    MEMBROS = Membro.objects.all()
+
+    BOLSISTAS = MEMBROS.filter(situacao=Membro.Situacao.BOLSISTA)
+    NAO_BOLSISTAS = MEMBROS.filter(situacao=Membro.Situacao.NAO_BOLSISTA)
+    COLABORADORES = MEMBROS.filter(situacao=Membro.Situacao.COLABORADOR)
+    EX_MEMBROS = MEMBROS.filter(situacao=Membro.Situacao.EX_MEMBRO)
+
     return render(request, 'core/equipe.html', {
-        "bolsistas": [
-            {
-                "nome": "Alice Silva",
-                "descricao": "Tutor",
-            },
-            {
-                "nome": "Bruno Costa",
-                "descricao": "BCC 24",
-            },
-            {
-                "nome": "Carla Souza",
-                "descricao": "BCC 23",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            }
-        ],
-        "nao_bolsistas": [
-            {
-                "nome": "Alice Silva",
-                "descricao": "Tutor",
-            },
-            {
-                "nome": "Bruno Costa",
-                "descricao": "BCC 24",
-            },
-            {
-                "nome": "Carla Souza",
-                "descricao": "BCC 23",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-        ],
-        "colaboradores": [
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            }
-        ],
-        "ex_membros": [
-            {
-                "nome": "Alice Silva",
-                "descricao": "Tutor",
-            },
-            {
-                "nome": "Bruno Costa",
-                "descricao": "BCC 24",
-            },
-            {
-                "nome": "Carla Souza",
-                "descricao": "BCC 23",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            },
-            {
-                "nome": "Diego Lima",
-                "descricao": "BCC 22",
-            }
-        ]
+        "BOLSISTAS": BOLSISTAS,
+        "NAO_BOLSISTAS": NAO_BOLSISTAS,
+        "COLABORADORES": COLABORADORES,
+        "EX_MEMBROS": EX_MEMBROS
     })
 
 def projetos(request):

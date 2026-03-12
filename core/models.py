@@ -28,6 +28,39 @@ class Tecnologia(models.Model):
 
     link = models.URLField(max_length=200, blank=True)
 
+class Membro(models.Model):
+    # Enum para situacao de membros do pet
+    class Situacao(models.TextChoices):
+        BOLSISTA= "BOLSISTA", "Bolsista"
+        NAO_BOLSISTA = "NAO_BOLSISTA", "Não-Bolsista"
+        COLABORADOR = "COLABORADOR", "Colaborador"
+        EX_MEMBRO = "EX_MEMBRO" , "Ex-membro"
+    
+    # nome do membro (separado do usuário que é utilizado para logar)
+    nome = models.CharField(max_length=150)
+    sobrenome = models.CharField(max_length=150, blank=True)
+
+    #foto como imagefield tratado pelo pillow e salvado no diretório static/images/membros/
+    foto = models.ImageField(upload_to='static/images/membros/', null=True, blank=True)
+
+    # link do github definido como texto
+    github = models.CharField(max_length=50, blank=True)
+
+    # utilizando o enum para definir a situacao do membro
+    situacao = models.CharField(
+        max_length=12,
+        choices=Situacao.choices,
+        default= Situacao.COLABORADOR
+    )
+
+    descricao = models.TextField()
+
+    class Meta:
+        ordering = ["nome", "sobrenome"]
+
+    def __str__(self):
+        return f'{self.nome} {self.sobrenome}'
+
 class Projeto(models.Model):
 
     #ENUM SITUACOES DO PROJETO
@@ -52,7 +85,7 @@ class Projeto(models.Model):
 
     #status (ativo, finalizado, suspenso,desenvolvimento,planejamento)
     status = models.CharField(
-        max_length=12,
+        max_length=15,
         choices=Status.choices,
         default= Status.PLANEJAMENTO
     )
@@ -68,44 +101,17 @@ class Projeto(models.Model):
     #imagem
     imagem = models.ImageField(upload_to='static/images/projects/', null=True, blank=True)
 
+    #membros, many-to-many -> membro
+    membros = models.ManyToManyField(
+        Membro,
+        related_name="projetos"
+    )
+
     #github como URLFIELD para https://
     github = models.URLField(max_length=200, blank=True)
 
     def __str__(self):
         return self.nome
-
-class Membro(models.Model):
-    # Enum para situacao de membros do pet
-    class Situacao(models.TextChoices):
-        BOLSISTA= "BOLSISTA", "Bolsista"
-        NAO_BOLSISTA = "NAO_BOLSISTA", "Não-Bolsista"
-        COLABORADOR = "COLABORADOR", "Colaborador"
-        EX_MEMBRO = "EX_MEMBRO" , "Ex-membro"
-    
-    # nome do membro (separado do usuário que é utilizado para logar)
-    nome = models.CharField(max_length=150)
-
-    #foto como imagefield tratado pelo pillow e salvado no diretório static/images/membros/
-    foto = models.ImageField(upload_to='static/images/membros/', null=True, blank=True)
-
-    # link do github definido como URLFIELD para tratar com https:// 
-    github = models.URLField(max_length=200, blank=True)
-
-    # utilizando o enum para definir a situacao do membro
-    situacao = models.CharField(
-        max_length=12,
-        choices=Situacao.choices,
-        default= Situacao.COLABORADOR
-    )
-
-    descricao = models.TextField()
-
-    #projetos many-to-many ->PROJETO
-    projetos = models.ManyToManyField(Projeto)
-
-    def __str__(self):
-        return self.nome
-    
 
 class Atividade(models.Model):
 

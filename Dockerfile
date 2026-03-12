@@ -25,6 +25,14 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
+# Node dependencies (Tailwind)
+WORKDIR /app/theme/static_src
+COPY theme/static_src/package*.json ./
+RUN npm install
+
+# voltar para app
+WORKDIR /app
+
 # Copia todo o projeto
 COPY . .
 
