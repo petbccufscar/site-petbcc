@@ -9,34 +9,34 @@
 
   <section class="max-w-6xl mx-auto p-6 md:py-12 space-y-8 md:space-y-12">
     <section>
-      <h1 class="text-xl mb-6 md:mb-12 font-bold text-gray-800 text-center">Bolsistas</h1>
-      <div class="justify-center flex gap-8 flex-wrap">
+      <h1 class="text-xl mb-6 md:mb-8 font-bold text-gray-800 text-center">Bolsistas</h1>
+      <div class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-8">
         {% for MEMBRO in BOLSISTAS %}
           {% include '../components/membro_equipe.html' with nome=MEMBRO.nome descricao=MEMBRO.descricao foto=MEMBRO.foto github=MEMBRO.github %}
         {% endfor %}
       </div>
     </section>
     <section>
-      <h1 class="text-xl mb-6 md:mb-12 font-bold text-gray-800 text-center">Não bolsistas</h1>
-      <div class="justify-center flex gap-8 flex-wrap">
+      <h1 class="text-xl mb-6 md:mb-8 font-bold text-gray-800 text-center">Não bolsistas</h1>
+      <div class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-8">
         {% for MEMBRO in NAO_BOLSISTAS %}
           {% include '../components/membro_equipe.html' with nome=MEMBRO.nome descricao=MEMBRO.descricao foto=MEMBRO.foto github=MEMBRO.github %}
         {% endfor %}
       </div>
     </section>
     <section>
-      <h1 class="text-xl mb-6 md:mb-12 font-bold text-gray-800 text-center">Colaboradores</h1>
-      <div class="justify-center flex gap-8 flex-wrap">
+      <h1 class="text-xl mb-6 md:mb-8 font-bold text-gray-800 text-center">Colaboradores</h1>
+      <div class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-8">
         {% for MEMBRO in COLABORADORES %}
           {% include '../components/membro_equipe.html' with nome=MEMBRO.nome descricao=MEMBRO.descricao foto=MEMBRO.foto github=MEMBRO.github %}
         {% endfor %}
       </div>
     </section>
     <section>
-      <h1 class="text-xl mb-6 md:mb-12 font-bold text-gray-800 text-center">Ex-membros</h1>
+      <h1 class="text-xl mb-6 md:mb-8 font-bold text-gray-800 text-center">Ex-membros</h1>
       <div class="w-fit mx-auto grid grid-cols-3 md:grid-cols-6 gap-4 bg-gray-100 border border-gray-200 p-6 rounded-xl">
         {% for MEMBRO in EX_MEMBROS %}
-          {% include '../components/membro_equipe.html' with nome=MEMBRO.nome descricao=MEMBRO.descricao foto=MEMBRO.foto github=MEMBRO.github %}
+          {% include '../components/ex_membro_equipe.html' with nome=MEMBRO.nome descricao=MEMBRO.descricao foto=MEMBRO.foto github=MEMBRO.github %}
         {% endfor %}
       </div>
     </section>
