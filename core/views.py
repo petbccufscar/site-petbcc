@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
-from core.models import Categoria, Membro, Projeto
+from core.models import Categoria, Membro, Processo, Projeto
 
 from core.forms import ContactForm
 
@@ -46,6 +46,8 @@ def projetos(request):
     })
 
 def processo_seletivo(request):
+    processo_atual = Processo.objects.prefetch_related('etapas').order_by('-ano').first()
+
     vagas = [
         {
             "categoria": "Bolsista",
@@ -53,7 +55,7 @@ def processo_seletivo(request):
 
 A dedicação é de <strong>20 horas semanais</strong> e a participação no PET garante ao aluno participação em 60 horas de atividades complementares elegíveis no curso de Ciência da Computação.
 """,
-            "qtd_vagas": 12,
+            "qtd_vagas": processo_atual.vagas_bolsista,
         },
         {
             "categoria": "Não-Bolsista",
@@ -61,7 +63,7 @@ A dedicação é de <strong>20 horas semanais</strong> e a participação no PET
 
 As condições são as mesmas dos bolsistas, bem como o certificado, que também vale como Atividades Complementares.
 """,
-            "qtd_vagas": 6,
+            "qtd_vagas": processo_atual.vagas_nao_bolsista,
         },
         {
             "categoria": "Colaborador",
@@ -69,40 +71,14 @@ As condições são as mesmas dos bolsistas, bem como o certificado, que também
 
 Mesmo como colaborador você terá participação efetiva nos projetos, garantindo muito conhecimento e um grande incremento em sua graduação.
 """,
-            "qtd_vagas": "-",
-        },
-    ]
-
-    etapas = [
-        {
-            "etapa": 1,
-            "titulo": "Apresentação individual via vídeo",
-            "descricao": "Envio de vídeo de apresentação pessoal com tema livre",
-            "data_inicio": "26/08",
-            "data_fim": "07/09",
-            "data_resultado": "16/09",
-        },
-        {
-            "etapa": 2,
-            "titulo": "Proposta de projeto para o PET BCC",
-            "descricao": "Elaboração de um documento contendo uma proposta de projeto real",
-            "data_inicio": "23/09",
-            "data_fim": "05/10",
-            "data_resultado": None,
-        },
-        {
-            "etapa": 3,
-            "titulo": "Entrevista individual e arguição da Etapa 2",
-            "descricao": "Entrevista online sobre a Etapa 2 junto com entrevista pessoal",
-            "data_inicio": "06/10",
-            "data_fim": "10/10",
-            "data_resultado": "21/10",
+            "qtd_vagas": processo_atual.vagas_colaborador,
         },
     ]
 
     return render(request, "core/processo_seletivo.html", {
         "vagas": vagas,
-        "etapas": etapas,
+        "etapas": processo_atual.etapas.all() if processo_atual else[],
+        "processo_atual": processo_atual,
     })
 
 def contato(request):

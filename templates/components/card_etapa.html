@@ -7,7 +7,7 @@
   <div>
     <div class="flex gap-2 text-center">
       <ion-icon name="calendar-clear-outline" class="text-gray-600 text-md self-center"></ion-icon>
-      <p class="text-gray-600">Data: {{ data_inicio }} - {{ data_fim }}</p>
+      <p class="text-gray-600">Data: {{ data_inicio|date:"d/m" }} - {{ data_fim|date:"d/m" }}</p>
     </div>
     {% if data_resultado %}
       <div class="flex gap-2 text-center">

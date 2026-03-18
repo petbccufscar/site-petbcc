@@ -16,9 +16,14 @@
       </div>
       <div class="space-y-4">
         <div>
-          <h2 class="text-lg font-bold text-pink-800 mb-2">Processo Seletivo - 2025/1</h2>
+          <h2 class="text-lg font-bold text-pink-800 mb-2">Processo Seletivo - {{ processo_atual.ano }}/{{ processo_atual.semestre }}</h2>
           <p class="text-justify text-gray-600">
-            Todos os alunos regularmente matriculados no curso de Bacharelado em Ciência da Computação da UFSCar estão convidados a participar do processo seletivo 2025/1 do PET BCC. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeADsYl3HJAUoWHmLZj3J6WdxDUENngPCDGoMiNrOdfRdmC-Q/closedform" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Inscrições abertas!</a>
+            Todos os alunos regularmente matriculados no curso de Bacharelado em Ciência da Computação da UFSCar estão convidados a participar do processo seletivo {{ processo_atual.ano }}/{{ processo_atual.semestre }} do PET BCC. 
+            {% if processo.ativo %}
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSeADsYl3HJAUoWHmLZj3J6WdxDUENngPCDGoMiNrOdfRdmC-Q/closedform" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Inscrições abertas!</a>
+            {% else %}
+              <span class="text-gray-500">Fique de olho em nossas redes socias.</span>
+            {% endif %}
           </p>
         </div>
       </div>
@@ -37,7 +42,7 @@
       <h2 class="text-lg mb-6 font-bold text-gray-800 text-center md:text-left">Sobre as etapas</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3">
         {% for etapa in etapas %}
-          {% include 'components/card_etapa.html' with etapa=etapa.etapa titulo=etapa.titulo descricao=etapa.descricao data_inicio=etapa.data_inicio data_fim=etapa.data_fim data_resultado=etapa.data_resultado %}
+          {% include 'components/card_etapa.html' with etapa=etapa.etapa titulo=etapa.titulo descricao=etapa.descricao data_inicio=etapa.inicio data_fim=etapa.fim data_resultado=etapa.data_resultado %}
         {% endfor %}
       </div>
     </section>
