@@ -28,6 +28,9 @@ class Tecnologia(models.Model):
 
     link = models.URLField(max_length=200, blank=True)
 
+    def __str__(self):
+        return self.nome
+
 class Membro(models.Model):
     # Enum para situacao de membros do pet
     class Situacao(models.TextChoices):

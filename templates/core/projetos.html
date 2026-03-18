@@ -94,8 +94,19 @@
               <p class="text-gray-600">{{ projeto.descricao }}</p>
             </div>
 
-            <div class="flex gap-2 items-center">
-              <p>{{ projeto.tecnologias|join:', ' }}</p>
+            <div class="flex gap-2 items-center"><div class="">
+                {% for tech in projeto.tecnologias.all %}
+                    <span class="flex flex-row justify-center items-center gap-1">
+                        {% if tech.logo %}
+                            <img src="{{ tech.logo.url }}" alt="Logo {{ tech.nome }}" width="25" height="25" style="vertical-align: middle;">
+                        {% endif %}
+                        
+                        {{ tech.nome }}
+                    </span>
+                {% empty %}
+                    <p>Nenhuma tecnologia cadastrada.</p>
+                {% endfor %}
+            </div>
               <a href="{{ projeto.github }}" target="_blank" class="ml-auto flex justify-center items-center hover:bg-gray-200 text-gray-700 p-2 rounded-lg"><ion-icon class="text-xl" name="logo-octocat"></ion-icon></a>
             </div>
           </div>
