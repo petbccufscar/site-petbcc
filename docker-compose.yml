@@ -15,5 +15,9 @@ services:
       - .:/app
     depends_on:
       - web
+    ports:
+      - "8383:8383"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     tty: true
     stdin_open: true
