@@ -8,7 +8,7 @@ def estilo_categoria(categoria, extra=None):
         "ensino": "bg-blue-500 text-gray-50",
         "pesquisa": "bg-green-500 text-gray-50",
         "extensao": "bg-red-500 text-gray-50",
-        "desenvolvimento": "bg-orange-500 text-gray-50",
+        "desenvolvimento-de-software": "bg-orange-500 text-gray-50",
         "marketing": "bg-blue-200 text-gray-50",
         "financeiro": "bg-teal-500 text-gray-50",
         "administrativo": "bg-gray-500 text-gray-50",

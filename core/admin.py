@@ -27,3 +27,4 @@ class MembroAdmin(admin.ModelAdmin):
     list_display = ('nome', 'sobrenome', 'situacao')
     search_fields = ('nome', 'sobrenome')
     list_filter = ('situacao',)
+    

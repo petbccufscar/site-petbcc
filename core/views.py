@@ -30,7 +30,7 @@ def equipe(request):
 def projetos(request):
     categoria = request.GET.get("categoria")
 
-    CATEGORIAS = Categoria.objects.all()
+    CATEGORIAS = Categoria.objects.all().filter(interna=False)
     
     # TODO: Substituir por filtro em consulta ao banco de dados
     if categoria:
