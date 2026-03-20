@@ -17,6 +17,8 @@ class Categoria(models.Model):
 
     slug = models.SlugField(max_length=150)
 
+    interna = models.BooleanField(default=False)
+
     def __str__(self):
         return self.nome
 
@@ -24,9 +26,12 @@ class Tecnologia(models.Model):
 
     nome = models.CharField(max_length=150, unique=True)
 
-    logo = models.ImageField(upload_to='static/images/technologies/', null=True, blank=True)
+    logo = models.ImageField(upload_to='static/images/tecnologias/', null=True, blank=True)
 
     link = models.URLField(max_length=200, blank=True)
+
+    def __str__(self):
+        return self.nome
 
 class Membro(models.Model):
     # Enum para situacao de membros do pet
@@ -74,8 +79,8 @@ class Projeto(models.Model):
     #nome
     nome = models.CharField(max_length=150, unique=True)
 
-    #publico
-    publico = models.BooleanField(default=False)
+    #descrição
+    descricao = models.TextField()
 
     #inicio
     inicio = models.DateField()
@@ -83,14 +88,21 @@ class Projeto(models.Model):
     #fim
     fim = models.DateField()
 
-    #status (ativo, finalizado, suspenso,desenvolvimento,planejamento)
+    #imagem
+    imagem = models.ImageField(upload_to='static/images/projects/', null=True, blank=True)
+
+    #publico
+    publico = models.BooleanField(default=False)
+
+    #github como URLFIELD para https://
+    github = models.URLField(max_length=200, blank=True)
+
+    #status (ativo, finalizado, suspenso, desenvolvimento, planejamento)
     status = models.CharField(
         max_length=15,
         choices=Status.choices,
         default= Status.PLANEJAMENTO
     )
-
-    descricao = models.TextField()
 
     #categoria, foreign key -> categoria
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
@@ -98,17 +110,12 @@ class Projeto(models.Model):
     #tecnologias, many-to-many -> tecnologia
     tecnologias = models.ManyToManyField(Tecnologia)
 
-    #imagem
-    imagem = models.ImageField(upload_to='static/images/projects/', null=True, blank=True)
-
     #membros, many-to-many -> membro
     membros = models.ManyToManyField(
         Membro,
-        related_name="projetos"
+        related_name="projetos",
+        blank=True
     )
-
-    #github como URLFIELD para https://
-    github = models.URLField(max_length=200, blank=True)
 
     def __str__(self):
         return self.nome
