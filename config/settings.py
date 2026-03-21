@@ -20,6 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / ".env")
 
+def str_to_bool(value):
+    return str(value).lower() in ("true", "1", "yes", "on")
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -27,10 +30,10 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.getenv("SECRET_KEY", default="your-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", default=False) 
+DEBUG = str_to_bool(os.getenv("DEBUG", default=False))
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="127.0.0.1,localhost,petbcc.ufscar.br").split(",")
-MAINTENANCE_MODE = os.getenv("MAINTENANCE_MODE", default=False)
+MAINTENANCE_MODE = str_to_bool(os.getenv("MAINTENANCE_MODE", default=False))
 
 # Application definition
 
@@ -64,6 +67,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'core.middleware.MaintenanceModeMiddleware',
 ]
 
 if DEBUG:
@@ -157,4 +161,4 @@ EMAIL_HOST = os.getenv("EMAIL_HOST", default="smtp.gmail.com")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", default=587))
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", default="")
-EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", default=True)
+EMAIL_USE_TLS = str_to_bool(os.getenv("EMAIL_USE_TLS", default=True))

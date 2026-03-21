@@ -1,7 +1,11 @@
-{% extends 'base.html' %} {% block title %}
+{% extends 'base.html' %} 
+
+{% block title %}
   PET BCC | Projetos
 {% endblock %}
+
 {% load estilos_tags %}
+
 {% block content %}
     {% include 'components/cabecalho_pagina.html' with icone='briefcase-outline' titulo='Nossos projetos' texto='Conheça os projetos que o PET BCC desenvolve nas áreas de ensino, pesquisa e extensão' %}
 
@@ -116,7 +120,7 @@
         <div class="bg-gray-100 p-6 md:py-12 flex gap-4 flex-col items-center rounded-lg text-center">
           <p class="text-gray-800 font-bold">Tem uma ideia de projeto?</p>
           <p class="text-gray-800">O PET BCC está sempre aberto a novas ideias e parcerias. Entre em contato conosco!</p>
-          <a class="p-2 px-4 bg-cyan-500 text-gray-50 rounded-lg hover:underline" href="{% url 'core:contato' %}">Entre em contato</a>
+          {% include 'components/botao_link.html' with url='core:contato' texto='Entre em contato' estilo='' %}
         </div>
         </section>
     </section>

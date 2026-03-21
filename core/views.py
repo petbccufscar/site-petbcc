@@ -31,13 +31,11 @@ def projetos(request):
     categoria = request.GET.get("categoria")
 
     CATEGORIAS = Categoria.objects.all()
-    
-    # TODO: Substituir por filtro em consulta ao banco de dados
+
     if categoria:
         PROJETOS = Projeto.objects.filter(categoria__slug=categoria)
     else:
         PROJETOS = Projeto.objects.all()
-
 
     return render(request, "core/projetos.html", {
         "projetos": PROJETOS,

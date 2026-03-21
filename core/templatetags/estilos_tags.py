@@ -2,6 +2,18 @@ from django import template
 
 register = template.Library()
 
+
+@register.filter
+def estilo_botao(estilo):
+    estilos = {
+        "outline": "transition border border-blue-500 text-blue-500",
+        "outline-white": "transition border border-cyan-50 text-cyan-50 hover:bg-cyan-50 hover:text-gray-800",
+        "white": "transition border border-cyan-50 text-gray-800 bg-cyan-50 hover:bg-cyan-100",
+        "white-outline": "transition border border-cyan-50 text-gray-800 bg-cyan-50 hover:bg-transparent hover:text-cyan-50"
+    }
+    
+    return estilos.get(str(estilo).lower(), "transition border border-cyan-500 bg-cyan-500 text-gray-50 hover:bg-cyan-600")
+
 @register.filter
 def estilo_categoria(categoria, extra=None):
     cores = {

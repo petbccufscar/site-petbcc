@@ -15,8 +15,8 @@
       <h1 class="text-gray-50 text-3xl font-bold">Programa de Educação Tutorial</h1>
       <p class="text-gray-50 font-semibold">Bacharelado em Ciência da Computação da UFSCar campus São Carlos</p>
       <div class="flex gap-2 flex-wrap">
-        <a class="p-2 px-4 bg-cyan-500 text-gray-50 rounded-lg hover:underline" href="{% url 'core:projetos' %}">Conheça nossos projetos</a>
-        <a class="p-2 px-4 border border-cyan-50 text-cyan-50 rounded-lg hover:underline" href="{% url 'core:equipe' %}">Nossa equipe</a>
+        {% include 'components/botao_link.html' with url='core:projetos' texto='Conheça nossos projetos' estilo='' %}
+        {% include 'components/botao_link.html' with url='core:equipe' texto='Nossa equipe' estilo='white' %}
       </div>
     </div>
   </div>
@@ -62,7 +62,7 @@
         <ion-icon name="school-outline" class="text-6xl"></ion-icon>
         <h1 class="font-medium text-xl">Faça parte do PET BCC</h1>
         <p>Fique atento aos processos seletivos e venha fazer parte do nosso grupo!</p>
-        <a class="p-2 px-4 bg-gray-100 text-cyan-600 rounded-lg hover:underline" href="{% url 'core:processo-seletivo' %}">Ver processo seletivo</a>
+        {% include 'components/botao_link.html' with url='core:processo-seletivo' texto='Ver processo seletivo' estilo='white-outline' %}
       </div>
     </section>
   </div>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       {% block title %}
-        PET-BCC
+        PET-BCC | Manutenção
       {% endblock %}
     </title>
 
@@ -21,13 +21,12 @@
     {% endblock %}
   </head>
   <body class="bg-gray-50 antialiased">
-    {% include 'components/navbar.html' %}
-
-    <main class="mt-[73px] min-h-screen">
-      {% block content %}
-
-      {% endblock %}
+    <main class="min-h-screen flex flex-col md:flex-row items-center justify-center p-6 gap-4">
+      <ion-icon name="build-outline" class="text-gray-800 text-5xl"></ion-icon>
+      <div>
+        <h1 class="text-xl text-gray-800 font-bold">Em manutenção</h1>
+        <p class="text-gray-600 z-1">Um momento. Nosso site está em manutenção e volta em breve!</p>
+      </div>
     </main>
-    {% include 'components/footer.html' %}
   </body>
 </html>
