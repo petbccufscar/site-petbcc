@@ -1,0 +1,117 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+  limits.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold mb-8 text-orange-600 border-b pb-4">&lt;limits.h&gt;</h1>
+
+    <!-- DESCRIÇÃO -->
+
+    <p class="mb-4 text-gray-700 leading-relaxed text-justify">
+      No cabeçalho <b>&lt;limits.h&gt;</b> estão definidas as constantes que delimitam os valores máximos e mínimos que variáveis de um dado tipo podem assumir. Assim, é possível operar com os tipos presentes na linguagem C tendo-se absoluta certeza que uma determinada variável serve ao propósito de alguma aplicação para a qual ele foi designado, uma vez que se espera que essa variável esteja limitada superiormente e inferiormente.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Macros</h2>
+
+    <ul class="list-disc ml-6 space-y-3 mb-10 text-gray-700 text-justify">
+      <li>
+        <p>
+          <strong>CHAR_BIT:</strong> quantidade de bits necessários para se representar uma variável do tipo char.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>SCHAR_MIN:</strong> valor numérico mínimo que um signed char pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>SCHAR_MAX:</strong> valor numérico máximo que um signed char pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>UCHAR_MAX:</strong> valor numérico máximo que um unsigned char pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>CHAR_MIN:</strong> valor numérico mínimo que um signed char pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>CHAR_MAX:</strong> valor numérico máximo que um signed char pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>SHRT_MIN:</strong> valor numérico mínimo que um short int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>SHRT_MAX:</strong> valor numérico máximo que um short int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>USHRT_MAX:</strong> valor numérico máximo que um unsigned short int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>INT_MIN:</strong> valor numérico mínimo que um int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>INT_MAX:</strong> valor numérico máximo que um int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>UINT_MAX:</strong> valor numérico máximo que um unsigned int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>LONG_MIN:</strong> valor numérico mínimo que um long int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>LONG_MAX:</strong> valor numérico máximo que um long int pode assumir.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>ULONG_MAX:</strong> valor numérico máximo que um unsigned long int pode assumir.
+        </p>
+      </li>
+    </ul>
+
+    <!-- FUNÇÕES -->
+
+    <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-gray-800">Funções</h2>
+
+    <p class="mb-12 text-gray-700">Não há funções nesta biblioteca.</p>
+  </section>
+{% endblock %}

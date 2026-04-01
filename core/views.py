@@ -38,7 +38,6 @@ def projetos(request):
     else:
         PROJETOS = Projeto.objects.all()
 
-
     return render(request, "core/projetos.html", {
         "projetos": PROJETOS,
         "categoria_ativa": categoria,
@@ -127,6 +126,3 @@ def contato(request):
         form = ContactForm()
 
     return render(request, "core/contato.html", {"form": form})
-
-def manual_c(request):
-    return render(request, 'core/manual_c.html')

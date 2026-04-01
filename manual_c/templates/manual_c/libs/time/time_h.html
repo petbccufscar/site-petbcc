@@ -1,0 +1,169 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+time.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-gray-800 font-bold text-2xl">&lttime.h&gt</h1>
+
+  <div class="space-y-6">
+    <div>
+      <h1 class="text-orange-600 font-semibold text-lg mb-2">Descrição:</h1>
+      <p class="text-gray-700 text-justify">
+        No cabeçalho <b class="text-orange-700">time.h</b> estão localizadas as funções, variáveis, e macros para manipulação de unidades de tempo, como, por exemplo, o ano, mês, dia, hora, minutos, e segundos. A partir das funções fornecidas é possível obter, por exemplo, a data e o horário retornadas pelo sistema, entre outras funcionalidades relacionadas a operações com data e hora. Ou seja, é um cabeçalho muito poderoso em termos de controle da execução do programa por intermédio do "tempo", e no que diz respeito a manipulação de ações e operações que tem como referência datas e horas.
+      </p>
+    </div>
+    <div class="space-y-4">
+      <h1 class="text-orange-600 font-semibold text-lg mb-2">Variáveis:</h1>
+      <p class="text-gray-700 text-justify">
+        <b>clock_t</b>: variável que tem por finalidade armazenar valores relacionados a pulsos de clock do processador, como o que é fornecido pela função clock().
+        <br><br><b>time_t</b>: variável que armazena os valores relacionados a data e hora em uma única variável e, portanto, existem funções específicas para operar com essa variável, como mktime(), ctime(), entre outras que recebem time_t como parâmetro e/ou retornam valores do tipo time_t.
+        <br><br><b>size_t</b>: variável utilizada para retornar a quantidade de espaço que uma determinada variável e/ou tipo ocupa na memória.
+        <br><br><b>struct tm</b>: estrutura de dados que armazena valores referentes a data e hora, assim, contendo nove (9) variáveis declaradas dentro deste struct para tal.
+      </p>
+    </div>
+    <div class="space-y-4">
+      <h1 class="text-orange-600 font-semibold text-lg mb-2">Macros:</h1>
+      <p class="text-gray-700 text-justify">
+        <b>CLOCKS_PER_SEC</b>: macro responsável por armazenar a quantidade de pulsos por segundo do processador da máquina na qual o programa está sendo executado.
+        <br><br><b>NULL</b>: ponteiro do tipo NULL, utilizado para indicar que um ponteiro não aponta para posição de memória alguma.
+      </p>
+    </div>
+  </div>
+{% endblock %}
+        <div class="text-left">
+          <h1>Funções:</h1>
+        </div>
+        <div class="space-y-4">
+          <div class="item">
+            <div class="content"><!-- time -->
+              <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#clock">
+                <h3>long int clock(void)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: o valor, utilizando long int, da quantidade de pulsos de clock que o processador executou a partir do instante em que o programa foi inicializado até o momento em que clock() foi chamada. Caso seja necessário conhecer o tempo em segundos, e não em quantidade de pulsos de clock, então basta dividir o valor retornado por clock() por CLOCKS_PER_SEC.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: void (não recebe parâmetro nenhum).
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#time">
+                <h3>time_t time(time_t *ponteiro_tempo)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: a data e hora do sistema e atribui esse valor à variável passada como parâmetro.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: uma variável do tipo time_t, a passagem deve ser por referência.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#difftime">
+                <h3>struct tm difftime(time_t tempo, time_t tempo0)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: a diferença, em segundos, entre tempo e tempo0.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: duas variáveis do tipo time_t, por meio de passagem por valor.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#mktime">
+                <h3>time_t mktime(struct tm *tempo)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: os valores nos moldes do tipo time_t, fazendo uso dos valores presentes na variável do tipo struct tm.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: uma variável do tipo struct tm, com passagem por referência.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#asctime">
+                <h3>string asctime(const struct tm *tp)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: uma string, contendo os campos do struct tm fornecidos, formatados conforme o seguinte: 'Dia da semana' Mês Dia Hora:Minutos:Segundos Mês\n\0.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: uma variável do tipo struct tm, com passagem por referência.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#ctime">
+                <h3>string ctime(const time_t *tempo)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: uma variável do tipo time_t, com passagem por referência.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: uma string, contendo os valores da variável *tempo, de tipo time_t, formatando as informações de data e hora conforme o seguinte: 'Dia da semana' Mês Dia Hora:Minutos:Segundos Mês\n\0.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#gmtime">
+                <h3>struct tm gmtime(const time_t *tempo)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: um struct tm, com base nas informações contidas na variável de tipo time_t, a partir do qual é possível manipular data e hora com base em um fuso horário qualquer, uma vez que o struct retorna já modificada para interagir com manipulações de diferentes valores de UTC/GMT.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: uma variável do tipo time_t, com passagem por referência.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#localtime">
+                <h3>struct tm localtime(const time_t *tempo)</h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: um struct tm que aponta/recebe as informações contidas em time_t.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: uma variável do tipo time_t, com passagem por referência.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'time' %}#strftime">
+                <h3>struct tm strftime(char* string_armazena_data, size_t tamanho_da_string,
+                  const char* formato, const struct tm *tempo)
+                  </h3>
+              </a>
+              <div class="text-gray-700 mb-2 justificado">
+                RETORNA: os valores presentes em *tempo para armazenar os valores em string_armazena_data, no formato de uma string com data e horário já formatados o seguinte: 'Dia da semana' Mês Dia Hora:Minutos:Segundos Mês\0.
+              </div>
+              <div class="text-gray-700 mb-2 justificado">
+                RECEBE: um ponteiro do tipo char (a partir do qual é possível criar uma string de caracteres), a quantidade de espaço alocado para o ponteiro de caractere, o tipo do ponteiro (no caso, "%c", pois é do tipo char), uma variável do tipo struct tm que irá fornecer as informações sobre data e hora para criação da string. 
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="md:w-1/4">
+        {% block sidebar_content2 %}
+        {% include 'manual_c/libs/time/rightSidebar.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

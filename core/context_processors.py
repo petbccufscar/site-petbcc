@@ -2,7 +2,7 @@ def menu_items(request):
   current = request.resolver_match.view_name if request.resolver_match else ""
 
   def is_active(route_name):
-    return current.startswith(route_name)
+    return current.__contains__(route_name)
 
   return {
     "menu_items": [
@@ -33,8 +33,8 @@ def menu_items(request):
       },
       {
         "label": "Manual C",
-        "route": "core:manual-c",
-        "active": is_active("core:manual-c"),
+        "route": "manual_c:inicio",
+        "active": is_active("manual_c:inicio"),
       },
     ]
   }

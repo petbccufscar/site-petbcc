@@ -1,0 +1,75 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+signal.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-gray-800 font-bold text-2xl">&ltsignal.h&gt</h1>
+
+  <div class="space-y-6">
+    <div>
+      <h1 class="text-orange-600 font-semibold text-lg mb-2">Descrição:</h1>
+      <p class="text-gray-700 text-justify">
+        No cabeçalho <b class="text-orange-700">signal.h</b> estão presentes funções e macros que lidam com os sinais enviados pelo programa executado no momento em que ele está sendo executado, como, por exemplo, quando o programa é finalizado de forma anormal ou quando algum tipo de operação aritmética apresenta erros, como a divisão por zero.
+      </p>
+    </div>
+    <div class="space-y-4">
+      <h1 class="text-orange-600 font-semibold text-lg mb-2">Macros:</h1>
+      <p class="text-gray-700 text-justify">
+        <b>SIG_DFL</b>: indica o tratamento padrão fornecido pelo sistema pelo envio de algum sinal enviado pelo programa em execução.
+        <br><br><b>SIG_IGN</b>: indica que o tratamento fornecido para um tipo de sinal será ignorá-lo.
+        <br><br><b>SIG_ERR</b>: sinal padrão para o tratamento de sinais que indicam erro.
+        <br><br><b>SIGABRT</b>: programa finalizado de forma anormal, com execução inesperada.
+        <br><br><b>SIGFPE</b>: erro em operações de aritmética, como operações aritméticas proibidas ou tentativa de operar com valores que extrapolam os limites de um determinado tipo.
+        <br><br><b>SIGILL</b>: instrução não permitida.
+        <br><br><b>SIGINT</b>: interrupção de execução do programa, como quando o usuário forçadamente cancela a execução.
+        <br><br><b>SIGSEGV</b>: erro de acesso de memória, seja por tentar acessar um posição de memória não permitida ou por tentativa de uso de memória sendo que não existe mais espaço na mesma.
+        <br><br><b>SIGTERM</b>: requisição de finalização do programa.
+      </p>
+    </div>
+  </div>
+{% endblock %}
+        </div>
+        <div class="text-left">
+          <h1>Funções:</h1>
+        </div>
+        <div class="space-y-4">
+          <div class="item">
+            <div class="content">
+              <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'signal' %}#signal">
+                <h3>void signal(int sinal, void (*tratamento)(int))(int)</h3>
+              </a>
+              <div class="text-gray-700 mb-2">
+                RETORNA: void, função sem retorno.
+              </div>
+              <div class="text-gray-700 mb-2">
+                RECEBE: uma variável inteira que indica qual dos sinais deve ser tratado adiante e qual o tratamento deve ser dado quando o programa enviar um sinal do tipo informado.
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'signal' %}#raise">
+                <h3>int raise(int sig)</h3>
+              </a>
+              <div class="text-gray-700 mb-2">
+                RETORNA: 0, em caso de sucesso da execução da função, ou um valor diferente de zero, caso contrário.
+              </div>
+              <div class="text-gray-700 mb-2">
+                RECEBE: um valor inteiro, que representa um dos sinais presentes no cabeçalho signal.h.
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="right one wide column">
+        {% block sidebar_content2 %}
+        {% include 'manual_c/libs/signal/rightSidebar.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

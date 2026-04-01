@@ -1,0 +1,165 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+  Ctype.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <!-- ================================================= -->
+    <!-- TÍTULO -->
+    <!-- ================================================= -->
+
+    <h1 class="lib-title">&lt;ctype.h&gt;</h1>
+
+    <p class="lib-description">A maioria das funções deste arquivo de cabeçalhos serve para classificar caracteres ASCII, ou seja, determinar se um determinado byte representa uma letra, um dígito, um espaço em branco ou outro tipo de símbolo.</p>
+
+    <p class="lib-description">
+      Mesmo que o argumento de cada função não seja um <code>char</code> mas sim um inteiro positivo, o caractere passado para a função é convertido internamente para seu valor ASCII para a verificação.
+    </p>
+
+    <!-- ================================================= -->
+    <!-- LISTA DE FUNÇÕES -->
+    <!-- ================================================= -->
+
+    <h2 class="text-xl font-semibold border-b pb-2 mt-8 mb-4">Funções</h2>
+
+    <div class="flex flex-wrap gap-2 mb-12">
+      <a href="#isalnum" class="func-list-link">isalnum()</a>
+      <a href="#isalpha" class="func-list-link">isalpha()</a>
+      <a href="#iscntrl" class="func-list-link">iscntrl()</a>
+      <a href="#isdigit" class="func-list-link">isdigit()</a>
+      <a href="#isgraph" class="func-list-link">isgraph()</a>
+      <a href="#islower" class="func-list-link">islower()</a>
+      <a href="#isprint" class="func-list-link">isprint()</a>
+      <a href="#ispunct" class="func-list-link">ispunct()</a>
+      <a href="#isspace" class="func-list-link">isspace()</a>
+      <a href="#isupper" class="func-list-link">isupper()</a>
+      <a href="#isxdigit" class="func-list-link">isxdigit()</a>
+      <a href="#tolower" class="func-list-link">tolower()</a>
+      <a href="#toupper" class="func-list-link">toupper()</a>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- FUNÇÕES -->
+    <!-- ================================================= -->
+
+    <section id="isalnum" class="func-section">
+      <div class="func-signature">int isalnum(int c)</div>
+
+      <p>Testa se um caractere é alfanumérico.</p>
+
+      <div class="func-meta">
+        <strong>Recebe:</strong> um argumento inteiro cujo valor seja um caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se o caractere for alfanumérico, ou 0 caso contrário.
+      </div>
+
+      <h4 class="font-semibold mt-6 mb-3">Exemplo</h4>
+      <pre class="code-block">
+        <code>
+          #include &ltstdio.h&gt #include &ltctype.h&gt
+
+          int main() {
+
+          char c = 'A';
+
+          if(isalnum(c)) printf("É alfanumérico\n");
+
+          }
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block">
+        <code>É alfanumérico</code>
+      </pre>
+    </section>
+
+    <section id="isalpha" class="func-section">
+      <div class="func-signature">int isalpha(int c)</div>
+
+      <p>Testa se um caractere é uma letra do alfabeto.</p>
+
+      <div class="func-meta">
+        <strong>Recebe:</strong> inteiro representando caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for letra.
+      </div>
+    </section>
+
+    <section id="iscntrl" class="func-section">
+      <div class="func-signature">int iscntrl(int c)</div>
+
+      <p>Testa se um caractere é um caractere de controle ASCII.</p>
+
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for caractere de controle.
+      </div>
+    </section>
+
+    <section id="isdigit" class="func-section">
+      <div class="func-signature">int isdigit(int c)</div>
+
+      <p>Testa se um caractere é um dígito decimal (0–9).</p>
+
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
+    </section>
+
+    <section id="isgraph" class="func-section">
+      <div class="func-signature">int isgraph(int c)</div>
+
+      <p>Testa se um caractere possui representação gráfica.</p>
+    </section>
+
+    <section id="islower" class="func-section">
+      <div class="func-signature">int islower(int c)</div>
+
+      <p>Testa se o caractere é uma letra minúscula.</p>
+    </section>
+
+    <section id="isprint" class="func-section">
+      <div class="func-signature">int isprint(int c)</div>
+
+      <p>Testa se um caractere é imprimível.</p>
+    </section>
+
+    <section id="ispunct" class="func-section">
+      <div class="func-signature">int ispunct(int c)</div>
+
+      <p>Testa se o caractere é um símbolo de pontuação.</p>
+    </section>
+
+    <section id="isspace" class="func-section">
+      <div class="func-signature">int isspace(int c)</div>
+
+      <p>Testa se o caractere é um espaço em branco.</p>
+    </section>
+
+    <section id="isupper" class="func-section">
+      <div class="func-signature">int isupper(int c)</div>
+
+      <p>Testa se o caractere é uma letra maiúscula.</p>
+    </section>
+
+    <section id="isxdigit" class="func-section">
+      <div class="func-signature">int isxdigit(int c)</div>
+
+      <p>Testa se o caractere é um dígito hexadecimal.</p>
+    </section>
+
+    <section id="tolower" class="func-section">
+      <div class="func-signature">int tolower(int c)</div>
+
+      <p>Converte uma letra maiúscula para minúscula.</p>
+    </section>
+
+    <section id="toupper" class="func-section">
+      <div class="func-signature">int toupper(int c)</div>
+
+      <p>Converte uma letra minúscula para maiúscula.</p>
+    </section>
+  </section>
+{% endblock %}
