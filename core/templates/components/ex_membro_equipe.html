@@ -1,0 +1,15 @@
+{% load static %}
+
+<div class="flex flex-col items-center">
+  <div class="relative mb-2 w-16 h-16 rounded-full overflow-hidden bg-gray-200 items-center justify-center flex">
+    <a href="https://github.com/{{ github }}" target="_blank" rel="noopener noreferrer" class="rounded-full z-10 cursor-pointer absolute bg-black/50 w-full h-full top-0 left-0 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center" aria-label="Acessar perfil no GitHub"><ion-icon name="logo-octocat" class="text-2xl text-gray-50"></ion-icon></a>
+
+    {% if foto %}
+      <img src="{{ foto }}" alt="" class="object-fill scale-120" />
+    {% else %}
+      <ion-icon name="person-outline" class="text-2xl text-gray-400"></ion-icon>
+    {% endif %}
+  </div>
+  <p class="text-cyan-600 font-bold text-sm text-nowrap">{{ nome }}</p>
+  <p class="text-gray-600 text-xs font-medium">{{ descricao }}</p>
+</div>

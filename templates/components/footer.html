@@ -1,0 +1,40 @@
+{% load static %}
+
+<footer class="w-full bg-gradient-to-r from-primary to-primary-light text-gray-50">
+  <div class="flex flex-col gap-12 max-w-6xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center md:text-left justify-center">
+      <div class="space-y-2">
+        <p class="font-bold">PET BCC UFSCar</p>
+        <p>Programa de Educação Tutorial em Bacharelado em Ciência da Computação da UFSCar Campus São Carlos</p>
+      </div>
+      <div class="space-y-2">
+        <p class="font-bold">Contato</p>
+        <p>Rod. Washington Luís, s/n - Monjolinho, São Carlos - SP, 13565-905 - Departamento de Computação</p>
+        <p>
+          <a href="mailto:petbcc.ufscar@gmail.com" aria-label="Entre em contato pelo nosso e-mail (abre seu aplicativo de e-mail)" class="underline underline-offset-4">petbcc.ufscar@gmail.com</a>
+        </p>
+      </div>
+      <div class="space-y-2">
+        <p class="font-bold">Redes Sociais</p>
+        <div class="flex flex-col gap-1">
+          <p>
+            <a href="https://www.facebook.com/petbcc" target="_blank" rel="noopener noreferrer" aria-label="Visite nossa página no Facebook (abre em nova guia)" class="underline underline-offset-4">Facebook</a>
+          </p>
+          <p>
+            <a href="https://www.youtube.com/channel/UCyoSac6aP0aGWMDw0XnsnqA" target="_blank" rel="noopener noreferrer" aria-label="Visite nosso canal no YouTube (abre em nova guia)" class="underline underline-offset-4">YouTube</a>
+          </p>
+          <p>
+            <a href="https://github.com/petbccufscar" target="_blank" rel="noopener noreferrer" aria-label="Veja nossos repositórios no Github (abre em nova guia)" class="underline underline-offset-4">Github</a>
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap gap-4 items-center justify-center">
+        <a href="https://www.dc.ufscar.br/" target="_blank" rel="noopener noreferrer" aria-label="Veja o site do Departamento de Computação (abre em nova guia)"><img src="{% static 'images/footer/dc_branco.png' %}" alt="Logo Departamento de Computação" srcset="" /></a>
+        <a href="https://www.ufscar.br/" target="_blank" rel="noopener noreferrer" aria-label="Veja o site da UFSCar (abre em nova guia)"><img src="{% static 'images/footer/ufscar_branco.png' %}" alt="Logo UFSCar" srcset="" /></a>
+        <a href="https://www.gov.br/mec/pt-br" target="_blank" rel="noopener noreferrer" aria-label="Veja a página do Ministério da Educação (abre em nova guia)"><img src="{% static 'images/footer/ministerio_da_educacao_vertical.png' %}" alt="Logo Ministério da Educação" srcset="" /></a>
+      </div>
+    </div>
+    <hr class="w-full" />
+    <p class="text-center">© 2026 PET BCC UFSCar. Todos os direitos reservados.</p>
+  </div>
+</footer>

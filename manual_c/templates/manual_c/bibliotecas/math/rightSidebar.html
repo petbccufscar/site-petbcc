@@ -1,0 +1,38 @@
+{% load static %}
+
+{% block sidebar_content2 %}
+<div class="mobile hidden ui centered stackable grid ">
+  <div class="ui right fixed vertical menu">
+      <div class="item">
+        <div class="header">
+          <h2 class="ui manC_laranja header">Funções</h2>
+        </div>
+      </div>
+      <div class="item">
+        <div class="menu">
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#acos"><b>acos()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#asin"><b>asin()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#atan"><b>atan()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#atan2"><b>atan2()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#ceil"><b>ceil()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#cos"><b>cos()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#cosh"><b>cosh()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#exp"><b>exp()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#fabs"><b>fabs()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#floor"><b>floor()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#frexp"><b>frexp()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#ldexp"><b>ldexp()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#log"><b>log()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#log10"><b>log10()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#modf"><b>modf()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#pow"><b>pow()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#sin"><b>sin()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#sinh"><b>sinh()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#sqrt"><b>sqrt()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#tan"><b>tan()</b></a>
+          <a class="item active manC_sidebar"  href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#tanh"><b>tanh()</b></a>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

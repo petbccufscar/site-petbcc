@@ -1,0 +1,33 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Meu Projeto Django
+      {% endblock %}
+    </title>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    {% tailwind_css %}
+
+    {% block extra_head %}
+
+    {% endblock %}
+  </head>
+  <body class="bg-gray-50 antialiased">
+    {% include 'components/navbar.html' %}
+
+    <main class="mt-[73px] min-h-screen">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+    {% include 'components/footer.html' %}
+  </body>
+</html>
