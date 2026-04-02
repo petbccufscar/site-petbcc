@@ -1,12 +1,12 @@
 {% extends 'manual_c/base.html' %}
 
 {% block title %}
-  Assert.h - Manual C
+  assert.h - Manual C
 {% endblock %}
 
 {% block content %}
-  <section class="max-w-4xl mx-auto px-6 py-10">
-    <h1 class="text-4xl font-bold text-orange-600 mb-6 border-b pb-3">&lt;assert.h&gt;</h1>
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold mb-8 text-orange-600 border-b pb-4">&lt;assert.h&gt;</h1>
 
     <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
       <p>
@@ -17,14 +17,14 @@
       <p>Se a expressão for verdadeira, o programa continua executando normalmente. Caso contrário, o programa é interrompido e uma mensagem de erro é exibida com informações sobre a falha.</p>
     </div>
 
-    <h2 class="text-2xl font-semibold text-orange-800 mb-4">Funções</h2>
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Funções</h2>
 
     <div class="flex flex-wrap gap-3 mb-12">
       <a href="#assert" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">assert()</a>
     </div>
 
-    <section id="assert" class="mb-16">
-      <h3 class="text-xl font-semibold text-gray-900 mb-3 font-mono">void assert(int expression)</h3>
+    <section id="assert" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void assert(int expression)</h3>
 
       <div class="space-y-4 text-gray-700 leading-relaxed">
         <p>
@@ -46,21 +46,30 @@
 
       <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
 
-      <pre class="bg-gray-900 text-green-300 text-sm p-5 rounded-lg overflow-x-auto">
-        <code>
-          //EXEMPLO ASSERT()
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &ltstdio.h&gt #include &ltassert.h&gt
 
-          #include &ltstdio.h&gt #include &ltassert.h&gt
-
-          int main() { int i; for (i=3; i<=10; i++) { assert(i <= 7); printf("i = %d\n", i); } return 0; }
-        </code>
-      </pre>
+int main() { 
+  int i; 
+  
+  for (i = 3; i <= 10; i++) { 
+    assert(i <= 7); 
+    printf("i = %d\n", i); 
+  } 
+  
+  return 0; 
+}</code></pre>
 
       <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
 
-      <pre class="bg-gray-800 text-gray-200 text-sm p-5 rounded-lg overflow-x-auto">
-        <code>>clang-7 -pthread -lm -o main main.c >./main i = 3 i = 4 i = 5 i = 6 i = 7 main: main.c:9: int main(): Assertion 'i <= 7' failed. exited, aborted</code>
-      </pre>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+i = 3 
+i = 4 
+i = 5 
+i = 6 
+i = 7 
+main: main.c:9: int main(): Assertion 'i <= 7' failed. 
+exited, aborted</code></pre>
     </section>
   </section>
 {% endblock %}

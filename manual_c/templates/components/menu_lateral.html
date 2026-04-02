@@ -10,9 +10,9 @@
 
     <li>
       <ul class="space-y-1 ml-4">
-        {% for modulo in menu_manual_c.modulos %}
+        {% for biblioteca in menu_manual_c.bibliotecas %}
           <li>
-            <a href="{% url 'manual_c:biblioteca' modulo.nome %}" class="{% if modulo.active %}text-orange-600 font-bold{% endif %} text-gray-800">{{ modulo.nome }}.h</a>
+            <a href="{% url 'manual_c:biblioteca' biblioteca.nome %}" class="{% if biblioteca.active %}text-orange-600 font-bold{% endif %} text-gray-800">{{ biblioteca.nome }}.h</a>
           </li>
         {% endfor %}
       </ul>

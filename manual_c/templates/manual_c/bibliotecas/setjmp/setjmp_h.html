@@ -1,0 +1,119 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+  setjmp.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold mb-8 text-orange-600 border-b pb-4">&lt;setjmp.h&gt;</h1>
+
+    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
+      <p>
+        No cabeçalho <strong class="text-orange-600">&lt;setjmp.h&gt;</strong> estão presentes funções e tipos que são capazes de manipular o fluxo de controle do programa, através de saltos que não seguem a ordem comum de execução.
+      </p>
+      <p>
+        Diferente da instrução <code>goto</code>, que realiza saltos apenas dentro de uma mesma função, as funções desta biblioteca permitem realizar saltos entre funções diferentes (saltos não locais), sendo muito úteis para o tratamento de erros e exceções complexas.
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Variáveis e Tipos</h2>
+    <div class="bg-gray-50 p-6 rounded-lg mb-12">
+      <div class="space-y-6">
+        <div>
+          <code class="text-sm font-bold text-orange-700 bg-orange-50 px-2 py-1 rounded">jmp_buf</code>
+          <p class="text-gray-700 mt-2">É um tipo de array capaz de armazenar as informações do ambiente de execução (como o estado dos registos e o ponteiro de pilha) para que o programa possa retornar a este ponto exato posteriormente através de um salto.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Funções</h2>
+    <div class="flex flex-wrap gap-3 mb-12">
+      <a href="#setjmp" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">setjmp()</a>
+      <a href="#longjmp" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">longjmp()</a>
+    </div>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="setjmp" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int setjmp(jmp_buf ponto)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Salva o ambiente atual (estado do processador) no argumento <code>ponto</code>. Este ambiente pode ser restaurado posteriormente pela função <code>longjmp()</code>.</p>
+        <p><strong>Recebe:</strong> Uma variável (do tipo <code>jmp_buf</code>) que irá indicar o ponto a partir do qual o código é executado quando a função <code>longjmp()</code> for chamada.</p>
+        <p><strong>Retorna:</strong> Retorna 0 na primeira vez em que é chamada. Se o retorno ocorrer após um salto através da função <code>longjmp()</code>, ela retorna o valor passado como segundo argumento para <code>longjmp()</code>.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;setjmp.h&gt;
+
+static jmp_buf ambiente;
+
+void segunda() {
+    printf("Entrou na função segunda()\n");
+    longjmp(ambiente, 1); // Salta de volta para onde setjmp foi chamado
+}
+
+void primeira() {
+    segunda();
+    printf("Esta linha nunca será impressa\n");
+}
+
+int main() {
+    if (!setjmp(ambiente)) {
+        primeira();
+    } else {
+        printf("Retornou à main após o salto da segunda()\n");
+    }
+    return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Entrou na função segunda()
+Retornou à main após o salto da segunda()</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="longjmp" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void longjmp(jmp_buf ponto, int valor)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Restaura o ambiente salvo pela invocação mais recente de <code>setjmp()</code> no mesmo programa, usando os dados armazenados em <code>ponto</code>.</p>
+        <p><strong>Recebe:</strong> Uma variável do tipo <code>jmp_buf</code>, que indica para onde a função deverá saltar, e um valor numérico diferente de zero, o qual será utilizado pela função <code>setjmp()</code> para retornar esse valor após a execução do salto.</p>
+        <p><strong>Retorna:</strong> Esta função nunca retorna ao seu ponto de chamada, pois ela desvia o fluxo do programa diretamente para o ponto definido pelo <code>setjmp()</code>.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo Prático (Loop de Saltos)</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;setjmp.h&gt;
+	
+int main() {
+	jmp_buf pulo;
+	
+	int controle = setjmp(pulo);
+	
+	if (controle == 1) {
+		printf("Eu pulo... ");
+		controle = setjmp(pulo);
+	}
+	if (controle == 2) {
+		printf("e pulo... ");
+		controle = setjmp(pulo);
+	}
+	if (controle == 3) {
+		printf("e pulo sem parar!!\n");
+		controle = setjmp(pulo);
+	}
+	
+	if (controle != 4)
+		longjmp(pulo, controle + 1);
+	
+	return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Eu pulo... e pulo... e pulo sem parar!!</code></pre>
+    </section>
+
+  </section>
+{% endblock %}

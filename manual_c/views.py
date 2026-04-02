@@ -9,8 +9,7 @@ MODULES = [
 MODULES_MAP = {
     m: {
         'name': f'{m}.h',
-        'h_template': f'manual_c/libs/{m}/{m}_h.html',
-        'funcoes_template': f'manual_c/libs/{m}/{m}_funcoes.html',
+        'h_template': f'manual_c/bibliotecas/{m}/{m}_h.html',  
     }
     for m in MODULES
 }
@@ -36,27 +35,14 @@ def sobre(request):
     )
 
 
-def modulo(request, modulo):
-    if modulo not in MODULES_MAP:
+def biblioteca(request, biblioteca):
+    if biblioteca not in MODULES_MAP:
         raise Http404('Biblioteca não encontrada')
 
     return render(
         request,
-        MODULES_MAP[modulo]['h_template'],
+        MODULES_MAP[biblioteca]['h_template'],
         context={
-            'pagina': f'{modulo}_h',
-        },
-    )
-
-
-def modulo_funcoes(request, modulo):
-    if modulo not in MODULES_MAP:
-        raise Http404('Biblioteca não encontrada')
-
-    return render(
-        request,
-        MODULES_MAP[modulo]['funcoes_template'],
-        context={
-            'pagina': f'{modulo}_funcoes',
+            'pagina': f'{biblioteca}_h',
         },
     )

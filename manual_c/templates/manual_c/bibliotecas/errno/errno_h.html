@@ -45,42 +45,34 @@
 
     <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-orange-600">Exemplo de uso</h2>
 
-    <pre class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-10">
-      <code>
-    #include &ltstdio.h&gt 
-    #include &ltmath.h&gt 
-    #include &lterrno.h&gt 
-    #include &ltstring.h&gt
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto mb-10"><code>#include &ltstdio.h&gt 
+#include &ltmath.h&gt 
+#include &lterrno.h&gt 
+#include &ltstring.h&gt
 
-    int main() { 
+int main() { 
 
-      printf("log(-1.0) = %f\n", log(-1.0)); 
-      printf("Erro de número %d obtido!\n", errno); 
-      printf("Descrição do erro: %s\n\n", strerror(errno));
+  printf("log(-1.0) = %f\n", log(-1.0)); 
+  printf("Erro de número %d obtido!\n", errno); 
+  printf("Descrição do erro: %s\n\n", strerror(errno));
 
-      printf("log(0.0) = %f\n", log(0.0)); 
-      printf("Erro de número %d obtido!\n", errno); 
-      printf("Descrição do erro: %s", strerror(errno));
+  printf("log(0.0) = %f\n", log(0.0)); 
+  printf("Erro de número %d obtido!\n", errno); 
+  printf("Descrição do erro: %s", strerror(errno));
 
-      return 0; 
-    }
-      </code>
-    </pre>
+  return 0; 
+}</code></pre>
 
     <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-orange-600">Saída do terminal</h2>
 
-    <pre class="bg-gray-100 p-6 rounded-lg overflow-x-auto">
-      <code>
-    >clang-7 -pthread -lm -o main main.c 
-    >./main 
-    log(-1.0) = -nan 
-    Erro de número 33 obtido! 
-    Descrição do erro: Numerical argument out of domain
+    <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+log(-1.0) = -nan 
+Erro de número 33 obtido! 
+Descrição do erro: Numerical argument out of domain
 
-    log(0.0) = -inf 
-    Erro de número 34 obtido! 
-    Descrição do erro: Numerical result out of range
-      </code>
-    </pre>
+log(0.0) = -inf 
+Erro de número 34 obtido! 
+Descrição do erro: Numerical result out of range</code></pre>
   </section>
 {% endblock %}

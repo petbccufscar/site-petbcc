@@ -1,0 +1,88 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+  stdarg.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold mb-8 text-orange-600 border-b pb-4">&lt;stdarg.h&gt;</h1>
+
+    <!-- DESCRIÇÃO -->
+
+    <p class="mb-4 text-gray-700 leading-relaxed text-justify">
+      No cabeçalho encontram-se macros e tipos extremamente úteis, no que tange a criação de funções para as quais a quantidade de argumentos não tem uma quantidade finita definida. Assim, o cabeçalho <b>&lt;stdarg.h&gt;</b> é de muita valia com tais recursos, uma vez que o planejamento de funções sem um número fixo de argumentos torna-se algo viável.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Tipos</h2>
+
+    <ul class="list-disc ml-6 space-y-3 mb-10 text-gray-700 text-justify">
+      <li>
+        <p>
+          <strong>va_list:</strong> armazena os valores passados como argumento na função em que for declarado.
+        </p>
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Macros</h2>
+
+    <ul class="list-disc ml-6 space-y-3 mb-10 text-gray-700 text-justify">
+      <li>
+        <p>
+          <strong>va_start(va_list nTermos, ...):</strong> inicializa os n termos passado como argumento na função para a variável nTermos.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>va_arg(va_list nTermos, tipo das variáveis passadas como argumento):</strong> percorre a lista dos argumentos na ordem em que eles foram passados.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <strong>va_end(va_list nTermos):</strong> deve ser chamada imediatamente antes da função em que as macros estão sendo utilizadas retornar algum valor.
+        </p>
+      </li>
+    </ul>
+
+    <!-- FUNÇÕES -->
+
+    <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-gray-800">Funções</h2>
+
+    <p class="mb-12 text-gray-700">Não há funções nesta biblioteca.</p>
+  
+    <!-- EXEMPLO -->
+
+    <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-orange-600">Exemplo de uso</h2>
+
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto mb-10"><code>#include <stdio.h>
+#include <stdarg.h>
+  
+int multiplica(int nTermos, ...) {
+    va_list listaTermos;
+    va_start(listaTermos, nTermos);
+  
+    int resultado = 1;
+  
+    for (int i = 0; i < nTermos; i++)
+        resultado = resultado*va_arg(listaTermos, int);
+  
+    va_end(listaTermos);
+  
+    return resultado;
+}
+  
+int main() {
+    printf("8! = %d\n", multiplica(7, 8, 7, 6, 5, 4, 3, 2));
+  
+    return 0;
+}</code></pre>
+
+    <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-orange-600">Saída do terminal</h2>
+
+    <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>>clang-7 -pthread -lm -o main main.c
+>./main
+8! = 40320</code></pre>
+  </section>
+{% endblock %}

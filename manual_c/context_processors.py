@@ -1,6 +1,6 @@
 def menu_items_manual_c(request):
     current_url = request.resolver_match.url_name if request.resolver_match else ""
-    current_modulo = request.resolver_match.kwargs.get("biblioteca", "") if request.resolver_match else ""
+    biblioteca_atual = request.resolver_match.kwargs.get("biblioteca", "") if request.resolver_match else ""
 
     principal = [
         {
@@ -15,7 +15,7 @@ def menu_items_manual_c(request):
         },
     ]
 
-    modulos = [
+    bibliotecas = [
         "assert",
         "ctype",
         "errno",
@@ -31,17 +31,17 @@ def menu_items_manual_c(request):
         "time",
     ]
 
-    modulos_menu = [
+    bibliotecas_menu = [
         {
-            "nome": m,
-            "active": m in current_modulo,
+            "nome": b,
+            "active": b == biblioteca_atual,
         }
-        for m in modulos
+        for b in bibliotecas
     ]
 
     return {
         "menu_manual_c": {
             "principal": principal,
-            "modulos": modulos_menu,
+            "bibliotecas": bibliotecas_menu,
         }
     }
