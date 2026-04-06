@@ -1,0 +1,21 @@
+<nav>
+  <ul class="space-y-2">
+    {% for item in menu_manual_c.principal %}
+      <li>
+        <a href="{% url item.route %}" class="{% if item.active %}text-orange-600 font-bold{% endif %} text-gray-800">{{ item.label }}</a>
+      </li>
+    {% endfor %}
+
+    <li class="text-gray-800">Bibliotecas</li>
+
+    <li>
+      <ul class="space-y-1 ml-4">
+        {% for biblioteca in menu_manual_c.bibliotecas %}
+          <li>
+            <a href="{% url 'manual_c:biblioteca' biblioteca.nome %}" class="{% if biblioteca.active %}text-orange-600 font-bold{% endif %} text-gray-800">{{ biblioteca.nome }}.h</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</nav>

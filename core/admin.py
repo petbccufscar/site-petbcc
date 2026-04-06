@@ -23,7 +23,7 @@ admin.site.register(Processo)
 
 @admin.register(Membro)
 class MembroAdmin(admin.ModelAdmin):
-    ordering = ["nome"]
+    ordering = ["situacao", "nome"]
     list_display = ('nome', 'sobrenome', 'situacao')
     search_fields = ('nome', 'sobrenome')
     list_filter = ('situacao',)

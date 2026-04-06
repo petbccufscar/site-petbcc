@@ -1,0 +1,94 @@
+{% extends 'manual_c/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Manual C - PET-BCC UFSCar
+{% endblock %}
+
+{% block content %}
+  <!-- Guia rápido -->
+  <div class="grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h2 class="text-xl font-semibold text-orange-600 mb-4">Guia Rápido</h2>
+
+      <p class="text-gray-600 text-justify mb-2">Caso tenha dúvidas sobre a navegação, assista o vídeo ao lado. Nele são demonstradas formas de navegar pelo site para consultas.</p>
+      <p class="text-gray-600 text-justify">Ao lado esquerdo temos uma barra de navegação que te expõe links para as bibliotecas. Mais abaixo também há links para as bibliotecas da linguagem C juntamente com uma breve descrição sobre o que cada uma disponibiliza.</p>
+    </div>
+
+    <div class="flex justify-center">
+      <video class="rounded shadow" width="500" height="180" controls>
+        <source src="{% static 'site2016/videos/gravacao_manualc.webm' %}" type="video/webm" />Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <hr class="w-full" />
+
+  <!-- Bibliotecas -->
+  <div>
+    <h2 class="text-2xl font-semibold text-orange-600 text-center mb-8">Bibliotecas</h2>
+
+    <div class="space-y-6">
+      <!-- assert -->
+      <div>
+        <a class="text-orange-700 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'assert' %}">assert.h</a>
+        <p class="text-gray-600 text-justify">Na biblioteca &ltassert.h&gt tem apenas uma função: assert(), a qual pode ser usada para verificar a veracidade de uma expressão durante a execução do programa e interromper a execução com uma mensagem de diagnóstico em caso de falha.</p>
+      </div>
+
+      <!-- ctype -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'ctype' %}">ctype.h</a>
+        <p class="text-gray-600 text-justify">Na biblioteca &ltctype.h&gt estão funções para classificar caracteres ASCII, permitindo verificar se um byte representa letra, dígito, espaço etc.</p>
+      </div>
+
+      <!-- errno -->
+      <div>
+        <a class="text-orange-700 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'errno' %}">errno.h</a>
+        <p class="text-gray-600">O arquivo de cabeçalhos &lterrno.h&gt fornece macros para reconhecer e relatar erros de execução através de códigos de erro fornecidos pelo sistema operacional.</p>
+      </div>
+
+      <!-- float -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'float' %}">float.h</a>
+        <p class="text-gray-600">O cabeçalho &ltfloat.h&gt fornece macros que representam limites e propriedades de números de ponto flutuante para o compilador e sistema utilizados.</p>
+      </div>
+
+      <!-- limits -->
+      <div>
+        <a class="text-orange-700 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'limits' %}">limits.h</a>
+        <p class="text-gray-600 text-justify">Define constantes com valores máximos e mínimos que variáveis de determinados tipos podem assumir.</p>
+      </div>
+
+      <!-- math -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'math' %}">math.h</a>
+        <p class="text-gray-600 text-justify">Contém funções matemáticas como trigonometria, raiz quadrada, valor absoluto e outras operações numéricas.</p>
+      </div>
+
+      <!-- stdio -->
+      <div>
+        <a class="text-orange-700 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'stdio' %}">stdio.h</a>
+        <p class="text-gray-600">Fornece funções de entrada e saída padrão, incluindo leitura e escrita no terminal e manipulação de arquivos.</p>
+      </div>
+
+      <!-- stdlib -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'stdlib' %}">stdlib.h</a>
+        <p class="text-gray-600 text-justify">Inclui funções para alocação de memória, conversão de tipos e algoritmos utilitários como ordenação.</p>
+      </div>
+
+      <!-- string -->
+      <div>
+        <a class="text-orange-700 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'string' %}">string.h</a>
+        <p class="text-gray-600 text-justify">Contém funções para manipulação de strings, como cópia, concatenação, comparação e contagem de caracteres.</p>
+      </div>
+
+      <!-- time -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'time' %}">time.h</a>
+        <p class="text-gray-600 text-justify">Oferece funções e estruturas para manipulação de tempo e data, permitindo obter e processar informações temporais do sistema.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

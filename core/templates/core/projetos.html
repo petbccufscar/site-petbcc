@@ -1,9 +1,8 @@
-{% extends 'base.html' %} {% block title %}
+{% extends 'base.html' %} 
+
+{% block title %}
   PET BCC | Projetos
 {% endblock %}
-
-{% load estilos_tags %}
-{% load strings_tags %}
 
 {% block content %}
     {% include 'components/cabecalho_pagina.html' with icone='briefcase-outline' titulo='Nossos projetos' texto='Conheça os projetos que o PET BCC desenvolve nas áreas de ensino, pesquisa e extensão' %}
@@ -26,7 +25,7 @@
             </select>
           </form>
         </div>
-        <div class="hidden md:flex bg-gray-100 p-2 rounded-full gap-2 justify-center m-auto w-fit shadow">
+        <div class="hidden md:flex p-2 rounded-full gap-2 justify-center m-auto w-fit">
           <!-- prettier-ignore -->
           <a href="{% url 'core:projetos' %}"
             class="px-4 py-2 font-bold rounded-full hover:bg-gray-200
@@ -79,39 +78,15 @@
           </a>
         </div>
       </section>
-      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-0">
+      
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4">
         {% for projeto in projetos %}
-          <div class="flex gap-6 flex-col p-6 mb-4 rounded-lg border-2 border-gray-200 bg-white">
-            <div class="flex gap-2 justify-between items-start flex-wrap">
-              <div class="overflow-x-hidden">
-                <ion-icon name="{{ projeto.categoria.slug|icone_categoria }}" class="text-3xl p-4 text-gray-50 rounded-lg {{ projeto.categoria.slug|estilo_categoria }}"></ion-icon>
-              </div>
-              <div class="flex gap-2">
-                {% include 'components/badge.html' with texto=projeto.get_status_display estilo=projeto.status|estilo_status_projeto %}
-                {% include 'components/badge.html' with texto=projeto.inicio.year estilo='bg-white text-gray-800 border-gray-200 border' %}
-              </div>
-            </div>
-
-            <div class="space-y-2 flex-1">
-              <h2 class="font-bold text-gray-800">{{ projeto.nome }}</h2>
-              <p class="text-gray-600 line-clamp-4">{{ projeto.descricao }}</p>
-            </div>
-
-            <div class="flex flex-row gap-2 items-center">
-              <div class="flex gap-2">
-                {% if projeto.tecnologias %}
-                  <p> {{ projeto.tecnologias.all|join:", " }} </p>
-                {% else %}
-                  <p>Nenhuma tecnologia cadastrada.</p>
-                {% endif %}  
-              </div>
-              {% if projeto.github %}
-                <a href="{{ projeto.github }}" target="_blank" class="ml-auto flex justify-center items-center hover:bg-gray-200 text-gray-700 p-2 rounded-lg"><ion-icon class="text-xl" name="logo-octocat"></ion-icon></a>
-              {% endif %} 
-            </div>
-          </div>
-        {% endfor %}
+          {% include '../components/card_projeto.html' with id=projeto.id categoria=projeto.categoria tecnologias=projeto.tecnologias nome=projeto.nome descricao=projeto.descricao ano=projeto.data_inicio.year status=projeto.status %}
+         {% empty %}
+          <p class="text-gray-600 mx-auto">Nenhum projeto encontrado para esta categoria.</p>
+         {% endfor %}
       </section>
+
       <section>
         <div class="bg-gray-100 p-6 md:py-12 flex gap-4 flex-col items-center rounded-lg text-center">
           <p class="text-gray-800 font-bold">Tem uma ideia de projeto?</p>

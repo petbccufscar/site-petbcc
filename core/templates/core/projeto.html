@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  PET BCC | Projeto
+{% endblock %}
+
+{% load static %}
+
+{% load estilos_tags %}
+{% load strings_tags %}
+
+{% block content %}
+  <section class="max-w-6xl mx-auto p-6 md:py-12 space-y-10 md:space-y-12">
+    <section class="space-y-6">
+      <div class="flex gap-6 items-center flex-wrap">
+        {% if projeto.imagem %}
+          <img src="{{ projeto.imagem.url }}" alt="" class="w-20 border rounded-xl" />
+        {% endif %}
+        <div class="space-y-2">
+          <p class="text-gray-800 text-3xl font-bold">{{ projeto.nome }}</p>
+          <div class="flex text-gray-600 gap-2 text-sm">
+            <p>Criado em {{ projeto.data_inicio|date:'d/m/Y' }}</p>
+
+            {% if projeto.data_fim %}
+              <p>•</p>
+              <p>Finalizado em {{ projeto.data_fim|date:'d/m/Y' }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 text-gray-600">
+        <div class="w-fit">
+          {% include 'components/badge.html' with texto=projeto.categoria estilo=projeto.categoria.slug|estilo_categoria %}
+        </div>
+        <div class="w-fit">
+          {% include 'components/badge.html' with texto=projeto.get_status_display estilo=projeto.status|estilo_status_projeto %}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="text-gray-800 font-bold mb-6 text-lg">Descrição</p>
+
+      <p class="text-gray-600 text-justify">{{ projeto.descricao }}</p>
+    </section>
+
+    <section>
+      <p class="text-gray-800 font-bold mb-6 text-lg">Tecnologias</p>
+
+      <div class="flex gap-2 text-gray-600">
+        {% if projeto.tecnologias %}
+          <p class="text-gray-600">{{ projeto.tecnologias.all|join:', ' }}</p>
+        {% else %}
+          <p class="text-gray-600">Nenhuma tecnologia cadastrada.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section>
+      <p class="text-gray-800 font-bold mb-6 text-lg">Membros</p>
+
+      <div class="flex gap-4 items-center flex-wrap">
+        {% for membro in projeto.membros.all %}
+          <a class="block cursor-pointer" href="{% url 'core:membro' id=membro.id %}">
+            <div class="flex gap-4 items-center p-3 px-4 rounded-lg border border-gray-200 hover:bg-gray-100 hover:shadow-md transition">
+              {% if membro.foto %}
+                <img src="{{ membro.foto.url }}" alt="" class="w-10 h-10 rounded-full object-fill scale-120" />
+              {% else %}
+                <ion-icon name="person-outline" class="text-4xl text-gray-400"></ion-icon>
+              {% endif %}
+              <p class="text-gray-700">{{ membro.nome }}</p>
+            </div>
+          </a>
+        {% empty %}
+          <p class="text-gray-600">Nenhum membro cadastrado.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section>
+      <p class="text-gray-800 font-bold mb-6 text-lg">Relatório de Horas</p>
+
+      <div class="flex gap-2">
+        {% if registros %}
+          <p>...</p>
+        {% else %}
+          <p class="text-gray-600">Nenhum relatório disponível pois não há atividades cadastradas.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section>
+      <p class="text-gray-800 font-bold mb-6 text-lg">Atividades Recentes</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {% for registro in registros %}
+          {% include 'components/registro_atividade.html' with titulo=registro.titulo descricao=registro.descricao data=registro.data tempo=registro.get_hora_formatada membros=registro.membros.all projeto=null %}
+        {% empty %}
+          <p class="text-gray-600">Nenhuma atividade registrada.</p>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+{% endblock %}

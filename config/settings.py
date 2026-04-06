@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
     # apps
     "core",
+    "manual_c",
+
     # tailwind
     "tailwind",
     "theme",
@@ -86,6 +89,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "core.context_processors.menu_items",
+                "manual_c.context_processors.menu_items_manual_c",
             ],
         },
     },

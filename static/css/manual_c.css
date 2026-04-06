@@ -1,0 +1,33 @@
+@layer components {
+  .lib-title {
+    @apply text-4xl font-bold text-orange-600 mb-3;
+  }
+
+  .lib-description {
+    @apply text-gray-700 leading-relaxed;
+  }
+
+  .func-list-link {
+    @apply bg-gray-100 hover:bg-orange-100 text-gray-800 px-3 py-1 rounded text-sm font-mono;
+  }
+
+  .func-section {
+    @apply mb-16 border-t pt-10;
+  }
+
+  .func-signature {
+    @apply bg-gray-900 text-green-400 font-mono text-lg rounded-lg px-5 py-3 mb-5;
+  }
+
+  .func-meta {
+    @apply bg-gray-50 border rounded-lg p-4 mt-5 text-gray-700;
+  }
+
+  .code-block {
+    @apply bg-gray-900 text-green-400 p-5 rounded-lg overflow-x-auto text-sm;
+  }
+
+  .output-block {
+    @apply bg-gray-800 text-gray-200 p-5 rounded-lg overflow-x-auto text-sm;
+  }
+}

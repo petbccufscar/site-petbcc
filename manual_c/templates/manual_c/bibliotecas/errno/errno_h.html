@@ -1,0 +1,78 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+  errno.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold mb-8 text-orange-600 border-b pb-4">&lt;errno.h&gt;</h1>
+
+    <!-- DESCRIÇÃO -->
+
+    <p class="mb-4 text-gray-700 leading-relaxed text-justify">
+      O arquivo de cabeçalhos <b>&lterrno.h&gt</b> fornece alguns macros de números inteiros para reconhecer e relatar erros de execução através de códigos de erro, esses códigos são fornecidos pelo próprio sistema operacional e retornados ao programa durante sua execução.
+    </p>
+
+    <p class="mb-4 text-gray-700 leading-relaxed text-justify">
+      A variável errno recebe um valor inteiro referente ao erro obtido. Uma tabela de todos os erros pode ser encontrada em
+      <a class="text-blue-600 underline" href="https://linux.die.net/man/3/errno">errno</a>.
+    </p>
+
+    <p class="mb-6 text-gray-700 text-justify">Em um escopo de cálculos matemáticos, os que mais ocorrem são:</p>
+
+    <ul class="list-disc ml-6 space-y-3 mb-10 text-gray-700 text-justify">
+      <li>
+        <p>
+          <b>EDOM (33)</b>: Um argumento viola o domínio dos valores suportados, ou seja, quando deixa de pertencer aos números reais. Geralmente sua compilação não é impedida, porém, o resultado “nan” (not a number) é mostrado.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <b>ERANGE (34)</b>: O resultado da função está fora do intervalo dos valores válidos. Quando utilizado junto com a biblioteca &ltmath.h&gt, os resultados “inf” e “-inf” são obtidos.
+        </p>
+      </li>
+    </ul>
+
+    <!-- FUNÇÕES -->
+
+    <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-orange-600">Funções</h2>
+
+    <p class="mb-12 text-gray-700">Não há funções nesta biblioteca.</p>
+
+    <!-- EXEMPLO -->
+
+    <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-orange-600">Exemplo de uso</h2>
+
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto mb-10"><code>#include &ltstdio.h&gt 
+#include &ltmath.h&gt 
+#include &lterrno.h&gt 
+#include &ltstring.h&gt
+
+int main() { 
+
+  printf("log(-1.0) = %f\n", log(-1.0)); 
+  printf("Erro de número %d obtido!\n", errno); 
+  printf("Descrição do erro: %s\n\n", strerror(errno));
+
+  printf("log(0.0) = %f\n", log(0.0)); 
+  printf("Erro de número %d obtido!\n", errno); 
+  printf("Descrição do erro: %s", strerror(errno));
+
+  return 0; 
+}</code></pre>
+
+    <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-orange-600">Saída do terminal</h2>
+
+    <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+log(-1.0) = -nan 
+Erro de número 33 obtido! 
+Descrição do erro: Numerical argument out of domain
+
+log(0.0) = -inf 
+Erro de número 34 obtido! 
+Descrição do erro: Numerical result out of range</code></pre>
+  </section>
+{% endblock %}

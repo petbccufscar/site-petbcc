@@ -1,0 +1,811 @@
+{% extends 'manual_c/base.html' %}
+
+{% block title %}
+  string.h - Manual C
+{% endblock %}
+
+{% block content %}
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold mb-8 text-orange-600 border-b pb-4">&lt;string.h&gt;</h1>
+
+    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
+      <p>
+        Esta é uma biblioteca padrão da linguagem C. Nela estão contidos protótipos utilizados para a manipulação de <strong>strings</strong>, também conhecidos como array de <strong>chars</strong>. Estas funções são capazes desde a contagem, cópia e concatenação, comparação e diversas outras modificações como podemos ver nos exemplos a seguir.
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Macros</h2>
+    <div class="text-gray-700 leading-relaxed mb-10">
+      <ul class="list-disc ml-6 space-y-2">
+        <li><strong>NULL:</strong> Um ponteiro constante que aponta para 0 (zero), pode ser escrito com uma chamada de cast definida por: <code>(void *)(0)</code></li>
+      </ul>
+    </div>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Variáveis</h2>
+    <div class="text-gray-700 leading-relaxed mb-10">
+      <ul class="list-disc ml-6 space-y-2">
+        <li><strong>size_t:</strong> Um longo inteiro sem sinal, responsável por guardar a quantidade de bytes de qualquer objeto retornado pelo operador <code>sizeof</code>.</li>
+      </ul>
+    </div>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Funções</h2>
+    <div class="flex flex-wrap gap-3 mb-12">
+      <a href="#memchr" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">memchr()</a>
+      <a href="#memcmp" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">memcmp()</a>
+      <a href="#memcpy" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">memcpy()</a>
+      <a href="#memmove" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">memmove()</a>
+      <a href="#memset" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">memset()</a>
+      <a href="#strcat" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strcat()</a>
+      <a href="#strncat" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strncat()</a>
+      <a href="#strchr" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strchr()</a>
+      <a href="#strrchr" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strrchr()</a>
+      <a href="#strcmp" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strcmp()</a>
+      <a href="#strncmp" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strncmp()</a>
+      <a href="#strcoll" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strcoll()</a>
+      <a href="#strcpy" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strcpy()</a>
+      <a href="#strncpy" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strncpy()</a>
+      <a href="#strcspn" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strcspn()</a>
+      <a href="#strspn" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strspn()</a>
+      <a href="#strpbrk" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strpbrk()</a>
+      <a href="#strstr" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strstr()</a>
+      <a href="#strtok" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strtok()</a>
+      <a href="#strlen" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strlen()</a>
+      <a href="#strerror" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">strerror()</a>
+    </div>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="memchr" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *memchr(const void *str, int c, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Procura pela primeira ocorrência do caractere c (um unsigned char) nos primeiros n bytes da string apontada pelo argumento str.</p>
+        <p><strong>Recebe:</strong> Um ponteiro para a string onde a busca será feita, o caractere a ser procurado e o número de bytes a serem analisados.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para o caractere correspondente ou NULL se o caractere não for encontrado.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   const char str[] = "http://www.pet.inf.ufscar.br";
+   const char ch = '.';
+   char *ret;
+
+   ret = memchr(str, ch, strlen(str));
+
+   printf("String depois de |%c| eh - |%s|\n", ch, ret);
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String depois de |.| eh - |.inf.ufscar.br|</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="memcmp" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int memcmp(const void *str1, const void *str2, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Compara os primeiros n bytes de str1 e str2.</p>
+        <p><strong>Recebe:</strong> Duas strings (str1 e str2) e a quantidade n de caracteres a serem comparados.</p>
+        <p><strong>Retorna:</strong> <br>
+          Se o valor de retorno for < 0, então str1 é menor que str2.<br>
+          Se o valor de retorno for > 0, então str2 é menor que str1.<br>
+          Se o valor de retorno for = 0, então str1 é igual a str2.
+        </p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[15];
+   char str2[15];
+   int ret;
+
+   memcpy(str1, "abcdef", 6);
+   memcpy(str2, "ABCDEF", 6);
+
+   ret = memcmp(str1, str2, 5);
+
+   if(ret > 0) {
+      printf("str2 eh menor que str1");
+   } else if(ret < 0) {
+      printf("str1 eh menor que str2");
+   } else {
+      printf("str1 eh igual a str2");
+   }
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>str2 eh menor que str1</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="memcpy" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *memcpy(void *dest, const void *src, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Copia n caracteres da área de memória src para a área de memória dest.</p>
+        <p><strong>Recebe:</strong> Um ponteiro para o destino onde o conteúdo será copiado, um ponteiro para a origem dos dados e o número de bytes a serem copiados.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para o destino (dest).</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   const char src[50] = "http://www.pet.inf.ufscar.br";
+   char dest[50];
+
+   strcpy(dest,"Helo!! ");
+   printf("Antes do memcpy dest = %s\n", dest);
+   memcpy(dest, src, strlen(src)+1);
+   printf("Depois do memcpy dest = %s\n", dest);
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Antes do memcpy dest = Helo!!
+Depois do memcpy dest = http://www.pet.inf.ufscar.br</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="memmove" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *memmove(void *str1, const void *str2, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Outra função para copiar n caracteres de str2 para str1, mas para blocos de memória sobrepostos, memmove() é uma abordagem mais segura do que memcpy().</p>
+        <p><strong>Recebe:</strong> A string de destino, a string de origem e o número de bytes a serem movidos.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para a string de destino (str1).</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char dest[] = "oldstring";
+   const char src[]  = "newstring";
+
+   printf("Antes de memmove dest = %s, src = %s\n", dest, src);
+   memmove(dest, src, 9);
+   printf("Depois de memmove dest = %s, src = %s\n", dest, src);
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Antes de memmove dest = oldstring, src = newstring
+Depois de memmove dest = newstring, src = newstring</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="memset" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *memset(void *str, int c, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Copia o caractere c (um unsigned char) para os primeiros n caracteres da string apontada pelo argumento str.</p>
+        <p><strong>Recebe:</strong> Um ponteiro para o bloco de memória, o valor a ser definido e o número de bytes a serem preenchidos.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para a área de memória str.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str[50];
+
+   strcpy(str,"Essa e a funcao memset");
+   puts(str);
+
+   memset(str,'$',7);
+   puts(str);
+   
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Essa e a funcao memset
+$$$$$$$ e a funcao memset</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strcat" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strcat(char *destino, char *fonte)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Concatena a string fonte à string de destino.</p>
+        <p><strong>Recebe:</strong> Uma string de destino, uma string fonte.</p>
+        <p><strong>Retorna:</strong> String de destino concatenada com a string fonte. A primeira letra da string fonte substitui o caractere terminal da string de destino, e após toda a string fonte ser concatenada, o caractere terminal é inserido no final da string de destino.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+	char resultado[50] = "Programa ";
+	printf("%s\n", resultado);
+
+	strcat(resultado, "de Ensino ");
+	printf("%s\n", resultado);
+
+	strcat(resultado, "e Tutoria");
+	printf("%s\n", resultado);
+	
+	char curso[10] = " - BCC";
+	strcat(resultado, curso);
+	printf("%s", resultado);
+	
+	return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Programa 
+Programa de Ensino 
+Programa de Ensino e Tutoria
+Programa de Ensino e Tutoria - BCC</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strncat" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strncat(char *dest, const char *src, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Concatena a string apontada por src à string apontada por dest até n caracteres de comprimento.</p>
+        <p><strong>Recebe:</strong> A string de destino, a string de origem e o número máximo de caracteres a serem anexados.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para a string de destino (dest).</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char src[50], dest[50];
+
+   strcpy(src,  "This is source");
+   strcpy(dest, "This is destination");
+
+   strncat(dest, src, 15);
+
+   printf("Final destination string : |%s|", dest);
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Final destination string : |This is destinationThis is source|</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strchr" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strchr(const char *str, int c)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Procura pela primeira ocorrência do caractere c (um unsigned char) na string apontada pelo argumento str.</p>
+        <p><strong>Recebe:</strong> A string onde a busca será feita e o caractere a ser procurado.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para a primeira ocorrência do caractere ou NULL se o caractere não for encontrado.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   const char str[] = "http://www.tutorialspoint.com";
+   const char ch = '.';
+   char *ret;
+
+   ret = strchr(str, ch);
+
+   printf("String after |%c| is - |%s|\n", ch, ret);
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String after |.| is - |.tutorialspoint.com|</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strcmp" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int strcmp(const char *str1, const char *str2)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Compara a string apontada por str1 com a string apontada por str2.</p>
+        <p><strong>Recebe:</strong> Duas strings para comparação.</p>
+        <p><strong>Retorna:</strong> <br>
+          Se o valor de retorno for < 0, então str1 é menor que str2.<br>
+          Se o valor de retorno for > 0, então str2 é menor que str1.<br>
+          Se o valor de retorno for = 0, então str1 é igual a str2.
+        </p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[15];
+   char str2[15];
+   int ret;
+
+   strcpy(str1, "abcdef");
+   strcpy(str2, "ABCDEF");
+
+   ret = strcmp(str1, str2);
+
+   if(ret < 0) {
+      printf("str1 is less than str2");
+   } else if(ret > 0) {
+      printf("str2 is less than str1");
+   } else {
+      printf("str1 is equal to str2");
+   }
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>str2 is less than str1</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strncmp" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int strncmp(const char *str1, const char *str2, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Compara no máximo os primeiros n bytes de str1 e str2.</p>
+        <p><strong>Recebe:</strong> Duas strings e o número máximo de caracteres a serem comparados.</p>
+        <p><strong>Retorna:</strong> <br>
+          Se o valor de retorno for < 0, então str1 é menor que str2.<br>
+          Se o valor de retorno for > 0, então str2 é menor que str1.<br>
+          Se o valor de retorno for = 0, então str1 é igual a str2.
+        </p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[15];
+   char str2[15];
+   int ret;
+
+   strcpy(str1, "abcdef");
+   strcpy(str2, "ABCDEF");
+
+   ret = strncmp(str1, str2, 4);
+
+   if(ret < 0) {
+      printf("str1 is less than str2");
+   } else if(ret > 0) {
+      printf("str2 is less than str1");
+   } else {
+      printf("str1 is equal to str2");
+   }
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>str2 is less than str1</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strcoll" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int strcoll(const char *str1, const char *str2)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Compara a string str1 com a string str2. O resultado é dependente da configuração LC_COLLATE da localidade atual.</p>
+        <p><strong>Recebe:</strong> Duas strings para serem comparadas.</p>
+        <p><strong>Retorna:</strong> <br>
+          Se o valor de retorno for < 0, então str1 é menor que str2.<br>
+          Se o valor de retorno for > 0, então str2 é menor que str1.<br>
+          Se o valor de retorno for = 0, então str1 é igual a str2.
+        </p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[15];
+   char str2[15];
+   int ret;
+
+   strcpy(str1, "abcde");
+   strcpy(str2, "ABCDE");
+
+   ret = strcoll(str1, str2);
+
+   if(ret > 0) {
+      printf("str1 eh maior que str2");
+   } else if(ret < 0) {
+      printf("str2 eh maior que str1");
+   } else {
+      printf("str1 eh igual a str2");
+   }
+
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>str1 eh maior que str2</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strcpy" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strcpy(char *dest, const char *src)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Copia a string apontada por src para dest.</p>
+        <p><strong>Recebe:</strong> Um ponteiro para o destino onde o conteúdo será copiado e um ponteiro para a origem dos dados.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para a string de destino (dest).</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char src[40];
+   char dest[100];
+  
+   memset(dest, '\0', sizeof(dest));
+   strcpy(src, "Esta eh a origem");
+   strcpy(dest, src);
+
+   printf("String de destino: %s\n", dest);
+   
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String de destino: Esta eh a origem</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strncpy" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strncpy(char *dest, const char *src, size_t n)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Copia até n caracteres da string apontada por src para dest.</p>
+        <p><strong>Recebe:</strong> Um ponteiro para o destino, um ponteiro para a origem e o número de caracteres a serem copiados.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para a string de destino (dest).</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char src[40];
+   char dest[12];
+  
+   memset(dest, '\0', sizeof(dest));
+   strcpy(src, "Esta eh a origem");
+   strncpy(dest, src, 10);
+
+   printf("String final de destino: %s\n", dest);
+   
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String final de destino: Esta eh a</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strcspn" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">size_t strcspn(const char *str1, const char *str2)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o comprimento do segmento inicial de str1 que consiste inteiramente de caracteres que não estão em str2.</p>
+        <p><strong>Recebe:</strong> A string a ser analisada e a string contendo os caracteres a serem rejeitados.</p>
+        <p><strong>Retorna:</strong> O número de caracteres no segmento inicial de str1 que não contém caracteres da str2.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   int len;
+   const char str1[] = "ABCDEF4960910";
+   const char str2[] = "013";
+
+   len = strcspn(str1, str2);
+
+   printf("Comprimento da primeira parte que nao contem caracteres de str2 eh %d\n", len );
+   
+   return(0);
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Comprimento da primeira parte que nao contem caracteres de str2 eh 10</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strerror" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strerror(int errno)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p><strong>Recebe:</strong> Uma string fonte, um char convertido para int.</p>
+        <p><strong>Retorna:</strong> Retorna um ponteiro para última ocorrência do ‘caractere’ na string ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &lt;string.h&gt;. Toda conversão entre char e int é feita de forma automática.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;string.h&gt;
+	
+int main(){
+	printf("log(-1.0) = %f\n", log(-1.0));
+	printf("Erro de número %d obtido!\n", errno);
+	printf("Descrição do erro: %s\n\n", strerror(errno));
+	
+	printf("log(0.0) = %f\n", log(0.0));
+	printf("Erro de número %d obtido!\n", errno);
+	printf("Descrição do erro: %s", strerror(errno));
+	
+	return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>log(-1.0) = nan
+Erro de número 33 obtido!
+Descrição do erro: Numerical argument out of domain
+
+log(0.0) = -inf
+Erro de número 34 obtido!
+Descrição do erro: Numerical result out of range</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strlen" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">size_t strlen(char* fonte)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p><strong>Recebe:</strong> Uma string fonte..</p>
+        <p><strong>Retorna:</strong> Um size_t (longo inteiro sem sinal) com o valor da quantidade de caracteres daquela string. Não confundir com o tamanho do array de char definido na criação da string. A função conta o número de caracteres até encontrar o caractere terminal na string. Como o retorno é um long unsigned int e estamos utilizando diretamente para informar o valor ao usuário, utilizar ‘%d’ ou ‘%i’ pode gerar warnings. Para evitá-los, utilize ‘%lu’ (long unsigned).</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+	char stringA[] = "PET - BCC";
+	char stringB[] = "Computacao UFSCar";
+	printf("String A: %s\n", stringA);
+	printf("Tamanho da string A: %lu\n\n", strlen(stringA));
+	printf("String B: %s\n", stringB);
+	printf("Tamanho da string B: %lu\n\n", strlen(stringB));
+	
+	return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String A: PET - BCC
+Tamanho da string A: 9
+
+String B: Computacao UFSCar
+Tamanho da string B: 17</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strpbrk" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char* strpbrk(const char* fonte, const char* comparacao)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p><strong>Recebe:</strong> Uma string fonte. Uma string de comparação.</p>
+        <p><strong>Retorna:</strong> Retorna um ponteiro para a primeira ocorrência de qualquer caractere da string ‘comparacao’ que pertença a string ‘fonte’. Caso não haja ocorrência, um ponteiro NULL é retornado.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+	char fonte[] = "Programa de Ensino e Tutoria - BCC/UFSCar";
+  char comparacao[] = "aeiou";
+    
+	printf("String 'fonte': \n%s\n\n", fonte);
+  printf("String 'comparacao':\n%s\n\n", comparacao);
+    
+  printf("String após a primeira ocorrência de uma vogal: %s\n", strpbrk(fonte, comparacao));
+
+  return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String 'fonte': 
+Programa de Ensino e Tutoria - BCC/UFSCar
+
+String 'comparacao':
+aeiou
+
+String final: ograma de Ensino e Tutoria - BCC/UFSCar</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strrchr" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strrchr(const char* fonte, int caractere)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p><strong>Recebe:</strong> Uma string fonte, um char convertido para int.</p>
+        <p><strong>Retorna:</strong> Retorna um ponteiro para última ocorrência do ‘caractere’ na string ‘fonte’. Caso não encontre, será retornado um ponteiro NULL, definido pela Macro da biblioteca &lt;string.h&gt;. Toda conversão entre char e int é feita de forma automática.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+	int caractere = 'a';
+	char fonte[] = "Programa de Ensino e Tutoria - BCC";
+
+	printf("Localizar a última letra '%c' na frase: %s\n", caractere, fonte);
+	if(strchr(fonte, caractere) != NULL){
+		printf("\nCaractere %c encontrado!\n", caractere);
+	printf("String a partir dele: %s\n", strrchr(fonte, caractere));
+	} else {
+		printf("\nCaractere %c não encontrado!\n", caractere);
+	}
+
+	return 0;	
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>Localizar a última letra 'a' na frase: Programa de Ensino de Tutoria - BCC
+
+Caractere a encontrado!
+String a partir dele: a - BCC</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strspn" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">size_t strspn(const char* fonte, const char* comparacao)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p><strong>Recebe:</strong> Uma string fonte. Uma string de comparação.</p>
+        <p><strong>Retorna:</strong> Retorna a quantidade de elementos da string ‘comparacao’ no início da string ‘fonte’ no tipo size_t (inteiro longo sem-sinal). De forma simples, se o caractere inicial da string ‘fonte’ pertencer a string ‘comparacao’, a função retorna a quantidade de caracteres até que encontre um caractere que não pertença a string ‘comparacao’. Caso o caractere inicial não pertença a string ‘comparacao’, é retornado 0 imediatamente.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+	char fonteA[] = "198462-PET-BCC/UFSCar";
+	char fonteB[] = "PET-BCC/UFSCar-198462";
+  char comparacao[] = "0123456789";
+    
+	printf("String 'fonteA':\n%s\n\n", fonteA);
+	printf("String 'fonteB':\n%s\n\n", fonteB);
+  printf("String 'comparacao':\n%s\n\n", comparacao);
+    
+  printf("Há um total de %lu dígitos iniciais na string fonteA.\n", strspn(fonteA, comparacao));
+  printf("Há um total de %lu dígitos iniciais na string fonteB.", strspn(fonteB, comparacao));
+    
+  return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String 'fonteA':
+198462-PET-BCC/UFSCar
+
+String 'fonteB':
+PET-BCC/UFSCar-198462
+
+String 'comparacao':
+0123456789
+
+Há um total de 6 dígitos iniciais na string fonteA.
+Há um total de 0 dígitos iniciais na string fonteB.</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strstr" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *strstr(const char* fonte, const char* comparacao)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p><strong>Recebe:</strong> Uma string fonte. Uma string para comparação.</p>
+        <p><strong>Retorna:</strong> Retorna um ponteiro para o primeiro caractere da ocorrência caso a subsequência ‘comparacao’ seja encontrada na string ‘fonte’. Caso a string ‘comparacao’ não esteja presente na string ‘fonte’, um ponteiro NULL é retornado.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+	
+int main(){
+	char * ponteiro;
+	char fonte[] = "Programa de Ensino e Tutoria - BCC";
+	char comparacao[] = "Ensino";
+	
+	printf("String 'fonte':\n%s\n\n", fonte);
+	printf("Substring 'comparacao':\n%s\n\n", comparacao);
+			
+	ponteiro = strstr(fonte, comparacao);
+			
+	if(ponteiro != NULL){
+		printf("Substring encontrada!\n");
+		printf("Substring inicia na posição %ld\n", ponteiro - fonte);
+	} else {
+		printf("Substring não encontrada!\n");
+	}
+			
+	return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>log(-1.0) = nan
+Erro de número 33 obtido!
+Descrição do erro: Numerical argument out of domain
+
+lof(0.0) = -inf
+Erro de número 34 obtido!
+Descrição do erro: Numerical result out of range</code></pre>
+    </section>
+
+    <hr class="border-t border-gray-200 mb-16">
+
+    <section id="strtok" class="mb-16 scroll-mt-24">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char* strtok(char* fonte, const char* delimitadores)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p><strong>Recebe:</strong> Uma string fonte, uma string de caracteres delimitadores.</p>
+        <p><strong>Retorna:</strong> Separa a string ao encontrar um caractere pertencente a string dos delimitadores. Em outras palavras, percorre a string fonte à procura de algum caractere da string delimitadores. Quando a função é chamada, adiciona um ponteiro inicial ao início da string fonte, quando o primeiro delimitador é encontrado (ou a string se finaliza), um ponteiro final é adicionado, e então, a string resultante é formada. Caso a função seja chamada novamente, utilizando NULL como um ponteiro fonte, ela percorre a mesma string usada anteriormente, porém, exatamente do ponteiro final adicionado anteriormente.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(){
+	char fonte[] = "Programa de.Ensino e#Tutoria-BCC-UFSCar";
+	char delimitadores[] = "-,.#";
+		
+	printf("String 'fonte':\n%s\n\n", fonte);
+	printf("String 'delimitadores':\n%s\n\n", delimitadores);
+		
+	char * resultado = strtok(fonte, delimitadores);    //Primeira chamada
+		
+	while(resultado != NULL){
+		printf("%s\n", resultado);
+		/* Segunda chamada, função utiliza fonte anterior
+		e parte do ponteiro final adicionado anteriormente */
+		resultado = strtok(NULL, delimitadores);
+	}
+		
+	return 0;
+}</code></pre>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>String 'fonte':
+Programa de .Ensino e#Tutoria-BCC-UFSCar
+
+String 'delimitadores':
+-,.#
+
+Programa de
+Ensino e
+Tutoria
+BCC
+UFSCar</code></pre>
+    </section>
+
+{% endblock %}

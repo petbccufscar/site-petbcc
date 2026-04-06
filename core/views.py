@@ -1,9 +1,11 @@
+from types import SimpleNamespace
+
 from django.shortcuts import redirect, render
 
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
-from core.models import Categoria, Membro, Projeto
+from core.models import Atividade, Categoria, Membro, Projeto
 
 from core.forms import ContactForm
 
@@ -38,11 +40,39 @@ def projetos(request):
     else:
         PROJETOS = Projeto.objects.all()
 
-
     return render(request, "core/projetos.html", {
         "projetos": PROJETOS,
         "categoria_ativa": categoria,
         "categorias": CATEGORIAS,
+    })
+
+def projeto(request, id):
+    projeto = Projeto.objects.get(id=id)
+    registros = Atividade.objects.filter(projeto=projeto).order_by("-data")
+
+    return render(request, "core/projeto.html", {
+        "projeto": projeto,
+        "registros": registros,
+    })
+
+def membro(request, id):
+    membro = Membro.objects.get(id=id)
+    projetos = Projeto.objects.filter(membros=membro)
+    registros = Atividade.objects.filter(membros=membro)
+
+    # TODO: Calcular o total de horas
+    sumario = {
+        "soma_semanal": "8h35min",
+        "media_ultimo_mes": "6h10min",
+        "media_ultimos_tres_meses": "7h20min",
+        "total_horas": "180h55min"
+    }
+
+    return render(request, "core/membro.html", {
+        "membro": membro,
+        "projetos": projetos,
+        "registros": registros,
+        "sumario": sumario
     })
 
 def processo_seletivo(request):
@@ -127,6 +157,3 @@ def contato(request):
         form = ContactForm()
 
     return render(request, "core/contato.html", {"form": form})
-
-def manual_c(request):
-    return render(request, 'core/manual_c.html')

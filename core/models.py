@@ -47,6 +47,7 @@ class Membro(models.Model):
 
     #foto como imagefield tratado pelo pillow e salvado no diretório static/images/membros/
     foto = models.ImageField(upload_to='static/images/membros/', null=True, blank=True)
+    capa = models.ImageField(upload_to='static/images/membros/capas/', null=True, blank=True)
 
     # link do github definido como texto
     github = models.CharField(max_length=50, blank=True)
@@ -83,10 +84,10 @@ class Projeto(models.Model):
     descricao = models.TextField()
 
     #inicio
-    inicio = models.DateField()
+    data_inicio = models.DateField()
 
     #fim
-    fim = models.DateField()
+    data_fim = models.DateField(null=True, blank=True)
 
     #imagem
     imagem = models.ImageField(upload_to='static/images/projects/', null=True, blank=True)
@@ -135,6 +136,24 @@ class Atividade(models.Model):
     membros = models.ManyToManyField(Membro)
 
     projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"[{self.projeto.nome}] {self.titulo}"
+
+    def get_hora_formatada(self):
+        minutos_totais = self.horas * 60 + self.minutos
+
+        horas = minutos_totais // 60
+        mins = minutos_totais % 60
+
+        print(f"horas: {horas}, minutos: {mins}")
+
+        if horas and mins:
+            return f"{horas}h{mins:02d}min"
+        elif horas:
+            return f"{horas}h"
+        else:
+            return f"{mins}min"
 
 class Etapa(models.Model):
 

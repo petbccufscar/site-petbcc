@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Manual C - PET-BCC UFSCar
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-6xl mx-auto p-6 md:py-12">
+    <section role="region">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Sidebar -->
+        <aside class="md:w-1/4">
+          {% block sidebar_content %}
+            {% include 'components/menu_lateral.html' %}
+          {% endblock %}
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <div class="md:w-3/4 space-y-6">
+          <!-- Objetivo -->
+          <div>
+            <h2 class="text-xl font-semibold text-orange-600 mb-3">Objetivo</h2>
+            <p class="text-justify text-gray-600">A ideia do projeto é fornecer uma guia simples e objetivo para a linguagem de programação C. Contendo a maioria das bibliotecas e funções da linguagem.</p>
+          </div>
+
+          <!-- Público Alvo -->
+          <div>
+            <h2 class="text-xl font-semibold text-orange-600 mb-3">Público Alvo</h2>
+            <p class="text-justify text-gray-600">Nosso público alvo são programadores e pessoas que possuem um conhecimento básico sobre a linguagem e precisam de um lugar para consultas sobre a linguagem C.</p>
+          </div>
+
+          <!-- Sugestões -->
+          <div>
+            <h2 class="text-xl font-semibold text-orange-600 mb-4">Sugestões</h2>
+
+            <p class="text-justify text-gray-600">
+              Em caso de dúvidas sobre as bibliotecas ou funções, ou sugestões entre em contato conosco pelas nossas redes ou pelo e-mail <a href="mailto:petbcc@ufscar.br" class="text-orange-600 font-semibold hover:underline">petbcc@ufscar.br</a>.
+            </p>
+          </div>
+
+          <!-- Colaboradores -->
+          <div>
+            <h2 class="text-xl font-semibold text-orange-600 mb-6">Colaboradores</h2>
+
+            <div class="space-y-4">
+              <img class="w-24 h-24 rounded-full object-cover" src="{% static 'images/manual_c/jander_moreira.jpeg' %}" />
+
+              <div>
+                <h3 class="text-lg font-semibold text-orange-600 mb-2">Prof. Dr. Jander Moreira</h3>
+                <p class="text-justify text-gray-600">Durante a realização do projeto contamos com a ajuda do Professor Doutor Jander Moreira para revisão das bibliotecas pesquisadas e disponibilizadas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
