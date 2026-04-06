@@ -47,6 +47,7 @@ class Membro(models.Model):
 
     #foto como imagefield tratado pelo pillow e salvado no diretório static/images/membros/
     foto = models.ImageField(upload_to='static/images/membros/', null=True, blank=True)
+    capa = models.ImageField(upload_to='static/images/membros/capas/', null=True, blank=True)
 
     # link do github definido como texto
     github = models.CharField(max_length=50, blank=True)

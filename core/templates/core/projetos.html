@@ -78,6 +78,7 @@
           </a>
         </div>
       </section>
+      
       <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4">
         {% for projeto in projetos %}
           {% include '../components/card_projeto.html' with id=projeto.id categoria=projeto.categoria tecnologias=projeto.tecnologias nome=projeto.nome descricao=projeto.descricao ano=projeto.data_inicio.year status=projeto.status %}
@@ -85,6 +86,7 @@
           <p class="text-gray-600 mx-auto">Nenhum projeto encontrado para esta categoria.</p>
          {% endfor %}
       </section>
+
       <section>
         <div class="bg-gray-100 p-6 md:py-12 flex gap-4 flex-col items-center rounded-lg text-center">
           <p class="text-gray-800 font-bold">Tem uma ideia de projeto?</p>

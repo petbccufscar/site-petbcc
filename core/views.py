@@ -57,9 +57,22 @@ def projeto(request, id):
 
 def membro(request, id):
     membro = Membro.objects.get(id=id)
-    
+    projetos = Projeto.objects.filter(membros=membro)
+    registros = Atividade.objects.filter(membros=membro)
+
+    # TODO: Calcular o total de horas
+    sumario = {
+        "soma_semanal": "8h35min",
+        "media_ultimo_mes": "6h10min",
+        "media_ultimos_tres_meses": "7h20min",
+        "total_horas": "180h55min"
+    }
+
     return render(request, "core/membro.html", {
-        "membro": membro
+        "membro": membro,
+        "projetos": projetos,
+        "registros": registros,
+        "sumario": sumario
     })
 
 def processo_seletivo(request):
