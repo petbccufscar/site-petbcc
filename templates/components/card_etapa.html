@@ -1,0 +1,19 @@
+<div class="space-y-4 w-full border-2 border-gray-200 rounded-xl p-6">
+  <p class="w-fit text-white text-sm px-3 py-1 bg-cyan-500 rounded-lg">Etapa {{ etapa }}</p>
+  <div class="space-y-2">
+    <h3 class="text-lg text-gray-800">{{ titulo }}</h3>
+    <p class="text-gray-600">{{ descricao }}</p>
+  </div>
+  <div>
+    <div class="flex gap-2 text-center">
+      <ion-icon name="calendar-clear-outline" class="text-gray-600 text-md self-center"></ion-icon>
+      <p class="text-gray-600">Data: {{ data_inicio|date:"d/m" }} - {{ data_fim|date:"d/m" }}</p>
+    </div>
+    {% if data_resultado %}
+      <div class="flex gap-2 text-center">
+        <ion-icon name="checkbox-outline" class="text-md text-green-500 self-center"></ion-icon>
+        <p class="text-gray-600">Resultado: {{ data_resultado }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
