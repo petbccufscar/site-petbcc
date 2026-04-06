@@ -1,0 +1,30 @@
+<div class="p-6 rounded-lg border border-gray-200">
+  <p class="text-gray-700 font-bold mb-2">{{ titulo }}</p>
+  <p class="text-gray-600 mb-6">{{ descricao }}</p>
+
+  <div class="flex gap-4 items-center text-gray-400 text-sm flex-wrap">
+    <div class="flex gap-1">
+      <ion-icon name="calendar-clear-outline" class="text-lg"></ion-icon>
+      <p>{{ data|date:'d/m/Y' }}</p>
+    </div>
+
+    <div class="flex gap-1">
+      <ion-icon name="time-outline" class="text-lg"></ion-icon>
+      <p class="flex gap-1">{{ tempo }}</p>
+    </div>
+
+    <div class="flex -space-x-2">
+      {% for membro in membros %}
+        {% comment %}TODO: Ir para o membro ao clicar{% endcomment %}
+        <div title="{{ membro.nome }}">
+          {% if membro.foto %}
+            <img src="{{ membro.foto.url }}" alt="Foto de um membro participante do registro" class="w-10 h-10 rounded-full object-fill scale-120 shadow-md" />
+          {% else %}
+            <ion-icon name="person-outline" class="text-4xl text-gray-400 shadow-md"></ion-icon>
+          {% endif %}
+          <p class="text-gray-700"></p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

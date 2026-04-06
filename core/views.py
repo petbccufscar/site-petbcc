@@ -1,9 +1,11 @@
+from types import SimpleNamespace
+
 from django.shortcuts import redirect, render
 
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
-from core.models import Categoria, Membro, Projeto
+from core.models import Atividade, Categoria, Membro, Projeto
 
 from core.forms import ContactForm
 
@@ -42,6 +44,22 @@ def projetos(request):
         "projetos": PROJETOS,
         "categoria_ativa": categoria,
         "categorias": CATEGORIAS,
+    })
+
+def projeto(request, id):
+    projeto = Projeto.objects.get(id=id)
+    registros = Atividade.objects.filter(projeto=projeto).order_by("-data")
+
+    return render(request, "core/projeto.html", {
+        "projeto": projeto,
+        "registros": registros,
+    })
+
+def membro(request, id):
+    membro = Membro.objects.get(id=id)
+    
+    return render(request, "core/membro.html", {
+        "membro": membro
     })
 
 def processo_seletivo(request):
