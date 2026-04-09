@@ -162,16 +162,21 @@ class Etapa(models.Model):
     titulo = models.CharField(max_length=150, unique=True)
 
     descricao = models.TextField()
-    inicio = models.DateTimeField()
 
-    fim = models.DateTimeField()
+    data_inicio = models.DateField()
+    hora_inicio = models.TimeField(null=True, blank=True)
 
-    mostrar_hora = models.BooleanField(default=False)
+    data_fim = models.DateField()
+    hora_fim = models.TimeField(null=True, blank=True)
 
-    data_resultado = models.DateField()
+    data_resultado = models.DateField(null=True, blank=True)
+    hora_resultado = models.TimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Etapa {self.ordem} - {self.titulo}"
 
 
-class Processo(models.Model):
+class ProcessoSeletivo(models.Model):
 
     class Semestre(models.IntegerChoices):
         PRIMEIRO=1, '1'
@@ -179,7 +184,7 @@ class Processo(models.Model):
 
     ano = models.IntegerField()
 
-    ativo = models.BooleanField(default=False)
+    ativo = models.BooleanField(default=True)
 
     semestre = models.IntegerField(
         choices = Semestre.choices,
@@ -198,8 +203,12 @@ class Processo(models.Model):
 
     etapas = models.ManyToManyField(Etapa)
 
-    email = models.EmailField()
-
     # salva em pastas organizadas por ano/mes, ex: static/edital/2026/03/edital.pdf
     edital = models.FileField(upload_to='static/edital/%Y/%m')
+
+    formulario = models.CharField(max_length=300, blank=True)
+
+    def __str__(self):
+        return f"Processo Seletivo - {self.ano}/{self.semestre}"
+    
 

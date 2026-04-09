@@ -5,14 +5,31 @@
     <p class="text-gray-600">{{ descricao }}</p>
   </div>
   <div>
-    <div class="flex gap-2 text-center">
-      <ion-icon name="calendar-clear-outline" class="text-gray-600 text-md self-center"></ion-icon>
-      <p class="text-gray-600">Data: {{ data_inicio }} - {{ data_fim }}</p>
+    <div class="flex gap-2 text-center text-gray-600">
+      <p>Data:</p>
+
+      <p>{{ data_inicio|date:'d/m' }}</p>
+      {% if hora_inicio %}
+        <p>{{ hora_inicio|time:'H:i' }})</p>
+      {% endif %}
+
+      <p>-</p>
+
+      <p>{{ data_fim|date:'d/m' }}</p>
+      {% if hora_fim %}
+        <p>({{ hora_fim|time:'H:i' }})</p>
+      {% endif %}
     </div>
+
     {% if data_resultado %}
-      <div class="flex gap-2 text-center">
-        <ion-icon name="checkbox-outline" class="text-md text-green-500 self-center"></ion-icon>
-        <p class="text-gray-600">Resultado: {{ data_resultado }}</p>
+      <div class="flex gap-2 text-center text-gray-600">
+        <p>Resultado:</p>
+        <p>{{ data_resultado|date:'d/m' }}</p>
+        <p>
+          {% if hora_resultado %}
+            {{ hora_resultado|time:'H:i' }}
+          {% endif %}
+        </p>
       </div>
     {% endif %}
   </div>

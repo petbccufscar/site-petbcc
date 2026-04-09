@@ -8,7 +8,7 @@ from core.models import (
     Membro,
     Atividade,
     Etapa,
-    Processo
+    ProcessoSeletivo
 )
 
 # Register your models here.
@@ -19,7 +19,7 @@ admin.site.register(Tecnologia)
 admin.site.register(Projeto)
 admin.site.register(Atividade)
 admin.site.register(Etapa)
-admin.site.register(Processo)
+admin.site.register(ProcessoSeletivo)
 
 @admin.register(Membro)
 class MembroAdmin(admin.ModelAdmin):

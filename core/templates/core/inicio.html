@@ -8,10 +8,10 @@
 
 {% block content %}
   <div class="relative h-fit bg-cover bg-center" style="background-image: url('{% static 'images/foto_equipe.png' %}')">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 md:from-5% from-40% via-black/30 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 md:from-5% from-30% via-black/30 to-transparent"></div>
 
     <!-- Conteúdo -->
-    <div class="max-w-6xl mx-auto relative space-y-4 pt-20 md:pt-80 z-10 p-6 py-8 text-gray-50">
+    <div class="max-w-6xl mx-auto relative space-y-4 pt-60 md:pt-80 z-10 p-6 py-8 text-gray-50">
       <h1 class="text-gray-50 text-3xl font-bold">Programa de Educação Tutorial</h1>
       <p class="text-gray-50 font-semibold">Bacharelado em Ciência da Computação da UFSCar campus São Carlos</p>
       <div class="flex gap-2 flex-wrap">
@@ -22,36 +22,39 @@
   </div>
 
   <div class="max-w-6xl mx-auto mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <section class="p-6 md:py-12">
+        <h1 class="text-2xl mb-6 md:mb-10 text-gray-800 font-medium text-center md:text-start">O que é o PET BCC</h1>
+        <p class="text-justify text-gray-700">O Programa de Educação Tutorial (PET) é um programa do Governo Federal Brasileiro que possui o objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na Portaria 976/2010. A ideia é que cursos de graduação possuam um grupo PET de até 18 alunos (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão, promovendo a indissociabilidade entre esses três pilares.</p>
+      </section>
+      <section class="p-6 md:py-12">
+        <h1 class="text-2xl mb-6 md:mb-10 text-gray-800 font-medium text-center md:text-start">Sobre o PET BCC</h1>
+        <p class="text-justify text-gray-700">O grupo PET do curso de Bacharelado em Ciência da Computação (PET BCC) da Universidade Federal de São Carlos (UFSCar), campus São Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05. Uma particularidade desse edital é que a chamada foi para grupos temáticos, isto é, além de estarem vinculados a um curso de graduação, também deveriam ter um tema para nortear suas atividades e projetos. O tema do PET BCC é desenvolvimento de software.</p>
+      </section>
+    </div>
+
     <section class="p-6 md:py-12">
-      <h1 class="text-2xl mb-6 md:mb-10 text-center text-gray-800 font-medium">O que é o PET BCC</h1>
-      <p class="text-justify text-gray-700">O Programa de Educação Tutorial (PET) é um programa do Governo Federal Brasileiro que possui o objetivo principal de elevar a qualidade dos cursos de graduação do país, como consta na Portaria 976/2010. A ideia é que cursos de graduação possuam um grupo PET de até 18 alunos (denominados de petianos), sendo 12 alunos bolsistas e 6 não-bolsistas sob a supervisão de um professor tutor. O grupo PET deve desenvolver atividades de ensino, pesquisa e extensão, promovendo a indissociabilidade entre esses três pilares.</p>
-    </section>
-    <section class="p-6 md:py-12">
-      <h1 class="text-2xl mb-6 md:mb-10 text-center text-gray-800 font-medium">Sobre o PET BCC</h1>
-      <p class="text-justify bg-white shadow p-6 md:p-12 rounded-lg text-gray-700">O grupo PET do curso de Bacharelado em Ciência da Computação (PET BCC) da Universidade Federal de São Carlos (UFSCar), campus São Carlos, iniciou suas atividades em outubro de 2009 ao ser contemplado no lote 2 do edital nº 05. Uma particularidade desse edital é que a chamada foi para grupos temáticos, isto é, além de estarem vinculados a um curso de graduação, também deveriam ter um tema para nortear suas atividades e projetos. O tema do PET BCC é desenvolvimento de software.</p>
-    </section>
-    <section class="p-6 md:py-12">
-      <h1 class="text-2xl mb-6 md:mb-12 text-center text-gray-800 font-medium">Pilares do PET BCC</h1>
-      <div class="text-center flex flex-col md:flex-row gap-6 mb-8 md:mb-12">
+      <h1 class="text-2xl mb-6 md:mb-12 text-gray-800 font-medium text-center md:text-start">Pilares do PET BCC</h1>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 md:mb-12">
         <div class="space-y-2">
           <ion-icon name="book-outline" class="contain-none text-4xl bg-blue-500 text-gray-50 p-5 rounded-xl shadow"></ion-icon>
-          <p class="text-gray-700">Ensino</p>
-          <p class="text-gray-600">Desenvolvimento de atividades que complementam a formação academica dos estudantes</p>
+          <p class="text-gray-700 font-bold">Ensino</p>
+          <p class="text-gray-600 max-w-sm mx-auto">Desenvolvimento de atividades que complementam a formação academica dos estudantes</p>
         </div>
-        <div class="space-y-2">
+        <div class="space-y-2 text-center">
           <ion-icon name="bulb-outline" class="contain-none text-4xl bg-green-500 text-gray-50 p-5 rounded-xl shadow"></ion-icon>
-          <p class="text-gray-700">Pesquisa</p>
-          <p class="text-gray-600">Incentivo à produção ciêntífica e à participação em projetos de pesquisa</p>
+          <p class="text-gray-700 font-bold">Pesquisa</p>
+          <p class="text-gray-600 max-w-sm mx-auto">Incentivo à produção ciêntífica e à participação em projetos de pesquisa</p>
         </div>
-        <div class="space-y-2">
+        <div class="space-y-2 text-center">
           <ion-icon name="earth-outline" class="contain-none text-4xl bg-red-500 text-gray-50 p-5 rounded-xl shadow"></ion-icon>
-          <p class="text-gray-700">Extensão</p>
-          <p class="text-gray-600">Projetos que conectam a universidade com a comunidade externa</p>
+          <p class="text-gray-700 font-bold">Extensão</p>
+          <p class="text-gray-600 max-w-sm mx-auto">Projetos que conectam a universidade com a comunidade externa</p>
         </div>
-        <div class="space-y-2">
+        <div class="space-y-2 text-center">
           <ion-icon name="code-slash-outline" class="contain-none text-4xl bg-orange-500 text-gray-50 p-5 rounded-xl shadow"></ion-icon>
-          <p class="text-gray-700">Desenvolvimento</p>
-          <p class="text-gray-600">Projetos para o aprendizado prático de desenvolvimento de software e soluções tecnológicas.</p>
+          <p class="text-gray-700 font-bold">Desenvolvimento</p>
+          <p class="text-gray-600 max-w-sm mx-auto">Projetos para o aprendizado prático de desenvolvimento de software e soluções tecnológicas.</p>
         </div>
       </div>
       <a href="{% url 'core:projetos' %}" class="flex items-center w-fit m-auto text-cyan-600 hover:underline">Conheça nossos projetos<ion-icon name="chevron-forward-outline"></ion-icon></a>

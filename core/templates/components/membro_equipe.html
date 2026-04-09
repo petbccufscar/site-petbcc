@@ -1,15 +1,18 @@
 {% load static %}
 
-<div class="flex flex-col items-center w-fit">
-  <div class="relative mb-2 w-24 h-24 rounded-full overflow-hidden bg-gray-200 items-center justify-center flex">
-    <a href="https://github.com/{{ github }}" target="_blank" rel="noopener noreferrer" class="rounded-full z-10 cursor-pointer absolute bg-black/50 w-full h-full top-0 left-0 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center" aria-label="Acessar perfil no GitHub"><ion-icon name="logo-octocat" class="text-4xl text-gray-50"></ion-icon></a>
+<a class="flex cursor-pointer" href="{% url 'core:membro' id=id %}">
+  <div class="flex flex-1 gap-4 items-center p-3 px-4 rounded-xl border border-gray-200 hover:bg-gray-100 hover:shadow-sm transition">
+    <div class="w-10 md:w-14 rounded-full overflow-hidden bg-gray-200">
+      {% if foto %}
+        <img src="{{ foto }}" alt="" class="object-fill scale-120" />
+      {% else %}
+        <ion-icon name="person-outline" class="text-4xl text-gray-400"></ion-icon>
+      {% endif %}
+    </div>
 
-    {% if foto %}
-      <img src="{{ foto }}" alt="" class="object-fill scale-120" />
-    {% else %}
-      <ion-icon name="person-outline" class="text-4xl text-gray-400"></ion-icon>
-    {% endif %}
+    <div>
+      <p class="font-medium text-gray-700 text-nowrap">{{ nome }}</p>
+      <p class="text-gray-600 text-sm">{{ descricao }}</p>
+    </div>
   </div>
-  <p class="text-cyan-600 font-bold text-nowrap">{{ nome }}</p>
-  <p class="text-gray-600 text-sm font-medium">{{ descricao }}</p>
-</div>
+</a>

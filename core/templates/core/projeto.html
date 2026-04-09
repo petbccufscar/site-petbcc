@@ -39,64 +39,64 @@
     </section>
 
     <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Descrição</p>
+      <p class="text-gray-800 font-bold mb-6 md:mb-8 text-lg">Descrição</p>
 
-      <p class="text-gray-600 text-justify">{{ projeto.descricao }}</p>
+      <p class="text-gray-500 text-justify">{{ projeto.descricao }}</p>
     </section>
 
     <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Tecnologias</p>
+      <p class="text-gray-800 font-bold mb-6 md:mb-8 text-lg">Tecnologias</p>
 
-      <div class="flex gap-2 text-gray-600">
+      <div class="flex gap-2">
         {% if projeto.tecnologias %}
-          <p class="text-gray-600">{{ projeto.tecnologias.all|join:', ' }}</p>
+          <p class="text-gray-500">{{ projeto.tecnologias.all|join:', ' }}</p>
         {% else %}
-          <p class="text-gray-600">Nenhuma tecnologia cadastrada.</p>
+          <p class="text-gray-500">Nenhuma tecnologia cadastrada.</p>
         {% endif %}
       </div>
     </section>
 
     <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Membros</p>
+      <p class="text-gray-800 font-bold mb-6 md:mb-8 text-lg">Membros</p>
 
       <div class="flex gap-4 items-center flex-wrap">
         {% for membro in projeto.membros.all %}
           <a class="block cursor-pointer" href="{% url 'core:membro' id=membro.id %}">
-            <div class="flex gap-4 items-center p-3 px-4 rounded-lg border border-gray-200 hover:bg-gray-100 hover:shadow-md transition">
+            <div class="flex gap-4 items-center p-3 px-4 rounded-xl border border-gray-200 hover:bg-gray-100 hover:shadow-sm transition">
               {% if membro.foto %}
-                <img src="{{ membro.foto.url }}" alt="" class="w-10 h-10 rounded-full object-fill scale-120" />
+                <img src="{{ membro.foto.url }}" alt="" class="w-10 md:w-12 rounded-full object-fill scale-120" />
               {% else %}
                 <ion-icon name="person-outline" class="text-4xl text-gray-400"></ion-icon>
               {% endif %}
-              <p class="text-gray-700">{{ membro.nome }}</p>
+              <p class="text-gray-600">{{ membro.nome }}</p>
             </div>
           </a>
         {% empty %}
-          <p class="text-gray-600">Nenhum membro cadastrado.</p>
+          <p class="text-gray-500">Nenhum membro cadastrado.</p>
         {% endfor %}
       </div>
     </section>
 
     <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Relatório de Horas</p>
+      <p class="text-gray-800 font-bold mb-6 md:mb-8 text-lg">Relatório de Horas</p>
 
-      <div class="flex gap-2">
+      <div class="flex gap-4">
         {% if registros %}
           <p>...</p>
         {% else %}
-          <p class="text-gray-600">Nenhum relatório disponível pois não há atividades cadastradas.</p>
+          <p class="text-gray-500">Nenhum relatório disponível pois não há atividades cadastradas.</p>
         {% endif %}
       </div>
     </section>
 
     <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Atividades Recentes</p>
+      <p class="text-gray-800 font-bold mb-6 md:mb-8 text-lg">Atividades Recentes</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for registro in registros %}
           {% include 'components/registro_atividade.html' with titulo=registro.titulo descricao=registro.descricao data=registro.data tempo=registro.get_hora_formatada membros=registro.membros.all projeto=null %}
         {% empty %}
-          <p class="text-gray-600">Nenhuma atividade registrada.</p>
+          <p class="text-gray-500">Nenhuma atividade registrada.</p>
         {% endfor %}
       </div>
     </section>

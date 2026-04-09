@@ -1,29 +1,29 @@
 {% load estilos_tags %}
 {% load strings_tags %}
 
-<a href="{% url 'core:projeto' id %}" class="flex transition rounded-lg hover:shadow-md">
-  <div class="flex gap-6 flex-col p-6 rounded-lg border-2 border-gray-200 bg-white hover:bg-gray-100 transition">
+<a href="{% url 'core:projeto' id %}">
+  <div class="space-y-6 p-6 rounded-xl border border-gray-200 transition hover:shadow-sm hover:bg-gray-100">
     <div class="flex gap-2 justify-between items-start flex-wrap">
       <div class="overflow-x-hidden">
         <ion-icon name="{{ categoria.slug|icone_categoria }}" class="text-3xl p-4 text-gray-50 rounded-lg {{ categoria.slug|estilo_categoria }}"></ion-icon>
       </div>
       <div class="flex gap-2">
         {% include 'components/badge.html' with texto=projeto.get_status_display estilo=status|estilo_status_projeto %}
-        {% include 'components/badge.html' with texto=ano estilo='bg-white text-gray-800 border-gray-200 border' %}
+        {% comment %} {% include 'components/badge.html' with texto=ano estilo='bg-white text-gray-800 border-gray-200 border' %} {% endcomment %}
       </div>
     </div>
 
     <div class="space-y-2 flex-1">
-      <h2 class="font-bold text-gray-800">{{ nome }}</h2>
-      <p class="text-gray-600 line-clamp-4">{{ descricao }}</p>
+      <h2 class="font-bold text-gray-700">{{ nome }}</h2>
+      <p class="text-gray-500 line-clamp-4">{{ descricao }}</p>
     </div>
 
     <div class="flex flex-row gap-2 items-center">
       <div class="flex gap-2">
         {% if tecnologias %}
-          <p>{{ tecnologias.all|join:', ' }}</p>
+          <p class="text-gray-700">{{ tecnologias.all|join:', ' }}</p>
         {% else %}
-          <p>Nenhuma tecnologia cadastrada.</p>
+          <p class="text-gray-500">Nenhuma tecnologia cadastrada.</p>
         {% endif %}
       </div>
       {% comment %} {% if projeto.github %}
