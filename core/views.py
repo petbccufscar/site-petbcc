@@ -81,9 +81,9 @@ def processo_seletivo(request):
 
     return render(request, "core/processo_seletivo.html", {
         "VAGAS": {
-            "BOLSISTA": 6,
-            "NAO_BOLSISTA": 6,
-            "COLABORADOR": 0
+            "BOLSISTA": PS_ATUAL.vagas_bolsista if PS_ATUAL else 0,
+            "NAO_BOLSISTA": PS_ATUAL.vagas_nao_bolsista if PS_ATUAL else 0,
+            "COLABORADOR": PS_ATUAL.vagas_colaborador if PS_ATUAL else 0
         },
         "ETAPAS": ETAPAS,
         "PROCESSO": PS_ATUAL,

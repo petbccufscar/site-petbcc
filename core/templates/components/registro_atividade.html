@@ -4,7 +4,7 @@
 
   <div class="flex gap-4 text-gray-400 text-sm flex-wrap">
     {% if projeto %}
-      <a href="{% url 'core:projeto' projeto.id %}" class="block"><p class="bg-gray-100 text-gray-700 border rounded-xl px-4 py-2">{{ projeto.nome }}</p></a>
+      <a href="{% url 'core:projeto' projeto.id %}" class="block"><p class="bg-gray-100 text-gray-700 border rounded-xl px-4 py-2 hover:shadow-sm">{{ projeto.nome }}</p></a>
     {% endif %}
 
     <div class="flex gap-2 items-center">
@@ -19,7 +19,7 @@
 
     <div class="flex -space-x-2">
       {% for membro in membros %}
-        <a class="block cursor-pointer" href="{% url 'core:membro' id=membro.id %}">
+        <a class="block cursor-pointer transition hover:-translate-y-1 z-0" href="{% url 'core:membro' id=membro.id %}">
           <div title="{{ membro.nome }}">
             {% if membro.foto %}
               <img src="{{ membro.foto.url }}" alt="Foto de um membro participante do registro" class="w-8 h-8 rounded-full object-fill scale-120 shadow-md" />

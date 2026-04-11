@@ -27,3 +27,11 @@ def estilo_status_projeto(categoria, extra=None):
     }
     
     return cores.get(str(categoria).lower(), "bg-white text-gray-800 border-gray-200 border") + (" " + extra if extra else "")
+
+@register.filter
+def estilo_badge(categoria, extra=None):
+    cores = {
+        "cyan": "bg-cyan-500 text-white text-sm",
+    }
+    
+    return cores.get(str(categoria).lower(), "bg-white text-gray-800 border-gray-200 border") + (" " + extra if extra else "")

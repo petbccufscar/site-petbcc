@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  PET BCC | Contato
+  PET-BCC | Contato
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
 
       <!-- Nome -->
       <div>
-        <label class="block font-medium mb-px text-gray-700">{{ form.name.label }}</label>
+        <label class="block font-medium mb-2 text-gray-700">{{ form.name.label }}</label>
         {{ form.name }}
         {% if form.name.errors %}
           <p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>
@@ -28,7 +28,7 @@
 
       <!-- Email -->
       <div>
-        <label class="block font-medium mb-px text-gray-700">{{ form.email.label }}</label>
+        <label class="block font-medium mb-2 text-gray-700">{{ form.email.label }}</label>
         {{ form.email }}
         {% if form.email.errors %}
           <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
@@ -37,7 +37,7 @@
 
       <!-- Assunto -->
       <div>
-        <label class="block font-medium mb-px text-gray-700">{{ form.subject.label }}</label>
+        <label class="block font-medium mb-2 text-gray-700">{{ form.subject.label }}</label>
         {{ form.subject }}
         {% if form.subject.errors %}
           <p class="text-red-500 text-sm mt-1">{{ form.subject.errors.0 }}</p>
@@ -46,13 +46,13 @@
 
       <!-- Mensagem -->
       <div>
-        <label class="block font-medium mb-px text-gray-700">{{ form.message.label }}</label>
+        <label class="block font-medium mb-2 text-gray-700">{{ form.message.label }}</label>
         {{ form.message }}
         {% if form.message.errors %}
           <p class="text-red-500 text-sm mt-1">{{ form.message.errors.0 }}</p>
         {% endif %}
       </div>
-      <button type="submit" class="w-full bg-primary-light text-gray-50 py-2 rounded-lg font-semibold hover:bg-primary transition">Enviar</button>
+      <button type="submit" class="w-full py-2 rounded-xl transition-colors bg-primary-light hover:bg-primary/90 text-gray-50">Enviar</button>
     </form>
   </div>
 

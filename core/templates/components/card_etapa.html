@@ -1,28 +1,35 @@
+{% load estilos_tags %}
+
 <div class="space-y-4 w-full border-2 border-gray-200 rounded-xl p-6">
-  <p class="w-fit text-white text-sm px-3 py-1 bg-cyan-500 rounded-lg">Etapa {{ etapa }}</p>
+  {% with etapa_str=etapa|stringformat:'s' %}
+    {% include 'components/badge.html' with texto='Etapa '|add:etapa_str estilo='cyan'|estilo_badge %}
+  {% endwith %}
+
   <div class="space-y-2">
-    <h3 class="text-lg text-gray-800">{{ titulo }}</h3>
-    <p class="text-gray-600">{{ descricao }}</p>
+    <h3 class="text-gray-700 font-medium">{{ titulo }}</h3>
+    <p class="text-gray-500">{{ descricao }}</p>
   </div>
   <div>
-    <div class="flex gap-2 text-center text-gray-600">
+    <div class="flex gap-2 text-center text-gray-700 text-sm">
       <p>Data:</p>
 
-      <p>{{ data_inicio|date:'d/m' }}</p>
-      {% if hora_inicio %}
-        <p>{{ hora_inicio|time:'H:i' }})</p>
-      {% endif %}
+      <p>
+        {{ data_inicio|date:'d/m' }}{% if hora_inicio %}
+          ({{ hora_inicio|time:'H:i' }})
+        {% endif %}
+      </p>
 
       <p>-</p>
 
-      <p>{{ data_fim|date:'d/m' }}</p>
-      {% if hora_fim %}
-        <p>({{ hora_fim|time:'H:i' }})</p>
-      {% endif %}
+      <p>
+        {{ data_fim|date:'d/m' }} {% if hora_fim %}
+          ({{ hora_fim|time:'H:i' }})
+        {% endif %}
+      </p>
     </div>
 
     {% if data_resultado %}
-      <div class="flex gap-2 text-center text-gray-600">
+      <div class="flex gap-2 text-center text-gray-600 text-sm">
         <p>Resultado:</p>
         <p>{{ data_resultado|date:'d/m' }}</p>
         <p>

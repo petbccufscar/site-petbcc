@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  PET BCC | Processo Seletivo
+  PET-BCC | Processo Seletivo
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
 
   <div class="max-w-6xl mx-auto p-6 md:py-12 space-y-8 md:space-y-12">
     <!-- prettier-ignore -->
-    <section class="flex flex-col md:flex-row gap-4 p-8 text-center md:text-left bg-cyan-50 border-2 rounded-lg
+    <section class="flex flex-col md:flex-row gap-4 p-6 text-center md:text-left bg-cyan-50 border-2 rounded-lg
       {% if JA_FECHOU %}
         border-gray-200
       {% else %}
@@ -21,22 +21,22 @@
         </div>
       </div>
       <div>
-        <h2 class="text-lg font-bold text-gray-700 mb-2">Processo Seletivo - {{ PROCESSO.ano }}/{{ PROCESSO.semestre }}</h2>
+        <h2 class="text-lg font-bold text-gray-700">Processo Seletivo - {{ PROCESSO.ano }}/{{ PROCESSO.semestre }}</h2>
 
         {% if PROCESSO.ativo %}
           {% if JA_FECHOU %}
-            <p class="text-gray-600">As inscrições para o processo seletivo {{ PROCESSO.ano }}/{{ PROCESSO.semestre }} estão encerradas. Fique atento para as atualizações!</p>
+            <p class="text-gray-500">As inscrições para o processo seletivo {{ PROCESSO.ano }}/{{ PROCESSO.semestre }} estão encerradas. Fique atento para as atualizações!</p>
           {% else %}
-            <p class="text-gray-600">As inscrições para o processo seletivo {{ PROCESSO.ano }}/{{ PROCESSO.semestre }} estão abertas! Não perca a chance de fazer parte da nossa equipe.</p>
+            <p class="text-gray-500">As inscrições para o processo seletivo {{ PROCESSO.ano }}/{{ PROCESSO.semestre }} estão abertas! Não perca a chance de fazer parte da nossa equipe.</p>
           {% endif %}
         {% else %}
-          <p class="text-gray-600">Esse processo seletivo acabou... mas fique atento, em breve teremos um novo!</p>
+          <p class="text-gray-500">Esse processo seletivo acabou... mas fique atento, em breve teremos um novo!</p>
         {% endif %}
       </div>
     </section>
 
     <section>
-      <h2 class="text-lg mb-6 md:mb-8 font-bold text-gray-800 text-center md:text-left">Sobre as vagas</h2>
+      <h2 class="text-lg mb-6 font-bold text-gray-800 text-center md:text-left">Sobre as vagas</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4">
         <div class="space-y-4 border-2 border-gray-200 rounded-xl p-6 md:p-6">
           <div class="flex flex-row justify-start items-center gap-4">
@@ -111,7 +111,7 @@
     </section>
 
     <section>
-      <h2 class="text-lg mb-6 md:mb-8 font-bold text-gray-800 text-center md:text-left">Sobre as etapas</h2>
+      <h2 class="text-lg mb-6 font-bold text-gray-800 text-center md:text-left">Sobre as etapas</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4">
         {% for ETAPA in ETAPAS %}
           {% include 'components/card_etapa.html' with etapa=ETAPA.ordem titulo=ETAPA.titulo descricao=ETAPA.descricao data_inicio=ETAPA.data_inicio hora_inicio=ETAPA.hora_inicio data_fim=ETAPA.data_fim hora_fim=ETAPA.hora_fim data_resultado=ETAPA.data_resultado hora_resultado=ETAPA.hora_resultado %}
@@ -120,21 +120,21 @@
     </section>
 
     <section>
-      <h2 class="text-lg mb-6 md:mb-8 font-bold text-gray-800 text-center md:text-left">Requisitos</h2>
+      <h2 class="text-lg mb-6 font-bold text-gray-800 text-center md:text-left">Requisitos</h2>
       <div class="w-full space-y-2 bg-cyan-50 border-2 rounded-xl border-cyan-500 p-6">
-        <p class="text-gray-700">Para se inscrever no processo seletivo, o candidato deverá:</p>
+        <p class="text-gray-500">Para se inscrever no processo seletivo, o candidato deverá:</p>
         <ul class="list-decimal list-inside">
           <li class="flex gap-2">
-            <span class="text-gray-700">1.</span>
+            <span class="text-gray-500">1.</span>
             <p class="text-gray-500">
               Ser aluno(a) regularmente matriculado(a) no curso de
               <strong>Bacharelado em Ciência da Computação da UFSCar</strong>, campus São Carlos;
             </p>
           </li>
           <li class="flex gap-2">
-            <span class="text-gray-700">2.</span>
+            <span class="text-gray-500">2.</span>
             <p class="text-gray-500">
-              Caso o CANDIDATO já tenha tido vínculo com o PET BCC UFSCar (como bolsista ou não bolsista) e tenha sido desligado do programa,
+              Caso o CANDIDATO já tenha tido vínculo com o PET-BCC UFSCar (como bolsista ou não bolsista) e tenha sido desligado do programa,
               <strong>poderá ser inscrever novamente no processo seletivo se</strong>, e somente se,
               <strong>entre a data do seu desligamento e a inscrição tenha ocorrido a finalização de um semestre letivo com digitação de nota</strong>.
             </p>
@@ -144,40 +144,36 @@
     </section>
 
     <section class="w-full flex flex-col text-center md:text-left">
-      <h2 class="text-lg mb-6 md:mb-8 font-bold text-gray-800">Inscrição</h2>
-      <div class="w-full flex flex-col md:flex-row justify-start gap-6 bg-cyan-50 border rounded-xl border-gray-200 p-8">
+      <h2 class="text-lg mb-6 font-bold text-gray-800">Inscrição</h2>
+      <div class="w-full flex flex-col md:flex-row justify-start gap-6 bg-cyan-50 border rounded-xl border-gray-200 p-6">
         <div>
           <ion-icon name="clipboard-outline" class="bg-blue-500 text-gray-50 p-3 rounded-xl text-3xl"></ion-icon>
         </div>
         <div class="space-y-4">
           <div class="space-y-2">
-            <h3 class="text-lg text-gray-700">Formulário de Inscrição</h3>
+            <h3 class="text-gray-700 font-medium">Formulário de Inscrição</h3>
             <p class="text-gray-500">As inscrições devem ser realizadas por meio do preenchimento do formulário digital.</p>
             <p class="text-gray-500">
               <strong>ATENÇÃO:</strong> As inscrições estarão abertas entre <strong>{{ PROCESSO.inicio_inscricao|date:'d/m/Y' }}</strong> e <strong>{{ PROCESSO.fim_inscricao|date:'d/m/Y' }}</strong>
             </p>
           </div>
-          <div>
-            <a href="{{ PROCESSO.formulario }}" target="_blank" rel="noopener noreferrer" class="inline-flex px-4 py-2 bg-cyan-500 text-cyan-50 border border-cyan-50 rounded-lg transition-colors hover:bg-cyan-50 hover:text-cyan-500 hover:border-cyan-500" aria-label="Preencher formulário de Google Forms">Acessar o Formulário</a>
-          </div>
+          <a href="{{ PROCESSO.formulario }}" target="_blank" rel="noopener noreferrer" class="inline-flex py-2 px-4 transition-colors bg-blue-500 hover:bg-blue-600/90 text-cyan-50 rounded-xl" href="{% url 'core:contato' %}">Entre em contato</a>
         </div>
       </div>
     </section>
 
     <section class="w-full flex flex-col text-center md:text-left">
-      <h2 class="text-lg mb-6 md:mb-8 font-bold text-gray-800">Edital</h2>
-      <div class="w-full flex flex-col md:flex-row justify-start gap-6 bg-cyan-50 border rounded-xl border-gray-200 p-8">
+      <h2 class="text-lg mb-6 font-bold text-gray-800">Edital</h2>
+      <div class="w-full flex flex-col md:flex-row justify-start gap-6 bg-cyan-50 border rounded-xl border-gray-200 p-6">
         <div>
           <ion-icon name="document-text-outline" class="bg-purple-500 text-gray-50 p-3 rounded-xl text-3xl"></ion-icon>
         </div>
         <div class="space-y-4">
           <div class="space-y-2">
-            <h3 class="text-lg text-gray-700">Documento Oficial</h3>
+            <h3 class="text-gray-700 font-medium">Documento Oficial</h3>
             <p class="text-gray-500">Detalhes sobre documentos necessários, critérios, cronogramas e outras informações devem ser verificados no edital.</p>
           </div>
-          <div>
-            <a href="{{ PROCESSO.edital.url }}" target="_blank" rel="noopener noreferrer" type="application/pdf" aria-label="Ler o Edital do Processo Seletivo 2025 em PDF" class="inline-flex px-4 py-2 bg-cyan-50 text-purple-500 border border-purple-500 rounded-lg transition-colors hover:bg-purple-500 hover:text-cyan-50 hover:border-cyan-50">Ler Edital Completo (PDF)</a>
-          </div>
+          <a href="{{ PROCESSO.edital }}" target="_blank" rel="noopener noreferrer" class="inline-flex py-2 px-4 transition-colors bg-purple-500 hover:bg-purple-600/90 text-gray-50 rounded-xl" href="{% url 'core:contato' %}">Entre em contato</a>
         </div>
       </div>
     </section>

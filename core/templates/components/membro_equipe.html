@@ -1,7 +1,7 @@
 {% load static %}
 
 <a class="flex cursor-pointer" href="{% url 'core:membro' id=id %}">
-  <div class="flex flex-1 gap-4 items-center p-3 px-4 rounded-xl border border-gray-200 hover:bg-gray-100 hover:shadow-sm transition">
+  <div class="flex flex-1 gap-4 items-center p-3 px-4 rounded-xl border border-transparent hover:border-gray-200 hover:bg-gray-100 hover:shadow-sm transition">
     <div class="w-10 md:w-14 rounded-full overflow-hidden bg-gray-200">
       {% if foto %}
         <img src="{{ foto }}" alt="" class="object-fill scale-120" />
@@ -11,8 +11,8 @@
     </div>
 
     <div>
-      <p class="font-medium text-gray-700 text-nowrap">{{ nome }}</p>
-      <p class="text-gray-600 text-sm">{{ descricao }}</p>
+      <p class="text-gray-700 text-nowrap font-medium">{{ nome }}</p>
+      <p class="text-gray-500 text-sm font-medium">{{ descricao }}</p>
     </div>
   </div>
 </a>
