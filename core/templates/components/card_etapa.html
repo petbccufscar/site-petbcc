@@ -1,6 +1,6 @@
 {% load estilos_tags %}
 
-<div class="space-y-4 w-full border-2 border-gray-200 rounded-xl p-6">
+<div class="space-y-4 w-full border border-gray-200 rounded-xl p-6">
   {% with etapa_str=etapa|stringformat:'s' %}
     {% include 'components/badge.html' with texto='Etapa '|add:etapa_str estilo='cyan'|estilo_badge %}
   {% endwith %}
