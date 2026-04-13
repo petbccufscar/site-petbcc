@@ -123,7 +123,7 @@ class Projeto(models.Model):
 
 class Atividade(models.Model):
 
-    titulo= models.CharField(max_length=150, unique=True)
+    titulo= models.CharField(max_length=150)
 
     descricao = models.TextField()
 
