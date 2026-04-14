@@ -109,7 +109,7 @@ class Projeto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
     #tecnologias, many-to-many -> tecnologia
-    tecnologias = models.ManyToManyField(Tecnologia)
+    tecnologias = models.ManyToManyField(Tecnologia, blank=True)
 
     #membros, many-to-many -> membro
     membros = models.ManyToManyField(
@@ -145,8 +145,6 @@ class Atividade(models.Model):
 
         horas = minutos_totais // 60
         mins = minutos_totais % 60
-
-        print(f"horas: {horas}, minutos: {mins}")
 
         if horas and mins:
             return f"{horas}h{mins:02d}min"

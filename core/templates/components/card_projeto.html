@@ -1,34 +1,32 @@
 {% load estilos_tags %}
 {% load strings_tags %}
 
-<a href="{% url 'core:projeto' id %}">
-  <div class="space-y-6 p-6 rounded-xl border border-gray-200 transition hover:shadow-sm hover:bg-gray-100">
-    <div class="flex gap-2 justify-between items-start flex-wrap">
-      <div class="overflow-x-hidden">
-        <ion-icon name="{{ categoria.slug|icone_categoria }}" class="text-3xl p-4 text-gray-50 rounded-lg {{ categoria.slug|estilo_categoria }}"></ion-icon>
-      </div>
-      <div class="flex gap-2">
-        {% include 'components/badge.html' with texto=projeto.get_status_display estilo=status|estilo_status_projeto %}
-        {% comment %} {% include 'components/badge.html' with texto=ano estilo='bg-white text-gray-800 border-gray-200 border' %} {% endcomment %}
-      </div>
+<a href="{% url 'core:projeto' id %}" class="space-y-6 p-6 rounded-xl border border-gray-200 transition hover:shadow-sm hover:bg-gray-100 h-full">
+  <div class="flex gap-2 justify-between items-start flex-wrap">
+    <div class="overflow-x-hidden">
+      <ion-icon name="{{ categoria.slug|icone_categoria }}" class="text-3xl p-4 text-gray-50 rounded-lg {{ categoria.slug|estilo_categoria }}"></ion-icon>
     </div>
+    <div class="flex gap-2">
+      {% include 'components/badge.html' with texto=projeto.get_status_display estilo=status|estilo_status_projeto %}
+      {% comment %} {% include 'components/badge.html' with texto=ano estilo='bg-white text-gray-800 border-gray-200 border' %} {% endcomment %}
+    </div>
+  </div>
 
-    <div class="space-y-2 flex-1">
-      <h2 class="font-bold text-gray-700">{{ nome }}</h2>
-      <p class="text-gray-500 line-clamp-4">{{ descricao }}</p>
-    </div>
+  <div class="space-y-2 flex-1">
+    <h2 class="font-bold text-gray-700">{{ nome }}</h2>
+    <p class="text-gray-500 line-clamp-4">{{ descricao }}</p>
+  </div>
 
-    <div class="flex flex-row gap-2 items-center">
-      <div class="flex gap-2">
-        {% if tecnologias %}
-          <p class="text-gray-700">{{ tecnologias.all|join:', ' }}</p>
-        {% else %}
-          <p class="text-gray-500">Nenhuma tecnologia cadastrada.</p>
-        {% endif %}
-      </div>
-      {% comment %} {% if projeto.github %}
-        <a href="{{ projeto.github }}" target="_blank" class="ml-auto flex justify-center items-center hover:bg-gray-200 text-gray-700 p-2 rounded-lg"><ion-icon class="text-xl" name="logo-octocat"></ion-icon></a>
-      {% endif %} {% endcomment %}
+  <div class="flex flex-row gap-2 items-center">
+    <div class="flex gap-2">
+      {% if tecnologias %}
+        <p class="text-gray-700">{{ tecnologias.all|join:', ' }}</p>
+      {% else %}
+        <p class="text-gray-500">Nenhuma tecnologia cadastrada.</p>
+      {% endif %}
     </div>
+    {% comment %} {% if projeto.github %}
+      <a href="{{ projeto.github }}" target="_blank" class="ml-auto flex justify-center items-center hover:bg-gray-200 text-gray-700 p-2 rounded-lg"><ion-icon class="text-xl" name="logo-octocat"></ion-icon></a>
+    {% endif %} {% endcomment %}
   </div>
 </a>

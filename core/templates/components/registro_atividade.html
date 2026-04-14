@@ -1,6 +1,6 @@
-<div class="p-6 rounded-xl border border-gray-200">
+<div class="flex flex-col p-6 rounded-xl border border-gray-200">
   <p class="text-gray-700 font-bold mb-2">{{ titulo }}</p>
-  <p class="text-gray-500 mb-6">{{ descricao }}</p>
+  <p class="text-gray-500 mb-6 line-clamp-3 flex-1">{{ descricao }}</p>
 
   <div class="flex gap-4 text-gray-400 text-sm flex-wrap">
     {% if projeto %}
@@ -22,9 +22,9 @@
         <a class="block cursor-pointer transition hover:-translate-y-1 z-0" href="{% url 'core:membro' id=membro.id %}">
           <div title="{{ membro.nome }}">
             {% if membro.foto %}
-              <img src="{{ membro.foto.url }}" alt="Foto de um membro participante do registro" class="w-8 h-8 rounded-full object-fill scale-120 shadow-md" />
+              <img src="{{ membro.foto.url }}" alt="Foto de um membro participante do registro" class="w-8 h-8 rounded-full object-fill scale-120" />
             {% else %}
-              <ion-icon name="person-outline" class="text-4xl text-gray-400 shadow-md"></ion-icon>
+              <ion-icon name="person-outline" class="p-1 text-xl text-gray-300 shadow-md rounded-full"></ion-icon>
             {% endif %}
           </div>
         </a>

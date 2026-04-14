@@ -9,7 +9,9 @@ from core.models import Atividade, Categoria, Membro, Projeto, ProcessoSeletivo
 
 from core.forms import ContactForm
 
-from datetime import date
+from datetime import date, timedelta
+from django.utils import timezone
+from django.db.models import Sum, F, IntegerField, ExpressionWrapper
 
 def inicio(request):
     return render(request, 'core/inicio.html')
@@ -34,11 +36,12 @@ def projetos(request):
 
     CATEGORIAS = Categoria.objects.all().filter(interna=False)
     
-    # TODO: Substituir por filtro em consulta ao banco de dados
     if categoria:
         PROJETOS = Projeto.objects.filter(categoria__slug=categoria)
     else:
         PROJETOS = Projeto.objects.all()
+
+    PROJETOS = PROJETOS.filter(publico=True)
 
     return render(request, "core/projetos.html", {
         "projetos": PROJETOS,
@@ -50,22 +53,100 @@ def projeto(request, id):
     projeto = Projeto.objects.get(id=id)
     registros = Atividade.objects.filter(projeto=projeto).order_by("-data")
 
+    # Não exibe os membros que já saíram do PET
+    membros = projeto.membros.exclude(situacao=Membro.Situacao.EX_MEMBRO)
+
     return render(request, "core/projeto.html", {
-        "projeto": projeto,
-        "registros": registros,
+        "PROJETO": projeto,
+        "MEMBROS": membros,
+        "REGISTROS": registros,
     })
 
 def membro(request, id):
     membro = Membro.objects.get(id=id)
-    projetos = Projeto.objects.filter(membros=membro)
-    registros = Atividade.objects.filter(membros=membro)
 
-    # TODO: Calcular o total de horas
+    projetos = Projeto.objects.filter(membros=membro, publico=True)
+    registros = Atividade.objects.filter(membros=membro, projeto__publico=True).order_by("-data")
+
+    def formatar_minutos(total):
+        if not total:
+            return "0h00min"
+        
+        horas = total // 60
+        minutos = total % 60
+
+        return f"{horas}h {minutos:02d}min"
+
+    duracao_total = ExpressionWrapper(
+        F("horas") * 60 + F("minutos"),
+        output_field=IntegerField()
+    )
+
+    # ================== Soma semanal
+
+    hoje = timezone.now().date()
+    dias_desde_domingo = (hoje.weekday() + 1) % 7
+    inicio_semana = hoje - timedelta(days=dias_desde_domingo)
+
+    qs_semana = registros.filter(data__gte=inicio_semana)
+
+    print("Inicio semana:", inicio_semana)
+    print("Qtd registros semana:", qs_semana.count())
+
+    soma_semanal = registros.filter(
+        data__gte=inicio_semana
+    ).aggregate(total=Sum(duracao_total))["total"]
+
+    
+    print(soma_semanal, "soma semanal")
+
+    # ==================== Último mês
+
+    primeiro_dia_mes_atual = hoje.replace(day=1)
+    ultimo_dia_mes_passado = primeiro_dia_mes_atual - timedelta(days=1)
+    primeiro_dia_mes_passado = ultimo_dia_mes_passado.replace(day=1)
+
+    registros_mes = registros.filter(
+        data__range=(primeiro_dia_mes_passado, ultimo_dia_mes_passado)
+    )
+
+    total_mes = registros_mes.aggregate(total=Sum(duracao_total))["total"]
+    dias_mes = ultimo_dia_mes_passado.day
+
+    media_ultimo_mes = (total_mes // dias_mes) if total_mes else 0
+
+    # ============= Média último mês
+
+    mes = primeiro_dia_mes_passado.month
+    ano = primeiro_dia_mes_passado.year
+
+    for _ in range(2):
+        if mes == 1:
+            mes = 12
+            ano -= 1
+        else:
+            mes -= 1
+
+    inicio_3_meses = date(ano, mes, 1)
+
+    registros_3m = registros.filter(
+        data__range=(inicio_3_meses, ultimo_dia_mes_passado)
+    )
+
+    total_3m = registros_3m.aggregate(total=Sum(duracao_total))["total"]
+    dias_3m = (ultimo_dia_mes_passado - inicio_3_meses).days + 1
+
+    media_ultimos_tres_meses = (total_3m // dias_3m) if total_3m else 0
+
+    # ================== Soma total
+
+    total_horas = registros.aggregate(total=Sum(duracao_total))["total"]
+
     sumario = {
-        "soma_semanal": "8h35min",
-        "media_ultimo_mes": "6h10min",
-        "media_ultimos_tres_meses": "7h20min",
-        "total_horas": "180h55min"
+        "soma_semanal": formatar_minutos(soma_semanal),
+        "media_ultimo_mes": formatar_minutos(media_ultimo_mes),
+        "media_ultimos_tres_meses": formatar_minutos(media_ultimos_tres_meses),
+        "total_horas": formatar_minutos(total_horas)
     }
 
     return render(request, "core/membro.html", {

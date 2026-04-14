@@ -13,27 +13,27 @@
   <section class="max-w-6xl mx-auto p-6 md:py-12 space-y-10 md:space-y-12">
     <section class="space-y-6">
       <div class="flex gap-6 items-center flex-wrap">
-        {% if projeto.imagem %}
-          <img src="{{ projeto.imagem.url }}" alt="" class="w-20 border rounded-xl" />
+        {% if PROJETO.imagem %}
+          <img src="{{ PROJETO.imagem.url }}" alt="" class="w-20 border rounded-xl" />
         {% endif %}
         <div class="space-y-2">
-          <p class="text-gray-800 text-3xl font-bold">{{ projeto.nome }}</p>
+          <p class="text-gray-800 text-3xl font-bold">{{ PROJETO.nome }}</p>
           <div class="flex text-gray-500 gap-2 text-sm">
-            <p>Criado em {{ projeto.data_inicio|date:'d/m/Y' }}</p>
+            <p>Criado em {{ PROJETO.data_inicio|date:'d/m/Y' }}</p>
 
-            {% if projeto.data_fim %}
+            {% if PROJETO.data_fim %}
               <p>•</p>
-              <p>Finalizado em {{ projeto.data_fim|date:'d/m/Y' }}</p>
+              <p>Finalizado em {{ PROJETO.data_fim|date:'d/m/Y' }}</p>
             {% endif %}
           </div>
         </div>
       </div>
       <div class="flex items-center gap-2 text-gray-600">
         <div class="w-fit">
-          {% include 'components/badge.html' with texto=projeto.categoria estilo=projeto.categoria.slug|estilo_categoria %}
+          {% include 'components/badge.html' with texto=PROJETO.categoria estilo=PROJETO.categoria.slug|estilo_categoria %}
         </div>
         <div class="w-fit">
-          {% include 'components/badge.html' with texto=projeto.get_status_display estilo=projeto.status|estilo_status_projeto %}
+          {% include 'components/badge.html' with texto=PROJETO.get_status_display estilo=PROJETO.status|estilo_status_projeto %}
         </div>
       </div>
     </section>
@@ -41,29 +41,43 @@
     <section>
       <p class="text-gray-800 font-bold mb-6 text-lg">Descrição</p>
 
-      <p class="text-gray-600 text-justify">{{ projeto.descricao }}</p>
+      <p class="text-gray-600 text-justify">{{ PROJETO.descricao }}</p>
     </section>
 
     <section>
       <p class="text-gray-800 font-bold mb-6 text-lg">Tecnologias</p>
 
-      <div class="flex gap-2">
-        {% if projeto.tecnologias %}
-          <p class="text-gray-600">{{ projeto.tecnologias.all|join:', ' }}</p>
-        {% else %}
-          <p class="text-gray-600">Nenhuma tecnologia cadastrada.</p>
-        {% endif %}
+      <div class="flex gap-4 flex-wrap">
+        {% for tecnologia in PROJETO.tecnologias.all %}
+          <a href="{{ tecnologia.link }}" class="p-3 px-4 rounded-xl border border-transparent hover:border-gray-200 hover:bg-gray-100 hover:shadow-sm cursor-pointer flex gap-4 items-center">
+            <img src="{{ tecnologia.logo.url }}" alt="Foto de um membro participante do registro" class="h-10 object-fill scale-120" />
+            <p class="text-gray-600 text-sm font-medium">{{ tecnologia.nome }}</p>
+          </a>
+        {% empty %}
+          <p class="text-gray-600">Nenhuma tecnologia envolvida.</p>
+        {% endfor %}
       </div>
     </section>
 
     <section>
       <p class="text-gray-800 font-bold mb-6 text-lg">Membros</p>
 
-      <p class="text-gray-600">
-        {% for membro in projeto.membros.all %}
-          <a class="inline cursor-pointer hover:underline" href="{% url 'core:membro' id=membro.id %}">{{ membro.nome }} {{ membro.sobrenome }}</a>{% if not forloop.last %}, {% endif %}
+      <div class="flex gap-4 flex-wrap">
+        {% for MEMBRO in MEMBROS %}
+          <div title="{{ MEMBRO.nome }}">
+            {% if MEMBRO.foto %}
+              <a href="{% url 'core:membro' id=MEMBRO.id %}" class="p-3 px-4 rounded-xl border border-transparent hover:border-gray-200 hover:bg-gray-100 hover:shadow-sm cursor-pointer flex gap-4 items-center">
+                <img src="{{ MEMBRO.foto.url }}" alt="Foto de um membro participante do registro" class="w-10 h-10 rounded-full object-fill scale-120" />
+                <p class="text-gray-600 text-sm font-medium">{{ MEMBRO.nome }}</p>
+              </a>
+            {% else %}
+              <ion-icon name="person-outline" class="p-1 text-xl text-gray-300 shadow-md rounded-full"></ion-icon>
+            {% endif %}
+          </div>
+        {% empty %}
+          <p class="text-gray-600">Nenhum membro envolvido.</p>
         {% endfor %}
-      </p>
+      </div>
     </section>
 
     <section>
@@ -73,7 +87,7 @@
         {% if registros %}
           <p>...</p>
         {% else %}
-          <p class="text-gray-600">Nenhum relatório disponível pois não há atividades cadastradas.</p>
+          <p class="text-gray-600">Relatório indisponível pois não há atividades registradas.</p>
         {% endif %}
       </div>
     </section>
@@ -83,7 +97,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for registro in registros %}
-          {% include 'components/registro_atividade.html' with titulo=registro.titulo descricao=registro.descricao data=registro.data tempo=registro.get_hora_formatada membros=registro.membros.all projeto=null %}
+          {% include 'components/registro_atividade.html' with titulo=registro.titulo descricao=registro.descricao data=registro.data tempo=registro.get_hora_formatada membros=registro.membros projeto=null %}
         {% empty %}
           <p class="text-gray-600">Nenhuma atividade registrada.</p>
         {% endfor %}

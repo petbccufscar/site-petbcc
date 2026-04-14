@@ -24,6 +24,7 @@ def estilo_status_projeto(categoria, extra=None):
         "suspenso": "bg-gray-100 text-gray-500",
         "planejamento": "bg-purple-500 text-white ",
         "finalizado": "bg-green-600 text-white",
+        "desenvolvimento": "bg-yellow-500 text-white"
     }
     
     return cores.get(str(categoria).lower(), "bg-white text-gray-800 border-gray-200 border") + (" " + extra if extra else "")
