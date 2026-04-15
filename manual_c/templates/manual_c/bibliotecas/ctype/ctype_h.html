@@ -5,39 +5,40 @@
 {% endblock %}
 
 {% block content %}
-  <section class="max-w-5xl mx-auto px-6 py-10">
+  <section class="max-w-5xl mx-auto px-6 py-10 ">
     <!-- ================================================= -->
     <!-- TÍTULO -->
     <!-- ================================================= -->
 
-    <h1 class="lib-title">&lt;ctype.h&gt;</h1>
+    <h1 class="titulo_biblioteca">&lt;ctype.h&gt;</h1>
 
-    <p class="lib-description">A maioria das funções deste arquivo de cabeçalhos serve para classificar caracteres ASCII, ou seja, determinar se um determinado byte representa uma letra, um dígito, um espaço em branco ou outro tipo de símbolo.</p>
-
-    <p class="lib-description">
-      Mesmo que o argumento de cada função não seja um <code>char</code> mas sim um inteiro positivo, o caractere passado para a função é convertido internamente para seu valor ASCII para a verificação.
-    </p>
+    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
+      <p>A maioria das funções deste arquivo de cabeçalhos serve para classificar caracteres ASCII, ou seja, determinar se um determinado byte representa uma letra, um dígito, um espaço em branco ou outro tipo de símbolo.</p>
+      <p>
+        Mesmo que o argumento de cada função não seja um <code>char</code> mas sim um inteiro positivo, o caractere passado para a função é convertido internamente para seu valor ASCII para a verificação.
+      </p>
+    </div>
 
     <!-- ================================================= -->
     <!-- LISTA DE FUNÇÕES -->
     <!-- ================================================= -->
 
-    <h2 class="text-xl font-semibold border-b pb-2 mt-8 mb-4">Funções</h2>
+    <h2 class="text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600">Funções</h2>
 
     <div class="flex flex-wrap gap-2 mb-12">
-      <a href="#isalnum" class="func-list-link">isalnum()</a>
-      <a href="#isalpha" class="func-list-link">isalpha()</a>
-      <a href="#iscntrl" class="func-list-link">iscntrl()</a>
-      <a href="#isdigit" class="func-list-link">isdigit()</a>
-      <a href="#isgraph" class="func-list-link">isgraph()</a>
-      <a href="#islower" class="func-list-link">islower()</a>
-      <a href="#isprint" class="func-list-link">isprint()</a>
-      <a href="#ispunct" class="func-list-link">ispunct()</a>
-      <a href="#isspace" class="func-list-link">isspace()</a>
-      <a href="#isupper" class="func-list-link">isupper()</a>
-      <a href="#isxdigit" class="func-list-link">isxdigit()</a>
-      <a href="#tolower" class="func-list-link">tolower()</a>
-      <a href="#toupper" class="func-list-link">toupper()</a>
+      <a href="#isalnum" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isalnum()</a>
+      <a href="#isalpha" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isalpha()</a>
+      <a href="#iscntrl" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">iscntrl()</a>
+      <a href="#isdigit" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isdigit()</a>
+      <a href="#isgraph" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isgraph()</a>
+      <a href="#islower" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">islower()</a>
+      <a href="#isprint" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isprint()</a>
+      <a href="#ispunct" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">ispunct()</a>
+      <a href="#isspace" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isspace()</a>
+      <a href="#isupper" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isupper()</a>
+      <a href="#isxdigit" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">isxdigit()</a>
+      <a href="#tolower" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">tolower()</a>
+      <a href="#toupper" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm">toupper()</a>
     </div>
 
     <!-- ================================================= -->
@@ -45,18 +46,19 @@
     <!-- ================================================= -->
 
     <section id="isalnum" class="func-section">
-      <div class="func-signature">int isalnum(int c)</div>
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int isalnum(int c)</h3>
 
-      <p>Testa se um caractere é alfanumérico.</p>
-
-      <div class="func-meta">
-        <strong>Recebe:</strong> um argumento inteiro cujo valor seja um caractere ou EOF.<br />
-        <strong>Retorna:</strong> valor diferente de zero se o caractere for alfanumérico, ou 0 caso contrário.
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Testa se um caractere é alfanumérico.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um argumento inteiro cujo valor seja um caractere ou EOF.<br />
+          <strong>Retorna:</strong> valor diferente de zero se o caractere for alfanumérico, ou 0 caso contrário.
+        </div>
       </div>
 
-      <h4 class="font-semibold mt-6 mb-3">Exemplo</h4>
-      <pre class="code-block">
-        <code>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
           #include &ltstdio.h&gt #include &ltctype.h&gt
 
           int main() {

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .titulo_biblioteca {
+    @apply text-4xl font-bold mb-8 text-orange-600 border-b pb-4;
+  }
+
+  .btn_funcao {
+    @apply px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm;
+  }
+}

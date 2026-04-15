@@ -1,8 +1,6 @@
-# Dockerfile
 # Base Python 3.12 slim
 FROM python:3.12-slim
 
-# Evita prompts e mensagens interativas
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -13,31 +11,22 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Node.js para tailwind
+# Instala Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
     && apt-get install -y nodejs
 
-# Cria diretório de trabalho
 WORKDIR /app
 
-# Copia requirements e instala
+# Instala dependências Python
 COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Node dependencies (Tailwind)
-WORKDIR /app/theme/static_src
-COPY theme/static_src/package*.json ./
-RUN npm install
+# Instala dependências Node (Tailwind)
+# Copiamos apenas os arquivos de manifesto primeiro para aproveitar o cache do Docker
+COPY theme/static_src/package*.json ./theme/static_src/
+RUN cd theme/static_src && npm install
 
-# voltar para app
-WORKDIR /app
-
-# Copia todo o projeto
+# Copia o restante do projeto
 COPY . .
 
-# Expõe a porta do Django
 EXPOSE 8000
-
-# Comando padrão para rodar o servidor
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
