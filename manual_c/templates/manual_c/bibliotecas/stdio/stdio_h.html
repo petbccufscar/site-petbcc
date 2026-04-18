@@ -5,239 +5,772 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="text-gray-800 font-bold text-2xl">&ltstdio.h&gt</h1>
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="titulo_biblioteca">&lt;stdio.h&gt;</h1>
 
-  <div class="space-y-6">
-    <div>
-      <h1 class="text-orange-600 font-semibold text-lg mb-2">Descrição:</h1>
-      <p class="text-gray-700 text-justify">
-        No cabeçalho <b class="text-orange-700">&ltstdio.h&gt</b> estão localizadas as funções referentes às operações nas quais os mecanismos operam em função da entrada e da saída padrão, bem como em arquivos também. Portanto, por meio das variáveis, macros, e funções é possível realizar tarefas de leitura e escrita, tanto por meio da entrada e saída disponibilizada pela máquina, quanto por escrita e leitura em arquivos.
+    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
+      <p>
+        No cabeçalho <b>&lt;stdio.h&gt;</b> (Standard Input/Output) estão localizadas as funções referentes às operações de entrada e saída padrão, bem como manipulação de arquivos. Por meio de suas variáveis, macros e funções, é possível realizar tarefas de leitura e escrita tanto no console (teclado e tela) quanto em arquivos do sistema.
       </p>
     </div>
-    <div class="space-y-4">
-      <h1 class="text-orange-600 font-semibold text-lg mb-2">Tipos:</h1>
-      <div class="item">
-        <div class="content">
-          <div class="text-gray-700 mb-2">
-            <b>FILE</b>: estrutura que apresenta os atributos necessários para se operar com arquivos.
-            <br /><br />
-            <b>fpos_t</b>: tipo inteiro positivo destinado a armazenar a posição corrente em um arquivo.
-            <br />
-            <br />
-            <b>size_t</b>: tipo inteiro positivo destinado a guardar o tamanho que um objeto ocupa na memória.
-          </div>
-        </div>
-      </div>
+
+    <h2 class="sub_secao_biblioteca mb-4">Tipos</h2>
+    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
+      <ul class="space-y-3">
+        <li><b>FILE:</b> Estrutura que apresenta os atributos necessários para se operar com arquivos.</li>
+        <li><b>fpos_t:</b> Tipo inteiro positivo destinado a armazenar a posição corrente em um arquivo.</li>
+        <li><b>size_t:</b> Tipo inteiro sem sinal destinado a guardar o tamanho (em bytes) que um objeto ocupa na memória.</li>
+      </ul>
     </div>
-  </div>
-{% endblock %}
-              </div>
-            </div>
-          </div>
-          <div class="p-6 bg-gray-50 rounded-lg">
-            <div class="text-left">
-              <h1>Macros:</h1>
-            </div>
-            <div class="space-y-4">
-              <div class="item">
-                <div class="content">
-                  <div class="text-gray-700 mb-2">
-                    <p>
-                      <b>NULL</b>: valor que indica que algo não existe; usualmente é o valor zero.
-                    </p>
-                    <p>
-                      <b>_IOFBF</b>,
-                      <br />
-                      <b>_IOLBF</b>,
-                      <br />
-                      <!-- todo arrumar esses links de funções não implementadas -->
-                      <b>_IONBF</b>: ver a função<a class="item active manC_sidebar" href=""><b>setvbuf()</b></a>.
-                    </p>
 
-                    <p>
-                      <b>BUFSIZE</b>: ver a função<a class="item active manC_sidebar" href=""><b>setbuf()</b></a>.
-                    </p>
+    <h2 class="sub_secao_biblioteca mb-4">Macros</h2>
+    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
+      <ul class="space-y-3">
+        <li><b>NULL:</b> Valor que indica que um ponteiro não aponta para um endereço de memória válido (usualmente zero).</li>
+        <li><b>_IOFBF, _IOLBF, _IONBF:</b> Utilizados com a função <code>setvbuf()</code> para definir o modo de buffer (totalmente em buffer, buffer por linha, sem buffer).</li>
+        <li><b>BUFSIZE:</b> Tamanho padrão do buffer utilizado pela função <code>setbuf()</code>.</li>
+        <li><b>EOF:</b> (End Of File) Valor numérico inteiro negativo retornado quando uma função de leitura atinge o fim de um arquivo.</li>
+        <li><b>FOPEN_MAX:</b> Quantidade máxima de arquivos que podem ser abertos simultaneamente durante a execução do programa.</li>
+        <li><b>FILENAME_MAX:</b> Tamanho máximo suportado para uma string que indica o nome de um arquivo.</li>
+        <li><b>L_tmpnam:</b> Tamanho necessário de um array de caracteres para ser usado com a função <code>tmpnam()</code>.</li>
+        <li><b>SEEK_CUR, SEEK_END, SEEK_SET:</b> Utilizados com a função <code>fseek()</code> para indicar a origem do salto (posição atual, final do arquivo ou início do arquivo, respectivamente).</li>
+        <li><b>TMP_MAX:</b> Número máximo de nomes de arquivos temporários únicos que <code>tmpnam()</code> pode gerar.</li>
+        <li><b>stdin, stdout, stderr:</b> Ponteiros do tipo <code>FILE *</code> que apontam, respectivamente, para a entrada padrão (teclado), saída padrão (tela) e saída de erro padrão.</li>
+      </ul>
+    </div>
 
-                    <p>
-                      <b>EOF</b>: valor retornado quando uma função de operação (ver getchar e fscanf, por exemplo) de arquivos tenta fazer uma leitura depois do fim do arquivo; utiliza um valor inteiro negativo.
-                      <b>FOPEN_MAX</b>: quantidade máxima de arquivos que podem ser abertos, simultaneamente, durante a execução do programa.
-                    </p>
-                    <p>
-                      <b>FILENAME_MAX</b>: tamanho máximo que uma string indicando o nome de um arquivo a ser aberto pode ter . L_tmpnam: tamanho que um array de caracteres precisa ter a fim de que a função tmpnam() possa ser usada de forma apropriada com esse array.
-                    </p>
-                    <p>
-                      <b>SEEK_CUR</b>,
+    <h2 class="sub_secao_biblioteca mb-4">Funções</h2>
 
-                      <br />
-                      <b>SEEK_END</b>,
-                      <br />
-                      <b>SEEK_SET</b>: ver a função<a class="item active manC_sidebar" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fseek"><b>fseek()</b></a>.
-                    </p>
+    <div class="flex flex-wrap gap-2 mb-12">
+      <a href="#fopen" class="btn_funcao">fopen()</a>
+      <a href="#fclose" class="btn_funcao">fclose()</a>
+      <a href="#fread" class="btn_funcao">fread()</a>
+      <a href="#fwrite" class="btn_funcao">fwrite()</a>
+      <a href="#fseek" class="btn_funcao">fseek()</a>
+      <a href="#ftell" class="btn_funcao">ftell()</a>
+      <a href="#rewind" class="btn_funcao">rewind()</a>
+      <a href="#fflush" class="btn_funcao">fflush()</a>
+      <a href="#fprintf" class="btn_funcao">fprintf()</a>
+      <a href="#fscanf" class="btn_funcao">fscanf()</a>
+      <a href="#feof" class="btn_funcao">feof()</a>
+      <a href="#remove" class="btn_funcao">remove()</a>
+      <a href="#rename" class="btn_funcao">rename()</a>
+      <a href="#printf" class="btn_funcao">printf()</a>
+      <a href="#scanf" class="btn_funcao">scanf()</a>
+      <a href="#getc" class="btn_funcao">getc()</a>
+      <a href="#gets" class="btn_funcao">gets()</a>
+      <a href="#getchar" class="btn_funcao">getchar()</a>
+      <a href="#putchar" class="btn_funcao">putchar()</a>
+    </div>
 
-                    <p>
-                      <b>TMP_MAX</b>: ver a função<a class="item active manC_sidebar" href=""><b>tmpnam()</b></a>.
-                    </p>
+    <section id="fopen" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">FILE *fopen(const char *nomeArquivo, const char *modoDeAbertura)</h3>
 
-                    <p>
-                      <b>stderr</b>,
-
-                      <br />
-                      <b>stdin</b>,
-                      <br />
-                      <b>stdout</b>: designam os ponteiros que apontam para as streams padrão de erro, entrada e saída, respectivamente.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="text-left">
-            <h1>Funções:</h1>
-          </div>
-          <div class="space-y-4">
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fopen"><h3>FILE *fopen(const char *nomeArquivo, const char *modoDeAbertura)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: o endereço no qual o arquivo foi aberto, o tipo de dados utilizado é o tipo FILE.</div>
-                <div class="text-gray-700 mb-2">RECEBE: um array de caracteres contendo o nome do arquivo e outro com o modo de abertura.</div>
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fclose"><h3>int fclose(FILE *arquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0 no caso de sucesso, ou EOF em caso de falha.</div>
-                <div class="text-gray-700 mb-2">RECEBE: uma variável contendo o endereço de um descritor de arquivo.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fread"><h3>size_t fread(void *itemLer, size_t tamanhoDoItem, size_t quantidadeItem, FILE *arquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: a quantidade de itens lidos na chamada da função.</div>
-                <div class="text-gray-700 mb-2">RECEBE: o endereço do local onde se irá armazenar o que for lido do arquivo, o tamanho, em bytes, de um item individual que será lido, a quantidade de itens que serão lidos e o arquivo endereço do descritor de arquivo.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fwrite"><h3>size_t fwrite(void *itemEscrita, size_t tamanhoDoItem, size_t quantidadeItem, FILE *arquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: a quantidade de itens escritos na chamada da função.</div>
-                <div class="text-gray-700 mb-2">RECEBE: a variável contendo o que será escrito no arquivo, o tamanho, em bytes do que será escrito, a quantidade de vezes que será escrito o item indicado, o arquivo no qual o objeto será escrito.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fseek"><h3>int fseek(FILE *arquivo, long salto, int origemDoSalto)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: um inteiro diferente de zero caso tenha ocorrido algum erro na execução da função.</div>
-                <div class="text-gray-700 mb-2">RECEBE: uma variável contendo um arquivo aberto, e a quantidade de posições que se deseja deslocar no arquivo.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#ftell"><h3>long int ftell(FILE *arquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: o posicionamento para leitura e/ou escrita na qual o arquivo está no momento da chamada da função.</div>
-                <div class="text-gray-700 mb-2">RECEBE: o arquivo do qual deseja-se saber em que posição ele está.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#rewind"><h3>void rewind(FILE *arquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: a função não tem retorno; void.</div>
-                <div class="text-gray-700 mb-2">RECEBE: o arquivo para o qual deseja-se fazer o reposicionamento para o início.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fflush"><h3>int fflush(FILE *stream)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando o valor numérico para EOF.</div>
-                <div class="text-gray-700 mb-2">RECEBE: o arquivo para o qual deseja-se limpar o buffer de operações de leitura e escrita.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fprintf"><h3>int fprintf(FILE *stream, const char *stringParaEscrita, <b>(variáveis serão utilizadas, assim como em printf)</b>)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: o número de caracteres escrito, ou, caso a operação não seja bem sucedida, um valor negativo.</div>
-                <div class="text-gray-700 mb-2">RECEBE: o arquivo no qual deseja-se efetuar a escrita da string, a string a ser escrita, as variáveis referentes a formatação da string.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#fscanf"><h3>int fscanf(FILE *stream, const char *stringParaEscrita, <b>(variáveis que serão utilizadas na formatação)</b>)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: EOF, caso tenha atingido o fim do arquivo, ou então retorna a quantidade de leituras realizadas.</div>
-                <div class="text-gray-700 mb-2">RECEBE: o arquivo a partir do qual deseja-se copiar o conteúdo para uma string, a string para a qual o conteúdo será escrito.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#int"><h3>int feof(FILE *arquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: um inteiro diferente de zero caso o programa tenha chegado ao fim do arquivo.</div>
-                <div class="text-gray-700 mb-2">RECEBE: o arquivo para o qual deseja-se saber se o seu final foi alcançado.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#remove"><h3>int remove(const char *nomeArquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando um inteiro diferente de 0.</div>
-                <div class="text-gray-700 mb-2">RECEBE: uma string contendo o nome do arquivo que se deseja remover.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#rename"><h3>int rename(const char *nomeArquivo, const char *renomearArquivo)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: um valor do tipo int indicando se a operação foi bem sucedida, retornando 0, ou não, retornando um inteiro diferente de 0.</div>
-                <div class="text-gray-700 mb-2">RECEBE: uma string com o nome do arquivo que será renomeado, uma string contendo o novo nome do arquivo.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#printf"><h3>int printf(const char *stringParaEscrita, <b>(variáveis que serão utilizadas na formatação)</b>)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: o número de caracteres escritos, ou, caso a operação não tenha sido bem sucedida, um valor negativo.</div>
-                <div class="text-gray-700 mb-2">RECEBE: a string que será impressa na saída padrão, as variáveis indicadas na string para devida formatação.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#scanf"><h3>int scanf(const char *stringDeLeitura, <b>(variáveis que receberão os valores indicados na entrada padrão)</b>)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: EOF, caso tenha atingido o fim do arquivo, ou então retorna a quantidade de leituras realizadas.</div>
-                <div class="text-gray-700 mb-2">RECEBE: string indicando quais os tipos das variáveis que receberão os valores indicados na entrada padrão, as variáveis que tiveram seus tipos indicadas na string.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#getc"><h3>int getc(FILE *stream)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: o próximo caractere presente na stream indicada.</div>
-                <div class="text-gray-700 mb-2">RECEBE: a stream a partir da qual o próximo caractere será lido.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#gets"><h3>char *gets(FILE *stream)</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: a string lida na chamada da função ou NULL, em caso de erro.</div>
-                <div class="text-gray-700 mb-2">RECEBE: a stream a partir da qual a próxima linha contendo uma string será lida.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#getchar"><h3>int getchar()</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: o próximo caractere presente na entrada padrão.</div>
-                <div class="text-gray-700 mb-2">RECEBE: não recebe parâmetros; void.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdio' %}#putchar"><h3>int putchar(int caractere);</h3></a>
-                <div class="text-gray-700 mb-2">RETORNA: o caractere escrito na saída padrão.</div>
-                <div class="text-gray-700 mb-2">RECEBE: um caractere.</div>
-              </div>
-            </div>
-            <br />
-          </div>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Abre um arquivo e o associa a uma stream (fluxo de dados).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um array de caracteres contendo o nome do arquivo e outro com o modo de abertura.<br />
+          <strong>Retorna:</strong> o endereço de uma estrutura do tipo <code>FILE</code> usada pelo sistema para gerenciar o arquivo aberto. Em caso de falha, o valor <code>NULL</code> é retornado.
         </div>
-        <div class="md:w-1/4">
-          {% block sidebar_content2 %}
-            {% include 'manual_c/libs/stdio/rightSidebar.html' %}
-          {% endblock %}
+        <p>
+          A função solicita ao sistema operacional o acesso ao arquivo usando os seguintes modos principais:
+        </p>
+        <ul class="list-disc ml-6 space-y-1">
+          <li><b>r:</b> leitura, posição ajustada para o início.</li>
+          <li><b>r+:</b> leitura e escrita, posição ajustada para o início.</li>
+          <li><b>w:</b> escrita, truncando o arquivo a tamanho zero ou criando um novo.</li>
+          <li><b>w+:</b> leitura e escrita, truncando ou criando um novo arquivo.</li>
+          <li><b>a:</b> escrita (anexar), com posição ajustada para o final. Cria o arquivo se não existir.</li>
+          <li><b>a+:</b> leitura e escrita, posição ajustada para o final. Cria se não existir.</li>
+        </ul>
+        <p class="text-sm italic">Nota: O modo pode conter o caractere 'b' (ex: "rb", "wb") para indicar modo binário, útil por questões de compatibilidade com o padrão C89, embora muitas vezes ignorado em sistemas POSIX.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FOPEN()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    char *nomeArquivo = "exemplo.dat"; 
+    FILE *arquivo = fopen(nomeArquivo, "w");
+
+    if (arquivo == NULL) {
+        printf("Falha ao abrir o arquivo\n"); 
+    } else {
+        fclose(arquivo);
+    }
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+>ls exemplo.dat main main.c</code></pre>
+    </section>
+
+    <section id="fclose" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int fclose(FILE *arquivo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Fecha a stream e o arquivo associado, liberando recursos do sistema.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> uma variável contendo o endereço de um descritor de arquivo.<br />
+          <strong>Retorna:</strong> 0 em caso de sucesso, ou <code>EOF</code> em caso de falha.
+        </div>
+        <p>A função dispara as ações de fechamento do arquivo, o que inclui gravar qualquer escrita pendente nos buffers. O comportamento é indefinido se o ponteiro passado não for um arquivo aberto ou válido.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FCLOSE()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    char *nomeArquivo = "exemplo.dat"; 
+    FILE *arquivo = fopen(nomeArquivo, "w");
+
+    fclose(arquivo);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+>ls exemplo.dat main main.c</code></pre>
+    </section>
+
+    <section id="fread" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">size_t fread(void *itemLer, size_t tamanhoDoItem, size_t quantidadeItem, FILE *arquivo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Lê blocos de dados brutos a partir de um arquivo de entrada (stream).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O endereço do buffer (onde a leitura será armazenada), o tamanho em bytes de cada item, a quantidade de itens a serem lidos e o ponteiro para o arquivo.<br />
+          <strong>Retorna:</strong> A quantidade de itens (não bytes) lidos com sucesso.
+        </div>
+        <p>A quantidade lida pode ser inferior à solicitada se o fim do arquivo for alcançado ou ocorrer um erro. Use as funções <code>feof</code> e <code>ferror</code> para distinguir entre um erro e o final do arquivo.</p>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FREAD()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "r");
+    char copia[99];
+
+    if (arquivo != NULL) {
+        int itens_lidos = fread(copia, sizeof(char), 99, arquivo);
+
+        printf("Foram lidos %d itens\n", itens_lidos); 
+        for(int i = 0; i < itens_lidos; i++) {
+            printf("%c", copia[i]); 
+        }
+        printf("\n");
+
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+Foram lidos 14 itens 
+Hello, World!</code></pre>
+    </section>
+
+    <section id="fwrite" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">size_t fwrite(const void *itemEscrita, size_t tamanhoDoItem, size_t quantidadeItem, FILE *arquivo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Grava blocos de dados em um arquivo de saída (stream).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O endereço do buffer com os dados a gravar, o tamanho de cada elemento, a quantidade de itens a serem gravados e o ponteiro para o arquivo.<br />
+          <strong>Retorna:</strong> A quantidade de itens gravados com sucesso.
         </div>
       </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FWRITE()
+#include &lt;stdio.h&gt; 
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "w");
+    char copia[99] = "Hello, World.\n\0";
+
+    if(arquivo != NULL) {
+        fwrite(copia, sizeof(char), 14, arquivo);
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+>cat exemplo.dat 
+Hello, World.</code></pre>
     </section>
-  </main>
+
+    <section id="fseek" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int fseek(FILE *arquivo, long salto, int origemDoSalto)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Altera a posição do indicador interno de leitura e gravação em um arquivo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Um ponteiro para um arquivo aberto, a quantidade (salto em bytes) a deslocar e o ponto de referência (origem: <code>SEEK_SET</code>, <code>SEEK_CUR</code> ou <code>SEEK_END</code>).<br />
+          <strong>Retorna:</strong> 0 em caso de sucesso, ou um valor diferente de zero se ocorreu algum erro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FSEEK()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "r");
+    char copia[99];
+
+    if (arquivo != NULL) {
+        // Move o cursor para o início do arquivo
+        fseek(arquivo, 0, SEEK_SET); 
+        fread(copia, sizeof(char), 13, arquivo);
+        copia[13] = '\0';
+
+        printf("%s\n", copia);
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+Hello, World.</code></pre>
+    </section>
+
+    <section id="ftell" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">long int ftell(FILE *arquivo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Retorna o valor atual do indicador de posição do arquivo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O ponteiro para o arquivo alvo.<br />
+          <strong>Retorna:</strong> A posição em bytes (a partir do início do arquivo) onde se encontra o cursor atualmente, ou -1L em caso de erro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FTELL()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "r");
+
+    if (arquivo != NULL) {
+        printf("%ld\n", ftell(arquivo)); // Posição inicial deve ser 0
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+0</code></pre>
+    </section>
+
+    <section id="rewind" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void rewind(FILE *arquivo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Retorna o indicador de posição do arquivo diretamente para o início do arquivo. É equivalente a <code>fseek(arquivo, 0, SEEK_SET)</code>, mas também limpa os sinalizadores de erro.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O ponteiro para o arquivo alvo.<br />
+          <strong>Retorna:</strong> Nada (<code>void</code>).
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO REWIND()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "w+");
+    char copia[99] = "Hello, World.";
+
+    if (arquivo != NULL) {
+        fwrite(copia, sizeof(char), 13, arquivo); 
+        
+        // Reposiciona o cursor no início
+        rewind(arquivo);
+
+        char teste[99] = {0}; 
+        fread(teste, sizeof(char), 13, arquivo);
+
+        printf("%s\n", teste);
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+Hello, World.</code></pre>
+    </section>
+
+    <section id="fflush" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int fflush(FILE *stream)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Força a gravação imediata de dados que estão pendentes no buffer de saída para o disco físico associado à stream.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O arquivo ou fluxo cujo buffer será forçado a esvaziar.<br />
+          <strong>Retorna:</strong> 0 se a operação for bem sucedida, ou <code>EOF</code> se ocorrer falha na gravação.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FFLUSH()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    char *nomeArquivo = "exemplo.dat"; 
+    FILE *arquivo = fopen(nomeArquivo, "w");
+
+    char textoQualquer[] = "Teste do teste de testes.\n";
+
+    if(arquivo != NULL) {
+        fwrite(textoQualquer, sizeof(char), sizeof(textoQualquer)-1, arquivo); 
+        fflush(arquivo); // Garante que foi escrito no disco
+        
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+>cat exemplo.dat 
+Teste do teste de testes.</code></pre>
+    </section>
+
+    <section id="fprintf" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int fprintf(FILE *stream, const char *formato, ...)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Grava saídas de texto formatadas diretamente em um arquivo (em vez de no terminal).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O ponteiro do arquivo alvo, a string de formatação (com tags como <code>%d</code>, <code>%s</code>), e os argumentos variáveis correspondentes.<br />
+          <strong>Retorna:</strong> O número total de caracteres gravados no arquivo. Retorna um número negativo em caso de erro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FPRINTF()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "w");
+
+    if(arquivo != NULL) {
+        fprintf(arquivo, "%d é a resposta.\n", 42);
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+>cat exemplo.dat 
+42 é a resposta.</code></pre>
+    </section>
+
+    <section id="fscanf" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int fscanf(FILE *stream, const char *formato, ...)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Lê dados formatados de um fluxo de texto (arquivo) e os aloca nas variáveis fornecidas.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O arquivo alvo, a string de máscara de formatação e os ponteiros das variáveis destino.<br />
+          <strong>Retorna:</strong> O número de itens atribuídos com sucesso, ou <code>EOF</code> caso tenha atingido o fim do arquivo ou haja erro na leitura inicial.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FSCANF()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "w+");
+    char palavra[99]; 
+
+    if (arquivo != NULL) {
+        fprintf(arquivo, "Este não é um teste.\n"); 
+        fprintf(arquivo, "Este é O Teste.\n");
+
+        rewind(arquivo); // Voltar ao inicio do arquivo
+
+        while (fscanf(arquivo, "%s", palavra) != EOF) {
+            printf("%s ", palavra);
+        }
+        putchar('\n');
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+Este não é um teste. Este é O Teste.</code></pre>
+    </section>
+
+    <section id="feof" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int feof(FILE *arquivo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Testa o indicador de fim de arquivo (End Of File) para um fluxo determinado.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O arquivo que se deseja avaliar.<br />
+          <strong>Retorna:</strong> Um inteiro diferente de zero caso o último comando de leitura do programa tenha atingido o fim do arquivo (caso contrário, 0).
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FEOF()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "r");
+
+    if (arquivo != NULL) {
+        printf("%d\n", feof(arquivo)); // Ainda não lemos nada, então deve ser 0
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+0</code></pre>
+    </section>
+
+    <section id="remove" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int remove(const char *nomeArquivo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Exclui um arquivo especificado do sistema de arquivos.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma string contendo o nome ou diretório do arquivo que se deseja remover.<br />
+          <strong>Retorna:</strong> 0 se a operação foi bem-sucedida. Caso contrário, um valor diferente de 0.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO REMOVE()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    remove("exemplo2.dat");
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>ls exemplo2.dat main main.c 
+>./main 
+>ls main main.c</code></pre>
+    </section>
+
+    <section id="rename" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int rename(const char *nomeAntigo, const char *nomeNovo)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Renomeia ou move um arquivo no sistema de arquivos.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma string com o nome atual do arquivo e outra contendo o novo nome (ou caminho) para ele.<br />
+          <strong>Retorna:</strong> 0 se a operação foi bem-sucedida, ou um valor diferente de 0 em caso de erro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO RENAME()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    rename("exemplo.dat", "exemplo2.dat");
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>ls exemplo.dat main main.c 
+>./main 
+>ls exemplo2.dat main main.c</code></pre>
+    </section>
+
+    <section id="printf" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int printf(const char *formato, ...)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>A função mais comum para impressão formatada na saída padrão (stdout - tela).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> A string principal com identificadores de formatação (ex: <code>%d</code>, <code>%s</code>) e as variáveis dinâmicas correspondentes listadas sequencialmente.<br />
+          <strong>Retorna:</strong> O número de caracteres total que foram escritos na tela, ou um número negativo em caso de erro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO PRINTF()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    printf("%d é a resposta.\n", 42);
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+42 é a resposta.</code></pre>
+    </section>
+
+    <section id="scanf" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int scanf(const char *formato, ...)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>A função mais utilizada para leitura formatada a partir da entrada padrão (stdin - teclado).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma string indicando as máscaras dos dados esperados e os respectivos endereços de memória (ponteiros) onde esses valores serão salvos.<br />
+          <strong>Retorna:</strong> A quantidade de itens preenchidos com sucesso, ou <code>EOF</code> se houve falha inicial ou se atingiu o fim das entradas padrão precocemente.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO SCANF()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    int numeros[7];
+
+    for (int i = 0; i < 7; i++) {
+        scanf("%d", &numeros[i]);
+    }
+
+    putchar('{'); 
+    for (int i = 0; i < 7; i++) {
+        printf("%d, ", numeros[i]); 
+    }
+    printf("...}\n");
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+1 2 3 4 5 6 7 
+{1, 2, 3, 4, 5, 6, 7, ...}</code></pre>
+    </section>
+
+    <section id="getc" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int getc(FILE *stream)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Lê um único caractere a partir do fluxo de entrada fornecido.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O ponteiro para o fluxo alvo a partir da qual o caractere será lido.<br />
+          <strong>Retorna:</strong> O valor numérico (ASCII) correspondente ao caractere da stream indicada ou <code>EOF</code> em caso de erro ou fim de leitura.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO GETC()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    FILE *arquivo = fopen("exemplo.dat", "w+");
+
+    if (arquivo != NULL) {
+        fprintf(arquivo, "%d é a resposta.\n", 42);
+        rewind(arquivo);
+
+        char c;
+        while ((c = getc(arquivo)) != EOF) {
+            putchar(c);
+        }
+
+        fclose(arquivo);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+42 é a resposta.</code></pre>
+    </section>
+
+    <section id="gets" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *gets(char *str)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p class="text-red-700 font-semibold mb-2">Aviso: Função obsoleta e perigosa (suscetível a buffer overflow). Substituída majoritariamente por <code>fgets()</code>.</p>
+        <p>Lê uma linha inteira da entrada padrão, extraindo todos os caracteres até encontrar uma quebra de linha (<code>\n</code>).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Um ponteiro/array de caracteres onde o texto lido será guardado.<br />
+          <strong>Retorna:</strong> A string capturada na chamada da função ou <code>NULL</code> em caso de falha.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO GETS()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    char texto[99];
+
+    // O compilador provavelmente emitirá um alerta contra o uso de gets!
+    gets(texto);
+
+    printf("%s\n", texto);
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+O teste dos testes de casos teste. 
+O teste dos testes de casos teste.</code></pre>
+    </section>
+
+    <section id="getchar" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int getchar()</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Lê e retorna o próximo caractere exclusivamente da entrada padrão (stdin - teclado). Funciona de forma similar a <code>getc(stdin)</code>.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Nenhum parâmetro (<code>void</code>).<br />
+          <strong>Retorna:</strong> O valor do caractere lido (ASCII) ou <code>EOF</code> se não houver dados.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO GETCHAR()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    char c, frase[99]; 
+    int i = 0;
+
+    // Interromper a leitura no EOF (teclas Ctrl+D em Linux/Mac, Ctrl+Z em Windows)
+    while ((c = getchar()) != EOF && i < 98) {
+        frase[i++] = c;
+    }
+    frase[i] = '\0';
+
+    printf("%s", frase);
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+O teste do teste de todos os testes Fim. 
+O teste do teste de todos os testes Fim.</code></pre>
+    </section>
+
+    <section id="putchar" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int putchar(int caractere)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Imprime um caractere isolado na saída padrão (stdout - tela).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O valor do caractere a ser escrito.<br />
+          <strong>Retorna:</strong> O próprio caractere que acabou de escrever, ou <code>EOF</code> se acontecer um problema de saída.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO PUTCHAR()
+#include &lt;stdio.h&gt;
+
+int main(void) { 
+    putchar(';'); 
+    putchar('\n');
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>clang-7 -pthread -lm -o main main.c 
+>./main 
+;</code></pre>
+    </section>
+
+  </section>
 {% endblock %}

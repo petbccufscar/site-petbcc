@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer components {
+  /** manual C - Estilos Gerais */
   /* Layout e Containers */
   .lib-section {
     @apply max-w-5xl mx-auto px-6 py-10;
@@ -54,6 +55,10 @@
   /* Metadados e Cabeçalhos de Função */
   .func-meta {
     @apply bg-gray-50 border rounded-lg p-4 mt-5 text-gray-700;
+  }
+
+  .func-description {
+    @apply space-y-4 text-gray-700 leading-relaxed;
   }
 
   .func-header {

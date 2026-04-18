@@ -5,212 +5,841 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="text-gray-800 font-bold text-2xl">&ltstdlib.h&gt</h1>
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="titulo_biblioteca">&lt;stdlib.h&gt;</h1>
 
-  <div class="space-y-6">
-    <div>
-      <h1 class="text-orange-600 font-semibold text-lg mb-2">Descrição:</h1>
-      <p class="text-gray-700 text-justify">
-        No cabeçalho <b>stdlib.h</b> estão localizadas as funções responsáveis pela manipulação da alocação de memória, e da desalocação também, bem como funções para converter números que estão representados em strings para algum tipo de dado responsável por representar números, como, por exemplo, double, entre outras funcionalidades úteis, como funções de algoritmos de ordenação.
+    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
+      <p>
+        No cabeçalho <b>&lt;stdlib.h&gt;</b> estão localizadas as funções responsáveis pela manipulação da alocação (e desalocação) dinâmica de memória, bem como funções para converter strings em valores numéricos (como double ou int). Além disso, a biblioteca fornece utilitários gerais como geração de números pseudoaleatórios, controle do fluxo do programa e algoritmos padrão de busca e ordenação.
       </p>
     </div>
-    <div class="space-y-4">
-      <h1 class="text-orange-600 font-semibold text-lg mb-2">Variáveis:</h1>
-      <p class="text-gray-700 text-justify">
-        <b>size_t</b>: tem por finalidade indicar o tamanho, em bytes, que uma variável ocupa na memória.
-        <br /><br /><b>wchar_t</b>: tem por finalidade representar caracteres com codificação não suportada pelo tipo char, ou seja, caracteres com códigos maiores que aqueles que o tipo char representa.
-        <br /><br /><b>div_t</b>: struct que contém dois campos do tipo int; um dos campos do struct armazena o resultado da divisão entre dois números e o outro campo armazena o resto da divisão.
-        <br /><br /><b>ldiv_t</b>: struct que contém dois campos do tipo long int; um dos campos do struct armazena o resultado da divisão entre dois números e o outro campo armazena o resto da divisão.
-      </p>
+
+    <h2 class="sub_secao_biblioteca mb-4">Variáveis e Tipos</h2>
+    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
+      <ul class="space-y-3">
+        <li><b>size_t:</b> Tem por finalidade indicar o tamanho, em bytes, que uma variável ou objeto ocupa na memória. É um tipo inteiro sem sinal.</li>
+        <li><b>wchar_t:</b> Tem por finalidade representar caracteres com codificação ampla (wide characters), ou seja, caracteres com códigos maiores que aqueles que o tipo <code>char</code> tradicional suporta.</li>
+        <li><b>div_t:</b> Estrutura (struct) que contém dois campos do tipo <code>int</code> (quot e rem); armazena o quociente e o resto da divisão entre dois números.</li>
+        <li><b>ldiv_t:</b> Estrutura (struct) que contém dois campos do tipo <code>long int</code> (quot e rem); armazena o quociente e o resto da divisão entre dois números.</li>
+      </ul>
     </div>
-    <div class="space-y-4">
-      <h1 class="text-orange-600 font-semibold text-lg mb-2">Macros:</h1>
-      <p class="text-gray-700 text-justify">
-        <b>NULL</b>: macro utilizado para indicar que um ponteiro não está apontando para lugar algum da memória.
-        <br /><br /><b>EXIT_FAILURE</b>: macro utilizado para indicar que um programa foi finalizado de forma inesperada, com erro.
-        <br /><br /><b>EXIT_SUCCESS</b>: macro utilizado para indicar que um programa foi finalizado conforme o esperado, com sucesso.
-        <br /><br /><b>RAND_MAX</b>: macro que indica o valor máximo retornado pela função rand().
-        <br /><br /><b>MB_CUR_MAX</b>: valor máximo de memória que um caractere, que ocupa mais de um byte, pode ter.
-      </p>
+
+    <h2 class="sub_secao_biblioteca mb-4">Macros</h2>
+    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
+      <ul class="space-y-3">
+        <li><b>NULL:</b> Macro utilizado para indicar que um ponteiro não aponta para um endereço de memória válido.</li>
+        <li><b>EXIT_FAILURE:</b> Macro utilizado para indicar (via função <code>exit</code>) que um programa foi finalizado de forma inesperada ou com erro.</li>
+        <li><b>EXIT_SUCCESS:</b> Macro utilizado para indicar que um programa foi finalizado corretamente e com sucesso.</li>
+        <li><b>RAND_MAX:</b> Macro que indica o valor máximo absoluto que pode ser retornado pela função <code>rand()</code>.</li>
+        <li><b>MB_CUR_MAX:</b> Valor máximo (em bytes) que um caractere multibyte pode ocupar no locale atual.</li>
+      </ul>
     </div>
-  </div>
-{% endblock %}
-          </div>
-          <div class="text-left">
-            <h1>Funções:</h1>
-          </div>
-          <div class="space-y-4">
-            <div class="item">
-              <div class="content">
-                <!-- stdlib_funcoes -->
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#atof"><h3>double atof(const char *stringNum)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o número presente na string convertido para o tipo double.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma variável que seja um array de caracteres.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#atoi"><h3>int atoi(const char* stringNum)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o número presente na string convertido para o tipo int.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma string na qual um número esteja sendo representado.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#atol"><h3>long atol(const char *stringNum)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o número presente na string convertido para o tipo long.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma string na qual um número esteja sendo representado.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#strtod"><h3>double strtod(const char *stringComNum, char **resto)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para double.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#strtol"><h3>long strtol(const char *stringComNum, char **resto, int base)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para long na base indicada.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#strtoul"><h3>unsigned long strtoul(const char *stringComNum, char **resto, int base)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o número presente logo no início da string, ou seja, o número que tem como seu dígito mais à esquerda representado pelo primeiro caractere na string, convertido para unsigned long na base indicada.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma string na qual os primeiros caracteres representam um número, e um ponteiro para o qual irá apontar para o que resta da string sem o número convertido.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#rand"><h3>int rand()</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: um número do tipo inteiro, não negativo, "aleatório".</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: não recebe parâmetros.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#srand"><h3>void srand(int valor)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: sem retorno, porque a srand() tem por finalidade configurar um valor inicial a partir do qual uma sequência de números serão aleatorizados, sendo o valor padrão 1.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: um número do tipo inteiro.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#calloc"><h3>size_t calloc(size_t quantidadeElementos, size_t tamanhoDoTipo)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o endereço inicial do espaço alocado; aloca espaço na memória de acordo com o tipo indicado em tamanhoDoTipo em blocos, conforme a quantidade de blocos indicada em quantidadeElementos, e inicializa todos os bytes do espaço alocado para 0.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: a quantidade de blocos do tipo a ser alocado, em quantidadeElementos, e o tipo (int, float, double, char, etc).</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#malloc"><h3>malloc(size_t tamanhoDoTipo)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o endereço inicial do espaço alocado; aloca espaço conforme o valor indicado em tamanhoDoTipo.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: a quantidade de memória a ser alocada, comumente indicada por sizeof(int), por exemplo.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#realloc"><h3>realloc(void *ponteiro, size_t tamanhoDoTipo)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: um endereço inicial do novo espaço alocado; realoca o espaço de memória para o qual ponteiro aponta, conforme o valor especificado em tamanhoDoTipo.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: o ponteiro da variável dinamicamente alocada e a quantia de memória que será reajustada para essa variável.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#free"><h3>free(void *ponteiro)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: void; free(ponteiro) libera o espaço alocado por calloc, malloc ou realloc para o qual ponteiro aponta.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: o ponteiro que aponta para a variável dinamicamente alocada, a qual pretende-se liberar o espaço de memória alocado para esta.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#abort"><h3>abort()</h3></a>
-                <div class="text-gray-700 mb-2 justificado">void; interrompe e aborta a execução do programa no ponto em que abort() é chamada.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: não recebe parâmetros.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#exit"><h3>exit(int status)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o tipo de retorno com o qual pretende-se finalizar a execução do programa.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: o status do término da execução do programa e finaliza a sua execução no ponto em que exit(status) é chamada.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#atexit"><h3>atexit(void funcao(void))</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: um inteiro não nulo caso não seja possível chamar funcao() ao fim da execução do programa, caso contrário, retorna 0.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: um procedimento a ser chamado ao fim da execução do programa.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#system"><h3>system(const char *comandoSO)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: um inteiro não nulo caso não seja possível fazer a requisição da execução da instrução indicada por comandoSO.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: um comando a ser executado pelo Sistema Operacional, passado como uma string.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#getenv"><h3>getenv(const char *nomeVariavel)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: uma string contendo o caminho para o qual a variável de sistema nomeVariavel aponta.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma string com o nome de uma variável do Sistema Operacional.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#bsearch"><h3>bsearch(const void *chave, const void *array, size_t tamanhoDoArray, size_t tipoDoArray, int (*compara)(const void *, const void *))</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o endereço no qual o valor indicado por *chave está localizado; se o valor não estiver em *array, retorna NULL.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: uma variável com o valor que se deseja procurar, com passagem por referência, o array no qual será feita a busca, o tamanho do array, o tamanho do tipo que o array armazena, e uma função que efetua a comparação de duas variáveis e retorna um valor inteiro, para fins de comparação, como resultado.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#qsort"><h3>qsort(void *array, size_t tamanhoDoArray, size_t tipoDoArray, int (*compara)(const void*, const void *))</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: void; a função ordena o array passado como parâmetro em ordem crescente.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: o array que será ordenado, o tamanho do array, o tamanho do tipo que o array armazena, e uma função que efetua a comparação de duas variáveis e retorna um valor inteiro, para fins de comparação, como resultado.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#abs"><h3>abs(int numero)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o módulo do número passado como parâmetro.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: um número do tipo inteiro, para o qual deseja-se obter o módulo.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#labs"><h3>labs(long numero)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: um número do tipo long int, para o qual deseja-se obter o módulo.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: o módulo do número passado como parâmetro.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#div"><h3>div(int numerador, int denominador)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o resultado da divisão numerador/denominador e o resto da divisão armazenados em um struct do tipo div_t.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: dois números do tipo inteiro.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content">
-                <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'stdlib' %}#ldiv"><h3>ldiv(long numerador, long denominador)</h3></a>
-                <div class="text-gray-700 mb-2 justificado">RETORNA: o resultado da divisão numerador/denominador e o resto da divisão armazenados em um struct do tipo ldiv_t.</div>
-                <div class="text-gray-700 mb-2 justificado">RECEBE: dois números do tipo long int.</div>
-              </div>
-            </div>
-            <br />
-          </div>
-        </div>
-        <div class="md:w-1/4">
-          {% block sidebar_content2 %}
-            {% include 'manual_c/libs/stdlib/rightSidebar.html' %}
-          {% endblock %}
+
+    <h2 class="sub_secao_biblioteca mb-4">Funções</h2>
+
+    <div class="flex flex-wrap gap-2 mb-12">
+      <a href="#atof" class="btn_funcao">atof()</a>
+      <a href="#atoi" class="btn_funcao">atoi()</a>
+      <a href="#atol" class="btn_funcao">atol()</a>
+      <a href="#strtod" class="btn_funcao">strtod()</a>
+      <a href="#strtol" class="btn_funcao">strtol()</a>
+      <a href="#strtoul" class="btn_funcao">strtoul()</a>
+      <a href="#rand" class="btn_funcao">rand()</a>
+      <a href="#srand" class="btn_funcao">srand()</a>
+      <a href="#calloc" class="btn_funcao">calloc()</a>
+      <a href="#malloc" class="btn_funcao">malloc()</a>
+      <a href="#realloc" class="btn_funcao">realloc()</a>
+      <a href="#free" class="btn_funcao">free()</a>
+      <a href="#abort" class="btn_funcao">abort()</a>
+      <a href="#exit" class="btn_funcao">exit()</a>
+      <a href="#atexit" class="btn_funcao">atexit()</a>
+      <a href="#system" class="btn_funcao">system()</a>
+      <a href="#getenv" class="btn_funcao">getenv()</a>
+      <a href="#bsearch" class="btn_funcao">bsearch()</a>
+      <a href="#qsort" class="btn_funcao">qsort()</a>
+      <a href="#abs" class="btn_funcao">abs()</a>
+      <a href="#labs" class="btn_funcao">labs()</a>
+      <a href="#div" class="btn_funcao">div()</a>
+      <a href="#ldiv" class="btn_funcao">ldiv()</a>
+    </div>
+
+    <section id="atof" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double atof(const char *stringNum)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Converte uma string (cadeia de caracteres) para um valor de ponto flutuante (double).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma variável que seja um array de caracteres representando um número.<br />
+          <strong>Retorna:</strong> O número presente na string convertido para o tipo <code>double</code>.
         </div>
       </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO ATOF()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    char *exemplo = "42\0";
+    double resposta = atof(exemplo);
+
+    printf("%.0lf é a resposta!!!\n", resposta);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42 é a resposta!!!</code></pre>
     </section>
-  </main>
+
+    <section id="atoi" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int atoi(const char *stringNum)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Converte uma string (cadeia de caracteres) para um valor inteiro (int).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma string na qual um número esteja sendo representado.<br />
+          <strong>Retorna:</strong> O número presente na string convertido para o tipo <code>int</code>.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO ATOI()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    char *exemplo = "42\0";
+    int resposta = atoi(exemplo);
+
+    printf("%d é a resposta!!!\n", resposta);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42 é a resposta!!!</code></pre>
+    </section>
+
+    <section id="atol" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">long atol(const char *stringNum)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Converte uma string (cadeia de caracteres) para um valor inteiro longo (long).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma string na qual um número esteja sendo representado.<br />
+          <strong>Retorna:</strong> O número presente na string convertido para o tipo <code>long</code>.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO ATOL()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    char *exemplo = "42\0";
+    long int resposta = atol(exemplo);
+
+    printf("%ld é a resposta!!!\n", resposta);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42 é a resposta!!!</code></pre>
+    </section>
+
+    <section id="strtod" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double strtod(const char *stringComNum, char **resto)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Lê um número de ponto flutuante de uma string e armazena o restante não numérico em um ponteiro.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma string inicializada com um número e um ponteiro para ponteiro que guardará o restante da string não convertida.<br />
+          <strong>Retorna:</strong> O número no início da string convertido para <code>double</code>.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO STRTOD()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    char *exemplo = "42 é a resposta!!!\0";
+    double resposta = strtod(exemplo, NULL);
+
+    printf("%.0lf!!!\n", resposta);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42!!!</code></pre>
+    </section>
+
+    <section id="strtol" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">long int strtol(const char *stringComNum, char **resto, int base)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Converte o prefixo de uma string para um número do tipo <code>long int</code> baseado numa base numérica (ex: 10, 16).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> A string com o número, o ponteiro de sobra e a base numérica da conversão.<br />
+          <strong>Retorna:</strong> O número convertido para <code>long int</code> na base indicada.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO STRTOL()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    char *exemplo = "42 é a resposta!!!\0";
+    long int resposta = strtol(exemplo, NULL, 10);
+
+    printf("%ld!!!\n", resposta);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42!!!</code></pre>
+    </section>
+
+    <section id="strtoul" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">unsigned long int strtoul(const char *stringComNum, char **resto, int base)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Similar ao <code>strtol</code>, mas converte para um <code>unsigned long int</code>.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> A string original, o ponteiro para o texto que sobra e a base.<br />
+          <strong>Retorna:</strong> O número convertido para <code>unsigned long</code> na base indicada.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO STRTOUL()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    char *exemplo = "42 é a resposta!!!\0";
+    unsigned long int resposta = strtoul(exemplo, NULL, 10);
+
+    printf("%lu!!!\n", resposta);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42!!!</code></pre>
+    </section>
+
+    <section id="rand" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int rand()</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Gera números inteiros pseudoaleatórios dentro do limite de 0 até <code>RAND_MAX</code>.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Não recebe parâmetros.<br />
+          <strong>Retorna:</strong> Um número inteiro, não negativo, "aleatório".
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO RAND()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    // Número randômico entre 0 e 9
+    int randomico = rand() % 10;
+    printf("%d.\n", randomico);
+
+    // Número randômico entre 0 e 41
+    randomico = rand() % 42;
+    printf("%d não é a resposta...\n", randomico);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+3. 
+3 não é a resposta...</code></pre>
+    </section>
+
+    <section id="srand" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void srand(unsigned int semente)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Configura o valor inicial ("semente") para a geração dos números da função <code>rand()</code>.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Uma semente numérica (geralmente usamos o tempo atual via <code>time(NULL)</code>).<br />
+          <strong>Retorna:</strong> <code>void</code>. Sem retorno, altera o estado interno do gerador aleatório.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO SRAND()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    // Ao definir a mesma semente, rand gerará sempre a mesma sequência
+    srand(42); 
+
+    int randomico = rand() % 10;
+    printf("%d.\n", randomico);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+6.</code></pre>
+    </section>
+
+    <section id="calloc" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *calloc(size_t quantidadeElementos, size_t tamanhoDoTipo)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Aloca dinamicamente um bloco de memória para um array de elementos e os <b>inicializa com zero</b>.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> A quantidade de blocos a serem alocados e o tamanho em bytes do tipo.<br />
+          <strong>Retorna:</strong> O ponteiro para o início da memória alocada, ou <code>NULL</code> em caso de falha.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO CALLOC()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    int *numero = (int *)calloc(1, sizeof(int));
+    
+    // Como foi usado calloc, o valor inicializa como zero.
+    printf("%d não é a resposta...\n", *numero);
+
+    *numero = 42;
+    printf("%d é a resposta em uma variável dinamicamente alocada!\n", *numero);
+
+    free(numero);
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+0 não é a resposta... 
+42 é a resposta em uma variável dinamicamente alocada!</code></pre>
+    </section>
+
+    <section id="malloc" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *malloc(size_t tamanhoDoTipo)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Aloca dinamicamente um bloco de memória, mas diferentemente do <code>calloc</code>, o conteúdo não é inicializado (pode conter "lixo" de memória).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> A quantidade exata de memória a ser alocada (comumente usando <code>sizeof</code>).<br />
+          <strong>Retorna:</strong> O ponteiro para o endereço inicial do espaço alocado.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO MALLOC()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    int *numero = (int *)malloc(sizeof(int));
+
+    // Valor será lixo (imprevisível), vamos sobrescrevê-lo:
+    *numero = 42;
+    printf("%d é a resposta em uma variável dinamicamente alocada!\n", *numero);
+
+    free(numero);
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42 é a resposta em uma variável dinamicamente alocada!</code></pre>
+    </section>
+
+    <section id="realloc" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *realloc(void *ponteiro, size_t tamanhoDoTipo)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Redimensiona (aumenta ou diminui) o tamanho de um bloco de memória que foi previamente alocado.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O ponteiro da memória antiga e o novo tamanho em bytes.<br />
+          <strong>Retorna:</strong> O ponteiro do novo bloco alocado.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO REALLOC()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    int *numero = (int *)malloc(sizeof(int));
+    *numero = 42;
+
+    printf("%d é a resposta!\n", *numero);
+
+    // Expande a memória para suportar 10 inteiros
+    numero = (int *)realloc(numero, 10 * sizeof(int));
+
+    for (int i = 0; i < 10; i++) {
+        numero[i] = 42;
+    }
+
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", numero[i]);
+    }
+    putchar('\n');
+
+    free(numero);
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42 é a resposta! 
+42 42 42 42 42 42 42 42 42 42</code></pre>
+    </section>
+
+    <section id="free" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void free(void *ponteiro)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Libera manualmente o espaço de memória que foi previamente alocado (evitando memory leaks).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O ponteiro que aponta para a variável dinamicamente alocada.<br />
+          <strong>Retorna:</strong> <code>void</code>.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO FREE()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    int *numero = (int *)malloc(sizeof(int));
+    *numero = 42;
+
+    free(numero); 
+    printf("Ponteiro liberado!\n");
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+Ponteiro liberado!</code></pre>
+    </section>
+
+    <section id="abort" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void abort()</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Interrompe forçadamente o programa gerando um sinal <code>SIGABRT</code>.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Não recebe parâmetros.<br />
+          <strong>Retorna:</strong> <code>void</code>; interrompe e aborta o programa imediatamente.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO ABORT()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    printf("Essa mensagem será mostrada na saída padrão.\n");
+
+    abort();
+
+    printf("Essa mensagem não será mostrada...\n");
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+Essa mensagem será mostrada na saída padrão. 
+Aborted (core dumped)</code></pre>
+    </section>
+
+    <section id="exit" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void exit(int status)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Termina a execução do programa e retorna o código de status ao sistema operacional (<code>0</code> = sucesso).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O código de status (int).<br />
+          <strong>Retorna:</strong> O status do término e finaliza no ponto chamado.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO EXIT()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    int numero = 422;
+
+    if (numero != 42) { 
+        printf("Saindo com erro...\n");
+        exit(EXIT_FAILURE); 
+    } 
+    return EXIT_SUCCESS; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+Saindo com erro...</code></pre>
+    </section>
+
+    <section id="atexit" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int atexit(void (*funcao)(void))</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Registra uma função específica para ser chamada logo antes de o programa terminar com sucesso.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Um ponteiro para a função desejada.<br />
+          <strong>Retorna:</strong> Um inteiro não nulo caso haja falha, 0 se registrado com sucesso.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO ATEXIT()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void respostaFinal() { 
+    printf("42 é a resposta!\n"); 
+}
+
+int main() { 
+    atexit(respostaFinal);
+
+    printf("Mensagem qualquer antes de finalizar o programa...\n");
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+Mensagem qualquer antes de finalizar o programa... 
+42 é a resposta!</code></pre>
+    </section>
+
+    <section id="system" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int system(const char *comandoSO)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Passa um comando como string para o processador de comandos hospedeiro (shell/terminal).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O comando a ser executado.<br />
+          <strong>Retorna:</strong> O status do shell (específico da implementação do SO).
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO SYSTEM()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    system("echo \"42 é a resposta!\"");
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+42 é a resposta!</code></pre>
+    </section>
+
+    <section id="getenv" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *getenv(const char *nomeVariavel)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Acessa uma variável de ambiente do sistema operacional.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O nome da variável de ambiente procurada.<br />
+          <strong>Retorna:</strong> A string com o valor apontado ou <code>NULL</code> se a variável não existir.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO GETENV()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    char *path = getenv("HOME"); // ou "USERPROFILE" no Windows
+
+    if(path != NULL) {
+        printf("%s\n", path);
+    }
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+/home/user</code></pre>
+    </section>
+
+    <section id="bsearch" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void *bsearch(const void *chave, const void *array, size_t tamanhoDoArray, size_t tamanhoDoTipo, int (*compara)(const void *, const void *))</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Realiza uma busca binária em um <b>array ordenado</b> em busca de um elemento.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O valor chave (referência), o array alvo, o número de elementos, o tamanho em bytes de um único item e o ponteiro da função de comparação.<br />
+          <strong>Retorna:</strong> O ponteiro indicando o endereço em que a chave foi encontrada ou <code>NULL</code> se não estiver no array.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO BSEARCH()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int compara(const void *a, const void *b) { 
+    return (*((int *)a) - *((int *)b)); 
+}
+
+int main() { 
+    int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int chave = 9;
+    int *achou;
+
+    achou = bsearch(&chave, array, 10, sizeof(int), compara);
+
+    if (achou == NULL) {
+        printf("O número informado não está no array.\n"); 
+    } else {
+        printf("O número %d está no array!\n", *achou);
+    }
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+O número 9 está no array!</code></pre>
+    </section>
+
+    <section id="qsort" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void qsort(void *array, size_t tamanhoDoArray, size_t tamanhoDoTipo, int (*compara)(const void *, const void *))</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Ordena um array (usualmente utilizando o algoritmo <i>Quick Sort</i>) utilizando uma função de avaliação externa.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O array que será ordenado, sua quantidade de elementos, o tamanho de cada elemento e a função de comparação que orienta a ordem crescente.<br />
+          <strong>Retorna:</strong> <code>void</code>; organiza os dados localmente no próprio array.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO QSORT()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int compara(const void *a, const void *b) { 
+    return (*((int *)a) - *((int *)b)); 
+}
+
+int main() { 
+    int array[10] = {7, 8, 3, 5, 9, 1, 4, 6, 10, 2};
+
+    printf("Array antes:\n"); 
+    for (int i = 0; i < 10; i++) printf("%d ", array[i]); 
+    putchar('\n');
+
+    qsort(array, 10, sizeof(int), compara);
+
+    printf("Array após:\n"); 
+    for (int i = 0; i < 10; i++) printf("%d ", array[i]); 
+    putchar('\n');
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+Array antes: 
+7 8 3 5 9 1 4 6 10 2 
+Array após: 
+1 2 3 4 5 6 7 8 9 10</code></pre>
+    </section>
+
+    <section id="abs" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int abs(int numero)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Retorna o valor absoluto de um número inteiro.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O número inteiro que se deseja obter o módulo.<br />
+          <strong>Retorna:</strong> O módulo (valor positivo correspondente) do parâmetro passado.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO ABS()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    int valor = -42;
+
+    printf("Número informado: %d\n", valor);
+    printf("Módulo: %d\n", abs(valor));
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+Número informado: -42 
+Módulo: 42</code></pre>
+    </section>
+
+    <section id="labs" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">long int labs(long int numero)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Retorna o valor absoluto de um número inteiro longo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> O número do tipo <code>long int</code> para módulo.<br />
+          <strong>Retorna:</strong> O módulo positivo correspondente.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO LABS()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    long int valor = -42;
+
+    printf("Número informado: %ld\n", valor);
+    printf("Módulo: %ld\n", labs(valor));
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+Número informado: -42 
+Módulo: 42</code></pre>
+    </section>
+
+    <section id="div" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">div_t div(int numerador, int denominador)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Retorna simultaneamente o quociente e o resto de uma divisão entre dois inteiros.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Os dois inteiros envolvidos.<br />
+          <strong>Retorna:</strong> Um <code>struct</code> do tipo <code>div_t</code> contendo o resultado (quot) e o resto (rem).
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO DIV()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    int numerador = 9; 
+    int denominador = 3;
+
+    div_t divisao = div(numerador, denominador);
+
+    printf("A divisão de %d por %d resulta em: %d\n", numerador, denominador, divisao.quot);
+    printf("O resto da divisão é: %d\n", divisao.rem);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+A divisão de 9 por 3 resulta em: 3 
+O resto da divisão é: 0</code></pre>
+    </section>
+
+    <section id="ldiv" class="func-section mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">ldiv_t ldiv(long int numerador, long int denominador)</h3>
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Similar à função <code>div()</code>, mas lidando com números inteiros longos.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> Os dois inteiros longos envolvidos.<br />
+          <strong>Retorna:</strong> Um <code>struct</code> do tipo <code>ldiv_t</code> com quociente e resto.
+        </div>
+      </div>
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+// EXEMPLO LDIV()
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() { 
+    long int numerador = 9; 
+    long int denominador = 3;
+
+    ldiv_t divisao = ldiv(numerador, denominador);
+
+    printf("A divisão de %ld por %ld resulta em: %ld\n", numerador, denominador, divisao.quot);
+    printf("O resto da divisão é: %ld\n", divisao.rem);
+
+    return 0; 
+}
+        </code>
+      </pre>
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
+A divisão de 9 por 3 resulta em: 3 
+O resto da divisão é: 0</code></pre>
+    </section>
+
+  </section>
 {% endblock %}
