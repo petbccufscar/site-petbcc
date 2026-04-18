@@ -805,7 +805,8 @@ input:where([type='file']):focus {
 
 /* Tipografia: Títulos e Subtítulos */
 
-.lib-title, .sub-secao-lib {
+.lib-title,
+  .sub-section-text-lib {
   margin-bottom: 1rem;
   border-bottom-width: 1px;
   padding-bottom: 0.5rem;
@@ -823,7 +824,7 @@ input:where([type='file']):focus {
   /* Especialização para o título principal */
 }
 
-.sub-secao-lib {
+.sub-section-text-lib {
   margin-top: 2.5rem;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -844,6 +845,16 @@ input:where([type='file']):focus {
   line-height: 1.625;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+.code-inline {
+  border-radius: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-style: italic;
+  --tw-text-opacity: 1;
+  color: rgb(194 65 12 / var(--tw-text-opacity, 1));
 }
 
 /* Componentes de Código (Unificados) */
@@ -884,7 +895,7 @@ input:where([type='file']):focus {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
-  padding: 1.25rem;
+  padding: 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
@@ -949,6 +960,16 @@ input:where([type='file']):focus {
   line-height: 1.625;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+.func-header {
+  margin-bottom: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
 
 .func-container {
@@ -1075,10 +1096,6 @@ input:where([type='file']):focus {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
 }
 
 .mt-\[73px\] {
@@ -1260,10 +1277,6 @@ input:where([type='file']):focus {
 
 .list-disc {
   list-style-type: disc;
-}
-
-.list-none {
-  list-style-type: none;
 }
 
 .grid-cols-1 {

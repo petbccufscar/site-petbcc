@@ -11,24 +11,24 @@
     <div class="lib-description">
       <p>
         O arquivo de cabeçalhos <strong>&lt;assert.h&gt;</strong> possui a função
-        <code>assert()</code>, utilizada para verificar a veracidade de uma expressão durante a execução do programa.
+        <code class="code-inline">assert()</code>, utilizada para verificar a veracidade de uma expressão durante a execução do programa.
       </p>
 
       <p>Se a expressão for verdadeira, o programa continua executando normalmente. Caso contrário, o programa é interrompido e uma mensagem de erro é exibida com informações sobre a falha.</p>
     </div>
 
-    <h2 class="sub-secao-lib">Funções</h2>
+    <h2 class="sub-section-text-lib">Funções</h2>
 
     <div class="btn-action-container">
       <a href="#assert" class="btn-action">assert()</a>
     </div>
 
     <section id="assert" class="func-container">
-      <h3 class="cabecalho_funcao">void assert(int expression)</h3>
+      <h3 class="func-header"><code class="language-c">void assert(int expression)</code></h3>
 
       <div class="func-description">
         <p>
-          A função <code>assert()</code> testa se uma expressão é verdadeira. Se a expressão for verdadeira, o programa continua executando normalmente. Se for falsa, o programa é interrompido e uma mensagem de erro é exibida.
+          A função <code class="code-inline">assert()</code> testa se uma expressão é verdadeira. Se a expressão for verdadeira, o programa continua executando normalmente. Se for falsa, o programa é interrompido e uma mensagem de erro é exibida.
         </p>
 
         <p>O uso da função pode aumentar o tamanho do código gerado e introduzir uma pequena sobrecarga na execução do programa.</p>
@@ -44,9 +44,9 @@
         </p>
       </div>
 
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <h4 class="sub-section-text-lib">Exemplo de uso</h4>
 
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+      <pre class="code-block">
 <code  class="language-c">#include &ltstdio.h&gt 
 #include &ltassert.h&gt
 
@@ -62,9 +62,9 @@ int main() {
 }</code>
 </pre>
 
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Saída</h4>
+      <h4 class="sub-section-text-lib">Saída do terminal</h4>
 
-      <pre class="bg-gray-800 text-gray-200 text-sm p-4 rounded-lg overflow-x-auto"><code>>clang-7 -pthread -lm -o main main.c 
+      <pre class="output-block"><code>>clang-7 -pthread -lm -o main main.c 
 >./main 
 i = 3 
 i = 4 

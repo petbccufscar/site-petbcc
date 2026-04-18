@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content %}
-  <section class="max-w-5xl mx-auto px-6 py-10 ">
+  <section class="lib-section">
     <!-- ================================================= -->
     <!-- TÍTULO -->
     <!-- ================================================= -->
 
-    <h1 class="titulo_biblioteca">&lt;ctype.h&gt;</h1>
+    <h1 class="lib-title">&lt;ctype.h&gt;</h1>
 
-    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
+    <div class="lib-description">
       <p>A maioria das funções deste arquivo de cabeçalhos serve para classificar caracteres ASCII, ou seja, determinar se um determinado byte representa uma letra, um dígito, um espaço em branco ou outro tipo de símbolo.</p>
       <p>
         Mesmo que o argumento de cada função não seja um <code>char</code> mas sim um inteiro positivo, o caractere passado para a função é convertido internamente para seu valor ASCII para a verificação.
@@ -23,32 +23,32 @@
     <!-- LISTA DE FUNÇÕES -->
     <!-- ================================================= -->
 
-    <h2 class="sub_secao_biblioteca">Funções</h2>
+    <h2 class="sub-section-text-lib">Funções</h2>
 
-    <div class="flex flex-wrap gap-2 mb-12">
-      <a href="#isalnum" class="btn_funcao">isalnum()</a>
-      <a href="#isalpha" class="btn_funcao">isalpha()</a>
-      <a href="#iscntrl" class="btn_funcao">iscntrl()</a>
-      <a href="#isdigit" class="btn_funcao">isdigit()</a>
-      <a href="#isgraph" class="btn_funcao">isgraph()</a>
-      <a href="#islower" class="btn_funcao">islower()</a>
-      <a href="#isprint" class="btn_funcao">isprint()</a>
-      <a href="#ispunct" class="btn_funcao">ispunct()</a>
-      <a href="#isspace" class="btn_funcao">isspace()</a>
-      <a href="#isupper" class="btn_funcao">isupper()</a>
-      <a href="#isxdigit" class="btn_funcao">isxdigit()</a>
-      <a href="#tolower" class="btn_funcao">tolower()</a>
-      <a href="#toupper" class="btn_funcao">toupper()</a>
+    <div class="btn-action-container">
+      <a href="#isalnum" class="btn-action">isalnum()</a>
+      <a href="#isalpha" class="btn-action">isalpha()</a>
+      <a href="#iscntrl" class="btn-action">iscntrl()</a>
+      <a href="#isdigit" class="btn-action">isdigit()</a>
+      <a href="#isgraph" class="btn-action">isgraph()</a>
+      <a href="#islower" class="btn-action">islower()</a>
+      <a href="#isprint" class="btn-action">isprint()</a>
+      <a href="#ispunct" class="btn-action">ispunct()</a>
+      <a href="#isspace" class="btn-action">isspace()</a>
+      <a href="#isupper" class="btn-action">isupper()</a>
+      <a href="#isxdigit" class="btn-action">isxdigit()</a>
+      <a href="#tolower" class="btn-action">tolower()</a>
+      <a href="#toupper" class="btn-action">toupper()</a>
     </div>
 
     <!-- ================================================= -->
     <!-- FUNÇÕES -->
     <!-- ================================================= -->
 
-    <section id="isalnum" class="func-section">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int isalnum(int c)</h3>
+    <section id="isalnum" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isalnum(int c)</code></h3>
 
-      <div class="space-y-4 text-gray-700 leading-relaxed">
+      <div class="func-description">
         <p>Testa se um caractere é alfanumérico.</p>
         <div class="func-meta">
           <strong>Recebe:</strong> um argumento inteiro cujo valor seja um caractere ou EOF.<br />
@@ -56,29 +56,25 @@
         </div>
       </div>
 
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-          #include &ltstdio.h&gt #include &ltctype.h&gt
+      <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+      <pre class="code-block">
+<code class="language-c">#include &ltstdio.h&gt #include &ltctype.h&gt
 
-          int main() {
+int main() {
+  char c = 'A';
 
-          char c = 'A';
+  if(isalnum(c)) printf("É alfanumérico\n");
 
-          if(isalnum(c)) printf("É alfanumérico\n");
+  return 0;
+}</code>
+</pre>
 
-          }
-        </code>
-      </pre>
-
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block">
-        <code>É alfanumérico</code>
-      </pre>
+      <h4 class="sub-section-text-lib">Saída esperada</h4>
+      <pre class="output-block"><code>É alfanumérico</code></pre>
     </section>
 
-    <section id="isalpha" class="func-section">
-      <div class="func-signature">int isalpha(int c)</div>
+    <section id="isalpha" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isalpha(int c)</code></h3>
 
       <p>Testa se um caractere é uma letra do alfabeto.</p>
 
@@ -88,8 +84,8 @@
       </div>
     </section>
 
-    <section id="iscntrl" class="func-section">
-      <div class="func-signature">int iscntrl(int c)</div>
+    <section id="iscntrl" class="func-container">
+      <h3 class="func-header"><code class="language-c">int iscntrl(int c)</code></h3>
 
       <p>Testa se um caractere é um caractere de controle ASCII.</p>
 
@@ -99,8 +95,8 @@
       </div>
     </section>
 
-    <section id="isdigit" class="func-section">
-      <div class="func-signature">int isdigit(int c)</div>
+    <section id="isdigit" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isdigit(int c)</code></h3>
 
       <p>Testa se um caractere é um dígito decimal (0–9).</p>
 
@@ -110,56 +106,56 @@
       </div>
     </section>
 
-    <section id="isgraph" class="func-section">
-      <div class="func-signature">int isgraph(int c)</div>
+    <section id="isgraph" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isgraph(int c)</code></h3>
 
       <p>Testa se um caractere possui representação gráfica.</p>
     </section>
 
-    <section id="islower" class="func-section">
-      <div class="func-signature">int islower(int c)</div>
+    <section id="islower" class="func-container">
+      <h3 class="func-header"><code class="language-c">int islower(int c)</code></h3>
 
       <p>Testa se o caractere é uma letra minúscula.</p>
     </section>
 
-    <section id="isprint" class="func-section">
-      <div class="func-signature">int isprint(int c)</div>
+    <section id="isprint" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isprint(int c)</code></h3>
 
       <p>Testa se um caractere é imprimível.</p>
     </section>
 
-    <section id="ispunct" class="func-section">
-      <div class="func-signature">int ispunct(int c)</div>
+    <section id="ispunct" class="func-container">
+      <h3 class="func-header"><code class="language-c">int ispunct(int c)</code></h3>
 
       <p>Testa se o caractere é um símbolo de pontuação.</p>
     </section>
 
-    <section id="isspace" class="func-section">
-      <div class="func-signature">int isspace(int c)</div>
+    <section id="isspace" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isspace(int c)</code></h3>
 
       <p>Testa se o caractere é um espaço em branco.</p>
     </section>
 
-    <section id="isupper" class="func-section">
-      <div class="func-signature">int isupper(int c)</div>
+    <section id="isupper" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isupper(int c)</code></h3>
 
       <p>Testa se o caractere é uma letra maiúscula.</p>
     </section>
 
-    <section id="isxdigit" class="func-section">
-      <div class="func-signature">int isxdigit(int c)</div>
+    <section id="isxdigit" class="func-container">
+      <h3 class="func-header"><code class="language-c">int isxdigit(int c)</code></h3>
 
       <p>Testa se o caractere é um dígito hexadecimal.</p>
     </section>
 
-    <section id="tolower" class="func-section">
-      <div class="func-signature">int tolower(int c)</div>
+    <section id="tolower" class="func-container">
+      <h3 class="func-header"><code class="language-c">int tolower(int c)</code></h3>
 
       <p>Converte uma letra maiúscula para minúscula.</p>
     </section>
 
-    <section id="toupper" class="func-section">
-      <div class="func-signature">int toupper(int c)</div>
+    <section id="toupper" class="func-container">
+      <h3 class="func-header"><code class="language-c">int toupper(int c)</code></h3>
 
       <p>Converte uma letra minúscula para maiúscula.</p>
     </section>
