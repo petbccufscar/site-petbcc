@@ -82,6 +82,23 @@ int main() {
         <strong>Recebe:</strong> inteiro representando caractere ou EOF.<br />
         <strong>Retorna:</strong> valor diferente de zero se for letra.
       </div>
+
+      <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+<pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = 'A';
+
+  if(isalpha(c)) printf("É alfabético\n");
+
+  return 0;
+}</code>
+</pre>
+
+      <h4 class="sub-section-text-lib">Saída esperada</h4>
+      <pre class="output-block"><code>É alfabético</code></pre>
     </section>
 
     <section id="iscntrl" class="func-container">
@@ -110,54 +127,99 @@ int main() {
       <h3 class="func-header"><code class="language-c">int isgraph(int c)</code></h3>
 
       <p>Testa se um caractere possui representação gráfica.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="islower" class="func-container">
       <h3 class="func-header"><code class="language-c">int islower(int c)</code></h3>
 
       <p>Testa se o caractere é uma letra minúscula.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="isprint" class="func-container">
       <h3 class="func-header"><code class="language-c">int isprint(int c)</code></h3>
 
       <p>Testa se um caractere é imprimível.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="ispunct" class="func-container">
       <h3 class="func-header"><code class="language-c">int ispunct(int c)</code></h3>
 
       <p>Testa se o caractere é um símbolo de pontuação.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="isspace" class="func-container">
       <h3 class="func-header"><code class="language-c">int isspace(int c)</code></h3>
 
       <p>Testa se o caractere é um espaço em branco.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="isupper" class="func-container">
       <h3 class="func-header"><code class="language-c">int isupper(int c)</code></h3>
 
       <p>Testa se o caractere é uma letra maiúscula.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="isxdigit" class="func-container">
       <h3 class="func-header"><code class="language-c">int isxdigit(int c)</code></h3>
 
       <p>Testa se o caractere é um dígito hexadecimal.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="tolower" class="func-container">
       <h3 class="func-header"><code class="language-c">int tolower(int c)</code></h3>
 
       <p>Converte uma letra maiúscula para minúscula.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
 
     <section id="toupper" class="func-container">
       <h3 class="func-header"><code class="language-c">int toupper(int c)</code></h3>
 
       <p>Converte uma letra minúscula para maiúscula.</p>
+      
+      <div class="func-meta">
+        <strong>Recebe:</strong> caractere ou EOF.<br />
+        <strong>Retorna:</strong> valor diferente de zero se for dígito.
+      </div>
     </section>
   </section>
 {% endblock %}
