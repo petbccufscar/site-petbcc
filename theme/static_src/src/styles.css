@@ -10,4 +10,8 @@
   .btn_funcao {
     @apply px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm;
   }
+
+  .sub_secao_biblioteca{
+    @apply text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600;
+  }
 }
