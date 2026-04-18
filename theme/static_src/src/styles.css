@@ -3,15 +3,64 @@
 @tailwind utilities;
 
 @layer components {
-  .titulo_biblioteca {
-    @apply text-4xl font-bold mb-8 text-orange-600 border-b pb-4;
+  /* Layout e Containers */
+  .lib-section {
+    @apply max-w-5xl mx-auto px-6 py-10;
   }
 
-  .btn_funcao {
-    @apply px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm;
+  /* Tipografia: Títulos e Subtítulos */
+  .lib-title, .sub-secao-lib {
+    @apply font-semibold text-orange-600 border-b pb-2 mb-4;
   }
 
-  .sub_secao_biblioteca{
-    @apply text-2xl font-semibold mt-10 mb-4 border-b pb-2 text-orange-600;
+  .lib-title {
+    @apply text-4xl font-bold mb-8 pb-4; /* Especialização para o título principal */
+  }
+
+  .sub-secao-lib {
+    @apply text-2xl mt-10; /* Especialização para subtítulos */
+  }
+
+  .lib-description {
+    @apply text-gray-700 leading-relaxed mb-10 space-y-4;
+  }
+
+  /* Componentes de Código (Unificados) */
+  .code-base {
+    @apply font-mono rounded-lg overflow-x-auto;
+  }
+
+  .func-signature {
+    @apply code-base bg-gray-900 text-green-400 text-lg px-5 py-3 mb-5;
+  }
+
+  .code-block {
+    @apply code-base bg-gray-900 text-green-400 p-5 text-sm;
+  }
+
+  .output-block {
+    @apply code-base bg-gray-800 text-gray-200 p-5 text-sm;
+  }
+
+  .btn-action-container {
+    @apply flex flex-wrap gap-3 mb-12
+  }
+
+  /* Elementos de Interface / Botões */
+  .btn-action {
+    @apply px-4 py-2 bg-orange-100 text-orange-700 rounded-md hover:bg-orange-200 transition font-mono text-sm inline-block;
+  }
+
+  /* Metadados e Cabeçalhos de Função */
+  .func-meta {
+    @apply bg-gray-50 border rounded-lg p-4 mt-5 text-gray-700;
+  }
+
+  .func-header {
+    @apply text-lg font-semibold text-gray-900 mb-3 font-mono;
+  }
+
+  .func-container {
+    @apply mb-16 scroll-mt-24;
   }
 }

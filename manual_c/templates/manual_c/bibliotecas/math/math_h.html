@@ -5,128 +5,823 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="text-gray-800 font-bold text-2xl">&ltmath.h&gt</h1>
+  <section class="max-w-5xl mx-auto px-6 py-10 ">
+    <h1 class="titulo_biblioteca">&lt;math.h&gt;</h1>
 
-  <div class="space-y-6">
-    <div>
-      <h1 class="text-orange-600 font-semibold text-lg mb-2">Descrição:</h1>
-      <p class="text-gray-700 text-justify">
-        Na biblioteca <b class="text-orange-700">&ltmath.h&gt</b> estão contidas diversas funções matemáticas básicas, com ela podemos trabalhar com funções trigonométricas, funções para cálculo de raiz quadrada, valor absoluto, entre outras. Esta listagem apresenta as seguintes funções conforme definidas pelo padrão C99. A inclusão das funções da biblioteca matemática são feitas com a opção de compilação <b>-lm</b>. Vale lembrar que todas as funções dessa biblioteca retornam valores do tipo double. Veremos, a seguir, todas elas.
+    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
+      <p>Na biblioteca <b>&lt;math.h&gt;</b> estão contidas diversas funções matemáticas básicas. Com ela, podemos trabalhar com funções trigonométricas, funções para cálculo de raiz quadrada, valor absoluto, entre outras.</p>
+      <p>
+        Esta listagem apresenta as funções conforme definidas pelo padrão C99. A inclusão das funções da biblioteca matemática é feita com a opção de compilação <code>-lm</code>. Vale lembrar que todas as funções dessa biblioteca retornam valores do tipo <code>double</code>. Veremos, a seguir, todas elas.
       </p>
     </div>
-    <div class="space-y-4">
-      <h1 class="text-orange-600 font-semibold text-lg mb-2">Funções:</h1>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#acos"><h3>double acos(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o cosseno de um ângulo; isto é, um número entre -1 e 1, tal que -1&lt=cosseno&lt=1</div>
-        <div class="text-gray-700 mb-2">RECEBE: o ângulo, em radianos, do cosseno que foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#asin"><h3>double asin(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o seno de um ângulo, tal que, -1 &lt= seno &lt= 1.</div>
-        <div class="text-gray-700 mb-2">RECEBE: o ângulo, em radianos, cujo seno foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#atan"><h3>double atan(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: a tangente de um ângulo.</div>
-        <div class="text-gray-700 mb-2">RECEBE: o ângulo, em radianos, cuja tangente foi informado como parâmetro.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#atan2"><h3>double atan2(double x, double y)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o arco tangente de y / x no intervalo de π a π radianos, dos valores informados como parâmetros.</div>
-        <div class="text-gray-700 mb-2">RECEBE: dois argumentos do tipo double: x, y. Elas são representações de um ponto no plano cartesiano.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#cos"><h3>double cos(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o valor do cosseno do ângulo que foi informado como parâmetro.</div>
-        <div class="text-gray-700 mb-2">RECEBE: um ângulo em radianos.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#sin"><h3>double sin(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o valor do seno do ângulo que foi informado como parâmetro.</div>
-        <div class="text-gray-700 mb-2">RECEBE: um ângulo em radianos.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#tan"><h3>double tan(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o valor da tangente do ângulo que foi informado como parâmetro.</div>
-        <div class="text-gray-700 mb-2">RECEBE: um ângulo em radianos.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#cosh"><h3>double cosh(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o cosseno hiperbólico do valor informado como parâmetro.</div>
-        <div class="text-gray-700 mb-2">RECEBE:o valor de um ângulo em radianos.</div>
-      </div>
 
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#sinh"><h3>double sinh(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o seno hiperbólico do valor informado como parâmetro.</div>
-        <div class="text-gray-700 mb-2">RECEBE: o valor de um ângulo em radianos.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#tanh"><h3>double tanh(double x, double y)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: a tangente hiperbólica do valor informado como parâmetro.</div>
-        <div class="text-gray-700 mb-2">RECEBE: o valor de um ângulo em radianos.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#exp"><h3>double exp(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o número de Euler (~2.71) elevado a x: ex = exp(x), informado como parâmetro.</div>
-        <div class="text-gray-700 mb-2">RECEBE: um número x do tipo double.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#log"><h3>double log(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o valor de ln x, ou seja, o logaritmo de x na base e.</div>
-        <div class="text-gray-700 mb-2">RECEBE: um valor x do tipo double.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#log10"><h3>double log10(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o valor de ln x, ou seja, o logaritmo de x na base e.</div>
-        <div class="text-gray-700 mb-2">RECEBE: um valor x do tipo double.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#modf"><h3>double modf(double x, double *p)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: a parte decimal de x no valor da função e a parte inteira de x no parâmetro p.</div>
-        <div class="text-gray-700 mb-2">RECEBE: o valor double x e o endereço de um double p.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#pow"><h3>double pow(double x, double y)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: x elevado a y.</div>
-        <div class="text-gray-700 mb-2">RECEBE: dois valores do tipo double, x e y, em que x será a base e y será o expoente.</div>
-      </div>
+    <h2 class="sub_secao_biblioteca">Funções</h2>
 
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#sqrt"><h3>double sqrt(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: a raiz quadrada de x ou NaN se x for negativo.</div>
-        <div class="text-gray-700 mb-2">RECEBE: x, um valor do tipo double.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#ceil"><h3>double ceil(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o menor inteiro maior ou igual a x.</div>
-        <div class="text-gray-700 mb-2">RECEBE: x, um valor do tipo double.</div>
-      </div>
-      <div>
-        <a class="text-orange-700" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#fabs"><h3>double fabs(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA: o módulo de x.</div>
-        <div class="text-gray-700 mb-2">RECEBE: x, um valor do tipo double.</div>
-      </div>
-      <div>
-        <a class="manC_laranja odd" href="{% url 'manual_c:biblioteca_funcoes' 'math' %}#floor"><h3>double floor(double x)</h3></a>
-        <div class="text-gray-700 mb-2">RETORNA:o maior valor inteiro menor ou igual a x.</div>
-        <div class="text-gray-700 mb-2">RECEBE: x, um valor do tipo double.</div>
-      </div>
-      <br />
+    <div class="flex flex-wrap gap-2 mb-12">
+      <a href="#acos" class="btn_funcao">acos()</a>
+      <a href="#asin" class="btn_funcao">asin()</a>
+      <a href="#atan" class="btn_funcao">atan()</a>
+      <a href="#atan2" class="btn_funcao">atan2()</a>
+      <a href="#ceil" class="btn_funcao">ceil()</a>
+      <a href="#cos" class="btn_funcao">cos()</a>
+      <a href="#cosh" class="btn_funcao">cosh()</a>
+      <a href="#exp" class="btn_funcao">exp()</a>
+      <a href="#fabs" class="btn_funcao">fabs()</a>
+      <a href="#floor" class="btn_funcao">floor()</a>
+      <a href="#frexp" class="btn_funcao">frexp()</a>
+      <a href="#ldexp" class="btn_funcao">ldexp()</a>
+      <a href="#log" class="btn_funcao">log()</a>
+      <a href="#log10" class="btn_funcao">log10()</a>
+      <a href="#modf" class="btn_funcao">modf()</a>
+      <a href="#pow" class="btn_funcao">pow()</a>
+      <a href="#sin" class="btn_funcao">sin()</a>
+      <a href="#sinh" class="btn_funcao">sinh()</a>
+      <a href="#sqrt" class="btn_funcao">sqrt()</a>
+      <a href="#tan" class="btn_funcao">tan()</a>
+      <a href="#tanh" class="btn_funcao">tanh()</a>
     </div>
-  </div>
 
-  {% comment %}TODO: REMOVER{% endcomment %}
-  <main role="main">
-    <section role="region">
-      <div class="md:flex gap-6">
-        <div class="md:w-1/4">
-          {% block sidebar_content2 %}
-            {% include 'manual_c/libs/math/rightSidebar.html' %}
-          {% endblock %}
+    <section id="acos" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double acos(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o arco cosseno de um valor.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> o cosseno de um ângulo; isto é, um número entre -1 e 1 → -1 &lt;= cosseno &lt;= 1.<br />
+          <strong>Retorna:</strong> o ângulo, em radianos, do cosseno que foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.
         </div>
       </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                  
+#include &lt;math.h&gt;
+    
+int main() {
+    double cosseno;
+    scanf("%lf", &cosseno);
+    printf("o angulo cujo cosseno eh %.3lf, eh %.3lf aproximadamente", cosseno, acos(cosseno));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+0.5
+o angulo cujo consseno eh 0.500, eh 1.047 aproximadamente
+        </code>
+      </pre>
     </section>
-  </main>
+
+    <section id="asin" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double asin(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o arco seno de um valor.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> o seno de um ângulo, tal que, -1 &lt;= seno &lt;= 1.<br />
+          <strong>Retorna:</strong> o ângulo, em radianos, cujo seno foi informado como parâmetro ou NaN se o argumento estiver fora do domínio de entrada.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double seno;
+    scanf("%lf", &seno);
+    printf("o angulo cujo seno eh %.3lf, eh %.3lf aproximadamente", seno, asin(seno));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+0.5
+o angulo cujo seno eh 0.500, eh 0.524 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+    <section id="atan" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double atan(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula a arco tangente de um valor.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> a tangente de um ângulo.<br />
+          <strong>Retorna:</strong> o ângulo, em radianos, cuja tangente foi informada como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double tangente;
+    scanf("%lf", &tangente);
+    printf("o angulo cuja tangente eh %.3lf, eh %.3lf aproximadamente", tangente, atan(tangente));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+1
+o angulo cuja tangente eh 1.000, eh 0.785 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+    <section id="atan2" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double atan2(double x, double y)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o arco tangente de y / x.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> dois argumentos do tipo <code>double</code>: x, y. Elas são representações de um ponto no plano cartesiano.<br />
+          <strong>Retorna:</strong> o arco tangente de y / x no intervalo de -π a π radianos, dos valores informados como parâmetros.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x, y;
+    scanf("%lf %lf", &x, &y);
+    printf("%lf", atan2(y,x));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+2
+2
+0.785398
+        </code>
+      </pre>
+    </section>
+
+    <section id="ceil" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double ceil(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Arredonda um número para cima (teto).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> x, um valor do tipo <code>double</code>.<br />
+          <strong>Retorna:</strong> o menor inteiro maior ou igual a x.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x;
+    scanf("%lf", &x);
+    printf("%.2lf", ceil(x));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+6.55
+6.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="cos" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double cos(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o cosseno de um ângulo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um ângulo em radianos.<br />
+          <strong>Retorna:</strong> o valor do cosseno do ângulo que foi informado como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double angulo;
+    scanf("%lf", &angulo);
+    printf("o cosseno de %.3lf, eh %.3lf aproximadamente", angulo, cos(angulo));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+1.047
+o cosseno de 1.047, eh 0.500 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+    <section id="cosh" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double cosh(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o cosseno hiperbólico de um ângulo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> o valor de um ângulo em radianos.<br />
+          <strong>Retorna:</strong> o cosseno hiperbólico do ângulo que foi informado como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double angulo;
+    scanf("%lf", &angulo);
+    printf("o cosseno hiperbólico de %.3lf, eh %.3lf aproximadamente", angulo, cosh(angulo));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+3.14
+o cosseno hiperbólico de 3.140, eh 11.574 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+    <section id="exp" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double exp(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula a função exponencial.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um número x do tipo <code>double</code>.<br />
+          <strong>Retorna:</strong> o número de Euler (~2.71) elevado a x: e<sup>x</sup> = exp(x), informado como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x;
+    scanf("%lf", &x);
+    printf("%.2lf", exp(x));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+1
+2.72
+        </code>
+      </pre>
+    </section>
+
+    <section id="fabs" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double fabs(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o valor absoluto (módulo) de um número de ponto flutuante.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> x, um valor do tipo <code>double</code>.<br />
+          <strong>Retorna:</strong> o módulo de x.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x;
+    scanf("%lf", &x);
+    printf("%.2lf", fabs(x));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+-9
+9.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="floor" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double floor(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Arredonda um número para baixo (chão).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> x, um valor do tipo <code>double</code>.<br />
+          <strong>Retorna:</strong> o maior valor inteiro menor ou igual a x.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x;
+    scanf("%lf", &x);
+    printf("%.2lf", floor(x));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+8.79
+8.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="frexp" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double frexp(double x, int *expoente)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Divide um número de ponto flutuante em uma fração (mantissa) e um expoente.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> dois parâmetros, um do tipo <code>double</code> e outro do tipo ponteiro para o expoente inteiro armazenado.<br />
+          <strong>Retorna:</strong> a mantissa (m). Se x for 0, a função retornará 0 para a mantissa e o expoente. A função divide o valor de ponto flutuante (x) em uma mantissa (m) e um expoente (n), de modo que o valor absoluto da mantissa seja maior ou igual a 0,5 e menor que 1,0 e x = m * 2<sup>n</sup>. O expoente inteiro n é armazenado no local apontado pelo ponteiro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    float x;
+    int expoente;
+    scanf("%f", &x);
+    printf("%.2lf", frexp(x, &expoente));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+1024
+0.50
+        </code>
+      </pre>
+    </section>
+
+    <section id="ldexp" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double ldexp(double x, int *expoente)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Multiplica um número de ponto flutuante por 2 elevado a um expoente inteiro.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> x, do tipo <code>double</code> que será a base e exp do tipo <code>int</code> que será o expoente.<br />
+          <strong>Retorna:</strong> x * 2<sup>exp</sup> dos valores informados como parâmetros.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x;
+    int expoente;
+    scanf("%lf %d", &x, &expoente);
+    printf("%.2lf", ldexp(x, expoente));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+4
+3
+32.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="log" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double log(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o logaritmo natural (base e) de um número.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um valor x do tipo <code>double</code>.<br />
+          <strong>Retorna:</strong> o valor de ln x, ou seja, o logaritmo de x na base e.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+  double x;
+  scanf("%lf", &x);
+  printf("%.2lf", log(x));
+  return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+2.718
+1.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="log10" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double log10(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o logaritmo na base 10 de um número.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um valor x do tipo <code>double</code>.<br />
+          <strong>Retorna:</strong> o valor do logaritmo de x na base 10.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x;
+    scanf("%lf", &x);
+    printf("%.2lf", log10(x));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+100
+2.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="modf" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double modf(double x, double *p)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Separa um número de ponto flutuante em partes inteira e fracionária.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> o valor <code>double</code> x e o endereço de um <code>double</code> p.<br />
+          <strong>Retorna:</strong> a parte decimal de x no valor da função e a parte inteira de x no parâmetro p.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x, p;
+    scanf("%lf", &x);
+    printf("%.5lf", modf(x, &p));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+2.58974
+0.58974
+        </code>
+      </pre>
+    </section>
+
+    <section id="pow" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double pow(double x, double y)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula a potência de um número (base elevada ao expoente).</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> dois valores do tipo <code>double</code>, x e y, em que x será a base e y será o expoente.<br />
+          <strong>Retorna:</strong> x elevado a y.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x, y;
+    scanf("%lf%lf", &x, &y);
+    printf("%.2lf", pow(x, y));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+2
+5
+32.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="sin" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double sin(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o seno de um ângulo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um ângulo em radianos.<br />
+          <strong>Retorna:</strong> o valor do seno do ângulo que foi informado como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double angulo;
+    scanf("%lf", &angulo);
+    printf("o seno de %.3lf, eh %.3lf aproximadamente", angulo, sin(angulo));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+1.047
+o seno de 1.047, eh 0.866 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+    <section id="sinh" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double sinh(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula o seno hiperbólico de um ângulo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um ângulo em radianos.<br />
+          <strong>Retorna:</strong> o seno hiperbólico do ângulo que foi informado como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double angulo;
+    scanf("%lf", &angulo);
+    printf("o seno hiperbólico de %.3lf, eh %.3lf aproximadamente", angulo, sinh(angulo));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+3.14
+o seno hiperbólico de 3.140, eh 11.530 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+    <section id="sqrt" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double sqrt(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula a raiz quadrada de um número.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> x, um valor do tipo <code>double</code>.<br />
+          <strong>Retorna:</strong> a raiz quadrada de x ou NaN se x for negativo.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double x;
+    scanf("%lf", &x);
+    printf("%.2lf", sqrt(x));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+16
+4.00
+        </code>
+      </pre>
+    </section>
+
+    <section id="tan" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double tan(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula a tangente de um ângulo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um ângulo em radianos.<br />
+          <strong>Retorna:</strong> o valor da tangente do ângulo que foi informado como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double angulo;
+    scanf("%lf", &angulo);
+    printf("a tangente de %.3lf, eh %.3lf aproximadamente", angulo, tan(angulo));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+1.047
+o seno de 1.047, eh 1.731 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+    <section id="tanh" class="func-section mb-10">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double tanh(double x)</h3>
+
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>Calcula a tangente hiperbólica de um ângulo.</p>
+        <div class="func-meta">
+          <strong>Recebe:</strong> um ângulo em radianos.<br />
+          <strong>Retorna:</strong> a tangente hiperbólica do ângulo que foi informado como parâmetro.
+        </div>
+      </div>
+
+      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
+      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+        <code class="language-c">
+#include &lt;stdio.h&gt;                                          
+#include &lt;math.h&gt;
+
+int main() {
+    double angulo;
+    scanf("%lf", &angulo);
+    printf("a tangente hiperbólica de %.3lf, eh %.3lf aproximadamente", angulo, tanh(angulo));
+    return 0;
+}
+        </code>
+      </pre>
+
+      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
+      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
+        <code>
+>clang-7 -pthread -lm -o main main.c
+>./main
+5
+a tangente hiperbólica de 5, eh 1.000 aproximadamente
+        </code>
+      </pre>
+    </section>
+
+  </section>
 {% endblock %}
