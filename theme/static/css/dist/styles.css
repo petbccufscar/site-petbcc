@@ -842,9 +842,22 @@ input:where([type='file']):focus {
 }
 
 .lib-description {
+  text-align: justify;
   line-height: 1.625;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+.list-lib-description {
+  margin-left: 1.5rem;
+  margin-bottom: 2.5rem;
+  list-style-type: disc;
+}
+
+.list-lib-description > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
 .code-inline {
@@ -926,6 +939,8 @@ input:where([type='file']):focus {
   margin-top: 1.25rem;
   border-radius: 0.5rem;
   border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(254 215 170 / var(--tw-border-opacity, 1));
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
   padding: 1rem;
@@ -960,6 +975,32 @@ input:where([type='file']):focus {
   scroll-margin-top: 6rem;
 }
 
+.macro-description {
+  margin-bottom: 1rem;
+  text-align: justify;
+  line-height: 1.625;
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+.list-macro-description {
+  margin-left: 1.5rem;
+  margin-bottom: 2.5rem;
+  list-style-type: disc;
+}
+
+.list-macro-description > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
+.list-macro-description {
+  text-align: justify;
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
 .visible {
   visibility: visible;
 }
@@ -984,6 +1025,10 @@ input:where([type='file']):focus {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   inset: 0px;
 }
@@ -994,6 +1039,10 @@ input:where([type='file']):focus {
 
 .top-0 {
   top: 0px;
+}
+
+.top-\[100px\] {
+  top: 100px;
 }
 
 .z-0 {
@@ -1395,6 +1444,18 @@ input:where([type='file']):focus {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.justify-self-center {
+  justify-self: center;
 }
 
 .overflow-hidden {

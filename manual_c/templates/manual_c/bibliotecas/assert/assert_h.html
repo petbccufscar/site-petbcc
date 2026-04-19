@@ -1,49 +1,58 @@
 {% extends 'manual_c/base.html' %}
 
 {% block title %}
-  assert.h - Manual C
+assert.h - Manual C
 {% endblock %}
 
 {% block content %}
-  <section class="lib-section">
-    <h1 class="lib-title">&lt;assert.h&gt;</h1>
+<section class="lib-section">
+  <h1 class="lib-title">&lt;assert.h&gt;</h1>
 
-    <div class="lib-description">
+  <div class="lib-description">
+    <p>
+      O arquivo de cabeçalhos <strong>&lt;assert.h&gt;</strong> possui a função
+      <code class="code-inline">assert()</code>, utilizada para verificar a veracidade de uma expressão durante a
+      execução do programa.
+    </p>
+
+    <p>Se a expressão for verdadeira, o programa continua executando normalmente. Caso contrário, o programa é
+      interrompido e uma mensagem de erro é exibida com informações sobre a falha.</p>
+  </div>
+
+  <h2 class="sub-section-text-lib">Funções</h2>
+
+  <div class="btn-action-container">
+    <a href="#assert" class="btn-action">assert()</a>
+  </div>
+
+  <section id="assert" class="func-container">
+    <h3 class="func-header"><code class="language-c">void assert(int expression)</code></h3>
+
+    <div class="func-description">
       <p>
-        O arquivo de cabeçalhos <strong>&lt;assert.h&gt;</strong> possui a função
-        <code class="code-inline">assert()</code>, utilizada para verificar a veracidade de uma expressão durante a execução do programa.
+        A função <code class="code-inline">assert()</code> testa se uma expressão é verdadeira. Se a expressão for
+        verdadeira, o programa continua executando normalmente. Se for falsa, o programa é interrompido e uma mensagem
+        de erro é exibida.
       </p>
 
-      <p>Se a expressão for verdadeira, o programa continua executando normalmente. Caso contrário, o programa é interrompido e uma mensagem de erro é exibida com informações sobre a falha.</p>
-    </div>
+      <p>O uso da função pode aumentar o tamanho do código gerado e introduzir uma pequena sobrecarga na execução do
+        programa.</p>
 
-    <h2 class="sub-section-text-lib">Funções</h2>
-
-    <div class="btn-action-container">
-      <a href="#assert" class="btn-action">assert()</a>
-    </div>
-
-    <section id="assert" class="func-container">
-      <h3 class="func-header"><code class="language-c">void assert(int expression)</code></h3>
-
-      <div class="func-description">
+      <div class="func-meta">
         <p>
-          A função <code class="code-inline">assert()</code> testa se uma expressão é verdadeira. Se a expressão for verdadeira, o programa continua executando normalmente. Se for falsa, o programa é interrompido e uma mensagem de erro é exibida.
+          <strong>Recebe:</strong>
+          uma expressão lógica a ser avaliada.
         </p>
-
-        <p>O uso da função pode aumentar o tamanho do código gerado e introduzir uma pequena sobrecarga na execução do programa.</p>
-
-        <div class="func-meta">
-            <strong>Recebe:</strong><br />
-            uma expressão lógica a ser avaliada.
-            <strong>Retorna:</strong><br />
-            não possui valor de retorno.
-        </div>
+        <p>
+          <strong>Retorna:</strong>
+          não possui valor de retorno.
+        </p>
       </div>
+    </div>
 
-      <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
 
-      <pre class="code-block">
+    <pre class="code-block">
 <code  class="language-c">#include &ltstdio.h&gt 
 #include &ltassert.h&gt
 
@@ -59,9 +68,9 @@ int main() {
 }</code>
 </pre>
 
-      <h4 class="sub-section-text-lib">Saída do terminal</h4>
+    <h4 class="sub-section-text-lib">Saída do terminal</h4>
 
-      <pre class="output-block"><code>>clang-7 -pthread -lm -o main main.c 
+    <pre class="output-block"><code>>clang-7 -pthread -lm -o main main.c 
 >./main 
 i = 3 
 i = 4 
@@ -70,6 +79,6 @@ i = 6
 i = 7 
 main: main.c:9: int main(): Assertion 'i <= 7' failed. 
 exited, aborted</code></pre>
-    </section>
   </section>
+</section>
 {% endblock %}
