@@ -187,7 +187,7 @@ int main(void) {
         int itens_lidos = fread(copia, sizeof(char), 99, arquivo);
 
         printf("Foram lidos %d itens\n", itens_lidos); 
-        for(int i = 0; i < itens_lidos; i++) {
+        for(int i = 0; i &lt; itens_lidos; i++) {
             printf("%c", copia[i]); 
         }
         printf("\n");
@@ -606,12 +606,12 @@ int main(void) {
 int main(void) { 
     int numeros[7];
 
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i &lt; 7; i++) {
         scanf("%d", &numeros[i]);
     }
 
     putchar('{'); 
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i &lt; 7; i++) {
         printf("%d, ", numeros[i]); 
     }
     printf("...}\n");
@@ -723,7 +723,7 @@ int main(void) {
     int i = 0;
 
     // Interromper a leitura no EOF (teclas Ctrl+D em Linux/Mac, Ctrl+Z em Windows)
-    while ((c = getchar()) != EOF && i < 98) {
+    while ((c = getchar()) != EOF && i &lt; 98) {
         frase[i++] = c;
     }
     frase[i] = '\0';

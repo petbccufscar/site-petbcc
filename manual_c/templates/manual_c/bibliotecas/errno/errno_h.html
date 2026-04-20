@@ -12,7 +12,8 @@ errno.h - Manual C
 
   <div class="lib-description">
     <p class="mb-4">
-      O arquivo de cabeçalhos <strong class="text-orange-600">&lterrno.h&gt</strong> fornece alguns macros de números inteiros para reconhecer e relatar
+      O arquivo de cabeçalhos <strong class="text-orange-600">&lterrno.h&gt</strong> fornece alguns macros de números
+      inteiros para reconhecer e relatar
       erros de execução através de códigos de erro, esses códigos são fornecidos pelo próprio sistema operacional e
       retornados ao programa durante sua execução.
     </p>
@@ -53,10 +54,10 @@ errno.h - Manual C
 
   <h2 class="sub-section-text-lib">Exemplo de uso</h2>
 
-  <pre class="code-block"><code class="language-c">#include &ltstdio.h&gt 
-#include &ltmath.h&gt 
-#include &lterrno.h&gt 
-#include &ltstring.h&gt
+  <pre class="code-block"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;string.h&gt;
 
 int main() { 
 
@@ -73,14 +74,14 @@ int main() {
 
   <h2 class="sub-section-text-lib">Saída do terminal</h2>
 
-  <pre class="output-block"><code>>clang-7 -pthread -lm -o main main.c 
->./main 
+  <pre class="output-block"><code>&gt;clang-7 -pthread -lm -o main main.c 
+&gt;./main 
 log(-1.0) = -nan 
-Erro de número 33 obtido! 
-Descrição do erro: Numerical argument out of domain
+<span class="text-red-500">Erro de número 33 obtido!</span>
+<span class="text-red-500">Descrição do erro: Numerical argument out of domain</span>
 
 log(0.0) = -inf 
-Erro de número 34 obtido! 
-Descrição do erro: Numerical result out of range</code></pre>
+<span class="text-red-500"></span>Erro de número 34 obtido!</span> 
+<span class="text-red-500">Descrição do erro: Numerical result out of range</span></code></pre>
 </section>
 {% endblock %}

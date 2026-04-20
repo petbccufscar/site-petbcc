@@ -107,9 +107,11 @@ int main () {
         <p><strong>Retorna:</strong>
         <ul class="list-disc ml-6 mt-2">
           <li>Se o valor for <code class="code-inline">&lt; 0</code>: <code class="code-inline">str1</code> é menor que
-            <code class="code-inline">str2</code>.</li>
+            <code class="code-inline">str2</code>.
+          </li>
           <li>Se o valor for <code class="code-inline">&gt; 0</code>: <code class="code-inline">str1</code> é maior que
-            <code class="code-inline">str2</code>.</li>
+            <code class="code-inline">str2</code>.
+          </li>
           <li>Se o valor for <code class="code-inline">== 0</code>: os blocos são idênticos nos primeiros <code
               class="code-inline">n</code> bytes.</li>
         </ul>
@@ -132,9 +134,9 @@ int main () {
 
    ret = memcmp(str1, str2, 5);
 
-   if(ret > 0) {
+   if(ret &gt; 0) {
       printf("str2 eh menor que str1\n");
-   } else if(ret < 0) {
+   } else if(ret &lt; 0) {
       printf("str1 eh menor que str2\n");
    } else {
       printf("str1 eh igual a str2\n");
@@ -190,7 +192,8 @@ Depois do memcpy dest = http://www.pet.inf.ufscar.br</code></pre>
     <div class="func-description">
       <p>Copia <code class="code-inline">n</code> bytes da área de memória <code class="code-inline">str2</code> para
         <code class="code-inline">str1</code>. Diferente da <code class="code-inline">memcpy</code>, esta função lida
-        com segurança caso os blocos de memória se sobreponham.</p>
+        com segurança caso os blocos de memória se sobreponham.
+      </p>
       <div class="func-meta">
         <p><strong>Recebe:</strong> O ponteiro de destino, o ponteiro de origem e o número de bytes a serem movidos.</p>
         <p><strong>Retorna:</strong> Um ponteiro para o destino (<code class="code-inline">str1</code>).</p>
@@ -382,9 +385,11 @@ int main () {
         <p><strong>Retorna:</strong>
         <ul class="list-disc ml-6 mt-2">
           <li>Se o valor for <code class="code-inline">&lt; 0</code>: <code class="code-inline">str1</code> é menor que
-            <code class="code-inline">str2</code>.</li>
+            <code class="code-inline">str2</code>.
+          </li>
           <li>Se o valor for <code class="code-inline">&gt; 0</code>: <code class="code-inline">str1</code> é maior que
-            <code class="code-inline">str2</code>.</li>
+            <code class="code-inline">str2</code>.
+          </li>
           <li>Se o valor for <code class="code-inline">== 0</code>: ambas as strings são idênticas.</li>
         </ul>
         </p>
@@ -406,9 +411,9 @@ int main () {
 
    ret = strcmp(str1, str2);
 
-   if(ret < 0) {
+   if(ret &lt; 0) {
       printf("str1 is less than str2\n");
-   } else if(ret > 0) {
+   } else if(ret &gt; 0) {
       printf("str2 is less than str1\n");
    } else {
       printf("str1 is equal to str2\n");
@@ -461,9 +466,9 @@ int main () {
    // Compara apenas os primeiros 4 caracteres
    ret = strncmp(str1, str2, 4);
 
-   if(ret < 0) {
+   if(ret &lt; 0) {
       printf("str1 is less than str2\n");
-   } else if(ret > 0) {
+   } else if(ret &gt; 0) {
       printf("str2 is less than str1\n");
    } else {
       printf("str1 is equal to str2\n");
@@ -488,7 +493,8 @@ int main () {
         <p><strong>Retorna:</strong>
         <ul class="list-disc ml-6 mt-2">
           <li>Se o valor for <code class="code-inline">&lt; 0</code>: <code class="code-inline">str1</code> vem antes de
-            <code class="code-inline">str2</code> conforme a localidade.</li>
+            <code class="code-inline">str2</code> conforme a localidade.
+          </li>
           <li>Se o valor for <code class="code-inline">&gt; 0</code>: <code class="code-inline">str1</code> vem depois
             de <code class="code-inline">str2</code> conforme a localidade.</li>
           <li>Se o valor for <code class="code-inline">== 0</code>: as strings são consideradas equivalentes na
@@ -513,9 +519,9 @@ int main () {
 
    ret = strcoll(str1, str2);
 
-   if(ret > 0) {
+   if(ret &gt; 0) {
       printf("str1 eh maior que str2\n");
-   } else if(ret < 0) {
+   } else if(ret &lt; 0) {
       printf("str2 eh maior que str1\n");
    } else {
       printf("str1 eh igual a str2\n");
@@ -581,7 +587,8 @@ int main () {
         <p><strong>Retorna:</strong> Um ponteiro para a string de destino (<code class="code-inline">dest</code>).
           <strong>Atenção:</strong> se não houver um caractere nulo nos primeiros <code class="code-inline">n</code>
           bytes de <code class="code-inline">src</code>, a string resultante em <code class="code-inline">dest</code>
-          não será terminada em nulo.</p>
+          não será terminada em nulo.
+        </p>
       </div>
     </div>
 
@@ -881,7 +888,8 @@ Há um total de 0 dígitos iniciais na string fonteB.</code></pre>
 
     <div class="func-description">
       <p>Localiza a primeira ocorrência da string completa <code class="code-inline">comparacao</code> dentro da string
-        <code class="code-inline">fonte</code>.</p>
+        <code class="code-inline">fonte</code>.
+      </p>
       <div class="func-meta">
         <p><strong>Recebe:</strong> A string principal onde será feita a busca e a subsequência a ser procurada.</p>
         <p><strong>Retorna:</strong> Um ponteiro para o início da primeira ocorrência encontrada em <code
@@ -983,5 +991,6 @@ Tutoria
 BCC
 UFSCar</code></pre>
   </section>
+</section>
 
-  {% endblock %}
+{% endblock %}

@@ -432,11 +432,11 @@ int main() {
     // Expande a memória para suportar 10 inteiros
     numero = (int *)realloc(numero, 10 * sizeof(int));
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i &lt; 10; i++) {
         numero[i] = 42;
     }
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i &lt; 10; i++) {
         printf("%d ", numero[i]);
     }
     putchar('\n');
@@ -712,13 +712,13 @@ int main() {
     int array[10] = {7, 8, 3, 5, 9, 1, 4, 6, 10, 2};
 
     printf("Array antes:\n"); 
-    for (int i = 0; i < 10; i++) printf("%d ", array[i]); 
+    for (int i = 0; i &lt; 10; i++) printf("%d ", array[i]); 
     putchar('\n');
 
     qsort(array, 10, sizeof(int), compara);
 
     printf("Array após:\n"); 
-    for (int i = 0; i < 10; i++) printf("%d ", array[i]); 
+    for (int i = 0; i &lt; 10; i++) printf("%d ", array[i]); 
     putchar('\n');
 
     return 0; 
