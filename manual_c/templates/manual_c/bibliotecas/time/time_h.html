@@ -1,174 +1,205 @@
 {% extends 'manual_c/base.html' %}
 
 {% block title %}
-  Time.h - Manual C
+Time.h - Manual C
 {% endblock %}
 
 {% block content %}
-  <section class="max-w-5xl mx-auto px-6 py-10">
-    <h1 class="titulo_biblioteca">&lt;time.h&gt;</h1>
+<section class="lib-section">
+  <h1 class="lib-title">&lt;time.h&gt;</h1>
 
-    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
-      <p>
-        No cabeçalho <b>&lt;time.h&gt;</b> estão localizadas as funções, variáveis e macros para manipulação de unidades de tempo, como ano, mês, dia, hora, minutos e segundos. A partir das funções fornecidas é possível obter a data e o horário do sistema, calcular intervalos de tempo, entre outras funcionalidades.
+  <div class="lib-description">
+    <p>
+      No cabeçalho <strong class="text-orange-600">&lt;time.h&gt;</strong> estão localizadas as funções, variáveis e
+      macros para manipulação de unidades de tempo, como ano, mês, dia, hora, minutos e segundos. A partir das funções
+      fornecidas é possível obter a data e o horário do sistema, calcular intervalos de tempo, entre outras
+      funcionalidades.
+    </p>
+    <p>
+      É um cabeçalho muito poderoso para o controle da execução do programa e para a manipulação de ações que têm datas
+      e horas como referência.
+    </p>
+  </div>
+
+  <h2 class="sub-section-text-lib">Variáveis e Tipos</h2>
+  <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
+    <ul class="space-y-3">
+      <li><strong>clock_t:</strong> Variável que tem por finalidade armazenar valores relacionados a pulsos de clock do
+        processador, como o valor fornecido pela função <code class="code-inline">clock()</code>.</li>
+      <li><strong>time_t:</strong> Variável que armazena os valores numéricos brutos relacionados à data e hora do
+        sistema (frequentemente em segundos desde a Epoch). Várias funções recebem ou retornam este tipo.</li>
+      <li><strong>size_t:</strong> Variável utilizada para representar o tamanho que uma determinada variável e/ou tipo
+        ocupa na memória.</li>
+      <li><strong>struct tm:</strong> Estrutura de dados que armazena valores de calendário (data e hora desmembrados),
+        contendo 9 variáveis inteiras (segundos, minutos, horas, dia do mês, mês, ano, dia da semana, dia do ano e
+        horário de verão).</li>
+    </ul>
+  </div>
+
+  <h2 class="sub-section-text-lib">Macros</h2>
+  <div>
+    <ul class="list-macro-description">
+      <li><strong>CLOCKS_PER_SEC:</strong> Macro responsável por armazenar a quantidade de pulsos por segundo do
+        processador da máquina na qual o programa está sendo executado. É usada para converter o retorno de <code
+          class="code-inline">clock()</code> em segundos.</li>
+      <li><strong>NULL:</strong> Ponteiro utilizado para indicar que uma referência não aponta para posição de memória
+        alguma.</li>
+    </ul>
+  </div>
+
+  <h2 class="sub-section-text-lib">Funções</h2>
+
+  <div class="btn-action-container">
+    <a href="#clock" class="btn-action">clock()</a>
+    <a href="#time" class="btn-action">time()</a>
+    <a href="#difftime" class="btn-action">difftime()</a>
+    <a href="#mktime" class="btn-action">mktime()</a>
+    <a href="#asctime" class="btn-action">asctime()</a>
+    <a href="#ctime" class="btn-action">ctime()</a>
+    <a href="#gmtime" class="btn-action">gmtime()</a>
+    <a href="#localtime" class="btn-action">localtime()</a>
+    <a href="#strftime" class="btn-action">strftime()</a>
+  </div>
+
+  <section id="clock" class="func-container">
+    <h3 class="func-header"><code class="language-c">clock_t clock(void)</code></h3>
+
+    <div class="func-description">
+      <p>Retorna uma aproximação do tempo de processador (CPU) utilizado pelo programa desde o início de sua execução.
       </p>
-      <p>
-        É um cabeçalho muito poderoso para o controle da execução do programa e para a manipulação de ações que têm datas e horas como referência.
-      </p>
-    </div>
-
-    <h2 class="sub_secao_biblioteca mb-4">Variáveis e Tipos</h2>
-    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
-      <ul class="space-y-3">
-        <li><b>clock_t:</b> Variável que tem por finalidade armazenar valores relacionados a pulsos de clock do processador, como o valor fornecido pela função <code>clock()</code>.</li>
-        <li><b>time_t:</b> Variável que armazena os valores numéricos brutos relacionados à data e hora do sistema (frequentemente em segundos desde a Epoch). Várias funções recebem ou retornam este tipo.</li>
-        <li><b>size_t:</b> Variável utilizada para representar o tamanho que uma determinada variável e/ou tipo ocupa na memória.</li>
-        <li><b>struct tm:</b> Estrutura de dados que armazena valores de calendário (data e hora desmembrados), contendo 9 variáveis inteiras (segundos, minutos, horas, dia do mês, mês, ano, dia da semana, dia do ano e horário de verão).</li>
-      </ul>
-    </div>
-
-    <h2 class="sub_secao_biblioteca mb-4">Macros</h2>
-    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
-      <ul class="space-y-3">
-        <li><b>CLOCKS_PER_SEC:</b> Macro responsável por armazenar a quantidade de pulsos por segundo do processador da máquina na qual o programa está sendo executado. É usada para converter o retorno de <code>clock()</code> em segundos.</li>
-        <li><b>NULL:</b> Ponteiro utilizado para indicar que uma referência não aponta para posição de memória alguma.</li>
-      </ul>
-    </div>
-
-    <h2 class="sub_secao_biblioteca mb-4">Funções</h2>
-
-    <div class="flex flex-wrap gap-2 mb-12">
-      <a href="#clock" class="btn_funcao">clock()</a>
-      <a href="#time" class="btn_funcao">time()</a>
-      <a href="#difftime" class="btn_funcao">difftime()</a>
-      <a href="#mktime" class="btn_funcao">mktime()</a>
-      <a href="#asctime" class="btn_funcao">asctime()</a>
-      <a href="#ctime" class="btn_funcao">ctime()</a>
-      <a href="#gmtime" class="btn_funcao">gmtime()</a>
-      <a href="#localtime" class="btn_funcao">localtime()</a>
-      <a href="#strftime" class="btn_funcao">strftime()</a>
-    </div>
-
-    <section id="clock" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">long int clock(void)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Retorna o tempo de processamento consumido pelo programa.</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> <code>void</code> (não recebe parâmetros).<br />
-          <strong>Retorna:</strong> A quantidade de pulsos de clock (tipo <code>clock_t</code> ou <code>long int</code>) desde a inicialização do programa. Divida por <code>CLOCKS_PER_SEC</code> para obter o tempo em segundos.
-        </div>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> <code class="code-inline">void</code> (não recebe parâmetros).</p>
+        <p><strong>Retorna:</strong> A quantidade de pulsos de clock (tipo <code class="code-inline">clock_t</code>)
+          consumidos. Se o tempo de processador não estiver disponível ou seu valor não puder ser representado, a função
+          retorna <code class="code-inline">-1</code>.</p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO CLOCK()
+      <div class="info-box mt-4 bg-blue-50 p-3 rounded-md border-l-4 border-blue-400 text-sm">
+        <strong>Dica:</strong> Para converter o retorno em segundos, divida o valor pela macro <code
+          class="code-inline">CLOCKS_PER_SEC</code>.
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO CLOCK()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
 int main() { 
-    printf("Pulsos de clock até o momento: %ld\n", clock()); 
+    // O tipo clock_t é geralmente um long int
+    printf("Pulsos de clock até o momento: %ld\n", (long)clock()); 
     printf("printf Aleatório\n"); 
-    printf("Mais um teste da quantidade de pulsos de clock: %ld\n", clock());
+    printf("Mais um teste da quantidade de pulsos de clock: %ld\n", (long)clock());
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Pulsos de clock até o momento: 1701 
-printf aleatório 
-Mais um teste da quantidade de pulsos de clock: 1797</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="time" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">time_t time(time_t *ponteiro_tempo)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Retorna a data e hora atuais do sistema (geralmente como o número de segundos desde 01/01/1970).</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Um ponteiro para uma variável do tipo <code>time_t</code> (opcional, pode ser <code>NULL</code>).<br />
-          <strong>Retorna:</strong> O valor do tempo atual no tipo <code>time_t</code>, e também o atribui ao ponteiro se ele não for <code>NULL</code>.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Pulsos de clock até o momento: 1701 
+printf Aleatório 
+Mais um teste da quantidade de pulsos de clock: 1797</code></pre>
+  </section>
+
+  <section id="time" class="func-container">
+    <h3 class="func-header"><code class="language-c">time_t time(time_t *ponteiro_tempo)</code></h3>
+
+    <div class="func-description">
+      <p>Obtém o tempo atual do sistema, representado como o número de segundos decorridos desde a
+        <strong>Epoch</strong> (00:00:00 UTC de 1º de janeiro de 1970).</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Um ponteiro para uma variável do tipo <code class="code-inline">time_t</code> onde o
+          valor será armazenado. Se não desejar armazenar em uma variável externa, pode-se passar <code
+            class="code-inline">NULL</code>.</p>
+        <p><strong>Retorna:</strong> O tempo atual no formato <code class="code-inline">time_t</code>. Em caso de erro,
+          retorna <code class="code-inline">(time_t)-1</code>.</p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO TIME()
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO TIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
 int main() { 
-    // Passando NULL para retornar apenas o valor
+    // Opção 1: Retornando o valor diretamente e passando NULL
     time_t tempo = time(NULL); 
+    // ctime converte time_t para uma string legível
     printf("%s", ctime(&tempo));
 
-    // Passando o endereço para atribuir o valor diretamente na variável
+    // Opção 2: Passando o endereço da variável para a função preencher
     time(&tempo); 
     printf("Outro teste: %s", ctime(&tempo));
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Thu May 27 20:20:01 2021 
-Outro teste: Thu May 27 20:20:01 2021</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="difftime" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">double difftime(time_t tempo, time_t tempo0)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Calcula a diferença, em segundos, entre dois valores de tempo.</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Duas variáveis do tipo <code>time_t</code>.<br />
-          <strong>Retorna:</strong> A diferença (<code>tempo - tempo0</code>) em segundos como um <code>double</code>.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Thu May 27 20:20:01 2021 
+Outro teste: Thu May 27 20:20:01 2021</code></pre>
+  </section>
+
+  <section id="difftime" class="func-container">
+    <h3 class="func-header"><code class="language-c">double difftime(time_t tempo, time_t tempo0)</code></h3>
+
+    <div class="func-description">
+      <p>Calcula a diferença em segundos entre dois instantes de tempo.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Dois valores do tipo <code class="code-inline">time_t</code> (o tempo final e o
+          tempo inicial).</p>
+        <p><strong>Retorna:</strong> A diferença (<code class="code-inline">tempo - tempo0</code>) expressa em segundos
+          como um valor de ponto flutuante (<code class="code-inline">double</code>).</p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO DIFFTIME()
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO DIFFTIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
 int main() { 
-    struct tm tempo = {0}, tempo0 = {0};
+    struct tm t_fim = {0}, t_ini = {0};
 
-    // Tempo 1 (84 segundos)
-    tempo.tm_sec = 2 * 42; 
-    tempo.tm_min = 1; tempo.tm_hour = 1; 
-    tempo.tm_mday = 1; tempo.tm_mon = 1; tempo.tm_year = 1; tempo.tm_wday = 1;
+    // Configurando Tempo Final (ex: 84 segundos no componente tm_sec)
+    t_fim.tm_sec = 84; 
+    t_fim.tm_mday = 1; t_fim.tm_mon = 0; t_fim.tm_year = 100; // Jan 1, 2000
 
-    // Tempo 0 (42 segundos)
-    tempo0.tm_sec = 42; 
-    tempo0.tm_min = 1; tempo0.tm_hour = 1; 
-    tempo0.tm_mday = 1; tempo0.tm_mon = 1; tempo0.tm_year = 1; tempo0.tm_wday = 1;
+    // Configurando Tempo Inicial (ex: 42 segundos no componente tm_sec)
+    t_ini.tm_sec = 42; 
+    t_ini.tm_mday = 1; t_ini.tm_mon = 0; t_ini.tm_year = 100; // Jan 1, 2000
 
-    printf("Diferença: %lf\n", difftime(mktime(&tempo), mktime(&tempo0)));
+    // mktime converte struct tm para time_t
+    double diferenca = difftime(mktime(&t_fim), mktime(&t_ini));
+
+    printf("Diferença: %lf segundos\n", diferenca);
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Diferença: 42.000000</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="mktime" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">time_t mktime(struct tm *tempo)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Converte uma estrutura de tempo desmembrada (<code>struct tm</code>) no formato de calendário para um valor simples de <code>time_t</code>.</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Um ponteiro para uma variável <code>struct tm</code>.<br />
-          <strong>Retorna:</strong> O valor do tipo <code>time_t</code> correspondente e ajusta automaticamente os valores fora do limite na estrutura original.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Diferença: 42.000000 segundos</code></pre>
+  </section>
+
+  <section id="mktime" class="func-container">
+    <h3 class="func-header"><code class="language-c">time_t mktime(struct tm *tempo)</code></h3>
+
+    <div class="func-description">
+      <p>Converte uma estrutura de tempo desmembrada (<code class="code-inline">struct tm</code>) em um valor de tempo
+        de calendário (<code class="code-inline">time_t</code>).</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Um ponteiro para uma <code class="code-inline">struct tm</code> contendo os
+          componentes de data e hora.</p>
+        <p><strong>Retorna:</strong> O valor <code class="code-inline">time_t</code> correspondente. Se a conversão
+          falhar, retorna <code class="code-inline">(time_t)-1</code>.</p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO MKTIME()
+      <div class="info-box mt-4 bg-yellow-50 p-3 rounded-md border-l-4 border-yellow-400 text-sm">
+        <strong>Normalização:</strong> Esta função ajusta automaticamente valores fora do intervalo (ex: se você passar
+        70 segundos, ela converterá para 1 minuto e 10 segundos) e preenche os campos <code
+          class="code-inline">tm_wday</code> (dia da semana) e <code class="code-inline">tm_yday</code> (dia do ano) na
+        estrutura original.
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO MKTIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
@@ -179,34 +210,45 @@ int main() {
     tempo.tm_min = 59; 
     tempo.tm_hour = 23; 
     tempo.tm_mday = 25; 
-    tempo.tm_mon = 12; // Dezembro (0-11, então 12 vira Jan do próximo ano)
+    // Mês é de 0 a 11. 12 fará o mktime normalizar para Janeiro do próximo ano.
+    tempo.tm_mon = 12; 
+    // O ano é contado a partir de 1900
     tempo.tm_year = 10191 - 1900; 
 
     time_t tempoConvertido = mktime(&tempo);
-    printf("%s", ctime(&tempoConvertido));
+
+    if (tempoConvertido != (time_t)-1) {
+        printf("%s", ctime(&tempoConvertido));
+    }
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Wed Jan 25 23:59:42 10192</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="asctime" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *asctime(const struct tm *tp)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Converte uma estrutura <code>struct tm</code> para uma string legível formatada.</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Um ponteiro para <code>struct tm</code> contendo os dados de tempo.<br />
-          <strong>Retorna:</strong> Uma string com a formatação: <code>'DiaSem Mês Dia Hora:Min:Seg Ano\n\0'</code>.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Wed Jan 25 23:59:42 10192</code></pre>
+  </section>
+
+  <section id="asctime" class="func-container">
+    <h3 class="func-header"><code class="language-c">char *asctime(const struct tm *tp)</code></h3>
+
+    <div class="func-description">
+      <p>Converte os valores armazenados em uma <code class="code-inline">struct tm</code> para uma string legível pelo
+        ser humano.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Um ponteiro para uma estrutura <code class="code-inline">struct tm</code> constante.
+        </p>
+        <p><strong>Retorna:</strong> Um ponteiro para uma string estática formatada como: <code
+            class="code-inline">"Dia Mês DD HH:MM:SS AAAA\n"</code>.</p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO ASCTIME()
+      <div class="info-box mt-4 bg-red-50 p-3 rounded-md border-l-4 border-red-400 text-sm">
+        <strong>Atenção:</strong> A string de retorno é alocada estaticamente e compartilhada por <code
+          class="code-inline">asctime</code> e <code class="code-inline">ctime</code>. Cada chamada a essas funções
+        sobrescreve o conteúdo do buffer anterior.
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO ASCTIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
@@ -217,68 +259,87 @@ int main() {
     tempo.tm_min = 59; 
     tempo.tm_hour = 23; 
     tempo.tm_mday = 25; 
-    tempo.tm_mon = 12 - 1; // Dezembro é 11
-    tempo.tm_year = 10191 - 1900; 
-    tempo.tm_wday = 3; // Quarta-feira
+    tempo.tm_mon = 11;             // Dezembro (índice 0-11)
+    tempo.tm_year = 10191 - 1900;  // Anos desde 1900
+    tempo.tm_wday = 3;             // 0 = Domingo, 3 = Quarta (Wed)
 
+    // Converte a struct diretamente para string
     printf("%s", asctime(&tempo));
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Wed Dec 25 23:59:42 10191</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="ctime" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">char *ctime(const time_t *tempo)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Converte um valor de <code>time_t</code> diretamente em uma string legível formatada (equivalente a <code>asctime(localtime(tempo))</code>).</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Um ponteiro para uma variável <code>time_t</code>.<br />
-          <strong>Retorna:</strong> Uma string formatada como <code>'DiaSem Mês Dia Hora:Min:Seg Ano\n\0'</code>.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Wed Dec 25 23:59:42 10191</code></pre>
+  </section>
+
+  <section id="ctime" class="func-container">
+    <h3 class="func-header"><code class="language-c">char *ctime(const time_t *timer)</code></h3>
+
+    <div class="func-description">
+      <p>Converte um valor de tempo de calendário (<code class="code-inline">time_t</code>) em uma string legível,
+        levando em conta as configurações de fuso horário local.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Um ponteiro para uma variável <code class="code-inline">time_t</code> contendo o
+          tempo a ser convertido.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para uma string formatada (idêntica ao formato da <code
+            class="code-inline">asctime</code>). Esta função é equivalente a chamar <code
+            class="code-inline">asctime(localtime(timer))</code>.</p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO CTIME()
+      <div class="info-box mt-4 bg-blue-50 p-3 rounded-md border-l-4 border-blue-400 text-sm">
+        <strong>Nota:</strong> Assim como a <code class="code-inline">asctime</code>, o retorno aponta para um buffer
+        estático que será sobrescrito em chamadas subsequentes.
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO CTIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
 int main() { 
     time_t tempo; 
+    
+    // Obtém o tempo atual do sistema
     time(&tempo);
 
+    // Converte o valor numérico diretamente para string legível
     printf("%s", ctime(&tempo));
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Thu May 27 21:14:34 2021</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="gmtime" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">struct tm *gmtime(const time_t *tempo)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Converte um valor de <code>time_t</code> numa estrutura <code>struct tm</code> com base no Meridiano de Greenwich (UTC/GMT).</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Um ponteiro para uma variável <code>time_t</code>.<br />
-          <strong>Retorna:</strong> Um ponteiro para <code>struct tm</code> modificado para a hora universal, facilitando ajustes de fuso horário manualmente.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Thu May 27 21:14:34 2021</code></pre>
+  </section>
+
+  <section id="gmtime" class="func-container">
+    <h3 class="func-header"><code class="language-c">struct tm *gmtime(const time_t *timer)</code></h3>
+
+    <div class="func-description">
+      <p>Converte um valor de tempo de calendário (<code class="code-inline">time_t</code>) em uma estrutura de tempo
+        desmembrada (<code class="code-inline">struct tm</code>), expressa como Tempo Universal Coordenado (UTC/GMT).
+      </p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Um ponteiro para uma variável <code class="code-inline">time_t</code> contendo o
+          tempo a ser convertido.</p>
+        <p><strong>Retorna:</strong> Um ponteiro para uma estrutura <code class="code-inline">struct tm</code>
+          preenchida com os valores de tempo universal. Em caso de erro, retorna <code class="code-inline">NULL</code>.
+        </p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO GMTIME()
+      <div class="info-box mt-4 bg-yellow-50 p-3 rounded-md border-l-4 border-yellow-400 text-sm">
+        <strong>Atenção:</strong> O ponteiro retornado aponta para uma estrutura interna estática. Chamadas subsequentes
+        a <code class="code-inline">gmtime</code> ou <code class="code-inline">localtime</code> sobrescreverão os dados
+        dessa estrutura.
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO GMTIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
+// Fusos horários em relação ao UTC
 #define BRT -3 
 #define JST 9
 
@@ -286,37 +347,47 @@ int main() {
     time_t tempo; 
     time(&tempo);
 
-    struct tm *tempo0 = gmtime(&tempo);
+    // Converte para UTC (Meridiano de Greenwich)
+    struct tm *tempo_utc = gmtime(&tempo);
 
+    // Exibe horários calculados manualmente a partir do UTC
     printf("Horário no Japão: %02d:%02d:%02d\n", 
-           (tempo0->tm_hour + JST) % 24, tempo0->tm_min, tempo0->tm_sec);
+           (tempo_utc->tm_hour + JST) % 24, tempo_utc->tm_min, tempo_utc->tm_sec);
            
     printf("Horário no Brasil: %02d:%02d:%02d\n", 
-           (tempo0->tm_hour + BRT + 24) % 24, tempo0->tm_min, tempo0->tm_sec);
+           (tempo_utc->tm_hour + BRT + 24) % 24, tempo_utc->tm_min, tempo_utc->tm_sec);
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Horário no Japão: 13:14:07 
-Horário no Brasil: 01:14:07</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="localtime" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">struct tm *localtime(const time_t *tempo)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Converte um valor de <code>time_t</code> numa estrutura <code>struct tm</code> ajustada automaticamente para o fuso horário local do sistema.</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Um ponteiro para uma variável <code>time_t</code>.<br />
-          <strong>Retorna:</strong> Um ponteiro para <code>struct tm</code> com as informações do tempo local.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Horário no Japão: 13:14:07 
+Horário no Brasil: 01:14:07</code></pre>
+  </section>
+
+  <section id="localtime" class="func-container">
+    <h3 class="func-header"><code class="language-c">struct tm *localtime(const time_t *timer)</code></h3>
+
+    <div class="func-description">
+      <p>Converte um valor de tempo de calendário (<code class="code-inline">time_t</code>) em uma estrutura de tempo
+        desmembrada (<code class="code-inline">struct tm</code>), ajustada automaticamente para o fuso horário local do
+        sistema.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Um ponteiro para uma variável <code class="code-inline">time_t</code> (geralmente
+          obtida via função <code class="code-inline">time()</code>).</p>
+        <p><strong>Retorna:</strong> Um ponteiro para uma estrutura <code class="code-inline">struct tm</code>
+          preenchida com os componentes de tempo local. Em caso de erro, retorna <code class="code-inline">NULL</code>.
+        </p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO LOCALTIME()
+      <div class="info-box mt-4 bg-yellow-50 p-3 rounded-md border-l-4 border-yellow-400 text-sm">
+        <strong>Atenção:</strong> Assim como a <code class="code-inline">gmtime</code>, esta função utiliza um buffer
+        estático compartilhado. Chamadas subsequentes a funções de conversão de tempo na mesma thread podem sobrescrever
+        os dados.
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO LOCALTIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 
@@ -324,33 +395,54 @@ int main() {
     time_t tempo; 
     time(&tempo); 
 
-    struct tm *tempo0 = localtime(&tempo);
+    // Converte o tempo do sistema para a estrutura local
+    struct tm *tempo_local = localtime(&tempo);
 
-    printf("Horário atual: %02d:%02d:%02d\n", 
-           tempo0->tm_hour, tempo0->tm_min, tempo0->tm_sec);
+    if (tempo_local != NULL) {
+        printf("Horário atual: %02d:%02d:%02d\n", 
+               tempo_local->tm_hour, 
+               tempo_local->tm_min, 
+               tempo_local->tm_sec);
+    }
 
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Horário atual: 01:19:11</code></pre>
-    </section>
+}</code></pre>
 
-    <section id="strftime" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">size_t strftime(char *string_armazena_data, size_t tamanho, const char *formato, const struct tm *tempo)</h3>
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Permite formatar as informações de tempo contidas em um <code>struct tm</code> e armazená-las em uma string com formatação customizada.</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> Ponteiro de destino (string), limite de tamanho (bytes), string de formatação (ex: <code>"%c"</code>, <code>"%Y-%m-%d"</code>) e ponteiro <code>struct tm</code> de origem.<br />
-          <strong>Retorna:</strong> A quantidade de caracteres armazenados na string (sem contar o null-byte final). Se exceder o tamanho, retorna 0.
-        </div>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Horário atual: 01:19:11</code></pre>
+  </section>
+
+  <section id="strftime" class="func-container">
+    <h3 class="func-header"><code
+        class="language-c">size_t strftime(char *s, size_t max, const char *format, const struct tm *tm)</code></h3>
+
+    <div class="func-description">
+      <p>Formata as informações de tempo da estrutura <code class="code-inline">tm</code> de acordo com as
+        especificações contidas em <code class="code-inline">format</code> e armazena o resultado na string <code
+          class="code-inline">s</code>.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> Um ponteiro para o array de destino, o tamanho máximo do buffer, a string de formato
+          e o ponteiro para a estrutura de tempo de origem.</p>
+        <p><strong>Retorna:</strong> O número de caracteres colocados no array <code class="code-inline">s</code>
+          (excluindo o caractere nulo). Se o número total de caracteres exceder o limite <code
+            class="code-inline">max</code>, a função retorna 0 e o conteúdo do array é indefinido.</p>
       </div>
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO STRFTIME()
+
+      <div class="info-box mt-4 bg-gray-50 p-3 rounded-md border-l-4 border-gray-400 text-sm">
+        <strong>Formatos comuns:</strong>
+        <ul class="list-disc ml-6 mt-2">
+          <li><code class="code-inline">%d</code>: Dia do mês (01-31)</li>
+          <li><code class="code-inline">%m</code>: Mês (01-12)</li>
+          <li><code class="code-inline">%Y</code>: Ano com quatro dígitos</li>
+          <li><code class="code-inline">%H</code>: Hora (00-23)</li>
+          <li><code class="code-inline">%M</code>: Minuto (00-59)</li>
+          <li><code class="code-inline">%S</code>: Segundo (00-59)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO STRFTIME()
 #include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
 #include &lt;stdlib.h&gt;
@@ -358,24 +450,21 @@ Horário atual: 01:19:11</code></pre>
 int main() { 
     time_t tempo; 
     time(&tempo);
-    struct tm *tempo0 = localtime(&tempo);
+    struct tm *tempo_local = localtime(&tempo);
 
-    char *string_armazena_data = (char *)malloc(100 * sizeof(char));
+    char data_formatada[100];
     
-    // %c representa data e hora padronizadas para o locale
-    strftime(string_armazena_data, 100, "%c", tempo0);
+    // %c representa data e hora padronizadas para o locale atual
+    if (strftime(data_formatada, sizeof(data_formatada), "%c", tempo_local)) {
+        printf("%s\n", data_formatada);
+    }
 
-    printf("%s\n", string_armazena_data);
-    
-    free(string_armazena_data);
     return 0; 
-}
-        </code>
-      </pre>
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono"><code>>./main 
-Fri May 28 19:51:07 2021</code></pre>
-    </section>
+}</code></pre>
 
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>Fri May 28 19:51:07 2021</code></pre>
   </section>
+
+</section>
 {% endblock %}

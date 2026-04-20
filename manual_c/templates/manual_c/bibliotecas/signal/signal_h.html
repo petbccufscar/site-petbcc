@@ -1,57 +1,64 @@
 {% extends 'manual_c/base.html' %}
 
 {% block title %}
-  Signal.h - Manual C
+Signal.h - Manual C
 {% endblock %}
 
 {% block content %}
-  <section class="max-w-5xl mx-auto px-6 py-10">
-    <h1 class="titulo_biblioteca">&lt;signal.h&gt;</h1>
+<section class="lib-section">
+  <h1 class="lib-title">&lt;signal.h&gt;</h1>
 
-    <div class="text-gray-700 leading-relaxed mb-10 space-y-4">
-      <p>
-        No cabeçalho <b>&lt;signal.h&gt;</b> estão presentes funções e macros que lidam com os sinais recebidos e enviados pelo programa no momento em que ele está sendo executado. Isso ocorre, por exemplo, quando o programa é finalizado de forma anormal ou quando algum tipo de operação aritmética apresenta erros, como a tentativa de divisão por zero.
-      </p>
-    </div>
+  <div class="lib-description">
+    <p>
+      No cabeçalho <strong class="text-orange-600">&lt;signal.h&gt;</strong> estão presentes funções e macros que lidam
+      com os sinais recebidos e enviados pelo programa no momento em que ele está sendo executado. Isso ocorre, por
+      exemplo, quando o programa é finalizado de forma anormal ou quando algum tipo de operação aritmética apresenta
+      erros, como a tentativa de divisão por zero.
+    </p>
+  </div>
 
-    <h2 class="sub_secao_biblioteca mb-4">Macros</h2>
-    
-    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12 text-gray-700 leading-relaxed">
-      <ul class="space-y-3">
-        <li><b>SIG_DFL:</b> Indica o tratamento padrão fornecido pelo sistema para o envio de algum sinal pelo programa em execução.</li>
-        <li><b>SIG_IGN:</b> Indica que o tratamento fornecido para um tipo de sinal será ignorá-lo.</li>
-        <li><b>SIG_ERR:</b> Sinal padrão para o tratamento de sinais que indicam erro.</li>
-        <li><b>SIGABRT:</b> Programa finalizado de forma anormal, com execução inesperada.</li>
-        <li><b>SIGFPE:</b> Erro em operações de aritmética, como operações aritméticas proibidas ou tentativa de operar com valores que extrapolam os limites de um determinado tipo.</li>
-        <li><b>SIGILL:</b> Instrução não permitida.</li>
-        <li><b>SIGINT:</b> Interrupção de execução do programa, como quando o usuário forçadamente cancela a execução (ex: <i>Ctrl+C</i>).</li>
-        <li><b>SIGSEGV:</b> Erro de acesso de memória, seja por tentar acessar uma posição de memória não permitida ou por tentativa de uso de memória sem que exista mais espaço.</li>
-        <li><b>SIGTERM:</b> Requisição de finalização do programa.</li>
-      </ul>
-    </div>
+  <h2 class="sub-section-text-lib">Macros</h2>
 
-    <h2 class="sub_secao_biblioteca mb-4">Funções</h2>
+  <div>
+    <ul class="list-macro-description">
+      <li><strong>SIG_DFL:</strong> Indica o tratamento padrão fornecido pelo sistema para o envio de algum sinal pelo
+        programa em execução.</li>
+      <li><strong>SIG_IGN:</strong> Indica que o tratamento fornecido para um tipo de sinal será ignorá-lo.</li>
+      <li><strong>SIG_ERR:</strong> Sinal padrão para o tratamento de sinais que indicam erro.</li>
+      <li><strong>SIGABRT:</strong> Programa finalizado de forma anormal, com execução inesperada.</li>
+      <li><strong>SIGFPE:</strong> Erro em operações de aritmética, como operações aritméticas proibidas ou tentativa de
+        operar com valores que extrapolam os limites de um determinado tipo.</li>
+      <li><strong>SIGILL:</strong> Instrução não permitida.</li>
+      <li><strong>SIGINT:</strong> Interrupção de execução do programa, como quando o usuário forçadamente cancela a
+        execução (ex: <i>Ctrl+C</i>).</li>
+      <li><strong>SIGSEGV:</strong> Erro de acesso de memória, seja por tentar acessar uma posição de memória não
+        permitida ou por tentativa de uso de memória sem que exista mais espaço.</li>
+      <li><strong>SIGTERM:</strong> Requisição de finalização do programa.</li>
+    </ul>
+  </div>
 
-    <div class="flex flex-wrap gap-2 mb-12">
-      <a href="#signal" class="btn_funcao">signal()</a>
-      <a href="#raise" class="btn_funcao">raise()</a>
-    </div>
+  <h2 class="sub-section-text-lib">Funções</h2>
 
-    <section id="signal" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">void (*signal(int sinal, void (*tratamento)(int)))(int)</h3>
+  <div class="btn-action-container">
+    <a href="#signal" class="btn-action">signal()</a>
+    <a href="#raise" class="btn-action">raise()</a>
+  </div>
 
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Define como o programa deve reagir a um sinal específico recebido durante sua execução.</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> uma variável inteira que indica qual dos sinais deve ser tratado adiante e qual o tratamento deve ser dado quando o programa enviar/receber um sinal do tipo informado.<br />
-          <strong>Retorna:</strong> <code>void</code>, função sem retorno (retorna o tratador de sinal anterior ou <code>SIG_ERR</code> em caso de erro).
-        </div>
+  <section id="signal" class="func-container">
+    <h3 class="func-header"><code class="language-c">void (*signal(int sinal, void (*tratamento)(int)))(int)</code></h3>
+
+    <div class="func-description">
+      <p>Define como o programa deve reagir a um sinal específico recebido durante sua execução.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> uma variável inteira que indica qual dos sinais deve ser tratado adiante e qual o
+          tratamento deve ser dado quando o programa enviar/receber um sinal do tipo informado.</p>
+        <p><strong>Retorna:</strong> <code class="code-inline">void</code>, função sem retorno (retorna o tratador de
+          sinal anterior ou <code class="code-inline">SIG_ERR</code> em caso de erro).</p>
       </div>
+    </div>
 
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO SIGNAL()
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO SIGNAL()
 
 #include &lt;stdio.h&gt; 
 #include &lt;signal.h&gt;
@@ -66,35 +73,30 @@ int main() {
     printf("O programa não terminou a execução ainda!\n");
 
     return 0; 
-}
-        </code>
-      </pre>
+}</code></pre>
 
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
-        <code>
->clang-7 -pthread -lm -o main main.c 
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>>clang-7 -pthread -lm -o main main.c 
 >./main 
-O programa não terminou a execução ainda!
-        </code>
-      </pre>
-    </section>
+O programa não terminou a execução ainda!</code></pre>
+  </section>
 
-    <section id="raise" class="func-section mb-12">
-      <h3 class="text-lg font-semibold text-gray-900 mb-3 font-mono">int raise(int sig)</h3>
+  <section id="raise" class="func-container">
+    <h3 class="func-header"><code class="language-c">int raise(int sig)</code></h3>
 
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>Gera artificialmente um sinal para o programa atual, forçando o comportamento correspondente àquele sinal (ou o comportamento definido pelo <code>signal()</code>).</p>
-        <div class="func-meta">
-          <strong>Recebe:</strong> um valor inteiro, que representa um dos sinais presentes no cabeçalho <code>signal.h</code>.<br />
-          <strong>Retorna:</strong> 0, em caso de sucesso da execução da função, ou um valor diferente de zero, caso contrário.
-        </div>
+    <div class="func-description">
+      <p>Gera artificialmente um sinal para o programa atual, forçando o comportamento correspondente àquele sinal (ou o
+        comportamento definido pelo <code class="code-inline">signal()</code>).</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> um valor inteiro, que representa um dos sinais presentes no cabeçalho <code
+            class="code-inline">signal.h</code>.</p>
+        <p><strong>Retorna:</strong> 0, em caso de sucesso da execução da função, ou um valor diferente de zero, caso
+          contrário.</p>
       </div>
+    </div>
 
-      <h4 class="mt-6 mb-3 font-semibold text-gray-800">Exemplo</h4>
-      <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
-        <code class="language-c">
-// EXEMPLO RAISE()
+    <h4 class="sub-section-text-lib">Exemplo</h4>
+    <pre class="code-block"><code class="language-c">// EXEMPLO RAISE()
 
 #include &lt;stdio.h&gt; 
 #include &lt;signal.h&gt;
@@ -109,20 +111,14 @@ int main() {
     printf("Eu avisei...\n");
 
     return 0; 
-}
-        </code>
-      </pre>
+}</code></pre>
 
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block bg-gray-100 p-4 rounded-lg text-sm text-gray-800 font-mono">
-        <code>
->clang-7 -pthread -lm -o main main.c 
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>>clang-7 -pthread -lm -o main main.c 
 >./main 
 O programa terá sua execução interrompida!
-Terminated
-        </code>
-      </pre>
-    </section>
-
+Terminated</code></pre>
   </section>
+
+</section>
 {% endblock %}
