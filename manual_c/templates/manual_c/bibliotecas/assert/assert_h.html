@@ -53,14 +53,14 @@ assert.h - Manual C
     <h4 class="sub-section-text-lib">Exemplo de uso</h4>
 
     <pre class="code-block">
-<code  class="language-c">#include &ltstdio.h&gt 
-#include &ltassert.h&gt
+<code  class="language-c">#include &lt;stdio.h&gt;
+#include &lt;assert.h&gt;
 
 int main() { 
   int i; 
   
-  for (i = 3; i <= 10; i++) { 
-    assert(i <= 7); 
+  for (i = 3; i &lt;= 10; i++) { 
+    assert(i &lt;= 7); 
     printf("i = %d\n", i); 
   } 
   
@@ -70,14 +70,14 @@ int main() {
 
     <h4 class="sub-section-text-lib">Saída do terminal</h4>
 
-    <pre class="output-block"><code>>clang-7 -pthread -lm -o main main.c 
->./main 
+    <pre class="output-block"><code>&gt;clang-7 -pthread -lm -o main main.c 
+&gt;./main 
 i = 3 
 i = 4 
 i = 5 
 i = 6 
 i = 7 
-main: main.c:9: int main(): Assertion 'i <= 7' failed. 
+<span class="text-red-500">main: main.c:9: int main(): Assertion 'i &lt;= 7' failed.</span>
 exited, aborted</code></pre>
   </section>
 </section>
