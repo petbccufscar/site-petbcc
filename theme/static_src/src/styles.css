@@ -8,6 +8,8 @@
   /* Layout e Containers */
   .lib-section {
     @apply max-w-5xl mx-auto px-6 py-10;
+    @apply scroll-mt-24; /* Para espaçamento ao usar âncoras */
+    @apply z-0; /* Garantir que o conteúdo fique abaixo de elementos fixos */S
   }
 
   /* Tipografia: Títulos e Subtítulos */

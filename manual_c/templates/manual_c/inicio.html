@@ -18,7 +18,7 @@
 
     <div class="flex justify-center">
       <video class="rounded shadow" width="500" height="180" controls>
-        <source src="{% static 'site2016/videos/gravacao_manualc.webm' %}" type="video/webm" />Your browser does not support the video tag.
+        <source src="{% static 'videos/gravacao_manualc.webm' %}" type="video/webm" />Your browser does not support the video tag.
       </video>
     </div>
   </div>
@@ -64,6 +64,24 @@
       <div>
         <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'math' %}">math.h</a>
         <p class="text-gray-600 text-justify">Contém funções matemáticas como trigonometria, raiz quadrada, valor absoluto e outras operações numéricas.</p>
+      </div>
+
+      <!-- setjmp -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'setjmp' %}">setjmp.h</a>
+        <p class="text-gray-600 text-justify">Contém funções para manipulação de fluxo de execução, permitindo salvar e restaurar o estado de execução de um programa.</p>
+      </div>
+
+      <!-- signal -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'signal' %}">signal.h</a>
+        <p class="text-gray-600 text-justify">Contém funções para manipulação de sinais, permitindo que o programa responda a eventos assíncronos do sistema.</p>
+      </div>
+
+      <!-- stdarg -->
+      <div>
+        <a class="text-orange-600 font-semibold text-xl hover:underline" href="{% url 'manual_c:biblioteca' 'stdarg' %}">stdarg.h</a>
+        <p class="text-gray-600 text-justify">Contém macros para manipulação de listas de argumentos de função, permitindo criar funções com número variável de parâmetros.</p>
       </div>
 
       <!-- stdio -->
