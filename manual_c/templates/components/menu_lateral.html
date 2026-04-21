@@ -1,21 +1,28 @@
 <nav>
-  <ul class="space-y-2">
+  <ul class="space-y-2 bg-white p-6 rounded-lg shadow">
     {% for item in menu_manual_c.principal %}
       <li>
         <a href="{% url item.route %}" class="{% if item.active %}text-orange-600 font-bold{% endif %} text-gray-800">{{ item.label }}</a>
       </li>
     {% endfor %}
 
-    <li class="text-gray-800">Bibliotecas</li>
-
+    <!-- Expansível sem JS -->
     <li>
-      <ul class="space-y-1 ml-4">
-        {% for biblioteca in menu_manual_c.bibliotecas %}
-          <li>
-            <a href="{% url 'manual_c:biblioteca' biblioteca.nome %}" class="{% if biblioteca.active %}text-orange-600 font-bold{% endif %} text-gray-800">{{ biblioteca.nome }}.h</a>
-          </li>
-        {% endfor %}
-      </ul>
+      <details class="group">
+        <summary class="flex justify-between cursor-pointer text-gray-800">
+          <span>Bibliotecas</span>
+          <span class="group-open:hidden">+</span>
+          <span class="hidden group-open:inline">−</span>
+        </summary>
+
+        <ul class="space-y-1 ml-4 mt-2">
+          {% for biblioteca in menu_manual_c.bibliotecas %}
+            <li>
+              <a href="{% url 'manual_c:biblioteca' biblioteca.nome %}" class="{% if biblioteca.active %}text-orange-600 font-bold{% endif %} text-gray-800">{{ biblioteca.nome }}.h</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
     </li>
   </ul>
 </nav>

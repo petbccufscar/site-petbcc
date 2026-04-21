@@ -1,165 +1,429 @@
 {% extends 'manual_c/base.html' %}
 
 {% block title %}
-  Ctype.h - Manual C
+Ctype.h - Manual C
 {% endblock %}
 
 {% block content %}
-  <section class="max-w-5xl mx-auto px-6 py-10">
-    <!-- ================================================= -->
-    <!-- TÍTULO -->
-    <!-- ================================================= -->
+<section class="lib-section">
+  <!-- ================================================= -->
+  <!-- TÍTULO -->
+  <!-- ================================================= -->
 
-    <h1 class="lib-title">&lt;ctype.h&gt;</h1>
+  <h1 class="lib-title">&lt;ctype.h&gt;</h1>
 
-    <p class="lib-description">A maioria das funções deste arquivo de cabeçalhos serve para classificar caracteres ASCII, ou seja, determinar se um determinado byte representa uma letra, um dígito, um espaço em branco ou outro tipo de símbolo.</p>
-
-    <p class="lib-description">
-      Mesmo que o argumento de cada função não seja um <code>char</code> mas sim um inteiro positivo, o caractere passado para a função é convertido internamente para seu valor ASCII para a verificação.
+  <div class="lib-description">
+    <p>A maioria das funções deste arquivo de cabeçalhos serve para classificar caracteres ASCII, ou seja, determinar se
+      um determinado byte representa uma letra, um dígito, um espaço em branco ou outro tipo de símbolo.</p>
+    <p>
+      Mesmo que o argumento de cada função não seja um <code class="code-inline">char</code> mas sim um inteiro positivo, o caractere
+      passado para a função é convertido internamente para seu valor ASCII para a verificação.
     </p>
+  </div>
 
-    <!-- ================================================= -->
-    <!-- LISTA DE FUNÇÕES -->
-    <!-- ================================================= -->
+  <!-- ================================================= -->
+  <!-- LISTA DE FUNÇÕES -->
+  <!-- ================================================= -->
 
-    <h2 class="text-xl font-semibold border-b pb-2 mt-8 mb-4">Funções</h2>
+  <h2 class="sub-section-text-lib">Funções</h2>
 
-    <div class="flex flex-wrap gap-2 mb-12">
-      <a href="#isalnum" class="func-list-link">isalnum()</a>
-      <a href="#isalpha" class="func-list-link">isalpha()</a>
-      <a href="#iscntrl" class="func-list-link">iscntrl()</a>
-      <a href="#isdigit" class="func-list-link">isdigit()</a>
-      <a href="#isgraph" class="func-list-link">isgraph()</a>
-      <a href="#islower" class="func-list-link">islower()</a>
-      <a href="#isprint" class="func-list-link">isprint()</a>
-      <a href="#ispunct" class="func-list-link">ispunct()</a>
-      <a href="#isspace" class="func-list-link">isspace()</a>
-      <a href="#isupper" class="func-list-link">isupper()</a>
-      <a href="#isxdigit" class="func-list-link">isxdigit()</a>
-      <a href="#tolower" class="func-list-link">tolower()</a>
-      <a href="#toupper" class="func-list-link">toupper()</a>
+  <div class="btn-action-container">
+    <a href="#isalnum" class="btn-action">isalnum()</a>
+    <a href="#isalpha" class="btn-action">isalpha()</a>
+    <a href="#iscntrl" class="btn-action">iscntrl()</a>
+    <a href="#isdigit" class="btn-action">isdigit()</a>
+    <a href="#isgraph" class="btn-action">isgraph()</a>
+    <a href="#islower" class="btn-action">islower()</a>
+    <a href="#isprint" class="btn-action">isprint()</a>
+    <a href="#ispunct" class="btn-action">ispunct()</a>
+    <a href="#isspace" class="btn-action">isspace()</a>
+    <a href="#isupper" class="btn-action">isupper()</a>
+    <a href="#isxdigit" class="btn-action">isxdigit()</a>
+    <a href="#tolower" class="btn-action">tolower()</a>
+    <a href="#toupper" class="btn-action">toupper()</a>
+  </div>
+
+  <!-- ================================================= -->
+  <!-- FUNÇÕES -->
+  <!-- ================================================= -->
+
+  <section id="isalnum" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isalnum(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se um caractere é alfanumérico.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> um argumento inteiro cujo valor seja um caractere ou EOF.</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se o caractere for alfanumérico, ou 0 caso contrário.</p>
+      </div>
     </div>
 
-    <!-- ================================================= -->
-    <!-- FUNÇÕES -->
-    <!-- ================================================= -->
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt; 
+#include &lt;ctype.h&gt;
 
-    <section id="isalnum" class="func-section">
-      <div class="func-signature">int isalnum(int c)</div>
+int main() {
+  char c = 'A';
 
-      <p>Testa se um caractere é alfanumérico.</p>
+  if(isalnum(c)) printf("É alfanumérico\n");
 
-      <div class="func-meta">
-        <strong>Recebe:</strong> um argumento inteiro cujo valor seja um caractere ou EOF.<br />
-        <strong>Retorna:</strong> valor diferente de zero se o caractere for alfanumérico, ou 0 caso contrário.
-      </div>
+  return 0;
+}</code>
+</pre>
 
-      <h4 class="font-semibold mt-6 mb-3">Exemplo</h4>
-      <pre class="code-block">
-        <code>
-          #include &ltstdio.h&gt #include &ltctype.h&gt
-
-          int main() {
-
-          char c = 'A';
-
-          if(isalnum(c)) printf("É alfanumérico\n");
-
-          }
-        </code>
-      </pre>
-
-      <h4 class="font-semibold mt-6 mb-3">Saída esperada</h4>
-      <pre class="output-block">
-        <code>É alfanumérico</code>
-      </pre>
-    </section>
-
-    <section id="isalpha" class="func-section">
-      <div class="func-signature">int isalpha(int c)</div>
-
-      <p>Testa se um caractere é uma letra do alfabeto.</p>
-
-      <div class="func-meta">
-        <strong>Recebe:</strong> inteiro representando caractere ou EOF.<br />
-        <strong>Retorna:</strong> valor diferente de zero se for letra.
-      </div>
-    </section>
-
-    <section id="iscntrl" class="func-section">
-      <div class="func-signature">int iscntrl(int c)</div>
-
-      <p>Testa se um caractere é um caractere de controle ASCII.</p>
-
-      <div class="func-meta">
-        <strong>Recebe:</strong> caractere ou EOF.<br />
-        <strong>Retorna:</strong> valor diferente de zero se for caractere de controle.
-      </div>
-    </section>
-
-    <section id="isdigit" class="func-section">
-      <div class="func-signature">int isdigit(int c)</div>
-
-      <p>Testa se um caractere é um dígito decimal (0–9).</p>
-
-      <div class="func-meta">
-        <strong>Recebe:</strong> caractere ou EOF.<br />
-        <strong>Retorna:</strong> valor diferente de zero se for dígito.
-      </div>
-    </section>
-
-    <section id="isgraph" class="func-section">
-      <div class="func-signature">int isgraph(int c)</div>
-
-      <p>Testa se um caractere possui representação gráfica.</p>
-    </section>
-
-    <section id="islower" class="func-section">
-      <div class="func-signature">int islower(int c)</div>
-
-      <p>Testa se o caractere é uma letra minúscula.</p>
-    </section>
-
-    <section id="isprint" class="func-section">
-      <div class="func-signature">int isprint(int c)</div>
-
-      <p>Testa se um caractere é imprimível.</p>
-    </section>
-
-    <section id="ispunct" class="func-section">
-      <div class="func-signature">int ispunct(int c)</div>
-
-      <p>Testa se o caractere é um símbolo de pontuação.</p>
-    </section>
-
-    <section id="isspace" class="func-section">
-      <div class="func-signature">int isspace(int c)</div>
-
-      <p>Testa se o caractere é um espaço em branco.</p>
-    </section>
-
-    <section id="isupper" class="func-section">
-      <div class="func-signature">int isupper(int c)</div>
-
-      <p>Testa se o caractere é uma letra maiúscula.</p>
-    </section>
-
-    <section id="isxdigit" class="func-section">
-      <div class="func-signature">int isxdigit(int c)</div>
-
-      <p>Testa se o caractere é um dígito hexadecimal.</p>
-    </section>
-
-    <section id="tolower" class="func-section">
-      <div class="func-signature">int tolower(int c)</div>
-
-      <p>Converte uma letra maiúscula para minúscula.</p>
-    </section>
-
-    <section id="toupper" class="func-section">
-      <div class="func-signature">int toupper(int c)</div>
-
-      <p>Converte uma letra minúscula para maiúscula.</p>
-    </section>
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É alfanumérico</code></pre>
   </section>
+
+  <section id="isalpha" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isalpha(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se um caractere é uma letra do alfabeto.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> inteiro representando caractere ou EOF.</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for letra.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = 'A';
+
+  if(isalpha(c)) printf("É alfabético\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É alfabético</code></pre>
+  </section>
+
+  <section id="iscntrl" class="func-container">
+    <h3 class="func-header"><code class="language-c">int iscntrl(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se um caractere é um caractere de controle ASCII.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere ou EOF.</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for caractere de controle.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = '\n'; /* Caractere de controle (nova linha) */
+
+  if(iscntrl(c)) printf("É um caractere de controle\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É um caractere de controle</code></pre>
+  </section>
+
+  <section id="isdigit" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isdigit(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se um caractere é um dígito decimal (0–9).</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere ou EOF.</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for dígito.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = '7'; /* Caractere numérico (dígito) */
+
+  if(isdigit(c)) printf("É um dígito\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É um dígito</code></pre>
+  </section>
+
+  <section id="isgraph" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isgraph(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se um caractere possui representação gráfica.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for imprimível (exceto espaço).</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = '#'; /* Caractere com representação gráfica */
+
+  if(isgraph(c)) printf("É um caractere gráfico\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É um caractere gráfico</code></pre>
+  </section>
+
+  <section id="islower" class="func-container">
+    <h3 class="func-header"><code class="language-c">int islower(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se o caractere é uma letra minúscula.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for letra minúscula.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = 'm'; /* Caractere de letra minúscula */
+
+  if(islower(c)) printf("É uma letra minúscula\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É uma letra minúscula</code></pre>
+  </section>
+
+  <section id="isprint" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isprint(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se um caractere é imprimível.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for imprimível (incluindo espaço).</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = ' '; /* Caractere de espaço (imprimível) */
+
+  if(isprint(c)) printf("É um caractere imprimível\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É um caractere imprimível</code></pre>
+  </section>
+
+  <section id="ispunct" class="func-container">
+    <h3 class="func-header"><code class="language-c">int ispunct(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se o caractere é um símbolo de pontuação.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for sinal de pontuação.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = '.'; /* Caractere de pontuação */
+
+  if(ispunct(c)) printf("É um caractere de pontuação\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É um caractere de pontuação</code></pre>
+  </section>
+
+  <section id="isspace" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isspace(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se o caractere é um espaço em branco.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for espaço em branco (incluindo \n, \t, \r, etc).</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = '\t'; /* Caractere de tabulação (espaço em branco) */
+
+  if(isspace(c)) printf("É um espaço em branco\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É um espaço em branco</code></pre>
+  </section>
+
+  <section id="isupper" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isupper(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se o caractere é uma letra maiúscula.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for letra maiúscula.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = 'G'; /* Caractere de letra maiúscula */
+
+  if(isupper(c)) printf("É uma letra maiúscula\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É uma letra maiúscula</code></pre>
+  </section>
+
+  <section id="isxdigit" class="func-container">
+    <h3 class="func-header"><code class="language-c">int isxdigit(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Testa se o caractere é um dígito hexadecimal.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> valor diferente de zero se for dígito hexadecimal.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = 'F'; /* Caractere hexadecimal */
+
+  if(isxdigit(c)) printf("É um dígito hexadecimal\n");
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>É um dígito hexadecimal</code></pre>
+  </section>
+
+  <section id="tolower" class="func-container">
+    <h3 class="func-header"><code class="language-c">int tolower(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Converte uma letra maiúscula para minúscula.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> versão em minúscula da letra, ou o próprio caractere inalterado.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = 'R'; /* Caractere em letra maiúscula */
+
+  /* Converte para minúscula e imprime o resultado */
+  printf("A versão minúscula é: %c\n", tolower(c));
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>A versão minúscula é: r</code></pre>
+  </section>
+
+  <section id="toupper" class="func-container">
+    <h3 class="func-header"><code class="language-c">int toupper(int c)</code></h3>
+
+    <div class="func-description">
+      <p>Converte uma letra minúscula para maiúscula.</p>
+      <div class="func-meta">
+        <p><strong>Recebe:</strong> caractere (int).</p>
+        <p><strong>Retorna:</strong> versão em maiúscula da letra, ou o próprio caractere inalterado.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-section-text-lib">Exemplo de uso</h4>
+    <pre class="code-block">
+<code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+  char c = 'h'; /* Caractere em letra minúscula */
+
+  /* Converte para maiúscula e imprime o resultado */
+  printf("A versão maiúscula é: %c\n", toupper(c));
+
+  return 0;
+}</code>
+</pre>
+
+    <h4 class="sub-section-text-lib">Saída esperada</h4>
+    <pre class="output-block"><code>A versão maiúscula é: H</code></pre>
+  </section>
+</section>
 {% endblock %}
