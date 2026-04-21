@@ -24,7 +24,7 @@
   }
 
   .sub-section-text-lib {
-    @apply text-2xl mt-10;
+    @apply text-xl mt-10;
     /* Especialização para subtítulos */
   }
 

@@ -830,8 +830,8 @@ input:where([type='file']):focus {
 
 .sub-section-text-lib {
   margin-top: 2.5rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   /* Especialização para subtítulos */
 }
 
