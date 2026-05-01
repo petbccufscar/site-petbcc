@@ -13,9 +13,12 @@
     </title>
 
     <link rel="stylesheet" href="{% static 'css/manual_c.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}" />
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script defer src="{% static 'js/prism.js' %}"></script>
 
     {% tailwind_css %}
 
@@ -30,7 +33,7 @@
       <div class="max-w-6xl mx-auto p-6 md:py-12">
         <div class="flex flex-col md:flex-row gap-8">
           <!-- Sidebar -->
-          <aside class="md:w-1/4">
+          <aside class="md:w-1/4 sticky top-[100px] self-start w-full z-[5]">
             {% include 'components/menu_lateral.html' %}
           </aside>
 

@@ -47,6 +47,9 @@ module.exports = {
         primary: "#0891B2",
         "primary-light": "#06B6D4",
       },
+      screens: {
+        xs: "475px",
+      },
     },
   },
   safelist: [

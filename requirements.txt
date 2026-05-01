@@ -10,6 +10,7 @@ python-dotenv==1.2.1
 # Frontend (Django + Tailwind)
 django-tailwind==3.8.0
 django-browser-reload>=1.21.0,<2.0.0
+django-unfold==0.89.0
 
 # Imagens
 Pillow==12.1.1

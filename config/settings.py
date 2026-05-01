@@ -34,7 +34,14 @@ MAINTENANCE_MODE = os.getenv("MAINTENANCE_MODE", default=False)
 
 # Application definition
 
+UNFOLD = {
+    "SITE_TITLE": "PET-BCC | Administração",
+    "SITE_HEADER": "PET-BCC | Administração",
+     
+}
+
 INSTALLED_APPS = [
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

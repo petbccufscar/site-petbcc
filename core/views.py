@@ -5,11 +5,13 @@ from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
-from core.models import Atividade, Categoria, Membro, Projeto
+from core.models import Atividade, Categoria, Membro, Projeto, ProcessoSeletivo
 
 from core.forms import ContactForm
 
-from datetime import date
+from datetime import date, timedelta
+from django.utils import timezone
+from django.db.models import Sum, F, IntegerField, ExpressionWrapper
 
 def inicio(request):
     return render(request, 'core/inicio.html')
@@ -34,11 +36,12 @@ def projetos(request):
 
     CATEGORIAS = Categoria.objects.all().filter(interna=False)
     
-    # TODO: Substituir por filtro em consulta ao banco de dados
     if categoria:
         PROJETOS = Projeto.objects.filter(categoria__slug=categoria)
     else:
         PROJETOS = Projeto.objects.all()
+
+    PROJETOS = PROJETOS.filter(publico=True)
 
     return render(request, "core/projetos.html", {
         "projetos": PROJETOS,
@@ -50,22 +53,100 @@ def projeto(request, id):
     projeto = Projeto.objects.get(id=id)
     registros = Atividade.objects.filter(projeto=projeto).order_by("-data")
 
+    # Não exibe os membros que já saíram do PET
+    membros = projeto.membros.exclude(situacao=Membro.Situacao.EX_MEMBRO)
+
     return render(request, "core/projeto.html", {
-        "projeto": projeto,
-        "registros": registros,
+        "PROJETO": projeto,
+        "MEMBROS": membros,
+        "REGISTROS": registros,
     })
 
 def membro(request, id):
     membro = Membro.objects.get(id=id)
-    projetos = Projeto.objects.filter(membros=membro)
-    registros = Atividade.objects.filter(membros=membro)
 
-    # TODO: Calcular o total de horas
+    projetos = Projeto.objects.filter(membros=membro, publico=True)
+    registros = Atividade.objects.filter(membros=membro, projeto__publico=True).order_by("-data")
+
+    def formatar_minutos(total):
+        if not total:
+            return "0h00min"
+        
+        horas = total // 60
+        minutos = total % 60
+
+        return f"{horas}h {minutos:02d}min"
+
+    duracao_total = ExpressionWrapper(
+        F("horas") * 60 + F("minutos"),
+        output_field=IntegerField()
+    )
+
+    # ================== Soma semanal
+
+    hoje = timezone.now().date()
+    dias_desde_domingo = (hoje.weekday() + 1) % 7
+    inicio_semana = hoje - timedelta(days=dias_desde_domingo)
+
+    qs_semana = registros.filter(data__gte=inicio_semana)
+
+    print("Inicio semana:", inicio_semana)
+    print("Qtd registros semana:", qs_semana.count())
+
+    soma_semanal = registros.filter(
+        data__gte=inicio_semana
+    ).aggregate(total=Sum(duracao_total))["total"]
+
+    
+    print(soma_semanal, "soma semanal")
+
+    # ==================== Último mês
+
+    primeiro_dia_mes_atual = hoje.replace(day=1)
+    ultimo_dia_mes_passado = primeiro_dia_mes_atual - timedelta(days=1)
+    primeiro_dia_mes_passado = ultimo_dia_mes_passado.replace(day=1)
+
+    registros_mes = registros.filter(
+        data__range=(primeiro_dia_mes_passado, ultimo_dia_mes_passado)
+    )
+
+    total_mes = registros_mes.aggregate(total=Sum(duracao_total))["total"]
+    dias_mes = ultimo_dia_mes_passado.day
+
+    media_ultimo_mes = (total_mes // dias_mes) if total_mes else 0
+
+    # ============= Média último mês
+
+    mes = primeiro_dia_mes_passado.month
+    ano = primeiro_dia_mes_passado.year
+
+    for _ in range(2):
+        if mes == 1:
+            mes = 12
+            ano -= 1
+        else:
+            mes -= 1
+
+    inicio_3_meses = date(ano, mes, 1)
+
+    registros_3m = registros.filter(
+        data__range=(inicio_3_meses, ultimo_dia_mes_passado)
+    )
+
+    total_3m = registros_3m.aggregate(total=Sum(duracao_total))["total"]
+    dias_3m = (ultimo_dia_mes_passado - inicio_3_meses).days + 1
+
+    media_ultimos_tres_meses = (total_3m // dias_3m) if total_3m else 0
+
+    # ================== Soma total
+
+    total_horas = registros.aggregate(total=Sum(duracao_total))["total"]
+
     sumario = {
-        "soma_semanal": "8h35min",
-        "media_ultimo_mes": "6h10min",
-        "media_ultimos_tres_meses": "7h20min",
-        "total_horas": "180h55min"
+        "soma_semanal": formatar_minutos(soma_semanal),
+        "media_ultimo_mes": formatar_minutos(media_ultimo_mes),
+        "media_ultimos_tres_meses": formatar_minutos(media_ultimos_tres_meses),
+        "total_horas": formatar_minutos(total_horas)
     }
 
     return render(request, "core/membro.html", {
@@ -76,63 +157,18 @@ def membro(request, id):
     })
 
 def processo_seletivo(request):
-    vagas = [
-        {
-            "categoria": "Bolsista",
-            "descricao": """O PET pode ter até <strong>12 alunos bolsistas</strong>, que recebem uma bolsa de <strong>R$700,00</strong> mensalmente.
-
-A dedicação é de <strong>20 horas semanais</strong> e a participação no PET garante ao aluno participação em 60 horas de atividades complementares elegíveis no curso de Ciência da Computação.
-""",
-            "qtd_vagas": 12,
-        },
-        {
-            "categoria": "Não-Bolsista",
-            "descricao": """Caso todas as vagas para alunos bolsistas já estejam preenchidas, o PET pode ainda ter <strong>6 alunos</strong> atuando como não-bolsistas.
-
-As condições são as mesmas dos bolsistas, bem como o certificado, que também vale como Atividades Complementares.
-""",
-            "qtd_vagas": 6,
-        },
-        {
-            "categoria": "Colaborador",
-            "descricao": """Caso as vagas para bolsistas e não-bolsistas já estiverem preenchidas, ainda é possível ser um membro do PET como colaborador.
-
-Mesmo como colaborador você terá participação efetiva nos projetos, garantindo muito conhecimento e um grande incremento em sua graduação.
-""",
-            "qtd_vagas": "-",
-        },
-    ]
-
-    etapas = [
-        {
-            "etapa": 1,
-            "titulo": "Apresentação individual via vídeo",
-            "descricao": "Envio de vídeo de apresentação pessoal com tema livre",
-            "data_inicio": "26/08",
-            "data_fim": "07/09",
-            "data_resultado": "16/09",
-        },
-        {
-            "etapa": 2,
-            "titulo": "Proposta de projeto para o PET BCC",
-            "descricao": "Elaboração de um documento contendo uma proposta de projeto real",
-            "data_inicio": "23/09",
-            "data_fim": "05/10",
-            "data_resultado": None,
-        },
-        {
-            "etapa": 3,
-            "titulo": "Entrevista individual e arguição da Etapa 2",
-            "descricao": "Entrevista online sobre a Etapa 2 junto com entrevista pessoal",
-            "data_inicio": "06/10",
-            "data_fim": "10/10",
-            "data_resultado": "21/10",
-        },
-    ]
+    PS_ATUAL = ProcessoSeletivo.objects.order_by('-ano', '-semestre').first()
+    ETAPAS = PS_ATUAL.etapas.all() if PS_ATUAL else []
 
     return render(request, "core/processo_seletivo.html", {
-        "vagas": vagas,
-        "etapas": etapas,
+        "VAGAS": {
+            "BOLSISTA": PS_ATUAL.vagas_bolsista if PS_ATUAL else 0,
+            "NAO_BOLSISTA": PS_ATUAL.vagas_nao_bolsista if PS_ATUAL else 0,
+            "COLABORADOR": PS_ATUAL.vagas_colaborador if PS_ATUAL else 0
+        },
+        "ETAPAS": ETAPAS,
+        "PROCESSO": PS_ATUAL,
+        "JA_FECHOU": PS_ATUAL.fim_inscricao < date.today() if PS_ATUAL else False
     })
 
 def contato(request):
