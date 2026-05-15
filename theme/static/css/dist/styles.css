@@ -1003,6 +1003,10 @@ input:where([type='file']):focus {
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
+.collapse {
+  visibility: collapse;
+}
+
 .static {
   position: static;
 }
@@ -1049,10 +1053,6 @@ input:where([type='file']):focus {
 
 .z-50 {
   z-index: 50;
-}
-
-.z-\[100\] {
-  z-index: 100;
 }
 
 .z-\[5\] {
@@ -1154,6 +1154,10 @@ input:where([type='file']):focus {
   display: inline-flex;
 }
 
+.table {
+  display: table;
+}
+
 .grid {
   display: grid;
 }
@@ -1203,6 +1207,14 @@ input:where([type='file']):focus {
   height: 100vh;
 }
 
+.h-28 {
+  height: 7rem;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1236,6 +1248,14 @@ input:where([type='file']):focus {
   width: 100%;
 }
 
+.w-28 {
+  width: 7rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -1250,6 +1270,10 @@ input:where([type='file']):focus {
 
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.border-collapse {
+  border-collapse: collapse;
 }
 
 .-translate-y-full {
@@ -1408,6 +1432,18 @@ input:where([type='file']):focus {
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2rem * var(--tw-space-x-reverse));
+  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .self-start {
   align-self: flex-start;
 }
@@ -1494,6 +1530,11 @@ input:where([type='file']):focus {
 .border-yellow-400 {
   --tw-border-opacity: 1;
   border-color: rgb(250 204 21 / var(--tw-border-opacity, 1));
+}
+
+.border-gray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
 }
 
 .\!bg-blue-500 {
@@ -1771,6 +1812,11 @@ input:where([type='file']):focus {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .pr-4 {
@@ -2059,6 +2105,11 @@ input:where([type='file']):focus {
 .hover\:border-gray-200:hover {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
+}
+
+.hover\:border-gray-300:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
 }
 
 .hover\:bg-blue-600\/90:hover {

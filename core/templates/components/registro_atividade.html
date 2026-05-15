@@ -17,18 +17,20 @@
       <p class="flex gap-1">{{ tempo }}</p>
     </div>
 
-    <div class="flex -space-x-2">
-      {% for membro in membros %}
-        <a class="block cursor-pointer transition hover:-translate-y-1 z-0" href="{% url 'core:membro' id=membro.id %}">
-          <div title="{{ membro.nome }}">
-            {% if membro.foto %}
-              <img src="{{ membro.foto.url }}" alt="Foto de um membro participante do registro" class="w-8 h-8 rounded-full object-fill scale-120" />
-            {% else %}
-              <ion-icon name="person-outline" class="p-1 text-xl text-gray-300 shadow-md rounded-full"></ion-icon>
-            {% endif %}
-          </div>
-        </a>
-      {% endfor %}
-    </div>
+    {% if user.is_authenticated %}
+      <div class="flex -space-x-2">
+        {% for membro in membros %}
+          <a class="block cursor-pointer transition hover:-translate-y-1 z-0" href="{% url 'core:membro' id=membro.id %}">
+            <div title="{{ membro.nome }}">
+              {% if membro.foto %}
+                <img src="{{ membro.foto.url }}" alt="Foto de um membro participante do registro" class="w-8 h-8 rounded-full object-fill scale-120" />
+              {% else %}
+                <ion-icon name="person-outline" class="p-1 text-xl text-gray-300 shadow-md rounded-full"></ion-icon>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </div>

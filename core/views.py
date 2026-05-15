@@ -151,8 +151,8 @@ def membro(request, id):
 
     return render(request, "core/membro.html", {
         "membro": membro,
-        "projetos": projetos,
-        "registros": registros,
+        "PROJETOS": projetos,
+        "REGISTROS": registros,
         "sumario": sumario
     })
 
@@ -193,3 +193,6 @@ def contato(request):
         form = ContactForm()
 
     return render(request, "core/contato.html", {"form": form})
+
+def politicas_ufscar_planner(request):
+    return render(request, "ufscar_planner/politicas.html")

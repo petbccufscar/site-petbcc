@@ -21,37 +21,42 @@
     {% endif %}
 
     <!-- Conteúdo -->
-    <div class="max-w-6xl mx-auto relative space-y-4 z-10 p-6 py-8 text-gray-50">
+    <div class="flex max-w-6xl mx-auto relative space-x-8 z-10 p-6 py-16 text-gray-50">
       {% if membro.foto %}
-        <img src="{{ membro.foto.url }}" alt="" class="object-fill scale-120 w-20 h-20 rounded-xl" />
+        <img src="{{ membro.foto.url }}" alt="" class="object-fill scale-120 w-32 h-32 rounded-xl" />
       {% else %}
-        <ion-icon name="person-outline" class="text-4xl text-gray-400"></ion-icon>
+        <ion-icon name="person-outline" class="text-5xl text-gray-400"></ion-icon>
       {% endif %}
-      <div>
-        <p class="text-gray-50 font-semibold">{{ membro.nome }} {{ membro.sobrenome }}</p>
-        <p class="text-gray-300">{{ membro.descricao }} - {{ membro.get_situacao_display }}</p>
+      <div class="flex flex-col justify-center gap-2">
+        <p class="text-gray-50 font-semibold text-lg">{{ membro.nome }} {{ membro.sobrenome }}</p>
+        <p class="text-gray-300 text-lg">{{ membro.descricao }} - {{ membro.get_situacao_display }}</p>
       </div>
-      {% if membro.github %}
-        <a href="https://github.com/{{ membro.github }}" target="_blank" rel="noopener noreferrer" class="w-fit border p-3 flex gap-2 rounded-xl hover:bg-gray-100/10 transition" aria-label="Acessar perfil no GitHub">
-          <ion-icon name="logo-octocat" class="text-2xl text-gray-50"></ion-icon>
-          <p class="text-gray-100">{{ membro.github }}</p>
-        </a>
-      {% endif %}
     </div>
   </div>
 
   <section class="max-w-6xl mx-auto p-6 md:py-12 space-y-8 md:space-y-12">
     <section>
+      <p class="text-gray-800 font-bold mb-6 text-lg">Redes</p>
+
+      {% if membro.github %}
+        <a href="https://github.com/{{ membro.github }}" target="_blank" rel="noopener noreferrer" class="w-fit p-3 px-4 rounded-xl border border-gray-200 hover:bg-gray-100 hover:shadow-sm transition cursor-pointer flex gap-4 items-center" aria-label="Acessar perfil no GitHub">
+          <ion-icon name="logo-octocat" class="text-2xl text-gray-600"></ion-icon>
+          <p class="text-gray-600 text-md font-mediu">{{ membro.github }}</p>
+        </a>
+      {% endif %}
+    </section>
+
+    <section>
       <p class="text-gray-800 font-bold mb-6 text-lg">Projetos Inscritos</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {% for projeto in projetos %}
-          <a href="{% url 'core:projeto' projeto.id %}" class="block cursor-pointer">
+        {% for PROJETO in PROJETOS %}
+          <a href="{% url 'core:projeto' PROJETO.id %}" class="block cursor-pointer">
             <div class="flex gap-4 items-center p-6 rounded-xl border border-gray-200 hover:bg-gray-100 hover:shadow-sm transition">
-              <ion-icon name="{{ projeto.categoria.slug|icone_categoria }}" class="text-3xl p-4 text-gray-50 rounded-lg {{ projeto.categoria.slug|estilo_categoria }}"></ion-icon>
+              <ion-icon name="{{ PROJETO.categoria.slug|icone_categoria }}" class="text-3xl p-4 text-gray-50 rounded-lg {{ PROJETO.categoria.slug|estilo_categoria }}"></ion-icon>
               <div>
-                <p class="text-gray-700 font-bold">{{ projeto.nome }}</p>
-                <p class="text-gray-500">{{ projeto.categoria.nome }}</p>
+                <p class="text-gray-700 font-bold">{{ PROJETO.nome }}</p>
+                <p class="text-gray-500">{{ PROJETO.categoria.nome }}</p>
               </div>
             </div>
           </a>
@@ -61,49 +66,51 @@
       </div>
     </section>
 
-    <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Relatório de Horas</p>
+    {% if user.is_authenticated %}
+      <section>
+        <p class="text-gray-800 font-bold mb-6 text-lg">Relatório de Horas</p>
 
-      <div class="flex gap-2">
-        {% if registros %}
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-            <div class="p-6 rounded-xl border border-gray-200 space-y-2">
-              <ion-icon name="time-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-600"></ion-icon>
-              <p class="text-gray-500">Soma Semanal (desde xx/xx)</p>
-              <p class="text-gray-700 text-xl font-medium">{{ sumario.soma_semanal }}</p>
+        <div class="flex gap-2">
+          {% if REGISTROS %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+              <div class="p-6 rounded-xl border border-gray-200 space-y-2">
+                <ion-icon name="time-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-600"></ion-icon>
+                <p class="text-gray-500">Soma Semanal (desde xx/xx)</p>
+                <p class="text-gray-700 text-xl font-medium">{{ sumario.soma_semanal }}</p>
+              </div>
+              <div class="p-6 rounded-lg border border-gray-200 space-y-2">
+                <ion-icon name="calendar-clear-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-600"></ion-icon>
+                <p class="text-gray-500">Média do Último Mês (Mês)</p>
+                <p class="text-gray-700 text-xl font-medium">{{ sumario.media_ultimo_mes }}</p>
+              </div>
+              <div class="p-6 rounded-lg border border-gray-200 space-y-2">
+                <ion-icon name="trending-up-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-green-600"></ion-icon>
+                <p class="text-gray-500">Média dos 3 Últimos Meses</p>
+                <p class="text-gray-700 text-xl font-medium">{{ sumario.media_ultimos_tres_meses }}</p>
+              </div>
+              <div class="p-6 rounded-lg border border-gray-200 space-y-2">
+                <ion-icon name="ribbon-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-300"></ion-icon>
+                <p class="text-gray-500">Total de Horas</p>
+                <p class="text-gray-700 text-xl font-medium">{{ sumario.total_horas }}</p>
+              </div>
             </div>
-            <div class="p-6 rounded-lg border border-gray-200 space-y-2">
-              <ion-icon name="calendar-clear-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-600"></ion-icon>
-              <p class="text-gray-500">Média do Último Mês (Mês)</p>
-              <p class="text-gray-700 text-xl font-medium">{{ sumario.media_ultimo_mes }}</p>
-            </div>
-            <div class="p-6 rounded-lg border border-gray-200 space-y-2">
-              <ion-icon name="trending-up-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-green-600"></ion-icon>
-              <p class="text-gray-500">Média dos 3 Últimos Meses</p>
-              <p class="text-gray-700 text-xl font-medium">{{ sumario.media_ultimos_tres_meses }}</p>
-            </div>
-            <div class="p-6 rounded-lg border border-gray-200 space-y-2">
-              <ion-icon name="ribbon-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-300"></ion-icon>
-              <p class="text-gray-500">Total de Horas</p>
-              <p class="text-gray-700 text-xl font-medium">{{ sumario.total_horas }}</p>
-            </div>
-          </div>
-        {% else %}
-          <p class="text-gray-600">Relatório indisponível pois não há atividades registradas.</p>
-        {% endif %}
-      </div>
-    </section>
+          {% else %}
+            <p class="text-gray-600">Relatório indisponível pois não há atividades registradas.</p>
+          {% endif %}
+        </div>
+      </section>
 
-    <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Atividades Recentes</p>
+      <section>
+        <p class="text-gray-800 font-bold mb-6 text-lg">Atividades Recentes</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {% for registro in registros %}
-          {% include 'components/registro_atividade.html' with titulo=registro.titulo descricao=registro.descricao data=registro.data tempo=registro.get_hora_formatada projeto=registro.projeto %}
-        {% empty %}
-          <p class="text-gray-600">Nenhuma atividade registrada.</p>
-        {% endfor %}
-      </div>
-    </section>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {% for REGISTRO in REGISTROS %}
+            {% include 'components/registro_atividade.html' with titulo=REGISTRO.titulo descricao=REGISTRO.descricao data=REGISTRO.data tempo=REGISTRO.get_hora_formatada projeto=REGISTRO.projeto %}
+          {% empty %}
+            <p class="text-gray-600">Nenhuma atividade registrada.</p>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
   </section>
 {% endblock %}

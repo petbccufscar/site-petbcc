@@ -48,10 +48,10 @@
       <p class="text-gray-800 font-bold mb-6 text-lg">Tecnologias</p>
 
       <div class="flex gap-4 flex-wrap">
-        {% for tecnologia in PROJETO.tecnologias.all %}
-          <a href="{{ tecnologia.link }}" class="p-3 px-4 rounded-xl border border-transparent hover:border-gray-200 hover:bg-gray-100 hover:shadow-sm cursor-pointer flex gap-4 items-center">
-            <img src="{{ tecnologia.logo.url }}" alt="Foto de um membro participante do registro" class="h-10 object-fill scale-120" />
-            <p class="text-gray-600 text-sm font-medium">{{ tecnologia.nome }}</p>
+        {% for TECNOLOGIA in PROJETO.tecnologias.all %}
+          <a href="{{ TECNOLOGIA.link }}" class="p-3 px-4 rounded-xl border border-transparent hover:border-gray-200 hover:bg-gray-100 hover:shadow-sm cursor-pointer flex gap-4 items-center">
+            <img src="{{ TECNOLOGIA.logo.url }}" alt="Foto de um membro participante do registro" class="h-10 object-fill scale-120" />
+            <p class="text-gray-600 text-sm font-medium">{{ TECNOLOGIA.nome }}</p>
           </a>
         {% empty %}
           <p class="text-gray-600">Nenhuma tecnologia envolvida.</p>
@@ -84,7 +84,7 @@
       <p class="text-gray-800 font-bold mb-6 text-lg">Relatório de Horas</p>
 
       <div class="flex gap-4">
-        {% if registros %}
+        {% if REGISTROS %}
           <p>...</p>
         {% else %}
           <p class="text-gray-600">Relatório indisponível pois não há atividades registradas.</p>
@@ -96,8 +96,8 @@
       <p class="text-gray-800 font-bold mb-6 text-lg">Atividades Recentes</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {% for registro in registros %}
-          {% include 'components/registro_atividade.html' with titulo=registro.titulo descricao=registro.descricao data=registro.data tempo=registro.get_hora_formatada membros=registro.membros projeto=null %}
+        {% for REGISTRO in REGISTROS %}
+          {% include 'components/registro_atividade.html' with titulo=REGISTRO.titulo descricao=REGISTRO.descricao data=REGISTRO.data tempo=REGISTRO.get_hora_formatada membros=REGISTRO.membros.all projeto=null %}
         {% empty %}
           <p class="text-gray-600">Nenhuma atividade registrada.</p>
         {% endfor %}
