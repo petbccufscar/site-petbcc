@@ -52,6 +52,9 @@ class Membro(models.Model):
     # link do github definido como texto
     github = models.CharField(max_length=50, blank=True)
 
+    # link do linkedin definido como texto
+    linkedin = models.CharField(max_length=200, blank=True)
+
     # utilizando o enum para definir a situacao do membro
     situacao = models.CharField(
         max_length=12,

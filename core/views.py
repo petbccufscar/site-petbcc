@@ -13,6 +13,8 @@ from datetime import date, timedelta
 from django.utils import timezone
 from django.db.models import Sum, F, IntegerField, ExpressionWrapper
 
+import math
+
 def inicio(request):
     return render(request, 'core/inicio.html')
 
@@ -65,8 +67,8 @@ def projeto(request, id):
 def membro(request, id):
     membro = Membro.objects.get(id=id)
 
-    projetos = Projeto.objects.filter(membros=membro, publico=True)
-    registros = Atividade.objects.filter(membros=membro, projeto__publico=True).order_by("-data")
+    projetos = Projeto.objects.filter(membros=membro)
+    registros = Atividade.objects.filter(membros=membro).order_by("-data")
 
     def formatar_minutos(total):
         if not total:
@@ -75,7 +77,7 @@ def membro(request, id):
         horas = total // 60
         minutos = total % 60
 
-        return f"{horas}h {minutos:02d}min"
+        return f"{horas}h{minutos:02d}min"
 
     duracao_total = ExpressionWrapper(
         F("horas") * 60 + F("minutos"),
@@ -88,17 +90,9 @@ def membro(request, id):
     dias_desde_domingo = (hoje.weekday() + 1) % 7
     inicio_semana = hoje - timedelta(days=dias_desde_domingo)
 
-    qs_semana = registros.filter(data__gte=inicio_semana)
-
-    print("Inicio semana:", inicio_semana)
-    print("Qtd registros semana:", qs_semana.count())
-
     soma_semanal = registros.filter(
         data__gte=inicio_semana
     ).aggregate(total=Sum(duracao_total))["total"]
-
-    
-    print(soma_semanal, "soma semanal")
 
     # ==================== Último mês
 
@@ -110,12 +104,15 @@ def membro(request, id):
         data__range=(primeiro_dia_mes_passado, ultimo_dia_mes_passado)
     )
 
-    total_mes = registros_mes.aggregate(total=Sum(duracao_total))["total"]
-    dias_mes = ultimo_dia_mes_passado.day
+    total_mes = registros_mes.aggregate(
+        total=Sum(duracao_total)
+    )["total"] or 0
 
-    media_ultimo_mes = (total_mes // dias_mes) if total_mes else 0
+    media_ultimo_mes = (
+        total_mes // 4
+    ) if total_mes else 0
 
-    # ============= Média último mês
+    # ==================== Média últimos 3 meses
 
     mes = primeiro_dia_mes_passado.month
     ano = primeiro_dia_mes_passado.year
@@ -127,16 +124,27 @@ def membro(request, id):
         else:
             mes -= 1
 
-    inicio_3_meses = date(ano, mes, 1)
-
-    registros_3m = registros.filter(
-        data__range=(inicio_3_meses, ultimo_dia_mes_passado)
+    inicio_3_meses = date(
+        ano,
+        mes,
+        1
     )
 
-    total_3m = registros_3m.aggregate(total=Sum(duracao_total))["total"]
-    dias_3m = (ultimo_dia_mes_passado - inicio_3_meses).days + 1
+    registros_3m = registros.filter(
+        data__range=(
+            inicio_3_meses,
+            ultimo_dia_mes_passado
+        )
+    )
 
-    media_ultimos_tres_meses = (total_3m // dias_3m) if total_3m else 0
+    total_3m = registros_3m.aggregate(
+        total=Sum(duracao_total)
+    )["total"] or 0
+
+    # Média semanal últimos 3 meses
+    media_ultimos_tres_meses = (
+        total_3m // 12
+    ) if total_3m else 0
 
     # ================== Soma total
 
@@ -144,6 +152,7 @@ def membro(request, id):
 
     sumario = {
         "soma_semanal": formatar_minutos(soma_semanal),
+        "data_inicio": inicio_semana.strftime("%d/%m"),
         "media_ultimo_mes": formatar_minutos(media_ultimo_mes),
         "media_ultimos_tres_meses": formatar_minutos(media_ultimos_tres_meses),
         "total_horas": formatar_minutos(total_horas)

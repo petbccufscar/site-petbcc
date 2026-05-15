@@ -68,6 +68,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     # TODO: Descomentar em PROD 
     # "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",

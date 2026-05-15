@@ -14,7 +14,7 @@
     <section class="space-y-6">
       <div class="flex gap-6 items-center flex-wrap">
         {% if PROJETO.imagem %}
-          <img src="{{ PROJETO.imagem.url }}" alt="" class="w-20 border rounded-xl" />
+          <img src="{{ PROJETO.imagem.url }}" alt="" class="w-28 border rounded-xl" />
         {% endif %}
         <div class="space-y-2">
           <p class="text-gray-800 text-3xl font-bold">{{ PROJETO.nome }}</p>
@@ -77,18 +77,6 @@
         {% empty %}
           <p class="text-gray-600">Nenhum membro envolvido.</p>
         {% endfor %}
-      </div>
-    </section>
-
-    <section>
-      <p class="text-gray-800 font-bold mb-6 text-lg">Relatório de Horas</p>
-
-      <div class="flex gap-4">
-        {% if REGISTROS %}
-          <p>...</p>
-        {% else %}
-          <p class="text-gray-600">Relatório indisponível pois não há atividades registradas.</p>
-        {% endif %}
       </div>
     </section>
 
