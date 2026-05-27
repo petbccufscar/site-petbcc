@@ -4,8 +4,6 @@
   PET-BCC | {{ membro.nome }}
 {% endblock %}
 
-{% load static %}
-
 {% load estilos_tags %}
 {% load strings_tags %}
 
@@ -21,15 +19,15 @@
     {% endif %}
 
     <!-- Conteúdo -->
-    <div class="flex max-w-6xl mx-auto relative space-x-8 z-10 p-6 py-16 text-gray-50">
+    <div class="flex max-w-6xl mx-auto relative space-x-8 z-10 p-6 py-20 text-gray-50">
       {% if membro.foto %}
         <img src="{{ membro.foto.url }}" alt="" class="object-fill scale-120 w-32 h-32 rounded-xl" />
       {% else %}
         <ion-icon name="person-outline" class="text-5xl text-gray-400"></ion-icon>
       {% endif %}
-      <div class="flex flex-col justify-center gap-2">
+      <div class="flex flex-col justify-center gap-1">
         <p class="text-gray-50 font-semibold text-lg">{{ membro.nome }} {{ membro.sobrenome }}</p>
-        <p class="text-gray-300 text-lg">{{ membro.descricao }} - {{ membro.get_situacao_display }}</p>
+        <p class="text-gray-300">{{ membro.descricao }} - {{ membro.get_situacao_display }}</p>
       </div>
     </div>
   </div>
@@ -82,22 +80,22 @@
         <div class="flex gap-2">
           {% if REGISTROS %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-              <div class="p-6 rounded-xl border border-gray-200 space-y-2">
+              <div class="p-6 rounded-xl border border-gray-200 space-y-2 bg-gray-100">
                 {% comment %} <ion-icon name="time-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-600"></ion-icon> {% endcomment %}
                 <p class="text-gray-500">Soma semanal (desde {{ sumario.data_inicio }})</p>
                 <p class="text-gray-700 text-xl font-medium">{{ sumario.soma_semanal }}</p>
               </div>
-              <div class="p-6 rounded-lg border border-gray-200 space-y-2">
+              <div class="p-6 rounded-lg border border-gray-200 space-y-2 bg-gray-100">
                 {% comment %} <ion-icon name="calendar-clear-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-600"></ion-icon> {% endcomment %}
                 <p class="text-gray-500">Média do último mês</p>
                 <p class="text-gray-700 text-xl font-medium">{{ sumario.media_ultimo_mes }} por semana</p>
               </div>
-              <div class="p-6 rounded-lg border border-gray-200 space-y-2">
+              <div class="p-6 rounded-lg border border-gray-200 space-y-2 bg-gray-100">
                 {% comment %} <ion-icon name="trending-up-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-green-600"></ion-icon> {% endcomment %}
                 <p class="text-gray-500">Média dos 3 últimos meses</p>
                 <p class="text-gray-700 text-xl font-medium">{{ sumario.media_ultimos_tres_meses }} por semana</p>
               </div>
-              <div class="p-6 rounded-lg border border-gray-200 space-y-2">
+              <div class="p-6 rounded-lg border border-gray-200 space-y-2 bg-gray-100">
                 {% comment %} <ion-icon name="ribbon-outline" class="text-3xl p-4 text-gray-50 rounded-xl bg-blue-300"></ion-icon> {% endcomment %}
                 <p class="text-gray-500">Total de Horas</p>
                 <p class="text-gray-700 text-xl font-medium">{{ sumario.total_horas }}</p>

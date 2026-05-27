@@ -4,15 +4,13 @@
   PET-BCC | Início
 {% endblock %}
 
-{% load static %}
-
 {% load estilos_tags %}
 
 {% block content %}
   <!-- Conteúdo -->
   <div class="space-y-2">
     <div class="overflow-hidden">
-      <img src="{% static 'images/foto_equipe.png' %}" alt="" class="w-full h-[220px] md:h-full object-cover" />
+      <img src="{{ config.imagem_fundo.url }}" alt="" class="w-full h-[220px] md:h-full object-cover" />
     </div>
     <h1 class="text-gray-800 text-sm md:text-lg font-black mb-2 text-right pr-4 shadow-inner-lg">PET-BCC (ɔ◔‿◔)ɔ ♥</h1>
   </div>

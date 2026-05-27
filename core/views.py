@@ -1,11 +1,9 @@
-from types import SimpleNamespace
-
 from django.shortcuts import redirect, render
 
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
-from core.models import Atividade, Categoria, Membro, Projeto, ProcessoSeletivo
+from core.models import Atividade, Categoria, ConfiguracaoSite, Membro, Projeto, ProcessoSeletivo
 
 from core.forms import ContactForm
 
@@ -13,10 +11,11 @@ from datetime import date, timedelta
 from django.utils import timezone
 from django.db.models import Sum, F, IntegerField, ExpressionWrapper
 
-import math
 
 def inicio(request):
-    return render(request, 'core/inicio.html')
+    config = ConfiguracaoSite.objects.first()
+
+    return render(request, 'core/inicio.html', {"config": config})
 
 def equipe(request):
     MEMBROS = Membro.objects.all()
@@ -202,6 +201,3 @@ def contato(request):
         form = ContactForm()
 
     return render(request, "core/contato.html", {"form": form})
-
-def politicas_ufscar_planner(request):
-    return render(request, "ufscar_planner/politicas.html")

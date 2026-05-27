@@ -11,7 +11,4 @@ urlpatterns = [
     path('projetos/<int:id>', views.projeto, name='projeto'),
     path('processo-seletivo', views.processo_seletivo, name='processo-seletivo'),
     path('contato', views.contato, name='contato'),
-
-    # PLANNER
-    path('politicas-ufscar-planner', views.politicas_ufscar_planner, name='planner')
 ]

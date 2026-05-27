@@ -1,15 +1,19 @@
-from datetime import date
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
 
-class Usuario(AbstractBaseUser):
-    # O campo 'password'já existe dentro do AbstractBaseUser
-    usuario = models.CharField(max_length=150, unique=True)
-    # O Django obriga a definir qual campo será o identificador principal para login
-    USERNAME_FIELD = 'usuario'
+class ConfiguracaoSite(models.Model):
+
+    imagem_fundo = models.ImageField(
+        upload_to="fundos_site/", 
+        null=True, 
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = "Configuração do Site"
+        verbose_name_plural = "Configurações do Site"
 
     def __str__(self):
-        return self.usuario
+        return "Configurações"
 
 class Categoria(models.Model):
 
@@ -26,7 +30,7 @@ class Tecnologia(models.Model):
 
     nome = models.CharField(max_length=150, unique=True)
 
-    logo = models.ImageField(upload_to='static/images/tecnologias/', null=True, blank=True)
+    logo = models.ImageField(upload_to='tecnologias_logos/', null=True, blank=True)
 
     link = models.URLField(max_length=200, blank=True)
 
@@ -45,9 +49,9 @@ class Membro(models.Model):
     nome = models.CharField(max_length=150)
     sobrenome = models.CharField(max_length=150, blank=True)
 
-    #foto como imagefield tratado pelo pillow e salvado no diretório static/images/membros/
-    foto = models.ImageField(upload_to='static/images/membros/', null=True, blank=True)
-    capa = models.ImageField(upload_to='static/images/membros/capas/', null=True, blank=True)
+    #foto como imagefield
+    foto = models.ImageField(upload_to='membros_fotos/', null=True, blank=True)
+    capa = models.ImageField(upload_to='membros_capas/', null=True, blank=True)
 
     # link do github definido como texto
     github = models.CharField(max_length=50, blank=True)
@@ -93,7 +97,7 @@ class Projeto(models.Model):
     data_fim = models.DateField(null=True, blank=True)
 
     #imagem
-    imagem = models.ImageField(upload_to='static/images/projects/', null=True, blank=True)
+    imagem = models.ImageField(upload_to='projetos_fotos/', null=True, blank=True)
 
     #publico
     publico = models.BooleanField(default=False)
@@ -123,6 +127,7 @@ class Projeto(models.Model):
 
     def __str__(self):
         return self.nome
+
 
 class Atividade(models.Model):
 
@@ -204,8 +209,8 @@ class ProcessoSeletivo(models.Model):
 
     etapas = models.ManyToManyField(Etapa)
 
-    # salva em pastas organizadas por ano/mes, ex: static/edital/2026/03/edital.pdf
-    edital = models.FileField(upload_to='static/edital/%Y/%m')
+    # salva em pastas organizadas por ano/mes
+    edital = models.FileField(upload_to='editais/')
 
     formulario = models.CharField(max_length=300, blank=True)
 
